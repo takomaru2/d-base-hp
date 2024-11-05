@@ -27,6 +27,6 @@
     "typescript": "^5"
   },
   "lint-staged": {
-    "**/*.{ts,tsx,css,json,md}": "npm run format"
+    "**/*.{ts,tsx,css,json,md}": "pnpm run format"
   }
 }
