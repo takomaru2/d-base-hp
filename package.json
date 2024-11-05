@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier \"./src/**/*.{ts,tsx,css,json,md}\" --write --cache",
-    "prepare": "husky"
+    "prepare": "husky",
+    "lint:css": "stylelint '**/*.{css,scss}' --fix"
   },
   "dependencies": {
     "next": "15.0.2",
@@ -24,9 +25,13 @@
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
     "prettier": "^3.3.3",
+    "stylelint": "^16.10.0",
+    "stylelint-config-recommended-scss": "^14.1.0",
+    "stylelint-scss": "^6.8.1",
     "typescript": "^5"
   },
   "lint-staged": {
-    "**/*.{ts,tsx,css,json,md}": "pnpm run format"
+    "**/*.{ts,tsx,css,json,md}": "pnpm run format",
+    "*.{css,scss}": "pnpm run lint:css"
   }
 }
