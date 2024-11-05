@@ -1,40 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+## 要件定義
 
-## Getting Started
+### サイト概要
 
-First, run the development server:
+D-base は鳥取県のカーコーティング専門店です。本プロジェクトでは、D-base の公式ウェブサイトを制作し、鳥取県在住でカーコーティングを希望する 30 ～ 50 代の男性を主なターゲットとしています。サイト全体を通じて、高級感と洗練されたデザインを意識し、ターゲットユーザーに適した内容としています。
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### サイト構成
+
+- **トップページ**
+  - 施工実績
+  - 価格表
+  - お問い合わせ
+  - プライバシーポリシー
+
+### ユーザーがサイトでできること
+
+- **スマートフォン対応**：スマートフォンからのアクセスでも、短いローディング時間で迅速にサイトを表示します。
+- **SNS 連携**：LINE のアイコンを設置し、クリックすると直接お問い合わせが可能です。
+- **お問い合わせフォーム**：Contact ページからフォーム入力でのお問い合わせが可能です。
+- **直接連絡**：メールや電話番号のアイコンをタップすると、直接連絡が取れます。
+- **施工実績の閲覧**：作業風景やスタッフの写真、これまでの施工車種や内容を確認できます。
+- **料金表の確認**：わかりやすい料金表で、各コーティングの種類と料金を把握できます。
+- **ページ間の遷移**：トップページから施工実績、価格表、プライバシーポリシー、お問い合わせページへのリンクボタンでスムーズに遷移できます。
+
+## 仕様要件
+
+### 機能
+
+- **ナビゲーションメニュー**：各ページまたはトップページ内の該当セクションへの遷移やスクロールが可能です。
+- **お問い合わせ機能**：Google フォームを使用したお問い合わせ機能を実装します。
+
+### 使用技術
+
+- **言語・フレームワーク**：TypeScript、Next.js
+- **スタイリング**：CSS Modules
+- **フォーマッター**：stylelint、ESLint、Prettier
+- **CI/CD**：GitHub Actions、Vercel
+- **その他ライブラリ**：ScaffDog、Storybook
+
+# ディレクトリ構成
+
+```
+d-base-hp/
+├── public/assets/ public/:  //静的ファイルの配置場所。画像やフォントなどのファイルはここに置き、/public フォルダの外部リンクとして使います。
+│            ├──top/image
+│            ├──works/image     // 静的ファイル (画像、フォントなど)
+├── src/                      // - src/: すべてのソースコードを格納し、他のファイルと分けることでプロジェクトの整理がしやすくなります。
+│   ├── components/           // components/: 共通で再利用可能な UI コンポーネントを配置。これにより、例えばボタンやヘッダーなどの UI を複数ページで再利用可能です。コンポーネントごとにフォルダを分けることで、スタイルとロジックを 1 つのフォルダにまとめることができます。
+│   │   ├── Header
+│   │   │       ├── components
+│   │   │       ├── logic
+│   │   │       ├── hooks
+│   │   ├── Footer/
+│   │   ├── Button/
+│   │   └── ...               // 他の共通コンポーネント
+│   ├── pages/                //pages/: 各ページのルーティングに対応するフォルダ。Next.js の Page Router では、ファイル名がそのままルーティングパスになります。
+│   │   ├── top/
+│   │   │     ├── index.page.tsx
+│   │   │     ├── index.modules.scss
+│   │   │     ├── component
+│   │   │     │      └── 〇〇.tsx
+│   │   │     ├── logic
+│   │   │     ├── hooks       // トップページ (top)
+│   │   ├── works/            // worksページ
+│   │   ├── pricing/            // priceページ
+│   │   ├── privacy-policy    // プライバシーポリシーページ
+│   │   └── contact/          // contactページ
+│   │
+│   ├── logics/                // logic/: API コールやユーティリティ関数を格納。例えば、API 呼び出しや共通の計算ロジックなど、ビジネスロジックをまとめることで再利用性が高まります。
+│   │   └── 共通な関数components/    // 文字列、日付などのフォーマッター
+│   ├── const/                // const/: ルーティングパスや表示メッセージの定数などを管理。定数をここで管理することで、例えばルートの変更時に一括で修正できます。
+│   │   ├── xxx.ts
+│   ├── styles/               // styles/: グローバルなスタイルや変数。
+│   │   ├── globals.scss      // グローバルスタイル (リセットCSS等)
+│   │   └── variables.scss    // カラー、フォントサイズなどの変数
+│   ├── types/                //types/: TypeScript の型定義ファイル。各コンポーネントやロジックで使う型を一元管理できます。
+│   │   └── xxx.ts // 全体で使用するTypeScript型
+│   └──services
+          └── api/
+└── tsconfig.json             // TypeScriptの設定
+└── next.config.js            // Next.jsの設定
+└── package.json
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 各ディレクトリの役割とルール
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- src の下に components や page などがあるが、components には全体共通の component をおく。もし、works にしか使わないコンポーネントなどは、page の下にある works/の直下に components をおいてあるので、そこに置くようにする。
+- それと、同じ原理で、modules.scss も pages と components 両方に置く。全体共通のもとのその page にしかつかわないもの。
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+```
+＊できたら、消す。page直下には、
+TOP,Works,Price,PraivasyPolicy,Contactがあり、pageルーターの特性上、
+page直下のindexをtopページとするので、next.configを変更して、Top/直下の
+index.page.tsxをTopページであると認識するようにする必要がある。
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+最初は必要そうなものをぺんちゃんに聞いて、必要なさそうなら、最初は入れない。後で必要になれば、リファクタリングしてディレクトリ構成を更新していく。
