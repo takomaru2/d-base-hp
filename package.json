@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier \"./src/**/*.{ts,tsx,css,json,md}\" --write --cache",
+    "format": "prettier \"./**/*.{ts,tsx,css,json,md}\" --write --cache",
     "prepare": "husky"
   },
   "dependencies": {
