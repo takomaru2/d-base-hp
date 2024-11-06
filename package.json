@@ -26,12 +26,13 @@
     "lint-staged": "^15.2.10",
     "prettier": "^3.3.3",
     "stylelint": "^16.10.0",
+    "stylelint-config-recess-order": "^5.1.1",
     "stylelint-config-recommended-scss": "^14.1.0",
     "stylelint-scss": "^6.8.1",
     "typescript": "^5"
   },
   "lint-staged": {
-    "**/*.{ts,tsx,css,json,md}": "pnpm run format",
+    "**/*.{ts,tsx,css,scss,json,md}": "pnpm run format",
     "*.{css,scss}": "pnpm run lint:css"
   }
 }
