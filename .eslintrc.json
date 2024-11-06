@@ -4,9 +4,10 @@
     "next/typescript",
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
-    "plugin:jsx-a11y/recommended"
+    "plugin:jsx-a11y/recommended",
+    "plugin:unicorn/recommended"
   ],
-  "plugins": ["react", "react-hooks", "jsx-a11y"],
+  "plugins": ["react", "react-hooks", "jsx-a11y", "unicorn"],
   "settings": {
     "react": {
       "version": "detect"
