@@ -1,5 +1,5 @@
 // eslint.config.mjs
-import typescriptParser from '@typescript-eslint/parser';
+import typescriptParser from '@typescript-eslint/parser'
 
 /** @type {import("eslint").Linter.Config} */
 const config = {
@@ -7,10 +7,10 @@ const config = {
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
-    project: './tsconfig.json',
+    project: './tsconfig.json'
   },
   plugins: ['@typescript-eslint'],
-  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
-};
+  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended']
+}
 
-export default config;
+export default config

@@ -5,7 +5,8 @@
     "plugin:react/recommended",
     "plugin:react-hooks/recommended",
     "plugin:jsx-a11y/recommended",
-    "plugin:unicorn/recommended"
+    "plugin:unicorn/recommended",
+    "prettier"
   ],
   "plugins": ["react", "react-hooks", "jsx-a11y", "unicorn"],
   "settings": {
