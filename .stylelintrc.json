@@ -1,11 +1,15 @@
 {
   "extends": [
     "stylelint-config-recess-order",
-    "stylelint-config-standard-scss"
+    "stylelint-config-standard-scss",
+    "stylelint-a11y"
   ],
   "plugins": ["stylelint-scss"],
   "rules": {
     "selector-pseudo-element-colon-notation": "double",
-    "scss/selector-no-union-class-name": true
+    "scss/selector-no-union-class-name": true,
+    "a11y/media-prefers-reduced-motion": true,
+    "a11y/no-outline-none": true,
+    "a11y/selector-pseudo-class-focus": true
   }
 }
