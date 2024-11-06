@@ -2,9 +2,10 @@
   "extends": [
     "next/core-web-vitals",
     "next/typescript",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended"
   ],
-  "plugins": ["react"],
+  "plugins": ["react", "react-hooks"],
   "settings": {
     "react": {
       "version": "detect"
