@@ -10,7 +10,7 @@
     "format": "prettier \"./src/**/*.{ts,tsx,css,json,md}\" --write --cache",
     "prepare": "husky",
     "lint:css": "stylelint '**/*.{css,scss}'",
-    "lint:css:fix": "stylelint '**/*.{css,scss}' --fix"
+    "lint:css:fix": "pnpm run lint:css --fix"
   },
   "dependencies": {
     "next": "15.0.2",
