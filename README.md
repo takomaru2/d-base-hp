@@ -34,8 +34,8 @@ D-base は鳥取県のカーコーティング専門店です。本プロジェ�
 - **言語・フレームワーク**：TypeScript、Next.js
 - **スタイリング**：CSS Modules
 - **フォーマッター**：stylelint、ESLint、Prettier
-- **CI/CD**：GitHub Actions、Vercel
-- **その他ライブラリ**：ScaffDog、Storybook
+- **CI/CD**：GitHub Actions(必要に応じて)、Vercel
+- **その他ライブラリ**：ScaffDog、Storybook（これらは必要に応じて）
 
 # ディレクトリ構成
 
@@ -86,12 +86,5 @@ d-base-hp/
 
 - src の下に components や page などがあるが、components には全体共通の component をおく。もし、works にしか使わないコンポーネントなどは、page の下にある works/の直下に components をおいてあるので、そこに置くようにする。
 - それと、同じ原理で、modules.scss も pages と components 両方に置く。全体共通のもとのその page にしかつかわないもの。
-
-```
-＊できたら、消す。page直下には、
-TOP,Works,Price,PraivasyPolicy,Contactがあり、pageルーターの特性上、
-page直下のindexをtopページとするので、next.configを変更して、Top/直下の
-index.page.tsxをTopページであると認識するようにする必要がある。
-```
 
 最初は必要そうなものをぺんちゃんに聞いて、必要なさそうなら、最初は入れない。後で必要になれば、リファクタリングしてディレクトリ構成を更新していく。
