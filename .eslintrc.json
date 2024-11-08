@@ -9,9 +9,17 @@
     "prettier"
   ],
   "plugins": ["react", "react-hooks", "jsx-a11y", "unicorn"],
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "project": "./tsconfig.json",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "sourceType": "module"
+  },
+  "rules": {
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off"
   }
 }
