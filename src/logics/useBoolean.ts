@@ -1,13 +1,23 @@
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 
-export const useIsBoolean = (initialValue: boolean = false) => {
+type UseIsBooleanType = [
+  boolean,
+  {
+    toggle: () => void;
+    on: () => void;
+    off: () => void;
+  },
+];
+export const useIsBoolean = (
+  initialValue: boolean = false,
+): UseIsBooleanType => {
   const [isBoolean, setIsBoolean] = useState(initialValue);
 
-  const isToggle = () => setIsBoolean((prev) => !prev);
+  const action = {
+    toggle: () => setIsBoolean((prev) => !prev),
+    on: () => setIsBoolean(true),
+    off: () => setIsBoolean(false),
+  };
 
-  const setTrue = setIsBoolean(true);
-
-  const setFalse = setIsBoolean(false);
-
-  return { isBoolean, isToggle, setTrue, setFalse };
+  return [isBoolean, action];
 };
