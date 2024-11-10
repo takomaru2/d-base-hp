@@ -3,11 +3,11 @@ import { useCallback, useState } from 'react';
 export const useIsBoolean = (initialValue: boolean = false) => {
   const [isBoolean, setIsBoolean] = useState(initialValue);
 
-  const toggle = useCallback(() => setIsBoolean((prev: boolean) => !prev), []);
+  const isToggle = () => setIsBoolean((prev) => !prev);
 
-  const setTrue = useCallback(() => setIsBoolean(true), []);
+  const setTrue = setIsBoolean(true);
 
-  const setFalse = useCallback(() => setIsBoolean(false), []);
+  const setFalse = setIsBoolean(false);
 
-  return { isBoolean, toggle, setTrue, setFalse };
+  return { isBoolean, isToggle, setTrue, setFalse };
 };
