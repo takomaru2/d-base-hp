@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-type UseIsBooleanType = [
+type UseIsBooleanReturn = [
   boolean,
   {
     toggle: () => void;
@@ -10,7 +10,7 @@ type UseIsBooleanType = [
 ];
 export const useIsBoolean = (
   initialValue: boolean = false,
-): UseIsBooleanType => {
+): UseIsBooleanReturn => {
   const [isBoolean, setIsBoolean] = useState(initialValue);
 
   const action = {
