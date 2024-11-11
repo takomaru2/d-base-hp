@@ -14,7 +14,7 @@ $vwMax: 1680px;
   $intercept: $minValue - $vwMin * $slope;
 
   // レスポンシブ値
-  $responsiveValue: calc(#{$slope * 100}vw + #{$intercept}px);
+  $responsiveValue: calc(#{$slope * 100px}vw + #{$intercept}px);
 
   // maxValue以下にminValueを返し、minValue以上ならmaxValueを返す。それ以外なら、responsiveValueを返す。
   @return min(max($responsiveValue, #{$minValue}px), #{$maxValue}px);
