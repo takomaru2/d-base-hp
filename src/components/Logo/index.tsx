@@ -5,7 +5,7 @@ type LogoProps = {
   color?: 'black' | 'white';
 };
 
-export const Logo: FC<LogoProps> = ({ color }) => {
+export const Logo: FC<LogoProps> = ({ color = 'white' }) => {
   const colorStyle = color === 'white' ? styles.colorWhite : styles.colorBlack;
   return <h1 className={`${styles.heading} ${colorStyle}`}>D-base</h1>;
 };
