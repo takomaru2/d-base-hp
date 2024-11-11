@@ -1,0 +1,17 @@
+@use '@/styles/variables' as *;
+
+.button {
+  padding: 9.5px 20px;
+  font-family: $mainFontJP;
+  font-size: 14px;
+  font-weight: bold;
+  color: $subBgColor;
+  letter-spacing: calc(14px * 0.09);
+  background-color: #4b6583;
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  color: #4b6583;
+  background-color: $subBgColor;
+}
