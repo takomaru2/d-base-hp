@@ -1,17 +1,17 @@
 @use '@/styles/variables' as *;
 
-.sectionTitle {
-  max-width: 125px;
+.wrapper {
+  display: inline-block;
   text-align: center;
 }
 
-.sectionJpTitle {
+.jpTitle {
   font-family: $mainFontJP;
   font-size: 28px;
   letter-spacing: 2.4px;
 }
 
-.sectionBorder {
+.border {
   position: relative;
   width: 100%;
   height: 1px;
@@ -19,7 +19,7 @@
   background-color: $mainBgColor;
 }
 
-.sectionBorder::before {
+.border::before {
   position: absolute;
   top: -2px;
   left: -2px;
@@ -30,7 +30,7 @@
   border-radius: 50%;
 }
 
-.sectionEnTitle {
+.enTitle {
   font-family: $mainFontEN;
   font-size: 14px;
   letter-spacing: 4px;

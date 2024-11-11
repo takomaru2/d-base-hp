@@ -1,17 +1,17 @@
 import styles from '@/components/SectionTitle/index.module.scss';
 import { FC } from 'react';
 
-type SectionTitleType = {
+type SectionTitleProps = {
   jpTitle: string;
   enTitle: string;
 };
 
-export const SectionTitle: FC<SectionTitleType> = ({ jpTitle, enTitle }) => {
+export const SectionTitle: FC<SectionTitleProps> = ({ jpTitle, enTitle }) => {
   return (
-    <div className={styles.Title}>
-      <h3 className={styles.JpTitle}>{jpTitle}</h3>
-      <div className={styles.Border}></div>
-      <p className={styles.EnTitle}>{enTitle}</p>
+    <div className={styles.wrapper}>
+      <h2 className={styles.JpTitle}>{jpTitle}</h2>
+      <div className={styles.border}></div>
+      <div className={styles.enTitle}>{enTitle}</div>
     </div>
   );
 };
