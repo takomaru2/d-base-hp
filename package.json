@@ -10,7 +10,8 @@
     "format": "prettier \"./src/**/*.{ts,tsx,css,json,md}\" --write --cache",
     "prepare": "husky",
     "lint:css": "stylelint '**/*.{css,scss}'",
-    "lint:css:fix": "pnpm run lint:css --fix"
+    "lint:css:fix": "pnpm run lint:css --fix",
+    "lint:css:fix-order": "pnpm run lint:css --fix -c '.stylelintrc.order.js'"
   },
   "dependencies": {
     "next": "15.0.2",
@@ -42,7 +43,10 @@
   },
   "lint-staged": {
     "**/*.{ts,tsx,css,scss,json,md}": "pnpm run format",
-    "*.{css,scss}": "pnpm run lint:css"
+    "*.{css,scss}": [
+      "pnpm run lint:css:fix-order",
+      "pnpm run lint:css"
+    ]
   },
   "engines": {
     "node": "21.7.1",
