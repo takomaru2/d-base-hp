@@ -1,5 +1,9 @@
-const Test = () => {
-  return <div>aaa</div>;
-};
+import { SectionTitle } from '@/components/SectionTitle';
 
-export default Test;
+export default function Top() {
+  return (
+    <>
+      <SectionTitle sectionJpTitle={'施工実績'} sectionEnTitle={'works'} />
+    </>
+  );
+}

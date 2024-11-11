@@ -1,0 +1,37 @@
+@use '@/styles/variables' as *;
+
+.sectionTitle {
+  max-width: 125px;
+  text-align: center;
+}
+
+.sectionJpTitle {
+  font-family: $mainFontJP;
+  font-size: 28px;
+  letter-spacing: 2.4px;
+}
+
+.sectionBorder {
+  position: relative;
+  width: 100%;
+  height: 1px;
+  margin-top: 2.5px;
+  background-color: $mainBgColor;
+}
+
+.sectionBorder::before {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: 5px;
+  height: 5px;
+  content: '';
+  background-color: $mainBgColor;
+  border-radius: 50%;
+}
+
+.sectionEnTitle {
+  font-family: $mainFontEN;
+  font-size: 14px;
+  letter-spacing: 4px;
+}
