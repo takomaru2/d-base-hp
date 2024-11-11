@@ -4,5 +4,6 @@ module.exports = {
   rules: {
     // css変数名をキャメルケース適応
     'scss/dollar-variable-pattern': '^[a-z][a-zA-Z]*',
+    'selector-class-pattern': '^[a-z][a-zA-Z]*',
   },
 };
