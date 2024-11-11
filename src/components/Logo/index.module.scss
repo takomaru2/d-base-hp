@@ -1,0 +1,15 @@
+@import '../../styles/variables';
+
+.heading {
+  font-family: $mainFontEN;
+  font-size: 20px;
+  letter-spacing: calc(20px * 0.09);
+}
+
+.colorWhite {
+  color: $subBgColor;
+}
+
+.colorBlack {
+  color: $mainBgColor;
+}
