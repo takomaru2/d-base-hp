@@ -8,10 +8,18 @@
   color: $subBgColor;
   letter-spacing: calc(14px * 0.09);
   background-color: #4b6583;
+  border-radius: 2px;
   transition: all 0.3s ease;
 }
 
 .button:hover {
   color: #4b6583;
   background-color: $subBgColor;
+}
+
+@include responsive {
+  .button {
+    padding: 33.5px 88.5px;
+    font-size: 30px;
+  }
 }
