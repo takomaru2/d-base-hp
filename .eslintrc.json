@@ -6,7 +6,8 @@
     "plugin:react-hooks/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:unicorn/recommended",
-    "prettier"
+    "prettier",
+    "plugin:storybook/recommended"
   ],
   "plugins": ["react", "react-hooks", "jsx-a11y", "unicorn"],
   "parser": "@typescript-eslint/parser",
