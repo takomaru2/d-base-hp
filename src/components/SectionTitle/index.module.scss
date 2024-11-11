@@ -1,4 +1,4 @@
-@use '@/styles/variables' as *;
+@use '../../styles/variables' as *;
 
 .wrapper {
   display: inline-block;
@@ -7,7 +7,7 @@
 
 .jpTitle {
   font-family: $mainFontJP;
-  font-size: 28px;
+  font-size: linear-clamp(28, 40);
   letter-spacing: 2.4px;
 }
 
@@ -32,6 +32,6 @@
 
 .enTitle {
   font-family: $mainFontEN;
-  font-size: 14px;
+  font-size: linear-clamp(14, 20);
   letter-spacing: 4px;
 }
