@@ -3,3 +3,19 @@ $subBgColor: #f8f8f5;
 $mainFontJP: 'Noto Sans JP', sans-serif;
 $mainFontEN: 'Revalia', sans-serif;
 $subFontEN: 'Russo One', sans-serif;
+$vwMin: 390px;
+$vwMax: 1680px;
+
+@function linear-clamp($minValue, $maxValue) {
+  // グラフの傾き
+  $slope: ($maxValue - $minValue) / ($vwMax - $vwMin);
+
+  // グラフの切片
+  $intercept: $minValue - $vwMin * $slope;
+
+  // レスポンシブ値
+  $responsiveValue: calc(#{$slope * 100}vw + #{$intercept}px);
+
+  // maxValue以下にminValueを返し、minValue以上ならmaxValueを返す。それ以外なら、responsiveValueを返す。
+  @return min(max($responsiveValue, #{$minValue}px), #{$maxValue}px);
+}
