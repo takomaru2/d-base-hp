@@ -16,6 +16,7 @@
 .button:hover {
   color: #4b6583;
   background-color: $subBgColor;
+  border: #4b6583 1px solid;
 }
 
 @include responsive {
