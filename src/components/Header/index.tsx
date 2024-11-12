@@ -1,7 +1,7 @@
 import { Logo } from '../Logo';
 import styles from './index.module.scss';
-import Link from 'next/link';
 import { FC } from 'react';
+import { MenuList } from '@/components/MenuList';
 
 type HeaderProps = {
   isOpenMenu: boolean;
@@ -16,54 +16,22 @@ export const Header: FC<HeaderProps> = ({ isOpenMenu, close }) => {
       </div>
       <div className={styles.menu}>
         <button className={styles.spMenu}>MENU</button>
-        <ul className={styles.pcMenuList}>
-          <li className={styles.menuItem}>
-            <Link href="/">ホーム</Link>
-          </li>
-          <li className={styles.menuItem}>
-            <Link href="/">施工実績</Link>
-          </li>
-          <li className={styles.menuItem}>
-            <Link href="/">価格表</Link>
-          </li>
-          <li className={styles.menuItem}>
-            <Link href="/">アクセス</Link>
-          </li>
-          <li className={styles.menuItem}>
-            <Link href="/">よくある質問</Link>
-          </li>
-          <li className={styles.menuItem}>
-            <Link href="/">お問い合わせ</Link>
-          </li>
-        </ul>
+        <MenuList
+          ulClassName={styles.pcMenuList}
+          liClassName={styles.menuItem}
+        />
         {isOpenMenu && (
           <div className={styles.navMenu}>
             <div className={styles.top}>
-              <Logo />
+              <Logo color="white" />
               <button className={styles.navClose} onClick={close}>
                 ×
               </button>
             </div>
-            <ul className={styles.navMenuList}>
-              <li className={styles.navMenuItem}>
-                <Link href="/">ホーム</Link>
-              </li>
-              <li className={styles.navMenuItem}>
-                <Link href="/">施工実績</Link>
-              </li>
-              <li className={styles.navMenuItem}>
-                <Link href="/">価格表</Link>
-              </li>
-              <li className={styles.navMenuItem}>
-                <Link href="/">アクセス</Link>
-              </li>
-              <li className={styles.navMenuItem}>
-                <Link href="/">よくある質問</Link>
-              </li>
-              <li className={styles.navMenuItem}>
-                <Link href="/">お問い合わせ</Link>
-              </li>
-            </ul>
+            <MenuList
+              ulClassName={styles.navMenuList}
+              liClassName={styles.navMenuItem}
+            />
           </div>
         )}
       </div>
