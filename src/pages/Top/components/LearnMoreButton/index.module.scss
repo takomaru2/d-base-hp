@@ -2,26 +2,26 @@
 @import '../../../../styles/mixin';
 
 .button {
-  padding: 10px 20px;
+  padding: px 20px;
   font-family: $mainFontJP;
   font-size: 14px;
   font-weight: bold;
-  color: $subBgColor;
+  color: $subColor;
   letter-spacing: calc(14px * 0.09);
-  background-color: #4b6583;
+  background-color: $learnMoreButtonColor;
   border-radius: 2px;
   transition: all 0.3s ease;
 }
 
 .button:hover {
-  color: #4b6583;
-  background-color: $subBgColor;
-  border: #4b6583 1px solid;
+  color: $learnMoreButtonColor;
+  background-color: $subColor;
+  border: $learnMoreButtonColor 1px solid;
 }
 
 @include responsive {
   .button {
-    padding: 33px 88px;
-    font-size: 30px;
+    padding: $linear-clamp;
+    font-size: $linear-clamp;
   }
 }
