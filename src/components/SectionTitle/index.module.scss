@@ -31,30 +31,26 @@
   background-color: $mainBgColor;
 }
 
-.border.black::before {
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  width: 5px;
-  height: 5px;
-  content: '';
-  background-color: $mainBgColor;
-  border-radius: 50%;
-}
-
 .border.white {
   background-color: $subBgColor;
 }
 
-.border.white::before {
+.border::before {
   position: absolute;
   top: -2px;
   left: -2px;
   width: 5px;
   height: 5px;
   content: '';
-  background-color: $subBgColor;
   border-radius: 50%;
+}
+
+.border.black::before {
+  background-color: $mainBgColor;
+}
+
+.border.white::before {
+  background-color: $subBgColor;
 }
 
 .enTitle {
