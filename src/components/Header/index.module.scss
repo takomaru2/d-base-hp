@@ -1,0 +1,17 @@
+@import '../../styles/variables';
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: linear-clamp(15, 50) linear-clamp(25, 70);
+}
+
+.menu {
+  padding: linear-clamp(7, 10) linear-clamp(17, 20);
+  font-size: linear-clamp(20, 24);
+  color: $mainBgColor;
+  letter-spacing: calc(20px * 0.09);
+  background-color: $subBgColor;
+  border-radius: 1px;
+}
