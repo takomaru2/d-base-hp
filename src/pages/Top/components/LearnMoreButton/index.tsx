@@ -5,7 +5,6 @@ type LearnMoreButtonProps = {
   buttonTitle: string;
 };
 
-export const LearnMoreButton: FC<LearnMoreButtonProps> = (props) => {
-  const { buttonTitle } = props;
+export const LearnMoreButton: FC<LearnMoreButtonProps> = ({ buttonTitle }) => {
   return <button className={styles.button}>{buttonTitle}</button>;
 };
