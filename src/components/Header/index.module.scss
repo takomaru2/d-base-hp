@@ -1,17 +1,57 @@
-@import '../../styles/variables';
+@import '@/styles/variables';
+@import '@/styles/mixin';
 
 .container {
   display: flex;
+  column-gap: linear-clamp(15, 60);
   align-items: center;
   justify-content: space-between;
-  padding: linear-clamp(15, 50) linear-clamp(25, 70);
+  height: linear-clamp(67, 147);
 }
 
 .menu {
-  padding: linear-clamp(7, 10) linear-clamp(17, 20);
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.spMenu {
   font-size: linear-clamp(20, 24);
   color: $mainBgColor;
   letter-spacing: calc(20px * 0.09);
   background-color: $subBgColor;
   border-radius: 1px;
+}
+
+.pcMenuList {
+  display: none;
+  height: inherit;
+}
+
+@include responsive {
+  .spMenu {
+    display: none;
+  }
+
+  .pcMenuList {
+    display: flex;
+    column-gap: linear-clamp(5, 60);
+    align-items: center;
+    height: 100%;
+  }
+
+  .menuItem {
+    height: 100%;
+
+    a {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      padding: 0 linear-clamp(5, 15);
+      font-size: linear-clamp(14, 24);
+      color: inherit;
+      text-decoration: none;
+    }
+  }
 }
