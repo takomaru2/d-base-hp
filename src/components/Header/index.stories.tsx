@@ -10,6 +10,13 @@ export default meta;
 
 type Story = StoryObj<typeof Component>;
 
-export const ColorWhite: Story = {
-  args: {},
+export const ShowMenu: Story = {
+  args: {
+    isOpenMenu: true,
+  },
+};
+export const HideMenu: Story = {
+  args: {
+    isOpenMenu: false,
+  },
 };
