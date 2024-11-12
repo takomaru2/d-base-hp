@@ -2,12 +2,13 @@
 @import '../../../../styles/mixin';
 
 .button {
-  padding: px 20px;
+  padding: 10px 25px;
+  padding: linear-clamp(33, 88);
   font-family: $mainFontJP;
-  font-size: 14px;
+  font-size: linear-clamp(14, 30);
   font-weight: bold;
   color: $subColor;
-  letter-spacing: calc(14px * 0.09);
+  letter-spacing: calc(14px * $letterSpacingKana);
   background-color: $learnMoreButtonColor;
   border-radius: 2px;
   transition: all 0.3s ease;
@@ -19,9 +20,4 @@
   border: $learnMoreButtonColor 1px solid;
 }
 
-@include responsive {
-  .button {
-    padding: $linear-clamp;
-    font-size: $linear-clamp;
-  }
-}
+// sp padding 10 25 pc padding 33 88
