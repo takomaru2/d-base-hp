@@ -7,9 +7,5 @@ type LearnMoreButtonProps = {
 
 export const LearnMoreButton: FC<LearnMoreButtonProps> = (props) => {
   const { buttonTitle } = props;
-  return (
-    <>
-      <button className={styles.button}>{buttonTitle}</button>
-    </>
-  );
+  return <button className={styles.button}>{buttonTitle}</button>;
 };
