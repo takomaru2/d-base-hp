@@ -5,9 +5,10 @@ import { FC } from 'react';
 
 type HeaderProps = {
   isOpenMenu: boolean;
+  close: () => void;
 };
 
-export const Header: FC<HeaderProps> = ({ isOpenMenu }) => {
+export const Header: FC<HeaderProps> = ({ isOpenMenu, close }) => {
   return (
     <div className={styles.container}>
       <div className={styles.logo}>
@@ -39,7 +40,9 @@ export const Header: FC<HeaderProps> = ({ isOpenMenu }) => {
           <div className={styles.navMenu}>
             <div className={styles.top}>
               <Logo />
-              <button className={styles.navClose}>×</button>
+              <button className={styles.navClose} onClick={close}>
+                ×
+              </button>
             </div>
             <ul className={styles.navMenuList}>
               <li className={styles.navMenuItem}>
