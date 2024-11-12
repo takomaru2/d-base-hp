@@ -2,9 +2,9 @@ import styles from '@/pages/Top/components/LearnMoreButton/index.module.scss';
 import { FC } from 'react';
 
 type LearnMoreButtonProps = {
-  buttonTitle: string;
+  label: string;
 };
 
-export const LearnMoreButton: FC<LearnMoreButtonProps> = ({ buttonTitle }) => {
-  return <button className={styles.button}>{buttonTitle}</button>;
+export const LearnMoreButton: FC<LearnMoreButtonProps> = ({ label }) => {
+  return <button className={styles.button}>{label}</button>;
 };

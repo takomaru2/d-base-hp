@@ -5,7 +5,7 @@ import { LearnMoreButton as Component } from '.';
 const meta: Meta<typeof Component> = {
   component: Component,
   args: {
-    buttonTitle: 'aaa',
+    label: 'aaa',
   },
 };
 
@@ -15,12 +15,12 @@ type Story = StoryObj<typeof Component>;
 
 export const MoreButton: Story = {
   args: {
-    buttonTitle: '詳しく見る',
+    label: '詳しく見る',
   },
 };
 
 export const PriceButton: Story = {
   args: {
-    buttonTitle: '詳しい価格表を見る',
+    label: '詳しい価格表を見る',
   },
 };
