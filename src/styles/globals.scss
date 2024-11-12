@@ -1,5 +1,6 @@
 @use './variables' as *;
 
 body {
+  color: $subBgColor;
   background-color: $mainBgColor;
 }
