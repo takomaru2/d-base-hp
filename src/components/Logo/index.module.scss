@@ -1,8 +1,8 @@
-@import '../../styles/variables';
+@import '@/styles/variables';
 
 .heading {
   font-family: $mainFontEN;
-  font-size: 20px;
+  font-size: linear-clamp(20, 40);
   letter-spacing: calc(20px * 0.09);
 }
 
