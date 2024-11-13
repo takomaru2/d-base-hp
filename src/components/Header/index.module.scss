@@ -12,7 +12,7 @@
 .menu {
   display: flex;
   align-items: center;
-  height: 100%;
+  height: inherit;
 }
 
 .spMenu {
@@ -26,7 +26,7 @@
 
 .pcMenuList {
   display: none;
-  height: inherit;
+  height: 100%;
 }
 
 .navMenu {
@@ -89,14 +89,12 @@
     align-items: center;
     height: 100%;
 
-    .a {
+    a {
       display: flex;
       align-items: center;
-      width: 100%;
-      height: 100%;
       padding: 0 linear-clamp(5, 15);
       font-size: linear-clamp(14, 24);
-      color: inherit;
+      color: $subBgColor;
       text-decoration: none;
     }
   }
