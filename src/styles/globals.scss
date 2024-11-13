@@ -4,3 +4,13 @@ body {
   color: $subColor;
   background-color: $mainColor;
 }
+
+ul,
+li {
+  list-style: none;
+}
+
+li a {
+  color: $subBgColor;
+  text-decoration: none;
+}

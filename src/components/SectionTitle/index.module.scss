@@ -1,0 +1,66 @@
+@use '@/styles/variables' as *;
+@import '@/styles/mixin';
+
+.wrapper {
+  display: inline-block;
+  text-align: center;
+}
+
+.white {
+  color: $subBgColor;
+}
+
+.black {
+  color: $mainBgColor;
+}
+
+.jpTitle {
+  font-family: $mainFontJP;
+  font-size: linear-clamp(28, 40);
+  letter-spacing: 2.4px;
+}
+
+.border {
+  position: relative;
+  width: 100%;
+  height: 1px;
+  margin-top: 2.5px;
+}
+
+.border.black {
+  background-color: $mainBgColor;
+}
+
+.border.white {
+  background-color: $subBgColor;
+}
+
+.border::before {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: 5px;
+  height: 5px;
+  content: '';
+  border-radius: 50%;
+}
+
+.border.black::before {
+  background-color: $mainBgColor;
+}
+
+.border.white::before {
+  background-color: $subBgColor;
+}
+
+.enTitle {
+  font-family: $mainFontEN;
+  font-size: linear-clamp(14, 20);
+  letter-spacing: 4px;
+}
+
+@include responsive {
+  .enTitle {
+    text-align: left;
+  }
+}
