@@ -1,0 +1,47 @@
+@import '@/styles/variables';
+@import '@/styles/globals';
+@import '@/styles/mixin';
+
+.container {
+  display: flex;
+  flex-direction: row-reverse;
+  column-gap: linear-clamp(70, 200);
+  justify-content: center;
+  color: $colorWhite;
+}
+
+.title {
+  height: 100%;
+  max-height: linear-clamp(370, 700);
+  color: $verticalColor;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+}
+
+.secondTitle {
+  text-align: end;
+}
+
+.title h2 {
+  font-family: $mainFontJP;
+  font-size: linear-clamp(24, 40);
+  letter-spacing: calc(24px * $verticalSpacing);
+}
+
+.text {
+  display: flex;
+  flex-direction: column-reverse;
+  row-gap: linear-clamp(15, 30);
+  padding-top: 70px;
+  font-family: $mainFontJP;
+  font-size: linear-clamp(14, 30);
+  letter-spacing: calc(14px * $verticalSpacing);
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+}
+
+@include pcStyle {
+  .text {
+    padding: 0;
+  }
+}
