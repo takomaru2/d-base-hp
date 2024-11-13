@@ -1,0 +1,31 @@
+@import '@/styles/mixin';
+@import '@/styles/variables';
+
+.pcMenuList {
+  display: none;
+  height: 100%;
+}
+
+@include responsive {
+  .pcMenuList {
+    display: flex;
+    column-gap: linear-clamp(5, 60);
+    align-items: center;
+    height: 100%;
+  }
+
+  .menuItem {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    a {
+      display: flex;
+      align-items: center;
+      padding: 0 linear-clamp(5, 15);
+      font-size: linear-clamp(14, 24);
+      color: $subBgColor;
+      text-decoration: none;
+    }
+  }
+}
