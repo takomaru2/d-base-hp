@@ -6,7 +6,7 @@
   font-family: $mainFontJP;
   font-size: linear-clamp(14, 30);
   font-weight: bold;
-  color: $subColor;
+  color: $colorWhite;
   letter-spacing: calc(14px * $letterSpacingKana);
   background-color: $learnMoreButtonColor;
   border-radius: 2px;
@@ -15,6 +15,6 @@
 
 .button:hover {
   color: $learnMoreButtonColor;
-  background-color: $subColor;
+  background-color: $colorWhite;
   border: $learnMoreButtonColor 1px solid;
 }
