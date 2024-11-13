@@ -1,7 +1,7 @@
 import { Logo } from '../Logo';
 import styles from './index.module.scss';
 import { FC } from 'react';
-import { SpMenuList } from '@/components/SpMenuList';
+import { NavMenu } from '../NavMenu';
 import { PcMenuList } from '@/components/PcMenuList';
 
 type HeaderProps = {
@@ -18,17 +18,7 @@ export const Header: FC<HeaderProps> = ({ isOpenMenu, close }) => {
       <div className={styles.menu}>
         <button className={styles.spMenu}>MENU</button>
         <PcMenuList />
-        {isOpenMenu && (
-          <div className={styles.navMenu}>
-            <div className={styles.top}>
-              <Logo color="white" />
-              <button className={styles.navClose} onClick={close}>
-                ×
-              </button>
-            </div>
-            <SpMenuList />
-          </div>
-        )}
+        {isOpenMenu && <NavMenu close={close} />}
       </div>
     </div>
   );
