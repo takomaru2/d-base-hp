@@ -1,4 +1,4 @@
-@mixin responsive {
+@mixin pcStyle {
   @media (width > 600px) {
     @content;
   }

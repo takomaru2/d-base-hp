@@ -1,4 +1,4 @@
-@use '@/styles/variables' as *;
+@import '@/styles/variables';
 @import '@/styles/mixin';
 
 .wrapper {
@@ -7,11 +7,11 @@
 }
 
 .white {
-  color: $subBgColor;
+  color: $colorWhite;
 }
 
 .black {
-  color: $mainBgColor;
+  color: $colorBlack;
 }
 
 .jpTitle {
@@ -28,11 +28,11 @@
 }
 
 .border.black {
-  background-color: $mainBgColor;
+  background-color: $colorBlack;
 }
 
 .border.white {
-  background-color: $subBgColor;
+  background-color: $colorWhite;
 }
 
 .border::before {
@@ -46,11 +46,11 @@
 }
 
 .border.black::before {
-  background-color: $mainBgColor;
+  background-color: $colorBlack;
 }
 
 .border.white::before {
-  background-color: $subBgColor;
+  background-color: $colorWhite;
 }
 
 .enTitle {
@@ -59,7 +59,7 @@
   letter-spacing: 4px;
 }
 
-@include responsive {
+@include pcStyle {
   .enTitle {
     text-align: left;
   }
