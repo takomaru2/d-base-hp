@@ -1,4 +1,5 @@
 import styles from '@/pages/Top/components/LearnMoreButton/index.module.scss';
+import Link from 'next/link';
 import { FC } from 'react';
 
 type LearnMoreButtonProps = {
@@ -6,5 +7,9 @@ type LearnMoreButtonProps = {
 };
 
 export const LearnMoreButton: FC<LearnMoreButtonProps> = ({ label }) => {
-  return <button className={styles.button}>{label}</button>;
+  return (
+    <Link href="/about" className={styles.button}>
+      {label}
+    </Link>
+  );
 };
