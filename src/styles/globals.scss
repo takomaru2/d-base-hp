@@ -3,3 +3,13 @@
 body {
   background-color: $mainBgColor;
 }
+
+ul,
+li {
+  list-style: none;
+}
+
+li a {
+  color: $subBgColor;
+  text-decoration: none;
+}
