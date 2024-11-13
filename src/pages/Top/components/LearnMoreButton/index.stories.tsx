@@ -4,9 +4,6 @@ import { LearnMoreButton as Component } from '.';
 
 const meta: Meta<typeof Component> = {
   component: Component,
-  args: {
-    label: '詳しく見る',
-  },
 };
 
 export default meta;
