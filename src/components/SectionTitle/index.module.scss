@@ -11,7 +11,7 @@
 }
 
 .black {
-  color: $blackColor;
+  color: $colorBlack;
 }
 
 .jpTitle {
@@ -28,7 +28,7 @@
 }
 
 .border.black {
-  background-color: $blackColor;
+  background-color: $colorBlack;
 }
 
 .border.white {
@@ -46,7 +46,7 @@
 }
 
 .border.black::before {
-  background-color: $blackColor;
+  background-color: $colorBlack;
 }
 
 .border.white::before {
