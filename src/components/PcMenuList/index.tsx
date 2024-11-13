@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import styles from './index.module.scss';
 import { menuItems } from '@/const/menuItems';
+import { FC } from 'react';
 
-export const PcMenuList = () => {
+export const PcMenuList: FC = () => {
   return (
     <ul className={styles.pcMenuList}>
       {menuItems.map((item) => (
