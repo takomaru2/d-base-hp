@@ -7,5 +7,6 @@ module.exports = {
     // css変数名をキャメルケース適応
     'scss/dollar-variable-pattern': lowerCamel,
     'selector-class-pattern': lowerCamel,
+    'scss/at-mixin-pattern': lowerCamel,
   },
 };
