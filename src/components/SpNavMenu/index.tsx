@@ -4,11 +4,11 @@ import { menuItems } from '@/const/menuItems';
 import { FC } from 'react';
 import { Logo } from '@/components/Logo';
 
-type NavMenuProps = {
+type SpNavMenuProps = {
   close: () => void;
 };
 
-export const NavMenu: FC<NavMenuProps> = ({ close }) => {
+export const SpNavMenu: FC<SpNavMenuProps> = ({ close }) => {
   return (
     <div className={styles.container}>
       <div className={styles.top}>

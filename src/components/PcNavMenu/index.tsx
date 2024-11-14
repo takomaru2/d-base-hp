@@ -3,7 +3,7 @@ import styles from './index.module.scss';
 import { menuItems } from '@/const/menuItems';
 import { FC } from 'react';
 
-export const PcMenuList: FC = () => {
+export const PcNavMenu: FC = () => {
   return (
     <ul className={styles.container}>
       {menuItems.map((item) => (

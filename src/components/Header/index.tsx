@@ -1,8 +1,8 @@
 import { Logo } from '../Logo';
 import styles from './index.module.scss';
 import { FC } from 'react';
-import { NavMenu } from '../NavMenu';
-import { PcMenuList } from '@/components/PcMenuList';
+import { SpNavMenu } from '../SpNavMenu';
+import { PcNavMenu } from '../PcNavMenu';
 
 type HeaderProps = {
   isOpenMenu: boolean;
@@ -17,8 +17,8 @@ export const Header: FC<HeaderProps> = ({ isOpenMenu, close }) => {
       </div>
       <div className={styles.menu}>
         <button className={styles.spMenu}>MENU</button>
-        <PcMenuList />
-        {isOpenMenu && <NavMenu close={close} />}
+        <PcNavMenu />
+        {isOpenMenu && <SpNavMenu close={close} />}
       </div>
     </div>
   );
