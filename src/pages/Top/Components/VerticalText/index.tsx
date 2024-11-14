@@ -1,6 +1,7 @@
 import styles from './index.module.scss';
+import { FC } from 'react';
 
-export const VerticalText = () => {
+export const VerticalText: FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.title}>
