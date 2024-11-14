@@ -3,7 +3,7 @@ import styles from './index.module.scss';
 import { navMenu } from '@/const/navMenu';
 import { FC } from 'react';
 import { Logo } from '@/components/Logo';
-import Image from 'next/image';
+import Close from '../../../public/assets/Top/close.svg';
 
 type SpNavMenuProps = {
   close: () => void;
@@ -15,7 +15,7 @@ export const SpNavMenu: FC<SpNavMenuProps> = ({ close }) => {
       <div className={styles.top}>
         <Logo color="white" />
         <button className={styles.navClose} onClick={close}>
-          ×
+          <Close width={20} height={20} />
         </button>
       </div>
       <ul className={styles.navMenuList}>
