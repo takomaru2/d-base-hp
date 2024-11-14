@@ -4,10 +4,14 @@ import { FC } from 'react';
 export const VerticalText: FC = () => {
   return (
     <div className={styles.container}>
-      <div className={styles.title}>
-        <h2>鳥取専門の</h2>
-        <h2 className={styles.secondTitle}>カーコーティング店</h2>
-      </div>
+      <h2 className={styles.title}>
+        <span className={styles.titleText}>
+          鳥取専門の
+          <span className={`${styles.secondTitle} ${styles.titleText}`}>
+            カーコーティング店
+          </span>
+        </span>
+      </h2>
       <div className={styles.text}>
         <p>鳥取県唯一の取り扱い液剤で他店にはない技術</p>
         <p>山陰の気候に最適なコーティングを提供</p>
