@@ -22,6 +22,22 @@ const config: StorybookConfig = {
       '@': path.resolve(__dirname, '../src'),
     };
     config.resolve.modules = [path.resolve(__dirname, '..'), 'node_modules'];
+
+    // SVG対応(https://react-svgr.com/docs/next/)
+    config.module = config.module || {};
+    config.module.rules = config.module.rules || [];
+
+    const imageRule = config.module.rules.find((rule) =>
+      rule?.['test']?.test('.svg'),
+    );
+    if (imageRule) {
+      imageRule['exclude'] = /\.svg$/;
+    }
+
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    });
     return config;
   },
 };
