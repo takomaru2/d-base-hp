@@ -28,10 +28,10 @@
     font-size: linear-clamp(14, 24);
     color: $subBgColor;
     text-decoration: none;
-  }
 
-  .link:hover {
-    opacity: 0.5;
-    transition: all 0.3s;
+    &:hover {
+      opacity: 0.5;
+      transition: all 0.3s;
+    }
   }
 }
