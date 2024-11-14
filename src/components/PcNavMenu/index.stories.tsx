@@ -10,7 +10,7 @@ export default meta;
 
 type Story = StoryObj<typeof Component>;
 
-export const PcNav: Story = {
+export const Default: Story = {
   parameters: {
     backgrounds: {
       default: 'dark',
