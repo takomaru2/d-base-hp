@@ -1,6 +1,6 @@
 import type { Preview } from '@storybook/react';
-import '../src/styles/globals.scss';
-import '../src/styles/_variables.scss';
+import '@/styles/globals.scss';
+import '@/styles/variables.scss';
 import 'ress';
 import Head from 'next/head';
 
@@ -13,7 +13,7 @@ const preview: Preview = {
       },
     },
     backgrounds: {
-      default: 'light',
+      default: 'dark',
       values: [
         {
           name: 'light',

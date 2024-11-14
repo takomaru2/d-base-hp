@@ -1,12 +1,19 @@
-@use './variables' as *;
+@import '@/styles/variables';
 
 body {
-  background-color: $mainBgColor;
+  color: $colorWhite;
+  background-color: $colorBlack;
 }
 
 ul,
 li {
   list-style: none;
+}
+
+li,
+a {
+  color: $colorWhite;
+  text-decoration: none;
 }
 
 li a {
