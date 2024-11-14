@@ -1,6 +1,6 @@
-type MenuItem = { id: string; href: string; label: string };
+type NavItemList = { id: string; href: string; label: string };
 
-export const navItemList: MenuItem[] = [
+export const navItemList: NavItemList[] = [
   { id: '1', href: '/', label: 'ホーム' },
   { id: '2', href: '/', label: '施工実績' },
   { id: '3', href: '/', label: '価格表' },
