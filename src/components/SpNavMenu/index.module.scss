@@ -4,7 +4,7 @@
 .container {
   position: absolute;
   inset: 0;
-  background-color: $mainBgColor;
+  background-color: $colorBlack;
 }
 
 .top {
@@ -19,7 +19,7 @@
   top: 50%;
   right: linear-clamp(10, 20);
   padding: 10px 18px;
-  background-color: $subBgColor;
+  background-color: $colorWhite;
   border-radius: 3px;
   transform: translate(-50%, -50%);
 }

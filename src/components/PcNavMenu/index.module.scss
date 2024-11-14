@@ -6,7 +6,7 @@
   height: 100%;
 }
 
-@include responsive {
+@include pcStyle {
   .container {
     display: flex;
     column-gap: linear-clamp(5, 60);
@@ -26,7 +26,7 @@
     height: 100%;
     padding: 0 linear-clamp(5, 15);
     font-size: linear-clamp(14, 24);
-    color: $subBgColor;
+    color: $colorWhite;
     text-decoration: none;
 
     &:hover {

@@ -18,13 +18,13 @@
 .spMenu {
   padding: 5px 15px;
   font-size: linear-clamp(20, 24);
-  color: $mainBgColor;
+  color: $colorWhite;
   letter-spacing: calc(20px * 0.09);
-  background-color: $subBgColor;
+  background-color: $colorBlack;
   border-radius: 1px;
 }
 
-@include responsive {
+@include pcStyle {
   .spMenu {
     display: none;
   }

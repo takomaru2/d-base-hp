@@ -3,6 +3,7 @@ import styles from './index.module.scss';
 import { navMenu } from '@/const/navMenu';
 import { FC } from 'react';
 import { Logo } from '@/components/Logo';
+import Image from 'next/image';
 
 type SpNavMenuProps = {
   close: () => void;
