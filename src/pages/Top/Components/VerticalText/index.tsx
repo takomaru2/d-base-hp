@@ -5,12 +5,9 @@ export const VerticalText: FC = () => {
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>
-        <span className={styles.titleText}>
-          鳥取専門の
-          <span className={`${styles.secondTitle} ${styles.titleText}`}>
-            カーコーティング店
-          </span>
-        </span>
+        鳥取専門の
+        <br />
+        <span className={styles.spacing}>カーコーティング店</span>
       </h2>
       <div className={styles.text}>
         <p className={styles.paragraph}>

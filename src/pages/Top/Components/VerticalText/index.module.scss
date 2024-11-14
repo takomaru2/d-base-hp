@@ -11,21 +11,19 @@
 }
 
 .title {
+  display: block;
   max-height: linear-clamp(370, 700);
+  font-family: $mainFontJP;
+  font-size: linear-clamp(24, 40);
   color: $verticalColor;
+  letter-spacing: calc(24px * $verticalSpacing);
   writing-mode: vertical-rl;
   text-orientation: upright;
 }
 
-.secondTitle {
-  text-align: end;
-}
-
-.titleText {
+.spacing {
   display: block;
-  font-family: $mainFontJP;
-  font-size: linear-clamp(24, 40);
-  letter-spacing: calc(24px * $verticalSpacing);
+  text-align: end;
 }
 
 .text {
