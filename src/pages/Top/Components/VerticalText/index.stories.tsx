@@ -10,4 +10,4 @@ export default meta;
 
 type Story = StoryObj<typeof Component>;
 
-export const ColorWhite: Story = {};
+export const VerticalText: Story = {};
