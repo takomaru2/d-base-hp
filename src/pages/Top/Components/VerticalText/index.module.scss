@@ -30,15 +30,16 @@
 }
 
 .text {
-  display: flex;
-  flex-direction: column-reverse;
-  row-gap: linear-clamp(15, 30);
   padding-top: 70px;
   font-family: $mainFontJP;
   font-size: linear-clamp(14, 30);
   letter-spacing: calc(14px * $verticalSpacing);
   writing-mode: vertical-rl;
   text-orientation: upright;
+}
+
+.paragraph {
+  line-height: linear-clamp(29, 60);
 }
 
 @include pcStyle {
