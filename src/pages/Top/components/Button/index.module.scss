@@ -11,10 +11,10 @@
   background-color: $buttonColor;
   border-radius: 2px;
   transition: all 0.3s ease;
-}
 
-.button:hover {
-  color: $buttonColor;
-  background-color: $colorWhite;
-  border: $buttonColor 1px solid;
+  &:hover {
+    color: $buttonColor;
+    background-color: $colorWhite;
+    border: $buttonColor 1px solid;
+  }
 }
