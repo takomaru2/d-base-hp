@@ -18,20 +18,20 @@
     display: flex;
     align-items: center;
     height: 100%;
+  }
 
-    a {
-      display: flex;
-      align-items: center;
-      height: 100%;
-      padding: 0 linear-clamp(5, 15);
-      font-size: linear-clamp(14, 24);
-      color: $subBgColor;
-      text-decoration: none;
-    }
+  .menuItem a {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 linear-clamp(5, 15);
+    font-size: linear-clamp(14, 24);
+    color: $subBgColor;
+    text-decoration: none;
+  }
 
-    a:hover {
-      opacity: 0.5;
-      transition: all 0.3s;
-    }
+  .menuItem a:hover {
+    opacity: 0.5;
+    transition: all 0.3s;
   }
 }
