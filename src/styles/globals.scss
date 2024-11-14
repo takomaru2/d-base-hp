@@ -1,8 +1,8 @@
-@use './variables' as *;
+@import '@/styles/variables';
 
 body {
   color: $colorWhite;
-  background-color: $blackColor;
+  background-color: $colorBlack;
 }
 
 ul,
@@ -11,6 +11,6 @@ li {
 }
 
 li a {
-  color: $subBgColor;
+  color: $colorWhite;
   text-decoration: none;
 }
