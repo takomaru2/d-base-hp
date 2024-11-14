@@ -1,0 +1,31 @@
+@import '@/styles/variables';
+@import '@/styles/mixin';
+
+.container {
+  display: flex;
+  column-gap: linear-clamp(15, 60);
+  align-items: center;
+  justify-content: space-between;
+  height: linear-clamp(67, 147);
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  height: inherit;
+}
+
+.spMenu {
+  padding: 5px 15px;
+  font-size: linear-clamp(20, 24);
+  color: $colorWhite;
+  letter-spacing: calc(20px * 0.09);
+  background-color: $colorBlack;
+  border-radius: 1px;
+}
+
+@include pcStyle {
+  .spMenu {
+    display: none;
+  }
+}

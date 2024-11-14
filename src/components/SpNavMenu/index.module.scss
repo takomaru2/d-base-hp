@@ -1,0 +1,45 @@
+@import '@/styles/variables';
+@import '@/styles/mixin';
+
+.container {
+  position: absolute;
+  inset: 0;
+  background-color: $colorBlack;
+}
+
+.top {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.navClose {
+  position: absolute;
+  top: 50%;
+  right: linear-clamp(10, 20);
+  padding: 11px 18px 11px 15px;
+  background-color: $colorWhite;
+  border-radius: 3px;
+  transform: translate(-50%, -50%);
+}
+
+.navMenuList {
+  display: flex;
+  flex-direction: column;
+  row-gap: 50px;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.navMenuItem {
+  width: 100%;
+  font-family: $mainFontJP;
+  font-size: 20px;
+}
+
+.link {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
