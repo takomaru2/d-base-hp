@@ -8,13 +8,13 @@
   font-weight: bold;
   color: $colorWhite;
   letter-spacing: calc(14px * $letterSpacingKana);
-  background-color: $learnMoreButtonColor;
+  background-color: $buttonColor;
   border-radius: 2px;
   transition: all 0.3s ease;
 }
 
 .button:hover {
-  color: $learnMoreButtonColor;
+  color: $buttonColor;
   background-color: $colorWhite;
-  border: $learnMoreButtonColor 1px solid;
+  border: $buttonColor 1px solid;
 }
