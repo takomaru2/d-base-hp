@@ -63,7 +63,7 @@
     "*.{ts,tsx}": "bash -c tsc --noEmit"
   },
   "engines": {
-    "node": "21.7.1",
+    "node": "20.18.0",
     "pnpm": "9.12.3"
   }
 }
