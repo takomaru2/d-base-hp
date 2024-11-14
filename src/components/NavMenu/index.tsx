@@ -10,7 +10,7 @@ type NavMenuProps = {
 
 export const NavMenu: FC<NavMenuProps> = ({ close }) => {
   return (
-    <div className={styles.navMenu}>
+    <div className={styles.container}>
       <div className={styles.top}>
         <Logo color="white" />
         <button className={styles.navClose} onClick={close}>
