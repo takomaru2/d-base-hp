@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import styles from './index.module.scss';
-import { menuItems } from '@/const/menuItems';
+import { navItemList } from '@/const/navItemList';
 import { FC } from 'react';
 import { Logo } from '@/components/Logo';
 
@@ -18,7 +18,7 @@ export const SpNavMenu: FC<SpNavMenuProps> = ({ close }) => {
         </button>
       </div>
       <ul className={styles.navMenuList}>
-        {menuItems.map((item) => (
+        {navItemList.map((item) => (
           <li key={item.id} className={styles.navMenuItem}>
             <Link className={styles.link} href={item.href}>
               {item.label}
