@@ -20,7 +20,7 @@
     height: 100%;
   }
 
-  .menuItem a {
+  .link {
     display: flex;
     align-items: center;
     height: 100%;
@@ -30,7 +30,7 @@
     text-decoration: none;
   }
 
-  .menuItem a:hover {
+  .link:hover {
     opacity: 0.5;
     transition: all 0.3s;
   }

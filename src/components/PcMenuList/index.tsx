@@ -8,7 +8,9 @@ export const PcMenuList: FC = () => {
     <ul className={styles.container}>
       {menuItems.map((item) => (
         <li key={item.id} className={styles.menuItem}>
-          <Link href={item.href}>{item.label}</Link>
+          <Link className={styles.link} href={item.href}>
+            {item.label}
+          </Link>
         </li>
       ))}
     </ul>

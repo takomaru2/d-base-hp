@@ -20,7 +20,9 @@ export const NavMenu: FC<NavMenuProps> = ({ close }) => {
       <ul className={styles.navMenuList}>
         {menuItems.map((item) => (
           <li key={item.id} className={styles.navMenuItem}>
-            <Link href={item.href}>{item.label}</Link>
+            <Link className={styles.link} href={item.href}>
+              {item.label}
+            </Link>
           </li>
         ))}
       </ul>
