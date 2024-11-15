@@ -1,21 +1,10 @@
-import { FC, useEffect, useState } from 'react';
-import Image, { StaticImageData } from 'next/image';
-import topView01 from '@/../public/assets/Top/topView01.jpg';
-import topView02 from '@/../public/assets/Top/topView02.jpg';
-import topView03 from '@/../public/assets/Top/topView03.jpg';
+import { FC, useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import styles from './index.module.scss';
+import { getZIndex } from '@/pages/Top/logics/getZIndex';
+import { imageList } from '@/pages/Top/const/imageList';
 
 export const TopView: FC = () => {
-  type Image = {
-    id: string;
-    image: StaticImageData;
-  };
-  const imageList: Image[] = [
-    { id: '1', image: topView01 },
-    { id: '2', image: topView02 },
-    { id: '3', image: topView03 },
-  ];
-
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
@@ -23,21 +12,7 @@ export const TopView: FC = () => {
       setActiveIndex((prevIndex) => (prevIndex + 1) % imageList.length);
     }, 3500);
     return () => clearInterval(interval);
-  }, [imageList.length]);
-
-  const getZIndex = (index: number) => {
-    const zIndexIndex = [styles.zIndex30, styles.zIndex20, styles.zIndex10];
-
-    const getKey = (activeIndex: number, index: number): number => {
-      const plusIndex = activeIndex + index;
-      if (plusIndex >= imageList.length) {
-        return plusIndex - imageList.length;
-      }
-      return plusIndex;
-    };
-    const key = getKey(activeIndex, index);
-    return zIndexIndex[key];
-  };
+  }, [activeIndex]);
 
   return (
     <div className={styles.container}>
@@ -55,7 +30,7 @@ export const TopView: FC = () => {
             key={item.id}
             src={item.image}
             alt={'車の画像'}
-            className={`${styles.image} ${getZIndex(index)}`}
+            className={`${styles.image} ${getZIndex(index, activeIndex, imageList)}`}
           />
         ))}
       </div>
