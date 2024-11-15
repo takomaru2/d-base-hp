@@ -1,23 +1,32 @@
 @import '@/styles/variables';
+@import '@/styles/mixin';
+
+.container {
+  position: relative;
+  height: 100vh;
+}
 
 .image {
   position: absolute;
   top: 0;
-  left: 0;
+  right: 0;
   width: 0;
-  height: 833px;
+  height: 100vh;
   object-fit: cover;
-  transition: width 0.7s ease-in;
 }
 
 .zIndex30 {
   z-index: 30;
-  width: 390px;
+  width: 100%;
+  max-width: linear-clamp(390, 1098);
+  transition: width 0.7s ease-in;
 }
 
 .zIndex20 {
   z-index: 20;
-  width: 390px;
+  width: 100%;
+  max-width: linear-clamp(390, 1098);
+  transition: width 1s ease-in;
 }
 
 .zIndex10 {
@@ -29,14 +38,44 @@
   color: white;
 }
 
-.container {
-  position: relative;
+.titleLogoWrap {
+  position: absolute;
+  top: 31%;
+  left: 50%;
+  z-index: 40;
+  font-family: $mainFontJP;
+  line-height: linear-clamp(42, 65);
+  text-align: center;
+  transform: translate(-50%, -50%);
 }
 
 .title {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  font-family: $mainFontJP;
-  transform: translate(-50%, -50%);
+  font-size: linear-clamp(26, 40);
+  letter-spacing: calc(26px * $letterSpacingKana);
+  white-space: nowrap;
+}
+
+@include pcStyle {
+  .container {
+    max-width: linear-clamp(600, 1400);
+    margin: 0 auto;
+  }
+
+  .image {
+    height: 782px;
+  }
+
+  .titleLogoWrap {
+    top: 19%;
+    left: 0;
+    display: flex;
+    flex-flow: column;
+    row-gap: 15px;
+    text-align: left;
+    transform: translate(0);
+  }
+
+  .title {
+    letter-spacing: calc(40px * 0.11);
+  }
 }

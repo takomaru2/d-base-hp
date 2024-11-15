@@ -1,6 +1,6 @@
-import topView01 from '@/../public/assets/Top/topView01.jpg';
-import topView02 from '@/../public/assets/Top/topView02.jpg';
-import topView03 from '@/../public/assets/Top/topView03.jpg';
+import topView01 from '@/../public/assets/Top/pcTopView01.jpg';
+import topView02 from '@/../public/assets/Top/pcTopView02.jpg';
+import topView03 from '@/../public/assets/Top/pcTopView03.jpg';
 import { StaticImageData } from 'next/image';
 
 export type Image = {
