@@ -8,11 +8,29 @@ export const TopView: FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIndex((prevIndex) => (prevIndex + 1) % imageList.length);
-    }, 3500);
-    return () => clearInterval(interval);
-  }, [activeIndex]);
+    //   const interval = setInterval(() => {
+    //     setActiveIndex((prevIndex) => (prevIndex + 1) % imageList.length);
+    //   }, 3500);
+    //   return () => clearInterval(interval);
+
+    const interval = 3500;
+    let lastTime = performance.now();
+    let cancelId: number;
+    const slide = (currentTime: number) => {
+      if (currentTime - lastTime >= interval) {
+        setActiveIndex(
+          (previousIndex) => (previousIndex + 1) % imageList.length,
+        );
+        lastTime = currentTime;
+      }
+      cancelId = requestAnimationFrame(slide);
+    };
+    cancelId = requestAnimationFrame(slide);
+
+    return () => {
+      cancelAnimationFrame(cancelId);
+    };
+  }, [imageList.length, setActiveIndex]);
 
   return (
     <div className={styles.container}>
@@ -24,7 +42,12 @@ export const TopView: FC = () => {
         あなたの愛車に
       </h2>
 
-      <div style={{ position: 'relative', width: 390 }}>
+      <div
+        style={{
+          position: 'relative',
+          width: 390,
+        }}
+      >
         {imageList.map((item, index) => (
           <Image
             key={item.id}

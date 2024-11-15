@@ -4,9 +4,10 @@
   position: absolute;
   top: 0;
   left: 0;
+  width: 0;
   height: 833px;
   object-fit: cover;
-  transition: all ease-in 0.7s;
+  transition: width 0.7s ease-in;
 }
 
 .zIndex30 {
