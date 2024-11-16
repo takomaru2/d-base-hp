@@ -9,11 +9,6 @@ export const TopView: FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
-    //   const interval = setInterval(() => {
-    //     setActiveIndex((prevIndex) => (prevIndex + 1) % imageList.length);
-    //   }, 3500);
-    //   return () => clearInterval(interval);
-
     const interval = 3500;
     let lastTime = performance.now();
     let cancelId: number;
@@ -31,7 +26,7 @@ export const TopView: FC = () => {
     return () => {
       cancelAnimationFrame(cancelId);
     };
-  }, [imageList.length, setActiveIndex]);
+  }, [setActiveIndex]);
 
   return (
     <div className={styles.container}>
