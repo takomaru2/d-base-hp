@@ -4,20 +4,23 @@ import { getZIndex } from '@/pages/Top/logics/getZIndex';
 import Image from 'next/image';
 import { FC } from 'react';
 
-type ImageList = {
+type ImageListProps = {
   activeIndex: number;
-  imageList: TopViewImage[];
+  topViewImageList: TopViewImage[];
 };
 
-export const ImageList: FC<ImageList> = ({ activeIndex, imageList }) => {
+export const ImageList: FC<ImageListProps> = ({
+  activeIndex,
+  topViewImageList,
+}) => {
   return (
     <>
-      {imageList.map((item, index) => (
+      {topViewImageList.map((item, index) => (
         <Image
           key={item.id}
           src={item.image}
           alt={'車の画像'}
-          className={`${styles.image} ${getZIndex(index, activeIndex, imageList)}`}
+          className={`${styles.image} ${getZIndex(index, activeIndex, topViewImageList)}`}
         />
       ))}
     </>

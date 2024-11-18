@@ -20,8 +20,10 @@ export const TopView: FC = () => {
         </h2>
         <Logo />
       </div>
-
-      <ImageList activeIndex={activeIndex} imageList={topViewImageList} />
+      <ImageList
+        activeIndex={activeIndex}
+        topViewImageList={topViewImageList}
+      />
     </div>
   );
 };

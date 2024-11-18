@@ -7,6 +7,7 @@ export type TopViewImage = {
   id: string;
   image: StaticImageData;
 };
+
 export const topViewImageList: TopViewImage[] = [
   { id: '1', image: topView01 },
   { id: '2', image: topView02 },
