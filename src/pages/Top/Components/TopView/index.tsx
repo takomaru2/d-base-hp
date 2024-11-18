@@ -1,13 +1,12 @@
 import { FC } from 'react';
-import Image from 'next/image';
 import styles from './index.module.scss';
-import { getZIndex } from '@/pages/Top/logics/getZIndex';
-import { imageList } from '@/pages/Top/const/imageList';
 import { Logo } from '@/components/Logo';
 import { useAutoSlide } from '@/hooks/useAutoSlide';
+import { topViewImageList } from '@/pages/Top/const/topViewImageList';
+import { ImageList } from '@/pages/Top/Components/TopView/components/ImageList';
 
 export const TopView: FC = () => {
-  const activeIndex = useAutoSlide(imageList.length);
+  const activeIndex = useAutoSlide(topViewImageList.length);
 
   return (
     <div className={styles.container}>
@@ -22,14 +21,7 @@ export const TopView: FC = () => {
         <Logo />
       </div>
 
-      {imageList.map((item, index) => (
-        <Image
-          key={item.id}
-          src={item.image}
-          alt={'車の画像'}
-          className={`${styles.image} ${getZIndex(index, activeIndex, imageList)}`}
-        />
-      ))}
+      <ImageList activeIndex={activeIndex} imageList={topViewImageList} />
     </div>
   );
 };

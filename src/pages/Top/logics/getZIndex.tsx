@@ -1,11 +1,10 @@
 import styles from '@/pages/Top/Components/TopView/index.module.scss';
-
-import { Image } from '@/pages/Top/const/imageList';
+import { TopViewImage } from '@/pages/Top/const/topViewImageList';
 
 export const getZIndex = (
   index: number,
   activeIndex: number,
-  imageList: Image[],
+  imageList: TopViewImage[],
 ) => {
   const zIndexIndex = [styles.zIndex30, styles.zIndex20, styles.zIndex10];
 

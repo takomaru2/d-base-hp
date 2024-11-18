@@ -19,7 +19,7 @@ export const useAutoSlide = (length: number, interval: number = 4000) => {
     return () => {
       cancelAnimationFrame(cancelId);
     };
-  }, [setActiveIndex]);
+  }, [length, interval, setActiveIndex]);
 
   return activeIndex;
 };
