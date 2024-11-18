@@ -23,3 +23,5 @@ export const VerticalText: FC = () => {
     </div>
   );
 };
+
+//テスト

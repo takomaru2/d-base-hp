@@ -21,3 +21,5 @@ export const PriceButton: Story = {
     label: '詳しい価格表を見る',
   },
 };
+
+//テスト
