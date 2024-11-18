@@ -1,5 +1,5 @@
 import styles from '@/pages/Top/Components/TopView/index.module.scss';
-import { TopViewImage } from '@/pages/Top/const/topViewImageList';
+import { TopViewImage } from '@/pages/top/const/topViewImageList';
 
 export const getZIndex = (
   index: number,

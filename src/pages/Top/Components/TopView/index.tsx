@@ -2,8 +2,8 @@ import { FC } from 'react';
 import styles from './index.module.scss';
 import { Logo } from '@/components/Logo';
 import { useAutoSlide } from '@/hooks/useAutoSlide';
-import { topViewImageList } from '@/pages/Top/const/topViewImageList';
-import { ImageList } from '@/pages/Top/Components/TopView/components/ImageList';
+import { topViewImageList } from '@/pages/top/const/topViewImageList';
+import { ImageList } from '@/pages/top/components/TopView/components/ImageList';
 
 export const TopView: FC = () => {
   const activeIndex = useAutoSlide(topViewImageList.length);

@@ -1,6 +1,6 @@
-import { TopViewImage } from '@/pages/Top/const/topViewImageList';
+import { TopViewImage } from '@/pages/top/const/topViewImageList';
 import styles from '@/pages/Top/Components/TopView/components/ImageList/index.module.scss';
-import { getZIndex } from '@/pages/Top/logics/getZIndex';
+import { getZIndex } from '@/pages/top/logics/getZIndex';
 import Image from 'next/image';
 import { FC } from 'react';
 
