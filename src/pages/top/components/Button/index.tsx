@@ -1,4 +1,4 @@
-import styles from './index.module.scss';
+import styles from '@/pages/top/components/Button/index.module.scss';
 import Link from 'next/link';
 import { FC } from 'react';
 
@@ -8,7 +8,7 @@ type ButtonProps = {
 
 export const Button: FC<ButtonProps> = ({ label }) => {
   return (
-    <Link href="/" className={styles.button}>
+    <Link href="/about" className={styles.button}>
       {label}
     </Link>
   );
