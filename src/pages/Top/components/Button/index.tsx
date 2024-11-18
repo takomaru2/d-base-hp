@@ -13,5 +13,3 @@ export const Button: FC<ButtonProps> = ({ label }) => {
     </Link>
   );
 };
-
-//テスト

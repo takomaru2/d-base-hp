@@ -11,5 +11,3 @@ export default meta;
 type Story = StoryObj<typeof Component>;
 
 export const Default: Story = {};
-
-//テスト
