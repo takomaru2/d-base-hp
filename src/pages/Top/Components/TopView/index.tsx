@@ -1,32 +1,13 @@
-import { FC, useEffect, useState } from 'react';
+import { FC } from 'react';
 import Image from 'next/image';
 import styles from './index.module.scss';
 import { getZIndex } from '@/pages/Top/logics/getZIndex';
 import { imageList } from '@/pages/Top/const/imageList';
 import { Logo } from '@/components/Logo';
+import { useAutoSlide } from '@/hooks/useAutoSlide';
 
 export const TopView: FC = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = 3500;
-    let lastTime = performance.now();
-    let cancelId: number;
-    const slide = (currentTime: number) => {
-      if (currentTime - lastTime >= interval) {
-        setActiveIndex(
-          (previousIndex) => (previousIndex + 1) % imageList.length,
-        );
-        lastTime = currentTime;
-      }
-      cancelId = requestAnimationFrame(slide);
-    };
-    cancelId = requestAnimationFrame(slide);
-
-    return () => {
-      cancelAnimationFrame(cancelId);
-    };
-  }, [setActiveIndex]);
+  const activeIndex = useAutoSlide(imageList.length);
 
   return (
     <div className={styles.container}>
