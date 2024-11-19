@@ -8,13 +8,15 @@ export const getZIndex = (
 ) => {
   const zIndexIndex = [styles.zIndex30, styles.zIndex20, styles.zIndex10];
 
+  /*
+  imageList.length === 3のとき
+  activeIndex + index が1,2のときはそのまま1,2を返す
+  3の時は、 % 3をして0を返し、ループされる
+   */
   const getKey = (activeIndex: number, index: number): number => {
-    const plusIndex = activeIndex + index;
-    if (plusIndex >= imageList.length) {
-      return plusIndex - imageList.length;
-    }
-    return plusIndex;
+    return (activeIndex + index) % imageList.length;
   };
+
   const key = getKey(activeIndex, index);
   return zIndexIndex[key];
 };
