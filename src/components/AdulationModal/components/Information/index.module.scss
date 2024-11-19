@@ -1,7 +1,15 @@
 @import '@/styles/variables';
+@import '@/styles/mixin';
 
 .information {
   display: flex;
-  margin-top: 15px;
+  column-gap: linear-clamp(15, 30);
   font-size: linear-clamp(14, 20);
+}
+
+@include pcStyle {
+  .information {
+    grid-row: 2;
+    grid-column: 1;
+  }
 }

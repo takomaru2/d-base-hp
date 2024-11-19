@@ -1,8 +1,16 @@
 @import '@/styles/variables';
+@import '@/styles/mixin';
 
 .tel {
   font-family: $mainFontJP;
   font-size: linear-clamp(30, 50);
   font-style: normal;
   letter-spacing: calc(40px * 0.05);
+}
+
+@include pcStyle {
+  .tel {
+    grid-row: 1;
+    grid-column: 1;
+  }
 }

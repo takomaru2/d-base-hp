@@ -8,6 +8,17 @@
   left: 0;
   display: flex;
   flex-flow: column;
+  row-gap: 10px;
   align-items: center;
+  padding: 0 linear-clamp(30, 140);
   background-color: #b0b0b0;
+}
+
+@include pcStyle {
+  .container {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
 }
