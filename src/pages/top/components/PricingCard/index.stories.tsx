@@ -24,18 +24,3 @@ export const Default: Story = {
     },
   },
 };
-
-export const Custom: Story = {
-  args: {
-    title: '経年車',
-    text:
-      '最高の艶が出るまで無制限に研磨します。\n' +
-      'ボディ全面はもちろんピラーやドア内まで徹底的に磨きます。',
-    price: '127,000',
-  },
-  parameters: {
-    backgrounds: {
-      default: 'light',
-    },
-  },
-};
