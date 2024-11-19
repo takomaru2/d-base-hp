@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { AdulationModal as Component } from '.';
+import { ScrollFixedContact as Component } from '.';
 
 const meta: Meta<typeof Component> = {
   component: Component,
