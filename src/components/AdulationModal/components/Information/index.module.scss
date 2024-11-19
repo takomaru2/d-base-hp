@@ -1,0 +1,7 @@
+@import '@/styles/variables';
+
+.information {
+  display: flex;
+  margin-top: 15px;
+  font-size: linear-clamp(14, 20);
+}
