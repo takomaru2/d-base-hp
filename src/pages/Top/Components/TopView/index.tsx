@@ -1,13 +1,10 @@
 import { FC } from 'react';
 import styles from './index.module.scss';
 import { Logo } from '@/components/Logo';
-import { useAutoSlide } from '@/hooks/useAutoSlide';
 import { topViewImageList } from '@/pages/top/const/topViewImageList';
-import { ImageList } from '@/pages/top/components/TopView/components/ImageList';
+import { AutoImageSlide } from '@/pages/top/components/TopView/components/ImageList';
 
 export const TopView: FC = () => {
-  const activeIndex = useAutoSlide(topViewImageList.length);
-
   return (
     <div className={styles.container}>
       <div className={styles.titleLogoWrap}>
@@ -20,10 +17,7 @@ export const TopView: FC = () => {
         </h2>
         <Logo />
       </div>
-      <ImageList
-        activeIndex={activeIndex}
-        topViewImageList={topViewImageList}
-      />
+      <AutoImageSlide topViewImageList={topViewImageList} />
     </div>
   );
 };

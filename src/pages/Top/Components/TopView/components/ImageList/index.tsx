@@ -3,16 +3,16 @@ import styles from '@/pages/top/components/TopView/components/ImageList/index.mo
 import { getZIndex } from '@/pages/top/logics/getZIndex';
 import Image from 'next/image';
 import { FC } from 'react';
+import { useAutoSlide } from '@/hooks/useAutoSlide';
 
-type ImageListProps = {
-  activeIndex: number;
+type AutoImageSlideProps = {
   topViewImageList: TopViewImage[];
 };
 
-export const ImageList: FC<ImageListProps> = ({
-  activeIndex,
+export const AutoImageSlide: FC<AutoImageSlideProps> = ({
   topViewImageList,
 }) => {
+  const activeIndex = useAutoSlide(topViewImageList.length);
   return (
     <>
       {topViewImageList.map((item, index) => (
