@@ -1,2 +1,48 @@
 @import '@/styles/mixin';
 @import '@/styles/variables';
+
+.container {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  background-color: #b0b0b0;
+}
+
+.tel {
+  font-family: $mainFontJP;
+  font-size: linear-clamp(30, 50);
+  font-style: normal;
+  letter-spacing: calc(40px * 0.05);
+}
+
+.line {
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.icon {
+  width: linear-clamp(40, 80);
+  height: linear-clamp(40, 80);
+}
+
+.guide {
+  font-size: linear-clamp(14, 18);
+  letter-spacing: calc(16px * 0.05);
+}
+
+.green {
+  font-weight: 700;
+  color: #00b400;
+}
+
+.information {
+  display: flex;
+  margin-top: 15px;
+  font-size: linear-clamp(14, 20);
+}
