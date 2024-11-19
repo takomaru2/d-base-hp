@@ -1,0 +1,23 @@
+@import '@/styles/variables';
+
+.line {
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.icon {
+  width: linear-clamp(40, 80);
+  height: linear-clamp(40, 80);
+}
+
+.guide {
+  font-size: linear-clamp(14, 18);
+  letter-spacing: calc(16px * 0.05);
+}
+
+.green {
+  font-weight: 700;
+  color: #1ada29;
+}
