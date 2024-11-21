@@ -13,10 +13,10 @@ type Story = StoryObj<typeof Component>;
 export const Default: Story = {
   args: {
     title: '新車〜登録３ヶ月',
-    text:
+    description:
       '低価格でコーティングの効果を重視するあなたにおすすめ。\n' +
       'ボディ全面を塗装の負担なく研磨します',
-    price: '104,500',
+    minPrice: '104,500',
   },
   parameters: {
     backgrounds: {

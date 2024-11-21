@@ -16,7 +16,7 @@
   letter-spacing: calc(14px * $letterSpacingKanji);
 }
 
-.text {
+.description {
   width: linear-clamp(230, 625);
   font-size: linear-clamp(12, 22);
   font-weight: normal;
@@ -24,7 +24,7 @@
   letter-spacing: calc(12px * $letterSpacingKana);
 }
 
-.price {
+.minPrice {
   font-size: linear-clamp(30, 40);
   font-weight: bold;
   letter-spacing: calc(30px * $letterSpacingNumber);
@@ -35,7 +35,7 @@
     align-items: flex-start;
   }
 
-  .text {
+  .description {
     text-align: left;
   }
 }

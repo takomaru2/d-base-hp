@@ -3,16 +3,20 @@ import { FC } from 'react';
 
 type PricingPlanProps = {
   title: string;
-  text: string;
-  price: string;
+  description: string;
+  minPrice: string;
 };
 
-export const PricingPlan: FC<PricingPlanProps> = ({ title, text, price }) => {
+export const PricingPlan: FC<PricingPlanProps> = ({
+  title,
+  description,
+  minPrice,
+}) => {
   return (
     <dl className={styles.container}>
       <dt className={styles.title}>{title}</dt>
-      <dd className={styles.text}>{text}</dd>
-      <dd className={styles.price}>¥ {price}~</dd>
+      <dd className={styles.description}>{description}</dd>
+      <dd className={styles.minPrice}>¥ {minPrice}~</dd>
     </dl>
   );
 };
