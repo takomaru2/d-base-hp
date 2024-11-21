@@ -2,14 +2,12 @@
 @import '@/styles/mixin';
 
 .container {
-  max-width: linear-clamp(600, 1400);
   margin: 0 auto;
 }
 
 .imageWrapper {
   position: relative;
   display: flex;
-  column-gap: linear-clamp(10, 15);
   align-items: flex-end;
   height: linear-clamp(316, 800);
   overflow: hidden;
@@ -17,7 +15,7 @@
 
 .image {
   width: linear-clamp(75, 285);
-  height: linear-clamp(125, 355);
+  height: linear-clamp(125, 400);
   object-fit: cover;
   transition: all ease-in 1s;
 }
@@ -46,4 +44,27 @@
   position: absolute;
   left: linear-clamp(335, 1115);
   z-index: 10;
+}
+
+@include pcStyle {
+  .container {
+    max-width: linear-clamp(600, 1400);
+  }
+
+  .image {
+    width: linear-clamp(110, 285);
+  }
+
+  .b {
+    left: linear-clamp(125, 300);
+    width: linear-clamp(225, 500);
+  }
+
+  .c {
+    left: linear-clamp(360, 815);
+  }
+
+  .d {
+    left: linear-clamp(480, 1115);
+  }
 }
