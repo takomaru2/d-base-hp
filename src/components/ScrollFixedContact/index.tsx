@@ -2,7 +2,7 @@ import styles from './index.module.scss';
 import { FC } from 'react';
 import { TelLink } from '@/components/ScrollFixedContact/components/TelLink';
 import { LineLink } from '@/components/ScrollFixedContact/components/LineLink';
-import { ShopSchedule } from '@/components/ScrollFixedContact/components/Information';
+import { ShopSchedule } from '@/components/ScrollFixedContact/components/ShopSchedule';
 
 export const ScrollFixedContact: FC = () => {
   return (
