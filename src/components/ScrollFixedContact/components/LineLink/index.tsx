@@ -7,7 +7,7 @@ import { FC } from 'react';
 export const LineLink: FC = () => {
   return (
     <Link href="https://line.me/ja/" className={styles.line}>
-      <Image className={styles.icon} src={line} alt="Lineのアイコン" />
+      <Image className={styles.icon} src={line} alt="LINE" />
       <p className={styles.guide}>
         <span className={styles.green}>LINE</span>で
         <br />
