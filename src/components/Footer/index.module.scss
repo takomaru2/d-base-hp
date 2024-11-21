@@ -1,0 +1,23 @@
+@import '@/styles/variables';
+@import '@/styles/mixin';
+
+.container {
+  font-family: $mainFontJP;
+  font-size: linear-clamp(14, 24);
+  font-weight: normal;
+  text-align: center;
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  letter-spacing: calc(14 * $letterSpacingKanji);
+}
+
+.flexLeftMenu {
+  text-align: left;
+}
+
+.flexRightMenu {
+  text-align: left;
+}
