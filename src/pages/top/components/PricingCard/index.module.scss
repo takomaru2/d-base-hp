@@ -27,7 +27,7 @@
 .price {
   font-size: linear-clamp(30, 40);
   font-weight: bold;
-  letter-spacing: calc(30px * 0.05);
+  letter-spacing: calc(30px * $letterSpacingNumber);
 }
 
 @include pcStyle {
