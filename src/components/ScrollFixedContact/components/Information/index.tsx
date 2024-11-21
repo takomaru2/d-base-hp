@@ -1,7 +1,7 @@
 import styles from './index.module.scss';
 import { FC } from 'react';
 
-export const Information: FC = () => {
+export const ShopSchedule: FC = () => {
   return (
     <ul className={styles.information}>
       <li className={styles.time}>営業時間 : 10:00 ~ 19:00</li>

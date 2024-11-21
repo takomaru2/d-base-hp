@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Information as Component } from '.';
+import { ShopSchedule as Component } from '.';
 
 const meta: Meta<typeof Component> = {
   component: Component,
