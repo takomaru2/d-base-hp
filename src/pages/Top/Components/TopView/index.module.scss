@@ -31,19 +31,19 @@
   object-fit: cover;
 }
 
-.zIndex30 {
+.imageVisible {
   z-index: 30;
   width: linear-clamp(600, 1098);
   transition: width 0.7s ease-in;
 }
 
-.zIndex20 {
+.imageSecondary {
   z-index: 20;
   width: linear-clamp(600, 1098);
   transition: width 0.7s ease-in;
 }
 
-.zIndex10 {
+.imageHidden {
   z-index: 10;
   width: 0;
 }

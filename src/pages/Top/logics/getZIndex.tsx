@@ -6,7 +6,11 @@ export const getZIndex = (
   activeIndex: number,
   imageList: TopViewImage[],
 ) => {
-  const zIndexIndex = [styles.zIndex30, styles.zIndex20, styles.zIndex10];
+  const imageStateIndex = [
+    styles.imageVisible,
+    styles.imageSecondary,
+    styles.imageHidden,
+  ];
 
   /*
   imageList.length === 3のとき
@@ -18,5 +22,5 @@ export const getZIndex = (
   };
 
   const key = getKey(activeIndex, index);
-  return zIndexIndex[key];
+  return imageStateIndex[key];
 };
