@@ -27,6 +27,7 @@
       {
         "case": "camelCase"
       }
-    ]
+    ],
+    "unicorn/prevent-abbreviations": "off"
   }
 }
