@@ -1,0 +1,49 @@
+@import '@/styles/variables';
+@import '@/styles/mixin';
+
+.container {
+  max-width: linear-clamp(600, 1400);
+  margin: 0 auto;
+}
+
+.imageWrapper {
+  position: relative;
+  display: flex;
+  column-gap: linear-clamp(10, 15);
+  align-items: flex-end;
+  height: linear-clamp(316, 800);
+  overflow: hidden;
+}
+
+.image {
+  width: linear-clamp(75, 285);
+  height: linear-clamp(125, 355);
+  object-fit: cover;
+  transition: all ease-in 1s;
+}
+
+.a {
+  position: absolute;
+  left: 0;
+  z-index: 0;
+}
+
+.b {
+  position: absolute;
+  left: linear-clamp(85, 300);
+  z-index: 20;
+  width: linear-clamp(155, 500);
+  height: linear-clamp(260, 710);
+}
+
+.c {
+  position: absolute;
+  left: linear-clamp(250, 815);
+  z-index: 20;
+}
+
+.d {
+  position: absolute;
+  left: linear-clamp(335, 1115);
+  z-index: 10;
+}
