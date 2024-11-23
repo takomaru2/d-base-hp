@@ -33,13 +33,13 @@
 
 .imageVisible {
   z-index: 30;
-  width: linear-clamp(600, 1098);
+  width: linear-clamp(375, 1098);
   transition: width 0.7s ease-in;
 }
 
 .imageSecondary {
   z-index: 20;
-  width: linear-clamp(600, 1098);
+  width: linear-clamp(375, 1098);
   transition: width 0.7s ease-in;
 }
 

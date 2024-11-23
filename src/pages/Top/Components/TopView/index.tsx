@@ -2,7 +2,7 @@ import { FC } from 'react';
 import styles from './index.module.scss';
 import { Logo } from '@/components/Logo';
 import { topViewImageList } from '@/pages/top/const/topViewImageList';
-import { AutoImageSlide } from '@/pages/top/components/TopView/components/ImageList';
+import { TopViewAutoImageSlide } from '../TopViewAutoImageSlide';
 
 export const TopView: FC = () => {
   return (
@@ -17,7 +17,7 @@ export const TopView: FC = () => {
         </h2>
         <Logo />
       </div>
-      <AutoImageSlide topViewImageList={topViewImageList} />
+      <TopViewAutoImageSlide topViewImageList={topViewImageList} />
     </div>
   );
 };
