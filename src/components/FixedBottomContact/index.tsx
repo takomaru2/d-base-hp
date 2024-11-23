@@ -4,7 +4,7 @@ import Image from 'next/image';
 import line from '@/../public/assets/top/line.png';
 import styles from './index.module.scss';
 
-export const ScrollFixedContact: FC = () => {
+export const FixedBottomContact: FC = () => {
   return (
     <div className={styles.container}>
       <address className={styles.tel}>

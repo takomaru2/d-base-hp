@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
-import { ScrollFixedContact as Component } from '.';
+import { FixedBottomContact as Component } from '.';
 
 const meta: Meta<typeof Component> = {
   component: Component,
