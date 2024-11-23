@@ -7,15 +7,25 @@ export const WorksSlider = () => {
   const [classState, setClassState] = useState(['a', 'b', 'c', 'd']);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setClassState((prevState) => {
-        const [first, ...rest] = prevState;
-        return [...rest, first];
-      });
-    }, 4000);
-
-    return () => clearInterval(interval);
+    let lastTime = performance.now();
+    let cancelId: number;
+    const intervel = 4000;
+    const slide = (currenTime: number) => {
+      if (currenTime - lastTime >= intervel) {
+        setClassState((prevState) => {
+          const [first, ...rest] = prevState;
+          return [...rest, first];
+        });
+        lastTime = currenTime;
+      }
+      cancelId = requestAnimationFrame(slide);
+    };
+    cancelId = requestAnimationFrame(slide);
+    return () => {
+      cancelAnimationFrame(cancelId);
+    };
   }, []);
+
   return (
     <div className={styles.container}>
       <div className={styles.imageWrapper}>
