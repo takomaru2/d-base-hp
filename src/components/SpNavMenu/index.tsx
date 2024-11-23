@@ -3,7 +3,7 @@ import styles from './index.module.scss';
 import { navMenu } from '@/const/navMenu';
 import { FC } from 'react';
 import { Logo } from '@/components/Logo';
-import Close from '../../../public/assets/Top/close.svg';
+import Close from '../../../public/assets/top/close.svg';
 
 type SpNavMenuProps = {
   close: () => void;

@@ -1,0 +1,74 @@
+@import '@/styles/variables';
+@import '@/styles/mixin';
+
+.container {
+  position: relative;
+  height: 100vh;
+}
+
+.titleLogoWrap {
+  position: absolute;
+  top: 31%;
+  left: 50%;
+  z-index: 40;
+  font-family: $mainFontJP;
+  line-height: linear-clamp(42, 65);
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.title {
+  font-size: linear-clamp(26, 40);
+  letter-spacing: calc(26px * $letterSpacingKana);
+  white-space: nowrap;
+}
+
+.image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  object-fit: cover;
+}
+
+.imageVisible {
+  z-index: 30;
+  width: linear-clamp(375, 1098);
+  transition: width 0.7s ease-in;
+}
+
+.imageSecondary {
+  z-index: 20;
+  width: linear-clamp(375, 1098);
+  transition: width 0.7s ease-in;
+}
+
+.imageHidden {
+  z-index: 10;
+  width: 0;
+}
+
+@include pcStyle {
+  .container {
+    max-width: linear-clamp(600, 1400);
+    margin: 0 auto;
+  }
+
+  .image {
+    height: 782px;
+  }
+
+  .titleLogoWrap {
+    top: 19%;
+    left: 0;
+    display: flex;
+    flex-flow: column;
+    row-gap: 15px;
+    text-align: left;
+    transform: translate(0);
+  }
+
+  .title {
+    letter-spacing: calc(40px * 0.11);
+  }
+}
