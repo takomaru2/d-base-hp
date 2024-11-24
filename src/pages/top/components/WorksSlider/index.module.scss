@@ -1,6 +1,18 @@
 @import '@/styles/variables';
 @import '@/styles/mixin';
 
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .container {
   margin: 0 auto;
 }
@@ -9,15 +21,49 @@
   position: relative;
   display: flex;
   align-items: flex-end;
+  width: linear-clamp(600, 1400);
   height: linear-clamp(316, 800);
   overflow: hidden;
 }
 
 .image {
+  bottom: 0;
   width: linear-clamp(75, 285);
   height: linear-clamp(125, 400);
   object-fit: cover;
   transition: all ease-in 0.3s;
+}
+
+.modelDetail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: $colorBlack;
+  opacity: 0;
+  animation: fadeInUp 0.3s ease-in-out forwards;
+}
+
+.model {
+  position: absolute;
+  top: linear-clamp(100, 170);
+  left: -30px;
+  font-family: $subFontEN;
+  font-size: linear-clamp(14, 60);
+  letter-spacing: calc(14px * $textLetterSpacingEN);
+  white-space: nowrap;
+  opacity: 1;
+  transform: rotate(-90deg);
+}
+
+.priceWrapper {
+  position: absolute;
+  top: linear-clamp(100, 250);
+  left: linear-clamp(250, 830);
+  font-size: linear-clamp(14, 40);
+  letter-spacing: calc(14px * $letterSpacingKana);
+  white-space: nowrap;
+  opacity: 0;
+  animation: fadeInUp 0.3s ease-in-out 0.3s forwards;
 }
 
 .a {
@@ -31,7 +77,7 @@
   left: linear-clamp(85, 300);
   z-index: 20;
   width: linear-clamp(155, 500);
-  height: linear-clamp(260, 710);
+  height: linear-clamp(300, 710);
 }
 
 .c {
@@ -53,6 +99,11 @@
 
   .image {
     width: linear-clamp(110, 285);
+  }
+
+  .model {
+    left: linear-clamp(0, 50);
+    white-space: wrap;
   }
 
   .b {

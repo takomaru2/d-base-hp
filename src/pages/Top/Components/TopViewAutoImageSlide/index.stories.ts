@@ -1,8 +1,8 @@
 import { TopViewAutoImageSlide as Component } from './index';
 import { Meta, StoryObj } from '@storybook/react';
-import topView01 from '@/../public/assets/top/topView01.jpg';
-import topView02 from '@/../public/assets/top/topView02.jpg';
-import topView03 from '@/../public/assets/top/topView03.jpg';
+import topView01 from '../../../../../public/assets/top/topView01.jpg';
+import topView02 from '../../../../../public/assets/top/topView02.jpg';
+import topView03 from '../../../../../public/assets/top/topView03.jpg';
 
 const meta: Meta<typeof Component> = {
   component: Component,
