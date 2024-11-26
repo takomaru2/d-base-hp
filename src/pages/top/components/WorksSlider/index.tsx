@@ -5,12 +5,7 @@ import { worksSlideList } from '@/pages/top/components/WorksSlider/const/worksSl
 import { useAnimationFrameInterval } from '@/hooks/useAnimationFrameInterval';
 
 export const WorksSlider: FC = () => {
-  const [classState, setClassState] = useState([
-    'imageLeft',
-    'imageCenterLarge',
-    'imageCenterSmall',
-    'imageRight',
-  ]);
+  const [classState, setClassState] = useState([0, 1, 2, 3]);
 
   useAnimationFrameInterval(() => {
     setClassState((prevState) => {
@@ -19,20 +14,27 @@ export const WorksSlider: FC = () => {
     });
   }, 4000);
 
+  const className = [
+    'imageLeft',
+    'imageCenterLarge',
+    'imageCenterSmall',
+    'imageRight',
+  ];
+
   return (
     <div className={styles.container}>
       <div className={styles.imageWrapper}>
         {worksSlideList.map((slideItem, index) => {
-          const isActiveState = classState[index] === 'imageCenterLarge';
+          const dynamicClassName = className[classState[index]];
           return (
             <div key={slideItem.id}>
               <Image
                 src={slideItem.image}
                 alt={slideItem.alt}
                 // クラスを動的に変更
-                className={`${styles.image} ${styles[classState[index]]}`}
+                className={`${styles.image} ${styles[dynamicClassName]}`}
               />
-              {isActiveState ? (
+              {dynamicClassName === 'imageCenterLarge' ? (
                 <div className={styles.modelDetail}>
                   <div className={styles.model}>{slideItem.model}</div>
                   <div className={styles.priceWrapper}>
