@@ -8,15 +8,15 @@ export const useAnimationFrameInterval = (
     let lastTime = performance.now();
     let cancelId: number;
 
-    const slide = (currentTime: number) => {
+    const updateFrameInterval = (currentTime: number) => {
       if (currentTime - lastTime >= interval) {
         updateState();
         lastTime = currentTime;
       }
-      cancelId = requestAnimationFrame(slide);
+      cancelId = requestAnimationFrame(updateFrameInterval);
     };
 
-    cancelId = requestAnimationFrame(slide);
+    cancelId = requestAnimationFrame(updateFrameInterval);
 
     return () => {
       cancelAnimationFrame(cancelId);
