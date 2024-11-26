@@ -52,31 +52,3 @@ export const WorksSlider = () => {
     </div>
   );
 };
-
-{
-  /*// <div className={styles.aaa} key={slideItem.id}>*/
-}
-{
-  /*//   <div className={styles.modelWrapper}>*/
-}
-{
-  /*//     <h3 className={styles.model}>{slideItem.model}</h3>*/
-}
-{
-  /*//     <div className={styles.PriceWrapper}>*/
-}
-{
-  /*//       <div className={styles.craft}>{slideItem.craft}</div>*/
-}
-{
-  /*//       <div className={styles.pricing}>{slideItem.pricing}</div>*/
-}
-{
-  /*//     </div>*/
-}
-{
-  /*//   </div>*/
-}
-{
-  /*// </div>*/
-}
