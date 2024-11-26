@@ -66,13 +66,13 @@
   animation: fadeInUp 0.3s ease-in-out 0.3s forwards;
 }
 
-.a {
+.imageLeft {
   position: absolute;
   left: 0;
   z-index: 0;
 }
 
-.b {
+.imageCenterLarge {
   position: absolute;
   left: linear-clamp(85, 300);
   z-index: 20;
@@ -80,13 +80,13 @@
   height: linear-clamp(300, 710);
 }
 
-.c {
+.imageCenterSmall {
   position: absolute;
   left: linear-clamp(250, 815);
   z-index: 20;
 }
 
-.d {
+.imageRight {
   position: absolute;
   left: linear-clamp(335, 1115);
   z-index: 10;
@@ -106,16 +106,16 @@
     white-space: wrap;
   }
 
-  .b {
+  .imageCenterLarge {
     left: linear-clamp(125, 300);
     width: linear-clamp(225, 500);
   }
 
-  .c {
+  .imageCenterSmall {
     left: linear-clamp(360, 815);
   }
 
-  .d {
+  .imageRight {
     left: linear-clamp(480, 1115);
   }
 }

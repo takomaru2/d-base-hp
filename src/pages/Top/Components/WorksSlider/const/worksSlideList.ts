@@ -8,6 +8,7 @@ type WorksImage = {
   id: string;
   image: StaticImageData;
   model: string;
+  alt: string;
   craft: string;
   pricing: string;
 };
@@ -17,6 +18,7 @@ export const worksSlideList: WorksImage[] = [
     id: '1',
     image: worksImage01,
     model: 'SUZUKI Jimny1',
+    alt: '車の前部分',
     craft: 'NS-10H1',
     pricing: '100,000',
   },
@@ -24,6 +26,7 @@ export const worksSlideList: WorksImage[] = [
     id: '2',
     image: worksImage02,
     model: 'TOYOTA Jimny2',
+    alt: '車の前部分',
     craft: 'NS-10H2',
     pricing: '120,000',
   },
@@ -31,6 +34,7 @@ export const worksSlideList: WorksImage[] = [
     id: '3',
     image: worksImage03,
     model: 'LEXUS Jimny3',
+    alt: '車の前部分',
     craft: 'NS-10H3',
     pricing: '240,000',
   },
@@ -38,6 +42,7 @@ export const worksSlideList: WorksImage[] = [
     id: '4',
     image: worksImage04,
     model: 'HONDA Jimny4',
+    alt: '車の前部分',
     craft: 'NS-10H4',
     pricing: '460,000',
   },
