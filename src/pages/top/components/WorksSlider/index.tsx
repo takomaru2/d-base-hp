@@ -1,36 +1,24 @@
 import Image from 'next/image';
 import styles from './index.module.scss';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { worksSlideList } from '@/pages/top/components/WorksSlider/const/worksSlideList';
+import { useAnimationFrameInterval } from '@/hooks/useAnimationFrameInterval';
 
 export const WorksSlider = () => {
   const [classState, setClassState] = useState(['a', 'b', 'c', 'd']);
 
-  useEffect(() => {
-    let lastTime = performance.now();
-    let cancelId: number;
-    const interval = 4000;
-    const slide = (currenTime: number) => {
-      if (currenTime - lastTime >= interval) {
-        setClassState((prevState) => {
-          const [first, ...rest] = prevState;
-          return [...rest, first];
-        });
-        lastTime = currenTime;
-      }
-      cancelId = requestAnimationFrame(slide);
-    };
-    cancelId = requestAnimationFrame(slide);
-    return () => {
-      cancelAnimationFrame(cancelId);
-    };
-  }, []);
+  useAnimationFrameInterval(() => {
+    setClassState((prevState) => {
+      const [first, ...rest] = prevState;
+      return [...rest, first];
+    });
+  }, 4000);
 
   return (
     <div className={styles.container}>
       <div className={styles.imageWrapper}>
         {worksSlideList.map((slideItem, index) => (
-          <div key={slideItem.id} className={styles.wrap}>
+          <div key={slideItem.id}>
             <Image
               src={slideItem.image}
               alt={'車の画像'}
