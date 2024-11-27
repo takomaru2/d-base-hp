@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import styles from './index.module.scss';
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { worksSlideList } from '@/pages/top/components/WorksSlider/const/worksSlideList';
 import { useAnimationFrameInterval } from '@/hooks/useAnimationFrameInterval';
 
@@ -14,7 +14,7 @@ export const WorksSlider: FC = () => {
     });
   }, 4000);
 
-  const className = [
+  const imageClassName = [
     'imageLeft',
     'imageCenterLarge',
     'imageCenterSmall',
@@ -25,7 +25,7 @@ export const WorksSlider: FC = () => {
     <div className={styles.container}>
       <div className={styles.imageWrapper}>
         {worksSlideList.map((slideItem, index) => {
-          const dynamicClassName = className[classState[index]];
+          const dynamicClassName = imageClassName[classState[index]];
           return (
             <div key={slideItem.id}>
               <Image
