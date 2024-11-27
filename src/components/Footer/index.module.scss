@@ -3,21 +3,33 @@
 
 .container {
   font-family: $mainFontJP;
-  font-size: linear-clamp(14, 24);
   font-weight: normal;
   text-align: center;
 }
 
 .menu {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  font-size: linear-clamp(14, 24);
+  text-align: center;
   letter-spacing: calc(14 * $letterSpacingKanji);
+
+  @include pcStyle {
+    flex-direction: row;
+    column-gap: 60px;
+    justify-content: center;
+  }
 }
 
-.flexLeftMenu {
-  text-align: left;
+.navMenu {
+  a {
+    display: inline-block;
+    padding: 8px 20px;
+  }
 }
 
-.flexRightMenu {
-  text-align: left;
+.logoLink {
+  display: inline-block;
+  padding: 8px 20px;
+  text-align: center;
 }
