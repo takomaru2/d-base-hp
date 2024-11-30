@@ -80,13 +80,13 @@
   height: linear-clamp(300, 710);
 }
 
-.imageCenterSmall {
+.imageRight1 {
   position: absolute;
   left: linear-clamp(250, 815);
   z-index: 20;
 }
 
-.imageRight {
+.imageRight2 {
   position: absolute;
   left: linear-clamp(335, 1115);
   z-index: 10;
@@ -111,11 +111,11 @@
     width: linear-clamp(225, 500);
   }
 
-  .imageCenterSmall {
+  .imageRight1 {
     left: linear-clamp(360, 815);
   }
 
-  .imageRight {
+  .imageRight2 {
     left: linear-clamp(480, 1115);
   }
 }

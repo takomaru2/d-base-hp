@@ -1,40 +1,52 @@
 import Image from 'next/image';
 import styles from './index.module.scss';
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 import { worksSlideList } from '@/pages/top/components/WorksSlider/const/worksSlideList';
 import { useAnimationFrameInterval } from '@/hooks/useAnimationFrameInterval';
 
 export const WorksSlider: FC = () => {
-  const [classState, setClassState] = useState([0, 1, 2, 3]);
-
+  const [activeIndex, setActiveIndex] = useState(0);
   useAnimationFrameInterval(() => {
-    setClassState((prevState) => {
-      const [first, ...rest] = prevState;
-      return [...rest, first];
-    });
+    setActiveIndex((prevIndex) => (prevIndex + 1) % worksSlideList.length);
   }, 4000);
 
-  const imageClassName = [
-    'imageLeft',
-    'imageCenterLarge',
-    'imageCenterSmall',
-    'imageRight',
-  ];
+  const getDynamicClassName = (imageIndex: number): string => {
+    const offset = 1;
+    const isLeft = activeIndex === imageIndex;
+    const isHero =
+      (activeIndex + offset) % worksSlideList.length === imageIndex;
+
+    if (isLeft) {
+      return styles.imageLeft;
+    }
+    if (isHero) {
+      return styles.imageCenterLarge;
+    }
+
+    // activeIndexから何番目の右側なのかを返す
+    const rightIndex =
+      (imageIndex - activeIndex - offset + worksSlideList.length) %
+      worksSlideList.length;
+    return styles[`imageRight${rightIndex}`];
+  };
 
   return (
     <div className={styles.container}>
       <div className={styles.imageWrapper}>
-        {worksSlideList.map((slideItem, index) => {
-          const dynamicClassName = imageClassName[classState[index]];
+        {worksSlideList.map((slideItem, imageIndex) => {
+          const dynamicClassName = getDynamicClassName(imageIndex);
+          console.log(
+            `imageIndex: ${imageIndex}, className: ${getDynamicClassName(imageIndex)}`,
+          );
           return (
             <div key={slideItem.id}>
               <Image
                 src={slideItem.image}
                 alt={slideItem.alt}
                 // クラスを動的に変更
-                className={`${styles.image} ${styles[dynamicClassName]}`}
+                className={`${styles.image} ${dynamicClassName}`}
               />
-              {dynamicClassName === 'imageCenterLarge' ? (
+              {dynamicClassName === styles.imageCenterLarge ? (
                 <div className={styles.modelDetail}>
                   <div className={styles.model}>{slideItem.model}</div>
                   <div className={styles.priceWrapper}>
