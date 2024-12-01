@@ -1,5 +1,17 @@
+@import 'variables';
+
 @mixin pcStyle {
   @media (width > 600px) {
     @content;
   }
+}
+
+@mixin full {
+  @media (width > 1000px) {
+    @content;
+  }
+}
+
+@mixin rest($num) {
+  left: linear-clamp(250, 815) + linear-clamp($num(85, 300));
 }

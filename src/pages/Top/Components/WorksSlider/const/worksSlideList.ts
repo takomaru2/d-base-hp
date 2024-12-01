@@ -2,6 +2,7 @@ import worksImage01 from '../../../../../../public/assets/top/works/worksImage01
 import worksImage02 from '../../../../../../public/assets/top/works/worksImage02.jpg';
 import worksImage03 from '../../../../../../public/assets/top/works/worksImage03.jpg';
 import worksImage04 from '../../../../../../public/assets/top/works/worksImage04.jpg';
+import gonta from '../../../../../../public/assets/top/works/gonta.jpg';
 import { StaticImageData } from 'next/image';
 
 type WorksImage = {
@@ -20,7 +21,7 @@ export const worksSlideList: WorksImage[] = [
     model: 'SUZUKI Jimny1',
     alt: '車の前部分',
     craft: 'NS-10H1',
-    pricing: '100,000',
+    pricing: '¥100,000',
   },
   {
     id: '2',
@@ -28,7 +29,7 @@ export const worksSlideList: WorksImage[] = [
     model: 'TOYOTA Jimny2',
     alt: '車の前部分',
     craft: 'NS-10H2',
-    pricing: '120,000',
+    pricing: '¥120,000',
   },
   {
     id: '3',
@@ -36,7 +37,7 @@ export const worksSlideList: WorksImage[] = [
     model: 'LEXUS Jimny3',
     alt: '車の前部分',
     craft: 'NS-10H3',
-    pricing: '240,000',
+    pricing: '¥240,000',
   },
   {
     id: '4',
@@ -44,6 +45,14 @@ export const worksSlideList: WorksImage[] = [
     model: 'HONDA Jimny4',
     alt: '車の前部分',
     craft: 'NS-10H4',
-    pricing: '460,000',
+    pricing: '¥460,000',
+  },
+  {
+    id: '5',
+    image: gonta,
+    model: 'GONTA',
+    alt: 'ごんたという名の犬',
+    craft: '境港産',
+    pricing: 'ご縁',
   },
 ];

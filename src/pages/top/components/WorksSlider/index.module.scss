@@ -14,22 +14,15 @@
 }
 
 .container {
+  width: 100%;
   margin: 0 auto;
-}
-
-.imageWrapper {
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  width: linear-clamp(600, 1400);
-  height: linear-clamp(316, 800);
   overflow: hidden;
 }
 
 .image {
   bottom: 0;
-  width: linear-clamp(75, 285);
-  height: linear-clamp(125, 400);
+  width: 78px;
+  height: 122px;
   object-fit: cover;
   transition: all ease-in 0.3s;
 }
@@ -46,11 +39,10 @@
 .model {
   position: absolute;
   top: linear-clamp(100, 170);
-  left: -30px;
   font-family: $subFontEN;
   font-size: linear-clamp(14, 60);
   letter-spacing: calc(14px * $textLetterSpacingEN);
-  white-space: nowrap;
+  white-space: wrap;
   opacity: 1;
   transform: rotate(-90deg);
 }
@@ -58,7 +50,7 @@
 .priceWrapper {
   position: absolute;
   top: linear-clamp(100, 250);
-  left: linear-clamp(250, 830);
+  left: 264px;
   font-size: linear-clamp(14, 40);
   letter-spacing: calc(14px * $letterSpacingKana);
   white-space: nowrap;
@@ -66,29 +58,29 @@
   animation: fadeInUp 0.3s ease-in-out 0.3s forwards;
 }
 
-.imageLeft {
-  position: absolute;
-  left: 0;
-  z-index: 0;
+.imageWrapper {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  width: linear-clamp(375, 1400);
+  height: linear-clamp(316, 800);
+  overflow: hidden;
 }
 
 .imageCenterLarge {
-  position: absolute;
-  left: linear-clamp(85, 300);
-  z-index: 20;
-  width: linear-clamp(155, 500);
-  height: linear-clamp(300, 710);
+  width: 166px;
+  height: 259px;
 }
 
 .imageRight1 {
   position: absolute;
-  left: linear-clamp(250, 815);
-  z-index: 20;
+  left: 264px;
+  z-index: 10;
 }
 
 .imageRight2 {
   position: absolute;
-  left: linear-clamp(335, 1115);
+  left: 352px;
   z-index: 10;
 }
 
@@ -98,7 +90,8 @@
   }
 
   .image {
-    width: linear-clamp(110, 285);
+    width: 140px;
+    height: 213px;
   }
 
   .model {
@@ -107,15 +100,41 @@
   }
 
   .imageCenterLarge {
-    left: linear-clamp(125, 300);
-    width: linear-clamp(225, 500);
+    width: 300px;
+    height: 450px;
   }
 
-  .imageRight1 {
-    left: linear-clamp(360, 815);
+  .priceWrapper {
+    left: 490px;
+  }
+}
+
+@include full {
+  .container {
+    max-width: linear-clamp(600, 1400);
   }
 
-  .imageRight2 {
-    left: linear-clamp(480, 1115);
+  .image {
+    width: 250px;
+    height: 355px;
+  }
+
+  .model {
+    left: linear-clamp(0, 50);
+    white-space: wrap;
+  }
+
+  .imageWrapper {
+    height: 800px;
+  }
+
+  .priceWrapper {
+    left: 850px;
+  }
+
+  .imageCenterLarge {
+    left: 300px;
+    width: 500px;
+    height: 710px;
   }
 }
