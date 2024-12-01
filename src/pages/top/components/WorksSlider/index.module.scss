@@ -14,7 +14,7 @@
 }
 
 .container {
-  width: 100%;
+  max-width: 430px;
   margin: 0 auto;
   overflow: hidden;
 }
@@ -62,7 +62,7 @@
   position: relative;
   display: flex;
   align-items: flex-end;
-  width: linear-clamp(375, 1400);
+  max-width: 430px;
   height: linear-clamp(316, 800);
   overflow: hidden;
 }
@@ -86,7 +86,11 @@
 
 @include pcStyle {
   .container {
-    max-width: linear-clamp(600, 1400);
+    max-width: 795px;
+  }
+
+  .imageWrapper {
+    max-width: 795px;
   }
 
   .image {
@@ -111,7 +115,12 @@
 
 @include full {
   .container {
-    max-width: linear-clamp(600, 1400);
+    max-width: 1400px;
+  }
+
+  .imageWrapper {
+    max-width: 1400px;
+    height: 800px;
   }
 
   .image {
@@ -122,10 +131,6 @@
   .model {
     left: linear-clamp(0, 50);
     white-space: wrap;
-  }
-
-  .imageWrapper {
-    height: 800px;
   }
 
   .priceWrapper {
