@@ -1,13 +1,15 @@
 import Image from 'next/image';
 import styles from './index.module.scss';
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { worksSlideList } from '@/pages/top/components/WorksSlider/const/worksSlideList';
 import { useAnimationFrameInterval } from '@/hooks/useAnimationFrameInterval';
 import { useWindowWidth } from '@/hooks/useWindowWidth';
 import { getDynamicStyleAndClass } from '@/logics/getDynamicStyleAndClass';
+import { useActiveIndex } from '@/hooks/useActiveIndex';
 
 export const WorksSlider: FC = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useActiveIndex();
+
   useAnimationFrameInterval(() => {
     setActiveIndex((prevIndex) => (prevIndex + 1) % worksSlideList.length);
   }, 4000);
