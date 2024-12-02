@@ -72,16 +72,6 @@
   height: 259px;
 }
 
-.imageRight1 {
-  position: absolute;
-  z-index: 10;
-}
-
-.imageRight2 {
-  position: absolute;
-  z-index: 10;
-}
-
 @include pcStyle {
   .container {
     max-width: 795px;
