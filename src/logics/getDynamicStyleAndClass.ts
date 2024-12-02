@@ -12,11 +12,13 @@ export const getDynamicStyleAndClass = (
   let gap: number;
 
   // ブレークポイントの設定
-  if (windowWidth > 1000) {
+  const pc = windowWidth > 1000;
+  const tablet = windowWidth > 600;
+  if (pc) {
     basicSize = 250;
     heroSize = 500;
     gap = 50;
-  } else if (windowWidth > 600) {
+  } else if (tablet) {
     basicSize = 140;
     heroSize = 300;
     gap = 25;
@@ -34,7 +36,7 @@ export const getDynamicStyleAndClass = (
     (imageIndex - activeIndex - offset + worksSlideList.length) %
     worksSlideList.length;
 
-  let className;
+  let className: string;
   if (isLeft) {
     className = styles.imageLeft;
   } else if (isHero) {
@@ -53,11 +55,12 @@ export const getDynamicStyleAndClass = (
     left = basePosition + (rightIndex - 1) * (basicSize + gap);
   }
 
+  const heroZIndex = 20;
+  const lestZIndex = 10;
   const style: React.CSSProperties = {
     position: 'absolute',
     left: `${left}px`,
-    zIndex: isHero ? 20 : 10 - rightIndex,
-    // transform: isHero ? 'scale(1.2)' : 'scale(0.9)',
+    zIndex: isHero ? heroZIndex : lestZIndex - rightIndex,
   };
 
   return { style, className };
