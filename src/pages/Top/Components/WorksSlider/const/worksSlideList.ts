@@ -6,7 +6,7 @@ import gonta from '../../../../../../public/assets/top/works/gonta.jpg';
 import muscle from '../../../../../../public/assets/top/works/muscle.jpg';
 import { StaticImageData } from 'next/image';
 
-type WorksImage = {
+type WorksSlideImage = {
   id: string;
   image: StaticImageData;
   model: string;
@@ -15,7 +15,7 @@ type WorksImage = {
   pricing: string;
 };
 
-export const worksSlideList: WorksImage[] = [
+export const worksSlideList: WorksSlideImage[] = [
   {
     id: '1',
     image: worksImage01,
