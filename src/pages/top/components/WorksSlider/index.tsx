@@ -4,7 +4,7 @@ import React, { FC } from 'react';
 import { worksSlideList } from '@/pages/top/components/WorksSlider/const/worksSlideList';
 import { useAnimationFrameInterval } from '@/hooks/useAnimationFrameInterval';
 import { useWindowWidth } from '@/hooks/useWindowWidth';
-import { getDynamicStyleAndClass } from '@/logics/getDynamicStyleAndClass';
+import { getDynamicStyleAndClassWorksSlide } from '@/logics/getDynamicStyleAndClassWorksSlide';
 import { useActiveIndex } from '@/hooks/useActiveIndex';
 
 export const WorksSlider: FC = () => {
@@ -15,15 +15,15 @@ export const WorksSlider: FC = () => {
   }, 4000);
 
   const windowWidth = useWindowWidth();
-
   return (
     <div className={styles.container}>
       <div className={styles.imageWrapper}>
         {worksSlideList.map((slideItem, imageIndex) => {
-          const { style, className } = getDynamicStyleAndClass(
+          const { style, className } = getDynamicStyleAndClassWorksSlide(
             imageIndex,
             windowWidth,
             activeIndex,
+            worksSlideList,
           );
           return (
             <div key={slideItem.id}>

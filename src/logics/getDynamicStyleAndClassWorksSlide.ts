@@ -1,11 +1,17 @@
-import { worksSlideList } from '@/pages/top/components/WorksSlider/const/worksSlideList';
 import styles from '@/pages/top/components/WorksSlider/index.module.scss';
 import React from 'react';
+import { StaticImageData } from 'next/image';
 
-export const getDynamicStyleAndClass = (
+type BaseSlideList = {
+  id: string;
+  image: StaticImageData;
+};
+
+export const getDynamicStyleAndClassWorksSlide = <T extends BaseSlideList>(
   imageIndex: number,
   windowWidth: number,
   activeIndex: number,
+  slideList: T[],
 ) => {
   let basicSize: number;
   let heroSize: number;
@@ -30,19 +36,14 @@ export const getDynamicStyleAndClass = (
 
   const offset = 1;
   const isLeft = activeIndex === imageIndex;
-  const isHero = (activeIndex + offset) % worksSlideList.length === imageIndex;
+  const isHero = (activeIndex + offset) % slideList.length === imageIndex;
   // activeIndexから何番目の右側なのかを返す
   const rightIndex =
-    (imageIndex - activeIndex - offset + worksSlideList.length) %
-    worksSlideList.length;
+    (imageIndex - activeIndex - offset + slideList.length) % slideList.length;
 
-  let className: string;
-  if (isLeft) {
-    className = styles.imageLeft;
-  } else if (isHero) {
+  let className: string = '';
+  if (isHero) {
     className = styles.imageCenterLarge;
-  } else {
-    className = styles[`imageRight${rightIndex}`];
   }
 
   let left: number;
