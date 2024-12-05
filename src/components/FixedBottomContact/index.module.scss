@@ -6,12 +6,13 @@
   right: 0;
   bottom: 0;
   left: 0;
+  z-index: 99;
   display: flex;
-  flex-flow: column;
+  flex-direction: column;
   row-gap: 10px;
   align-items: center;
-  padding: 0 linear-clamp(30, 140);
-  background-color: #b0b0b0;
+  padding-inline: linear-clamp(30, 140);
+  background-color: $flexBottomContactBgColor;
 }
 
 .line {
@@ -27,7 +28,8 @@
 
 .guide {
   font-size: linear-clamp(14, 18);
-  letter-spacing: calc(16px * 0.05);
+
+  @include letterSpacing5(16px);
 }
 
 .green {
