@@ -8,17 +8,17 @@ type BaseSlideList = {
   image: StaticImageData;
 };
 
-type DynamicStyleAndClassWorksSlideResult = {
+type WorksSlideStyleAndClassResult = {
   style: React.CSSProperties;
   className: string;
 };
-// todo: reviewスライド作成時に関数整理
+// todo: reviewスライド作成時に関数統合
 export const getDynamicStyleAndClassWorksSlide = (
   imageIndex: number,
   activeIndex: number,
   slideList: BaseSlideList[],
   { basicSize, heroSize, gap }: UseWorksSliderBreakPoints,
-): DynamicStyleAndClassWorksSlideResult => {
+): WorksSlideStyleAndClassResult => {
   // leftとheroの差分
   const offset = 1;
   const isLeft = activeIndex === imageIndex;
@@ -41,7 +41,6 @@ export const getDynamicStyleAndClassWorksSlide = (
     const basePosition = basicSize + heroSize + 2 * gap;
     left = basePosition + (rightIndex - 1) * (basicSize + gap);
   }
-
   const heroZIndex = 20;
   const lestZIndex = 10;
   const style: React.CSSProperties = {
