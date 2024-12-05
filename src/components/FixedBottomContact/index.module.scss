@@ -29,7 +29,7 @@
 .guide {
   font-size: linear-clamp(14, 18);
 
-  @include letterSpacing5(16px);
+  @include letterSpacing5(linear-clamp(14, 18));
 }
 
 .green {

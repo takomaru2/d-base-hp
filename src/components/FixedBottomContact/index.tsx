@@ -19,7 +19,7 @@ export const FixedBottomContact: FC = () => {
         </div>
       </Link>
       <ul className={styles.scheduleList}>
-        <li className={styles.time}>営業時間 : 10:00 ~ 19:00</li>
+        <li className={styles.openingHours}>営業時間 : 10:00 ~ 19:00</li>
         <li className={styles.closing}>定休日 : 毎週水曜日</li>
       </ul>
     </div>
