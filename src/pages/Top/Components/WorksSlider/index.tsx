@@ -1,11 +1,12 @@
-import Image from 'next/image';
-import styles from './index.module.scss';
 import React, { FC } from 'react';
-import { worksSlideList } from '@/pages/top/components/WorksSlider/const/worksSlideList';
-import { useAnimationFrameInterval } from '@/hooks/useAnimationFrameInterval';
-import { getDynamicStyleAndClassWorksSlide } from '@/pages/top/logics/getDynamicStyleAndClassWorksSlide';
 import { useActiveIndex } from '@/hooks/useActiveIndex';
 import { useWorksSliderBreakPoints } from '@/pages/top/hooks/useWorksSliderBreakPoints';
+import { useAnimationFrameInterval } from '@/hooks/useAnimationFrameInterval';
+import { worksSlideList } from '@/pages/top/components/WorksSlider/const/worksSlideList';
+import styles from '@/pages/top/components/WorksSlider/index.module.scss';
+import { getDynamicStyleAndClassWorksSlide } from '@/pages/top/logics/getDynamicStyleAndClassWorksSlide';
+import Image from 'next/image';
+import { HeroModelDescription } from '@/pages/top/components/HeroModelDescription';
 
 export const WorksSlider: FC = () => {
   const [activeIndex, setActiveIndex] = useActiveIndex();
@@ -35,13 +36,11 @@ export const WorksSlider: FC = () => {
                 className={`${styles.image} ${className}`}
               />
               {className === styles.hero ? (
-                <div className={styles.modelDetail}>
-                  <div className={styles.model}>{slideItem.model}</div>
-                  <div className={styles.priceWrapper}>
-                    <div>{slideItem.craft}</div>
-                    <div>{slideItem.pricing}</div>
-                  </div>
-                </div>
+                <HeroModelDescription
+                  model={slideItem.model}
+                  craft={slideItem.craft}
+                  pricing={slideItem.pricing}
+                />
               ) : undefined}
             </div>
           );

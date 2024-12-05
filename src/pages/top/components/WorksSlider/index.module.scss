@@ -1,18 +1,6 @@
 @import '@/styles/variables';
 @import '@/styles/mixin';
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 .container {
   max-width: 430px;
   margin: 0 auto;
@@ -27,37 +15,6 @@
   transition: all ease-in 0.3s;
 }
 
-.modelDetail {
-  position: absolute;
-  top: 0;
-  left: 0;
-  color: $colorBlack;
-  opacity: 0;
-  animation: fadeInUp 0.3s ease-in-out forwards;
-}
-
-.model {
-  position: absolute;
-  top: linear-clamp(100, 170);
-  font-family: $subFontEN;
-  font-size: linear-clamp(14, 60);
-  letter-spacing: calc(14px * $textLetterSpacingEN);
-  white-space: wrap;
-  opacity: 1;
-  transform: rotate(-90deg);
-}
-
-.priceWrapper {
-  position: absolute;
-  top: linear-clamp(100, 250);
-  left: 264px;
-  font-size: linear-clamp(14, 40);
-  letter-spacing: calc(14px * $letterSpacingKana);
-  white-space: nowrap;
-  opacity: 0;
-  animation: fadeInUp 0.3s ease-in-out 0.3s forwards;
-}
-
 .imageWrapper {
   position: relative;
   display: flex;
@@ -67,7 +24,7 @@
   overflow: hidden;
 }
 
-.imageCenterLarge {
+.hero {
   width: 166px;
   height: 259px;
 }
@@ -86,18 +43,9 @@
     height: 213px;
   }
 
-  .model {
-    left: linear-clamp(0, 50);
-    white-space: wrap;
-  }
-
-  .imageCenterLarge {
+  .hero {
     width: 300px;
     height: 450px;
-  }
-
-  .priceWrapper {
-    left: 490px;
   }
 }
 
@@ -116,16 +64,7 @@
     height: 355px;
   }
 
-  .model {
-    left: linear-clamp(0, 50);
-    white-space: wrap;
-  }
-
-  .priceWrapper {
-    left: 850px;
-  }
-
-  .imageCenterLarge {
+  .hero {
     width: 500px;
     height: 710px;
   }
