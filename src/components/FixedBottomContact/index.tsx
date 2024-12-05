@@ -10,7 +10,7 @@ export const FixedBottomContact: FC = () => {
       <address className={styles.tel}>
         <a href="tel:0859-00-0000">TEL: 0859-00-0000</a>
       </address>
-      <Link href="https://line.me/ja/" className={styles.line}>
+      <Link href="https://line.me/ja/" className={styles.link}>
         <Image className={styles.icon} src={line} alt="LINE" />
         <div className={styles.guide}>
           <span className={styles.green}>LINE</span>で
