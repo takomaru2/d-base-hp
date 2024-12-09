@@ -1,9 +1,9 @@
-import worksImage01 from '../../../../../../public/assets/top/works/worksImage01.jpg';
-import worksImage02 from '../../../../../../public/assets/top/works/worksImage02.jpg';
-import worksImage03 from '../../../../../../public/assets/top/works/worksImage03.jpg';
-import worksImage04 from '../../../../../../public/assets/top/works/worksImage04.jpg';
-import gonta from '../../../../../../public/assets/top/works/gonta.jpg';
-import muscle from '../../../../../../public/assets/top/works/muscle.jpg';
+import worksImage01 from '@/../public/assets/top/works/worksImage01.jpg';
+import worksImage02 from '@/../public/assets/top/works/worksImage02.jpg';
+import worksImage03 from '@/../public/assets/top/works/worksImage03.jpg';
+import worksImage04 from '@/../public/assets/top/works/worksImage04.jpg';
+import gonta from '@/../public/assets/top/works/gonta.jpg';
+import muscle from '@/../public/assets/top/works/muscle.jpg';
 import { StaticImageData } from 'next/image';
 
 type WorksSlideImage = {
