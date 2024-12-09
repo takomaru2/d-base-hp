@@ -1,13 +1,13 @@
 import styles from './index.module.scss';
 import React, { FC } from 'react';
 
-type HeroModelDescriptionProps = {
+type WorksHeroImageDescriptionProps = {
   model: string;
   craft: string;
   pricing: string;
 };
 
-export const HeroModelDescription: FC<HeroModelDescriptionProps> = ({
+export const WorksHeroImageDescription: FC<WorksHeroImageDescriptionProps> = ({
   model,
   craft,
   pricing,

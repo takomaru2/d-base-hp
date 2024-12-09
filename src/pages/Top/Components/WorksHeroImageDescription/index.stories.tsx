@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { HeroModelDescription as Component } from '.';
+import { WorksHeroImageDescription as Component } from '.';
 
 const meta: Meta<typeof Component> = {
   component: Component,

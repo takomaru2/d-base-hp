@@ -6,7 +6,7 @@ import { worksSlideList } from '@/pages/top/components/WorksSlider/const/worksSl
 import styles from '@/pages/top/components/WorksSlider/index.module.scss';
 import { getDynamicStyleAndClassWorksSlide } from '@/pages/top/logics/getDynamicStyleAndClassWorksSlide';
 import Image from 'next/image';
-import { HeroModelDescription } from '@/pages/top/components/HeroModelDescription';
+import { WorksHeroImageDescription } from '../WorksHeroImageDescription';
 
 export const WorksSlider: FC = () => {
   const [activeIndex, setActiveIndex] = useActiveIndex();
@@ -36,7 +36,7 @@ export const WorksSlider: FC = () => {
                 className={`${styles.image} ${className}`}
               />
               {className === styles.hero ? (
-                <HeroModelDescription
+                <WorksHeroImageDescription
                   model={slideItem.model}
                   craft={slideItem.craft}
                   pricing={slideItem.pricing}
