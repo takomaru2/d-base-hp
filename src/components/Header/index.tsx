@@ -17,7 +17,13 @@ export const Header: FC = () => {
           MENU
         </button>
         <PcNavMenu />
-        {isOpenMenu && <SpNavMenu close={close} />}
+        <div
+          className={`${styles.spNavMenu} ${
+            isOpenMenu ? styles.open : styles.closed
+          }`}
+        >
+          {isOpenMenu && <SpNavMenu close={close} />}
+        </div>
       </div>
     </div>
   );
