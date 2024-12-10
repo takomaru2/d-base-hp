@@ -10,7 +10,9 @@ import { WorksHeroImageDescription } from '../WorksHeroImageDescription';
 
 export const WorksSlider: FC = () => {
   const [activeIndex, setActiveIndex] = useActiveIndex();
-  const { basicSize, heroSize, gap } = useWorksSliderBreakPoints();
+  const { basicWidth, heroWidth, basicHeight, heroHeight, gap } =
+    useWorksSliderBreakPoints();
+  const offset = 1;
 
   useAnimationFrameInterval(() => {
     setActiveIndex((prevIndex) => (prevIndex + 1) % worksSlideList.length);
@@ -20,12 +22,15 @@ export const WorksSlider: FC = () => {
     <div className={styles.container}>
       <div className={styles.imageWrapper}>
         {worksSlideList.map((slideItem, imageIndex) => {
-          const { style, className } = getDynamicStyleAndClassWorksSlide(
+          const { style } = getDynamicStyleAndClassWorksSlide(
             imageIndex,
             activeIndex,
             worksSlideList,
-            { basicSize, heroSize, gap },
+            { basicWidth, heroWidth, basicHeight, heroHeight, gap },
+            offset,
           );
+          const isHero =
+            (activeIndex + offset) % worksSlideList.length === imageIndex;
           return (
             <div key={slideItem.id}>
               <Image
@@ -33,9 +38,9 @@ export const WorksSlider: FC = () => {
                 alt={slideItem.alt}
                 style={style}
                 // クラスを動的に変更
-                className={`${styles.image} ${className}`}
+                className={styles.image}
               />
-              {className === styles.hero ? (
+              {isHero ? (
                 <WorksHeroImageDescription
                   model={slideItem.model}
                   craft={slideItem.craft}

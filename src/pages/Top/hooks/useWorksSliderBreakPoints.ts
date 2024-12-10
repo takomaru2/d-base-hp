@@ -1,8 +1,10 @@
 import { useWindowWidth } from '@/hooks/useWindowWidth';
 
 export type UseWorksSliderBreakPoints = {
-  basicSize: number;
-  heroSize: number;
+  basicWidth: number;
+  heroWidth: number;
+  basicHeight: number;
+  heroHeight: number;
   gap: number;
 };
 
@@ -13,20 +15,26 @@ export const useWorksSliderBreakPoints = () => {
   const tablet = windowWidth > 600;
   if (pc) {
     return {
-      basicSize: 250,
-      heroSize: 500,
+      basicWidth: 250,
+      heroWidth: 500,
+      basicHeight: 355,
+      heroHeight: 710,
       gap: 50,
     };
   } else if (tablet) {
     return {
-      basicSize: 140,
-      heroSize: 300,
+      basicWidth: 140,
+      heroWidth: 300,
+      basicHeight: 213,
+      heroHeight: 450,
       gap: 25,
     };
   } else {
     return {
-      basicSize: 78,
-      heroSize: 166,
+      basicWidth: 78,
+      heroWidth: 166,
+      basicHeight: 122,
+      heroHeight: 259,
       gap: 10,
     };
   }

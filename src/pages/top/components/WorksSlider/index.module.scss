@@ -8,9 +8,8 @@
 }
 
 .image {
+  position: absolute;
   bottom: 0;
-  width: 78px;
-  height: 122px;
   object-fit: cover;
   transition: all ease-in 0.3s;
 }
@@ -24,11 +23,6 @@
   overflow: hidden;
 }
 
-.hero {
-  width: 166px;
-  height: 259px;
-}
-
 @include pcStyle {
   .container {
     max-width: 795px;
@@ -36,16 +30,6 @@
 
   .imageWrapper {
     max-width: 795px;
-  }
-
-  .image {
-    width: 140px;
-    height: 213px;
-  }
-
-  .hero {
-    width: 300px;
-    height: 450px;
   }
 }
 
@@ -57,15 +41,5 @@
   .imageWrapper {
     max-width: 1400px;
     height: 800px;
-  }
-
-  .image {
-    width: 250px;
-    height: 355px;
-  }
-
-  .hero {
-    width: 500px;
-    height: 710px;
   }
 }
