@@ -1,12 +1,12 @@
-type FooterNavList = { id: string; href: string; label: string };
+type FooterNavList = { id: string; href: string; name: string };
 
 export const footerNav: FooterNavList[] = [
-  // todo: リンク先入れる
-  { id: '1', href: '/', label: 'ホーム' },
-  { id: '2', href: '/', label: '価格表' },
-  { id: '3', href: '/', label: '施工実績' },
-  { id: '4', href: '/', label: 'お問い合わせ' },
-  { id: '5', href: '/', label: 'よくある質問' },
-  { id: '6', href: '/', label: 'アクセス' },
-  { id: '7', href: '/', label: 'プライバシポリシー' },
+  // todo: hrefの方が良いのか否か
+  { id: '1', name: 'ホーム', href: '/' },
+  { id: '2', name: '価格表', href: '/price' },
+  { id: '3', name: '施工実績', href: '/works' },
+  { id: '4', name: 'お問い合わせ', href: 'form' },
+  { id: '5', name: 'よくある質問', href: '#faq' },
+  { id: '6', name: 'アクセス', href: '#access' },
+  { id: '7', name: 'プライバシポリシー', href: '/privacy' },
 ];
