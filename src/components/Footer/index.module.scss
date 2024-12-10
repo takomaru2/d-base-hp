@@ -2,8 +2,6 @@
 @import '@/styles/mixin';
 
 .container {
-  font-family: $mainFontJP;
-  font-weight: normal;
   text-align: center;
 }
 
@@ -21,7 +19,7 @@
   }
 }
 
-.navMenu {
+.footerNav {
   a {
     display: inline-block;
     padding: 8px 20px;
