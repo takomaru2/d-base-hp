@@ -1,0 +1,33 @@
+@import '@/styles/mixin';
+@import '@/styles/variables';
+
+.image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  object-fit: cover;
+}
+
+.imageVisible {
+  z-index: 30;
+  width: linear-clamp(600, 1098);
+  transition: width 0.7s ease-in;
+}
+
+.imageSecondary {
+  z-index: 20;
+  width: linear-clamp(600, 1098);
+  transition: width 1s ease-in;
+}
+
+.imageHidden {
+  z-index: 10;
+  width: 0;
+}
+
+@include pcStyle {
+  .image {
+    height: 782px;
+  }
+}
