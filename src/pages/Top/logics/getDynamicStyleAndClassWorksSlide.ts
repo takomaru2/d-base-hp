@@ -42,7 +42,7 @@ export const getDynamicStyleAndClassWorksSlide = (
   } else {
     // const basePosition = basicWidth + heroWidth + 2 * gap;
     // left = basePosition + (rightIndex - 1) * (basicWidth + gap);
-    const diff = 250;
+    const diff = heroWidth - basicWidth;
     left = leftIndex * (basicWidth + gap) + diff;
   }
 
