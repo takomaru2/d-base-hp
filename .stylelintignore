@@ -1,12 +1,3 @@
 src/styles/variables.scss
 node_modules/**
 coverage/**
-
-{
-  "ignoreFiles": [
-    "node_modules/**/*.css",
-    "node_modules/**/*.scss",
-    "coverage/**/*.css",
-    "coverage/**/*.scss"
-  ]
-}
