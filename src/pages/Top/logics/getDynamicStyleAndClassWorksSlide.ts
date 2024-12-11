@@ -31,20 +31,19 @@ export const getDynamicStyleAndClassWorksSlide = (
     (imageIndex - activeIndex + slideList.length) % slideList.length;
   // hero から左（hero を含む）条件
   const isHeroOrLeft = leftIndex <= offset;
-  // activeIndexから何番目の右側なのかを返す
-  const rightIndex =
-    (imageIndex - activeIndex - offset + slideList.length) % slideList.length;
 
   let left: number;
   let width = basicWidth;
   let height = basicHeight;
 
-  // leftに渡すもの
+  // leftを渡すもの
   if (isHeroOrLeft) {
     left = leftIndex * (basicWidth + gap);
   } else {
-    const basePosition = basicWidth + heroWidth + 2 * gap;
-    left = basePosition + (rightIndex - 1) * (basicWidth + gap);
+    // const basePosition = basicWidth + heroWidth + 2 * gap;
+    // left = basePosition + (rightIndex - 1) * (basicWidth + gap);
+    const diff = 250;
+    left = leftIndex * (basicWidth + gap) + diff;
   }
 
   // widthとheightを渡す
@@ -52,13 +51,15 @@ export const getDynamicStyleAndClassWorksSlide = (
     width = heroWidth;
     height = heroHeight;
   }
+
+  // 代入されたleft,width,heightとz-indexをreturn
   const heroZIndex = 20;
   const lestZIndex = 10;
   const style: React.CSSProperties = {
     width: `${width}px`,
     height: `${height}px`,
     left: `${left}px`,
-    zIndex: isHero ? heroZIndex : lestZIndex - rightIndex,
+    zIndex: isHero ? heroZIndex : lestZIndex - leftIndex,
   };
 
   return { style };
