@@ -10,6 +10,7 @@ type BaseSlideList = {
 type DynamicSliderStyleResult = {
   style: React.CSSProperties;
 };
+
 // todo: reviewスライド作成時に関数統合
 export const getDynamicSliderStyle = (
   imageIndex: number,
@@ -24,6 +25,9 @@ export const getDynamicSliderStyle = (
   }: UseWorksSliderBreakPoints,
   offset: number,
 ): DynamicSliderStyleResult => {
+  if (0 <= offset && offset > 3) {
+    throw new Error('offsetがスライド枚数こえちょる');
+  }
   // heroスライドの判定
   const isHero = (activeIndex + offset) % slideList.length === imageIndex;
   // 一番左を0としてindex返す
