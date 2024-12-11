@@ -4,7 +4,7 @@ import { useWorksSliderBreakPoints } from '@/pages/top/hooks/useWorksSliderBreak
 import { useAnimationFrameInterval } from '@/hooks/useAnimationFrameInterval';
 import { worksSlideList } from '@/pages/top/components/WorksSlider/const/worksSlideList';
 import styles from '@/pages/top/components/WorksSlider/index.module.scss';
-import { getDynamicStyleAndClassWorksSlide } from '@/pages/top/logics/getDynamicStyleAndClassWorksSlide';
+import { getDynamicSliderStyle } from '@/pages/top/logics/getDynamicSliderStyle';
 import Image from 'next/image';
 import { WorksHeroImageDescription } from '../WorksHeroImageDescription';
 
@@ -22,7 +22,7 @@ export const WorksSlider: FC = () => {
     <div className={styles.container}>
       <div className={styles.imageWrapper}>
         {worksSlideList.map((slideItem, imageIndex) => {
-          const { style } = getDynamicStyleAndClassWorksSlide(
+          const { style } = getDynamicSliderStyle(
             imageIndex,
             activeIndex,
             worksSlideList,

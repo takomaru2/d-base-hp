@@ -7,11 +7,11 @@ type BaseSlideList = {
   image: StaticImageData;
 };
 
-type WorksSlideStyleAndClassResult = {
+type DynamicSliderStyleResult = {
   style: React.CSSProperties;
 };
 // todo: reviewスライド作成時に関数統合
-export const getDynamicStyleAndClassWorksSlide = (
+export const getDynamicSliderStyle = (
   imageIndex: number,
   activeIndex: number,
   slideList: BaseSlideList[],
@@ -23,25 +23,23 @@ export const getDynamicStyleAndClassWorksSlide = (
     gap,
   }: UseWorksSliderBreakPoints,
   offset: number,
-): WorksSlideStyleAndClassResult => {
-  // leftとheroの差分
+): DynamicSliderStyleResult => {
+  // heroスライドの判定
   const isHero = (activeIndex + offset) % slideList.length === imageIndex;
-  // 左から hero までを判定するための leftIndex を計算
+  // 一番左を0としてindex返す
   const leftIndex =
     (imageIndex - activeIndex + slideList.length) % slideList.length;
-  // hero から左（hero を含む）条件
+  // 一番左からheroまで（hero を含む）の条件
   const isHeroOrLeft = leftIndex <= offset;
 
   let left: number;
   let width = basicWidth;
   let height = basicHeight;
 
-  // leftを渡すもの
+  // leftを渡す
   if (isHeroOrLeft) {
     left = leftIndex * (basicWidth + gap);
   } else {
-    // const basePosition = basicWidth + heroWidth + 2 * gap;
-    // left = basePosition + (rightIndex - 1) * (basicWidth + gap);
     const diff = heroWidth - basicWidth;
     left = leftIndex * (basicWidth + gap) + diff;
   }
