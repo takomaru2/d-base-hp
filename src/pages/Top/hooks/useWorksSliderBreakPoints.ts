@@ -1,4 +1,5 @@
 import { useWindowWidth } from '@/hooks/useWindowWidth';
+import { PC, TABLET } from '@/const/breakpoint';
 
 export type UseWorksSliderBreakPoints = {
   basicWidth: number;
@@ -11,8 +12,8 @@ export type UseWorksSliderBreakPoints = {
 export const useWorksSliderBreakPoints = () => {
   const windowWidth = useWindowWidth();
 
-  const pc = windowWidth > 1000;
-  const tablet = windowWidth > 600;
+  const pc = windowWidth > PC;
+  const tablet = windowWidth > TABLET;
   if (pc) {
     return {
       basicWidth: 250,
