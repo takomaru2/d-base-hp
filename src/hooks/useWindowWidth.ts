@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 export const useWindowWidth = () => {
   const [windowWidth, setWindowWidth] = useState<number>(
-    typeof globalThis === 'undefined' ? 375 : window.innerWidth,
+    typeof globalThis === 'undefined' ? 375 : globalThis.window.innerWidth,
   );
 
   useEffect(() => {
