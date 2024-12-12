@@ -13,13 +13,4 @@ export default meta;
 
 type Story = StoryObj<typeof Component>;
 
-export const ShowMenu: Story = {
-  args: {
-    isOpenMenu: true,
-  },
-};
-export const HideMenu: Story = {
-  args: {
-    isOpenMenu: false,
-  },
-};
+export const ShowMenu: Story = {};
