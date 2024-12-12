@@ -9,7 +9,8 @@
   display: flex;
   flex-direction: column;
   font-size: linear-clamp($fontSizeSmall, $fontSizeLarge);
-  letter-spacing: calc($fontSizeSmall * $letterSpacingKanji);
+
+  @include letterSpacing15($fontSizeSmall);
 
   @include pcStyle {
     flex-direction: row;
