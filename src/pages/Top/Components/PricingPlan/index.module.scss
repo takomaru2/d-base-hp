@@ -13,7 +13,8 @@
 .title {
   font-size: linear-clamp(14, 30);
   font-weight: bold;
-  letter-spacing: calc(14px * $letterSpacingKanji);
+
+  @include letterSpacing15(14);
 }
 
 .description {
@@ -21,13 +22,15 @@
   font-size: linear-clamp(12, 22);
   font-weight: normal;
   text-align: center;
-  letter-spacing: calc(12px * $letterSpacingKana);
+
+  @include letterSpacing8(12);
 }
 
 .minPrice {
   font-size: linear-clamp(30, 40);
   font-weight: bold;
-  letter-spacing: calc(30px * $letterSpacingNumber);
+
+  @include letterSpacing30(30);
 }
 
 @include pcStyle {
