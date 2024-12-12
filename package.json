@@ -64,8 +64,8 @@
     "*.{ts,tsx}": "bash -c tsc --noEmit"
   },
   "engines": {
-    "node": "20.18.0",
-    "pnpm": "9.12.3"
+    "node": "20.x",
+    "pnpm": "9.x"
   },
   "config": {
     "commitizen": {
