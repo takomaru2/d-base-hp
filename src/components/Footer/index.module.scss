@@ -8,9 +8,9 @@
 .menu {
   display: flex;
   flex-direction: column;
-  font-size: linear-clamp($fontSizeSmall, $fontSizeLarge);
+  font-size: linear-clamp(14, 24);
 
-  @include letterSpacing15($fontSizeSmall);
+  @include letterSpacing15(14);
 
   @include pcStyle {
     flex-direction: row;
