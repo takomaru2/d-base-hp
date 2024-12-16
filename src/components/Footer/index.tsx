@@ -7,13 +7,13 @@ export const Footer: FC = () => {
   return (
     <footer className={styles.container}>
       <ul className={styles.menu}>
-        {footerNav.map((id) => (
-          <li key={id.href} className={styles.footerNav}>
-            <a href={id.href}>{id.name}</a>
+        {footerNav.map((link) => (
+          <li key={link.id} className={styles.footerNav}>
+            <a href={link.href}>{link.name}</a>
           </li>
         ))}
       </ul>
-      <a href="logo" className={styles.logoLink}>
+      <a href="logo">
         <Logo color="white" />
       </a>
     </footer>
