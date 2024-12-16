@@ -10,7 +10,7 @@
   flex-direction: column;
   font-size: linear-clamp(14, 24);
 
-  @include letterSpacing15(14);
+  @include letterSpacing15(14px);
 
   @include pcStyle {
     flex-direction: row;
