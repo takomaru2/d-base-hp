@@ -5,7 +5,7 @@ import { footerNav } from '@/const/footerNav';
 
 export const Footer: FC = () => {
   return (
-    <div className={styles.container}>
+    <footer className={styles.container}>
       <ul className={styles.menu}>
         {footerNav.map((item) => (
           <li key={item.href} className={styles.footerNav}>
@@ -16,6 +16,6 @@ export const Footer: FC = () => {
       <a href="logo" className={styles.logoLink}>
         <Logo color="white" />
       </a>
-    </div>
+    </footer>
   );
 };
