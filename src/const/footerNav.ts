@@ -1,7 +1,6 @@
-type FooterNavList = { id: string; href: string; name: string };
+type FooterNav = { id: string; href: string; name: string };
 
-export const footerNav: FooterNavList[] = [
-  // todo: hrefの方が良いのか否か
+export const footerNav: FooterNav[] = [
   { id: '1', name: 'ホーム', href: '/' },
   { id: '2', name: '価格表', href: '/price' },
   { id: '3', name: '施工実績', href: '/works' },
