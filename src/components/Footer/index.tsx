@@ -7,9 +7,9 @@ export const Footer: FC = () => {
   return (
     <footer className={styles.container}>
       <ul className={styles.menu}>
-        {footerNav.map((item) => (
-          <li key={item.href} className={styles.footerNav}>
-            <a href={item.href}>{item.name}</a>
+        {footerNav.map((id) => (
+          <li key={id.href} className={styles.footerNav}>
+            <a href={id.href}>{id.name}</a>
           </li>
         ))}
       </ul>
