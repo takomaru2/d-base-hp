@@ -4,9 +4,11 @@ import { useWorksSliderBreakPoints } from '@/pages/top/hooks/useWorksSliderBreak
 import { useAnimationFrameInterval } from '@/hooks/useAnimationFrameInterval';
 import { worksSlideList } from '@/pages/top/components/WorksSlider/const/worksSlideList';
 import styles from '@/pages/top/components/WorksSlider/index.module.scss';
-import { getDynamicSliderStyle } from '@/pages/top/logics/getDynamicSliderStyle';
+import { generateSlideStyle } from '@/pages/top/logics/getDynamicSliderStyle';
 import Image from 'next/image';
 import { WorksHeroImageDescription } from '../WorksHeroImageDescription';
+import { isHeroImage } from '@/pages/top/logics/isHeroImage';
+import { getLeftIndex } from '@/pages/top/logics/getLeftIndex';
 
 export const WorksSlider: FC = () => {
   const [activeIndex, setActiveIndex] = useActiveIndex();
@@ -22,15 +24,24 @@ export const WorksSlider: FC = () => {
     <div className={styles.container}>
       <div className={styles.imageWrapper}>
         {worksSlideList.map((slideItem, imageIndex) => {
-          const { style } = getDynamicSliderStyle(
+          const isHero = isHeroImage(
+            activeIndex,
+            offset,
+            worksSlideList,
+            imageIndex,
+          );
+          const leftIndex = getLeftIndex(
             imageIndex,
             activeIndex,
             worksSlideList,
+          );
+          const { style } = generateSlideStyle(
+            isHero,
+            leftIndex,
             { basicWidth, heroWidth, basicHeight, heroHeight, gap },
             offset,
+            worksSlideList,
           );
-          const isHero =
-            (activeIndex + offset) % worksSlideList.length === imageIndex;
           return (
             <div key={slideItem.id}>
               <Image
