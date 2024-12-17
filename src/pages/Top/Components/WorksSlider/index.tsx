@@ -17,7 +17,9 @@ export const WorksSlider: FC = () => {
     useWorksSliderBreakPoints();
 
   useAnimationFrameInterval(() => {
-    setActiveIndex((prevIndex) => (prevIndex + 1) % worksSlideList.length);
+    const infinityIncrement = (prevIndex: number) =>
+      (prevIndex + 1) % worksSlideList.length;
+    setActiveIndex(infinityIncrement);
   }, 4000);
 
   return (
