@@ -4,8 +4,20 @@ import worksImage02 from '../../../../../public/assets/top/works/worksImage02.jp
 import worksImage03 from '../../../../../public/assets/top/works/worksImage03.jpg';
 import worksImage04 from '../../../../../public/assets/top/works/worksImage04.jpg';
 
+/**
+ * @param isHero: boolean
+ * @param leftIndex: number
+ * @param basicWidth: number
+ * @param heroWidth: number
+ * @param basicHeight: number
+ * @param heroHeight: number
+ * @param gap: number
+ * @param offset: number
+ * @param slideList: array
+ * 画面幅に応じたStyleを返す。
+ */
 describe('getDynamicSliderStyle', () => {
-  test('スライドが4枚で左から2番目が大きい画像(offset=2)のとき、正しいスタイルが返る', () => {
+  test('スライドが4枚で左から2番目が大きい画像(offset=1)のとき、正しいスタイルが返る', () => {
     expect(
       generateSlideStyle(
         true,

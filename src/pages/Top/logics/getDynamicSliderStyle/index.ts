@@ -25,10 +25,10 @@ export const generateSlideStyle = (
     heroWidth,
     basicHeight,
     heroHeight,
-    gap
+    gap,
   }: UseWorksSliderBreakPoints,
   offset: number,
-  slideList: BaseSlideList[]
+  slideList: BaseSlideList[],
 ): DynamicSliderStyleResult => {
   if (0 <= offset && offset > 3) {
     throw new Error('offsetがスライド枚数こえちょる');
@@ -62,7 +62,7 @@ export const generateSlideStyle = (
     width: `${width}px`,
     height: `${height}px`,
     left: `${left}px`,
-    zIndex: isFrontier ? frontier : heroZIndex
+    zIndex: isFrontier ? frontier : heroZIndex,
   };
   return { style };
 };
