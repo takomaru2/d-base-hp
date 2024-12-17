@@ -14,7 +14,7 @@
   font-size: linear-clamp(14, 30);
   font-weight: bold;
 
-  @include letterSpacing15(14);
+  @include letterSpacing15(14px);
 }
 
 .description {
@@ -23,14 +23,14 @@
   font-weight: normal;
   text-align: center;
 
-  @include letterSpacing8(12);
+  @include letterSpacing8(12px);
 }
 
 .minPrice {
   font-size: linear-clamp(30, 40);
   font-weight: bold;
 
-  @include letterSpacing30(30);
+  @include letterSpacing30(30px);
 }
 
 @include pcStyle {

@@ -47,7 +47,8 @@
   font-family: $mainFontJP;
   font-size: linear-clamp(30, 50);
   font-style: normal;
-  letter-spacing: calc(40px * 0.05);
+
+  @include letterSpacing5(40px);
 }
 
 @include pcStyle {
