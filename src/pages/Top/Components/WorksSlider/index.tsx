@@ -47,13 +47,13 @@ export const WorksSlider: FC = () => {
               style={style}
               className={styles.image}
             />
-            {isHero ? (
+            {isHero && (
               <WorksHeroImageDescription
                 model={slideItem.model}
                 craft={slideItem.craft}
                 pricing={slideItem.pricing}
               />
-            ) : undefined}
+            )}
           </div>
         );
       })}
