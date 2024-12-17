@@ -38,7 +38,7 @@ const testSlideList = [
     pricing: '¥460,000',
   },
 ];
-const testSlideList2 = [
+const tooManySlideList = [
   {
     id: '1',
     image: worksImage01,
@@ -121,26 +121,26 @@ describe('isHeroImage', () => {
     },
   );
   test.each([
-    [0, 1, testSlideList2, 0, false],
-    [0, 1, testSlideList2, 1, true],
-    [0, 1, testSlideList2, 2, false],
-    [0, 1, testSlideList2, 3, false],
-    [0, 1, testSlideList2, 4, false],
-    [0, 1, testSlideList2, 5, false],
+    [0, 1, tooManySlideList, 0, false],
+    [0, 1, tooManySlideList, 1, true],
+    [0, 1, tooManySlideList, 2, false],
+    [0, 1, tooManySlideList, 3, false],
+    [0, 1, tooManySlideList, 4, false],
+    [0, 1, tooManySlideList, 5, false],
 
-    [3, 1, testSlideList2, 0, false],
-    [3, 1, testSlideList2, 1, false],
-    [3, 1, testSlideList2, 2, false],
-    [3, 1, testSlideList2, 3, false],
-    [3, 1, testSlideList2, 4, true],
-    [3, 1, testSlideList2, 5, false],
+    [3, 1, tooManySlideList, 0, false],
+    [3, 1, tooManySlideList, 1, false],
+    [3, 1, tooManySlideList, 2, false],
+    [3, 1, tooManySlideList, 3, false],
+    [3, 1, tooManySlideList, 4, true],
+    [3, 1, tooManySlideList, 5, false],
 
-    [5, 1, testSlideList2, 0, true],
-    [5, 1, testSlideList2, 1, false],
-    [5, 1, testSlideList2, 2, false],
-    [5, 1, testSlideList2, 3, false],
-    [5, 1, testSlideList2, 4, false],
-    [5, 1, testSlideList2, 5, false],
+    [5, 1, tooManySlideList, 0, true],
+    [5, 1, tooManySlideList, 1, false],
+    [5, 1, tooManySlideList, 2, false],
+    [5, 1, tooManySlideList, 3, false],
+    [5, 1, tooManySlideList, 4, false],
+    [5, 1, tooManySlideList, 5, false],
   ])(
     'imageListが増えても、activeIndexが0,3,5の時、imageListがhero画像かどうか判断する',
     (activeIndex, DISTANCE_TO_HERO, slideList, imageIndex, expected) => {

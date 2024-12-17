@@ -38,7 +38,7 @@ const testSlideList = [
     pricing: '¥460,000',
   },
 ];
-const testSlideList2 = [
+const tooManySlideList = [
   {
     id: '1',
     image: worksImage01,
@@ -129,12 +129,12 @@ describe('getLeftIndex', () => {
     },
   );
   test.each([
-    [0, 0, testSlideList2, 0],
-    [1, 1, testSlideList2, 0],
-    [2, 2, testSlideList2, 0],
-    [3, 3, testSlideList2, 0],
-    [4, 4, testSlideList2, 0],
-    [5, 5, testSlideList2, 0],
+    [0, 0, tooManySlideList, 0],
+    [1, 1, tooManySlideList, 0],
+    [2, 2, tooManySlideList, 0],
+    [3, 3, tooManySlideList, 0],
+    [4, 4, tooManySlideList, 0],
+    [5, 5, tooManySlideList, 0],
   ])(
     'slideListの枚数が増えても、imageIndexとactiveIndexが同じときはそれに対応するleftIndexをつけて返す',
     (imageIndex, activeIndex, slideList, expected) => {
@@ -142,11 +142,11 @@ describe('getLeftIndex', () => {
     },
   );
   test.each([
-    [1, 0, testSlideList2, 1],
-    [2, 0, testSlideList2, 2],
-    [3, 0, testSlideList2, 3],
-    [4, 0, testSlideList2, 4],
-    [5, 0, testSlideList2, 5],
+    [1, 0, tooManySlideList, 1],
+    [2, 0, tooManySlideList, 2],
+    [3, 0, tooManySlideList, 3],
+    [4, 0, tooManySlideList, 4],
+    [5, 0, tooManySlideList, 5],
   ])(
     'slideListの枚数が増えてもimageIndexとactiveIndexが異なるときはそれに対応するleftIndexをつけて返す',
     (imageIndex, activeIndex, slideList, expected) => {
