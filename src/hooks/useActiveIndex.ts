@@ -1,9 +1,10 @@
 import { Dispatch, SetStateAction, useState } from 'react';
 
-export const useActiveIndex = (
-  initialNumber: number = 0,
-): [number, Dispatch<SetStateAction<number>>] => {
-  const [activeIndex, setActiveIndex] = useState(initialNumber);
+export const useActiveIndex = (): [
+  number,
+  Dispatch<SetStateAction<number>>,
+] => {
+  const [activeIndex, setActiveIndex] = useState(0);
 
   return [activeIndex, setActiveIndex];
 };
