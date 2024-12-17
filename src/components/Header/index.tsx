@@ -10,7 +10,7 @@ export const Header: FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.logo}>
-        <Logo color="white" />
+        <Logo color="white" isTopPageLink={true} />
       </div>
       <div className={styles.menu}>
         <button className={styles.spMenu} onClick={open}>

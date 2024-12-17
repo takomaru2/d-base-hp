@@ -13,9 +13,7 @@ export const Footer: FC = () => {
           </li>
         ))}
       </ul>
-      <a href="logo">
-        <Logo color="white" />
-      </a>
+      <Logo color="white" isTopPageLink={true} />
     </footer>
   );
 };
