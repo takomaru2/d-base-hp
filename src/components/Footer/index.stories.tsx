@@ -13,4 +13,4 @@ export default meta;
 
 type Story = StoryObj<typeof Component>;
 
-export const ShowMenu: Story = {};
+export const Default: Story = {};
