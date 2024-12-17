@@ -12,12 +12,12 @@ import worksImage04 from '../../../../../public/assets/top/works/worksImage04.jp
  * @param basicHeight: number
  * @param heroHeight: number
  * @param gap: number
- * @param offset: number
+ * @param DISTANCE_TO_HERO: number
  * @param slideList: array
  * 画面幅に応じたStyleを返す。
  */
 describe('getDynamicSliderStyle', () => {
-  test('スライドが4枚で左から2番目が大きい画像(offset=1)のとき、正しいスタイルが返る', () => {
+  test('スライドが4枚で左から2番目が大きい画像(DISTANCE_TO_HERO=1)のとき、正しいスタイルが返る', () => {
     expect(
       generateSlideStyle(
         true,
@@ -41,7 +41,7 @@ describe('getDynamicSliderStyle', () => {
       },
     });
   });
-  test('offsetが3の時でも適切なstyleが返る', () => {
+  test('DISTANCE_TO_HEROが3の時でも適切なstyleが返る', () => {
     expect(
       generateSlideStyle(
         true,

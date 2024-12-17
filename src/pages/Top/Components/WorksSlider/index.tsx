@@ -9,12 +9,12 @@ import Image from 'next/image';
 import { WorksHeroImageDescription } from '../WorksHeroImageDescription';
 import { isHeroImage } from '@/pages/top/logics/isHeroImage';
 import { getLeftIndex } from '@/pages/top/logics/getLeftIndex';
+import { DISTANCE_TO_HERO } from '@/pages/top/components/WorksSlider/const/distanceToHero';
 
 export const WorksSlider: FC = () => {
   const [activeIndex, setActiveIndex] = useActiveIndex();
   const { basicWidth, heroWidth, basicHeight, heroHeight, gap } =
     useWorksSliderBreakPoints();
-  const offset = 1;
 
   useAnimationFrameInterval(() => {
     setActiveIndex((prevIndex) => (prevIndex + 1) % worksSlideList.length);
@@ -25,7 +25,7 @@ export const WorksSlider: FC = () => {
       {worksSlideList.map((slideItem, imageIndex) => {
         const isHero = isHeroImage(
           activeIndex,
-          offset,
+          DISTANCE_TO_HERO,
           worksSlideList,
           imageIndex,
         );
@@ -34,7 +34,7 @@ export const WorksSlider: FC = () => {
           isHero,
           leftIndex,
           { basicWidth, heroWidth, basicHeight, heroHeight, gap },
-          offset,
+          DISTANCE_TO_HERO,
           worksSlideList,
         );
         return (

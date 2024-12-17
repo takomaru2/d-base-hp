@@ -3,7 +3,7 @@ import { BaseSlideList } from '@/pages/top/logics/getDynamicSliderStyle';
 // heroスライドの判定
 export const isHeroImage = (
   activeIndex: number,
-  offset: number,
+  DISTANCE_TO_HERO: number,
   slideList: BaseSlideList[],
   imageIndex: number,
 ) => {
@@ -14,5 +14,5 @@ export const isHeroImage = (
       'activeIndexがスライド枚数より多くなっちょるか、マイナスの値になっちょるで',
     );
   }
-  return (activeIndex + offset) % slideList.length === imageIndex;
+  return (activeIndex + DISTANCE_TO_HERO) % slideList.length === imageIndex;
 };

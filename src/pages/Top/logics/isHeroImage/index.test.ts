@@ -91,8 +91,8 @@ const testSlideList2 = [
 
 /**
  * どのimageIndexがhero画像か判定するロジック。
- * heroImageはoffset(worksだと左から2番目なので、1としている)分、足されたimageIndexとしている。
- * slideListの枚数が増えても、offsetに対応するimageIndexをheroImageとする
+ * heroImageはDISTANCE_TO_HERO(worksだと左から2番目なので、1としている)分、足されたimageIndexとしている。
+ * slideListの枚数が増えても、DISTANCE_TO_HEROに対応するimageIndexをheroImageとする
  */
 describe('isHeroImage', () => {
   test.each([
@@ -114,10 +114,10 @@ describe('isHeroImage', () => {
     [3, 1, testSlideList, 3, false],
   ])(
     'activeIndexが0~3の時、imageListがhero画像かどうか判断する',
-    (activeIndex, offset, slideList, imageIndex, expected) => {
-      expect(isHeroImage(activeIndex, offset, slideList, imageIndex)).toBe(
-        expected,
-      );
+    (activeIndex, DISTANCE_TO_HERO, slideList, imageIndex, expected) => {
+      expect(
+        isHeroImage(activeIndex, DISTANCE_TO_HERO, slideList, imageIndex),
+      ).toBe(expected);
     },
   );
   test.each([
@@ -143,10 +143,10 @@ describe('isHeroImage', () => {
     [5, 1, testSlideList2, 5, false],
   ])(
     'imageListが増えても、activeIndexが0,3,5の時、imageListがhero画像かどうか判断する',
-    (activeIndex, offset, slideList, imageIndex, expected) => {
-      expect(isHeroImage(activeIndex, offset, slideList, imageIndex)).toBe(
-        expected,
-      );
+    (activeIndex, DISTANCE_TO_HERO, slideList, imageIndex, expected) => {
+      expect(
+        isHeroImage(activeIndex, DISTANCE_TO_HERO, slideList, imageIndex),
+      ).toBe(expected);
     },
   );
 });

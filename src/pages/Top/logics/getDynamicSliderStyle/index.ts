@@ -27,13 +27,13 @@ export const generateSlideStyle = (
     heroHeight,
     gap,
   }: UseWorksSliderBreakPoints,
-  offset: number,
+  DISTANCE_TO_HERO: number,
   slideList: BaseSlideList[],
 ): DynamicSliderStyleResult => {
-  if (0 <= offset && offset > 3) {
-    throw new Error('offsetがスライド枚数こえちょる');
+  if (0 <= DISTANCE_TO_HERO && DISTANCE_TO_HERO > 3) {
+    throw new Error('DISTANCE_TO_HEROがスライド枚数こえちょる');
   }
-  const isHeroOrLeft = leftIndex <= offset;
+  const isHeroOrLeft = leftIndex <= DISTANCE_TO_HERO;
 
   let left: number;
   let width = basicWidth;
