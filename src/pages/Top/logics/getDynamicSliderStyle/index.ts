@@ -12,7 +12,6 @@ type DynamicSliderStyleResult = {
 };
 
 // todo: reviewスライド作成時に関数統合
-// todo: isHero,leftIndexの切り出し、テスト
 // todo: activeIndex,imageIndexのエラーハンドリング
 // todo: この関数のテスト
 export const generateSlideStyle = (

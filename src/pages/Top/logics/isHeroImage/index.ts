@@ -7,5 +7,12 @@ export const isHeroImage = (
   slideList: BaseSlideList[],
   imageIndex: number,
 ) => {
+  const minusActiveIndex = 0 > activeIndex;
+  const slideOverActiveIndex = activeIndex >= slideList.length;
+  if (slideOverActiveIndex && minusActiveIndex) {
+    throw new Error(
+      'activeIndexがスライド枚数より多くなっちょるか、マイナスの値になっちょるで',
+    );
+  }
   return (activeIndex + offset) % slideList.length === imageIndex;
 };
