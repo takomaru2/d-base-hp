@@ -12,7 +12,6 @@ type DynamicSliderStyleResult = {
 };
 
 // todo: reviewスライド作成時に関数統合
-// todo: activeIndex,imageIndexのエラーハンドリング
 // todo: この関数のテスト
 export const generateSlideStyle = (
   isHero: boolean,
@@ -61,6 +60,5 @@ export const generateSlideStyle = (
     left: `${left}px`,
     zIndex: isFrontier ? frontier : heroZIndex,
   };
-
   return { style };
 };
