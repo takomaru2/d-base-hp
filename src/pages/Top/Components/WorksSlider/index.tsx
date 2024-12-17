@@ -22,45 +22,39 @@ export const WorksSlider: FC = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.imageWrapper}>
-        {worksSlideList.map((slideItem, imageIndex) => {
-          const isHero = isHeroImage(
-            activeIndex,
-            offset,
-            worksSlideList,
-            imageIndex,
-          );
-          const leftIndex = getLeftIndex(
-            imageIndex,
-            activeIndex,
-            worksSlideList,
-          );
-          const { style } = generateSlideStyle(
-            isHero,
-            leftIndex,
-            { basicWidth, heroWidth, basicHeight, heroHeight, gap },
-            offset,
-            worksSlideList,
-          );
-          return (
-            <div key={slideItem.id}>
-              <Image
-                src={slideItem.image}
-                alt={slideItem.alt}
-                style={style}
-                className={styles.image}
+      {worksSlideList.map((slideItem, imageIndex) => {
+        const isHero = isHeroImage(
+          activeIndex,
+          offset,
+          worksSlideList,
+          imageIndex,
+        );
+        const leftIndex = getLeftIndex(imageIndex, activeIndex, worksSlideList);
+        const { style } = generateSlideStyle(
+          isHero,
+          leftIndex,
+          { basicWidth, heroWidth, basicHeight, heroHeight, gap },
+          offset,
+          worksSlideList,
+        );
+        return (
+          <div key={slideItem.id}>
+            <Image
+              src={slideItem.image}
+              alt={slideItem.alt}
+              style={style}
+              className={styles.image}
+            />
+            {isHero ? (
+              <WorksHeroImageDescription
+                model={slideItem.model}
+                craft={slideItem.craft}
+                pricing={slideItem.pricing}
               />
-              {isHero ? (
-                <WorksHeroImageDescription
-                  model={slideItem.model}
-                  craft={slideItem.craft}
-                  pricing={slideItem.pricing}
-                />
-              ) : undefined}
-            </div>
-          );
-        })}
-      </div>
+            ) : undefined}
+          </div>
+        );
+      })}
     </div>
   );
 };
