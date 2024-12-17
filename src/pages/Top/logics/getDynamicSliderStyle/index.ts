@@ -1,6 +1,6 @@
 import React from 'react';
 import { StaticImageData } from 'next/image';
-import { UseWorksSliderBreakPoints } from '@/pages/top/hooks/useWorksSliderBreakPoints';
+import { UseWorksSliderBreakPoints } from '@/pages/top/hooks/useWorksSliderBreakPointsStyle';
 
 export type BaseSlideList = {
   id: string;

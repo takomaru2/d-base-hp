@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { useActiveIndex } from '@/hooks/useActiveIndex';
-import { useWorksSliderBreakPoints } from '@/pages/top/hooks/useWorksSliderBreakPoints';
+import { useWorksSliderBreakPointsStyle } from '@/pages/top/hooks/useWorksSliderBreakPointsStyle';
 import { useAnimationFrameInterval } from '@/hooks/useAnimationFrameInterval';
 import { worksSlideList } from '@/pages/top/components/WorksSlider/const/worksSlideList';
 import styles from '@/pages/top/components/WorksSlider/index.module.scss';
@@ -14,7 +14,7 @@ import { DISTANCE_TO_HERO } from '@/pages/top/components/WorksSlider/const/dista
 export const WorksSlider: FC = () => {
   const [activeIndex, setActiveIndex] = useActiveIndex();
   const { basicWidth, heroWidth, basicHeight, heroHeight, gap } =
-    useWorksSliderBreakPoints();
+    useWorksSliderBreakPointsStyle();
 
   useAnimationFrameInterval(() => {
     const infinityIncrement = (prevIndex: number) =>

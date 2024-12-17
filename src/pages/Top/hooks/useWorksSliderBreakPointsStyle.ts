@@ -34,7 +34,7 @@ const sp = {
   gap: 10,
 };
 
-export const useWorksSliderBreakPoints = (): UseWorksSliderBreakPoints => {
+export const useWorksSliderBreakPointsStyle = (): UseWorksSliderBreakPoints => {
   const windowWidth = useWindowWidth();
 
   const pcBreakPoint = windowWidth > PC;
