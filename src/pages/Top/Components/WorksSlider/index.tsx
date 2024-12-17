@@ -48,7 +48,6 @@ export const WorksSlider: FC = () => {
                 src={slideItem.image}
                 alt={slideItem.alt}
                 style={style}
-                // クラスを動的に変更
                 className={styles.image}
               />
               {isHero ? (
