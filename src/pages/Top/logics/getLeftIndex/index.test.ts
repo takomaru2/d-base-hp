@@ -4,14 +4,6 @@ import {
   tooManySlideList,
 } from '@/pages/top/logics/getLeftIndex/fixtures';
 
-/**
- * 仕様は以下の通り
- * activeIndexは4秒おきに更新され、slideList.lengthと同じになると0に戻る。
- * 初期値は、imageIndex-0,activeIndex-0,leftIndex-0となる。
- * つまり、imageIndex-0の画像がleftIndex0となり、一番左に配置される。
- * 4秒後にactiveIndexが更新して、次に該当するimageIndexにleftIndexが付与されて、一番左に配置される。
- * これが4秒おきに繰り返される。slideListの枚数が増えても同様に対応される。
- */
 describe('getLeftIndex', () => {
   test.each([
     [0, 0, testSlideList, 0],

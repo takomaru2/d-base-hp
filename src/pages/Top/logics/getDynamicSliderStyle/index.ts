@@ -15,7 +15,20 @@ type SlideStyle = Pick<
 type DynamicSliderStyleResult = {
   style: SlideStyle;
 };
-
+/**
+ * 受け取った引数に対応するスタイルを返す関数
+ *
+ * @param {boolean} isHero - ヒーロースライドかどうかの判定
+ * @param {number} leftIndex - スライドの左端インデックス
+ * @param {number} basicWidth - 基本スライドの幅
+ * @param {number} heroWidth - ヒーロースライドの幅
+ * @param {number} basicHeight - 基本スライドの高さ
+ * @param {number} heroHeight - ヒーロースライドの高さ
+ * @param {number} gap - スライド間の隙間
+ * @param {number} DISTANCE_TO_HERO - ヒーロースライドまでの距離
+ * @param {Array<Object>} slideList - スライドリスト（オブジェクトの配列）
+ * @returns {{width: string, height: string, left: string, zIndex: string}} style オブジェクト
+ */
 // todo: reviewスライド作成時に関数統合
 export const generateSlideStyle = (
   isHero: boolean,

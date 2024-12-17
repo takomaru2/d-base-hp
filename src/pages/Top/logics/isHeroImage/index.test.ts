@@ -4,11 +4,6 @@ import {
   tooManySlideList,
 } from '@/pages/top/logics/isHeroImage/fixtures';
 
-/**
- * どのimageIndexがhero画像か判定するロジック。
- * heroImageはDISTANCE_TO_HERO(worksだと左から2番目なので、1としている)分、足されたimageIndexとしている。
- * slideListの枚数が増えても、DISTANCE_TO_HEROに対応するimageIndexをheroImageとする
- */
 describe('isHeroImage', () => {
   test.each([
     [0, 1, testSlideList, 0, false],

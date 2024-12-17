@@ -1,18 +1,6 @@
 import { generateSlideStyle } from '.';
 import { testSlideList } from '@/pages/top/logics/getDynamicSliderStyle/fixtures';
 
-/**
- * @param isHero: boolean
- * @param leftIndex: number
- * @param basicWidth: number
- * @param heroWidth: number
- * @param basicHeight: number
- * @param heroHeight: number
- * @param gap: number
- * @param DISTANCE_TO_HERO: number
- * @param slideList: array
- * 画面幅に応じたStyleを返す。
- */
 describe('getDynamicSliderStyle', () => {
   test('スライドが4枚で左から2番目が大きい画像(DISTANCE_TO_HERO=1)のとき、正しいスタイルが返る', () => {
     expect(
