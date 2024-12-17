@@ -7,12 +7,16 @@ export type BaseSlideList = {
   image: StaticImageData;
 };
 
+type SlideStyle = Pick<
+  React.CSSProperties,
+  'width' | 'height' | 'left' | 'zIndex'
+>;
+
 type DynamicSliderStyleResult = {
-  style: React.CSSProperties;
+  style: SlideStyle;
 };
 
 // todo: reviewスライド作成時に関数統合
-// todo: この関数のテスト
 export const generateSlideStyle = (
   isHero: boolean,
   leftIndex: number,
@@ -21,10 +25,10 @@ export const generateSlideStyle = (
     heroWidth,
     basicHeight,
     heroHeight,
-    gap,
+    gap
   }: UseWorksSliderBreakPoints,
   offset: number,
-  slideList: BaseSlideList[],
+  slideList: BaseSlideList[]
 ): DynamicSliderStyleResult => {
   if (0 <= offset && offset > 3) {
     throw new Error('offsetがスライド枚数こえちょる');
@@ -54,11 +58,11 @@ export const generateSlideStyle = (
   // 代入されたleft,width,heightとz-indexをreturn
   const heroZIndex = 10;
   const frontier = 0;
-  const style: React.CSSProperties = {
+  const style: SlideStyle = {
     width: `${width}px`,
     height: `${height}px`,
     left: `${left}px`,
-    zIndex: isFrontier ? frontier : heroZIndex,
+    zIndex: isFrontier ? frontier : heroZIndex
   };
   return { style };
 };
