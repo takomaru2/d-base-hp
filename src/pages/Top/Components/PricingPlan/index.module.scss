@@ -30,7 +30,7 @@
   font-size: linear-clamp(30, 40);
   font-weight: bold;
 
-  @include letterSpacing30(30px);
+  @include letterSpacing5(30px);
 }
 
 @include pcStyle {
