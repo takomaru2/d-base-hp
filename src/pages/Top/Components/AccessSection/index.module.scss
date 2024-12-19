@@ -25,12 +25,12 @@
 .text {
   font-size: linear-clamp(12, 22);
   text-align: left;
-  letter-spacing: calc(12 * $letterSpacingKana);
+  letter-spacing: calc(12px * $letterSpacingKana);
 }
 
 @include pcStyle {
   .flexWrap {
-    flex-direction: row;
+    flex-direction: row-reverse;
     justify-content: space-between;
     max-width: linear-clamp(590, 1400);
     margin-inline: auto;
