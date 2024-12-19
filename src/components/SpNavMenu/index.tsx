@@ -13,7 +13,7 @@ export const SpNavMenu: FC<SpNavMenuProps> = ({ close }) => {
   return (
     <div className={styles.container}>
       <div className={styles.top}>
-        <Logo color="white" />
+        <Logo color="white" isTopPageLink={true} />
         <button className={styles.navClose} onClick={close}>
           <Close width={20} height={20} />
         </button>
