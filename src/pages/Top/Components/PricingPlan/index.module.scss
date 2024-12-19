@@ -1,0 +1,44 @@
+@import '@/styles/variables';
+@import '@/styles/mixin';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  row-gap: linear-clamp(12, 20);
+  align-items: center;
+  font-family: $mainFontJP;
+  color: $colorBlack;
+}
+
+.title {
+  font-size: linear-clamp(14, 30);
+  font-weight: bold;
+
+  @include letterSpacing15(14px);
+}
+
+.description {
+  width: linear-clamp(230, 625);
+  font-size: linear-clamp(12, 22);
+  font-weight: normal;
+  text-align: center;
+
+  @include letterSpacing8(12px);
+}
+
+.minPrice {
+  font-size: linear-clamp(30, 40);
+  font-weight: bold;
+
+  @include letterSpacing30(30px);
+}
+
+@include pcStyle {
+  .container {
+    align-items: flex-start;
+  }
+
+  .description {
+    text-align: left;
+  }
+}
