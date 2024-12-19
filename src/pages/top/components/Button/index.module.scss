@@ -2,17 +2,17 @@
 @import '@/styles/mixin';
 
 .button {
+  display: inline-block;
   padding: linear-clamp(10, 33) linear-clamp(25, 88);
   font-family: $mainFontJP;
   font-size: linear-clamp(14, 30);
   font-weight: bold;
   color: $colorWhite;
-
-  @include letterSpacing8(14px);
-
   background-color: $buttonColor;
   border-radius: 2px;
   transition: all 0.3s ease;
+
+  @include letterSpacing8(14px);
 
   &:hover {
     color: $buttonColor;

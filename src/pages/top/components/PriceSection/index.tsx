@@ -30,7 +30,12 @@ export const PriceSection = () => {
           minPrice={'127,000'}
         />
         <div className={styles.button}>
-          <Button label={'詳しい価格表を見る'} />
+          <Button
+            label={'詳しい価格表を見る'}
+            link={
+              'https://www.dmm.co.jp/digital/videoa/-/detail/=/cid=h_1472bukgb00003/'
+            }
+          />
         </div>
       </div>
     </div>
