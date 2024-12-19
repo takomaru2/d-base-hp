@@ -10,13 +10,13 @@ type LogoProps = {
 export const Logo: FC<LogoProps> = ({ color = 'white', isTopPageLink }) => {
   const colorStyle = color === 'white' ? styles.colorWhite : styles.colorBlack;
 
-  const Heading = <h1 className={`${styles.heading} ${colorStyle}`}>D-base</h1>;
+  const heading = <h1 className={`${styles.heading} ${colorStyle}`}>D-base</h1>;
 
   return isTopPageLink ? (
     <Link href={'/'} className={styles.logoLink}>
-      {Heading}
+      {heading}
     </Link>
   ) : (
-    Heading
+    heading
   );
 };
