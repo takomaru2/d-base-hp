@@ -43,7 +43,7 @@
   background-color: $colorWhite;
   border-radius: 1px;
 
-  @include letterSpacing8(20);
+  @include letterSpacing10(20px);
 }
 
 @include pcStyle {

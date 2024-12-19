@@ -27,3 +27,11 @@
 @mixin letterSpacing30($fontSize) {
   @include letterSpacing($fontSize, 0.3);
 }
+
+@mixin letterSpacing58($fontSize) {
+  @include letterSpacing($fontSize, 0.58);
+}
+
+@mixin letterSpacing11($fontSize) {
+  @include letterSpacing($fontSize, 0.11);
+}
