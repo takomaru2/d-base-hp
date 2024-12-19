@@ -50,7 +50,7 @@
   padding: linear-clamp(35, 90);
   margin-inline: auto;
   margin-top: linear-clamp(30, 100);
-  background-color: white;
+  background-color: $colorWhite;
   border-radius: 4px;
 
   @include pcStyle {
