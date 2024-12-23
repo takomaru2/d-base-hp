@@ -1,0 +1,23 @@
+@import '@/styles/mixin';
+@import '@/styles/variables';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  align-items: center;
+}
+
+.question,
+.answer {
+  display: flex;
+  column-gap: 20px;
+  width: linear-clamp(350, 936);
+  padding: linear-clamp(15, 30) linear-clamp(30, 50);
+  color: $colorBlack;
+  background-color: $colorWhite;
+}
+
+.answer {
+  margin-top: 5px;
+}
