@@ -1,0 +1,66 @@
+@import '@/styles/variables';
+@import '@/styles/mixin';
+
+.container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    content: '';
+    background-color: $colorBlack;
+    opacity: 0.55;
+  }
+
+  @include pcStyle {
+    padding-left: linear-clamp(70, 140);
+  }
+}
+
+.sectionTitle {
+  padding-top: linear-clamp(50, 150);
+}
+
+.sectionTitle,
+.planWrapper {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+
+  @include pcStyle {
+    text-align: left;
+  }
+}
+
+.planWrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: linear-clamp(35, 50);
+  max-width: linear-clamp(300, 880);
+  padding: linear-clamp(35, 90);
+  margin-inline: auto;
+  margin-top: linear-clamp(30, 100);
+  background-color: $colorWhite;
+  border-radius: 4px;
+
+  @include pcStyle {
+    margin-inline: 0;
+  }
+}
+
+.button {
+  margin-top: linear-clamp(10, 60);
+
+  @include pcStyle {
+    text-align: left;
+  }
+}
