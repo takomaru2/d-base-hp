@@ -25,7 +25,7 @@
     "unicorn/filename-case": [
       "error",
       {
-        "case": "camelCase"
+        "case": "off"
       }
     ],
     "unicorn/prevent-abbreviations": "off"
