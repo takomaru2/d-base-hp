@@ -1,31 +1,26 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styles from './index.module.scss';
-import { FAQList } from '@/pages/top/components/FAQItem/const/FAQList';
-import { useFAQ } from '@/pages/top/hooks/useFAQ';
 
-export const FAQItem = () => {
-  const { isAnswerVisible, getActiveIndex } = useFAQ();
+type FAQItemProps = {
+  item: { id: string; question: string; answer: string };
+  onClick: () => void;
+  isOpen: boolean;
+};
 
+export const FAQItem: FC<FAQItemProps> = ({ item, onClick, isOpen }) => {
   return (
-    <ul className={styles.container}>
-      {FAQList.map((item, index) => (
-        <li className={styles.block} key={item.id}>
-          <button
-            className={styles.question}
-            onClick={() => getActiveIndex(index)}
-          >
-            <div className={styles.questionIcon}>Q</div>
-            <p>{item.question}</p>
-            <div>{isAnswerVisible(index) ? '-' : '+'}</div>
-          </button>
-          {isAnswerVisible(index) && (
-            <div className={styles.answer}>
-              <div className={styles.answerIcon}>A</div>
-              <p>{item.answer}</p>
-            </div>
-          )}
-        </li>
-      ))}
-    </ul>
+    <li className={styles.block}>
+      <button className={styles.question} onClick={onClick}>
+        <div className={styles.questionIcon}>Q</div>
+        <p>{item.question}</p>
+        <div>{isOpen ? '-' : '+'}</div>
+      </button>
+      {isOpen && (
+        <div className={styles.answer}>
+          <div className={styles.answerIcon}>A</div>
+          <p>{item.answer}</p>
+        </div>
+      )}
+    </li>
   );
 };

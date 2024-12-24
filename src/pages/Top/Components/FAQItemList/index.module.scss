@@ -1,6 +1,13 @@
 @import '@/styles/mixin';
 @import '@/styles/variables';
 
+.container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  align-items: center;
+}
+
 .question,
 .answer {
   display: flex;
