@@ -13,11 +13,16 @@ const hoge = [
 ];
 
 export const FAQItem = () => {
-  const [isShowIndex, setIsShowIndex] = useState<number | undefined>();
+  const [showAnswerIndex, setShowAnswerIndex] = useState<number[]>([]);
 
-  const getShowIndex = (index: number) => {
-    const isShowAnswerIndex = isShowIndex === index;
-    setIsShowIndex(isShowAnswerIndex ? undefined : index);
+  const isAnswerVisible = (index: number) => showAnswerIndex.includes(index);
+
+  const getActiveIndex = (index: number) => {
+    if (isAnswerVisible(index)) {
+      setShowAnswerIndex(showAnswerIndex.filter((num) => num !== index));
+    } else {
+      setShowAnswerIndex([...showAnswerIndex, index]);
+    }
   };
 
   return (
@@ -26,13 +31,13 @@ export const FAQItem = () => {
         <li className={styles.block} key={item.id}>
           <button
             className={styles.question}
-            onClick={() => getShowIndex(index)}
+            onClick={() => getActiveIndex(index)}
           >
             <div className={styles.questionIcon}>Q</div>
             <p>{item.question}</p>
-            <div>{isShowIndex === index ? '-' : '+'}</div>
+            <div>{isAnswerVisible(index) ? '-' : '+'}</div>
           </button>
-          {isShowIndex === index && (
+          {isAnswerVisible(index) && (
             <div className={styles.answer}>
               <div className={styles.answerIcon}>A</div>
               <p>{item.answer}</p>
