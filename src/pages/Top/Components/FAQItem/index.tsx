@@ -1,33 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './index.module.scss';
-
-const hoge = [
-  {
-    id: '1',
-    question: 'コーティングの期間は？',
-    answer:
-      '1週間から1週間くらいとなりますが、時期や車種、車の状態によっても変わることがありますので、詳しい期間についてはお問い合わせください',
-  },
-  { id: '2', question: 'コーティングの期間は？', answer: '1週間くらい' },
-  { id: '3', question: 'コーティングの期間は？', answer: '1週間くらい' },
-];
+import { FAQList } from '@/pages/top/components/FAQItem/const/FAQList';
+import { useFAQ } from '@/pages/top/hooks/useFAQ';
 
 export const FAQItem = () => {
-  const [showAnswerIndex, setShowAnswerIndex] = useState<number[]>([]);
-
-  const isAnswerVisible = (index: number) => showAnswerIndex.includes(index);
-
-  const getActiveIndex = (index: number) => {
-    if (isAnswerVisible(index)) {
-      setShowAnswerIndex(showAnswerIndex.filter((num) => num !== index));
-    } else {
-      setShowAnswerIndex([...showAnswerIndex, index]);
-    }
-  };
+  const { isAnswerVisible, getActiveIndex } = useFAQ();
 
   return (
     <ul className={styles.container}>
-      {hoge.map((item, index) => (
+      {FAQList.map((item, index) => (
         <li className={styles.block} key={item.id}>
           <button
             className={styles.question}

@@ -17,6 +17,7 @@
   font-family: $mainFontJP;
   font-size: linear-clamp(14, 30);
   color: $colorBlack;
+  text-align: left;
   background-color: $colorWhite;
 
   @include letterSpacing10(linear-clamp(14, 30));
