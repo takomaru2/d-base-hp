@@ -6,11 +6,13 @@ export const useFAQ = () => {
   const isAnswerVisible = (index: number) => showAnswerIndex.includes(index);
 
   const getActiveIndex = (index: number) => {
-    if (isAnswerVisible(index)) {
-      setShowAnswerIndex(showAnswerIndex.filter((num) => num !== index));
-    } else {
-      setShowAnswerIndex([...showAnswerIndex, index]);
-    }
+    return () => {
+      if (isAnswerVisible(index)) {
+        setShowAnswerIndex(showAnswerIndex.filter((num) => num !== index));
+      } else {
+        setShowAnswerIndex([...showAnswerIndex, index]);
+      }
+    };
   };
 
   return { isAnswerVisible, getActiveIndex };

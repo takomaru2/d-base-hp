@@ -5,7 +5,7 @@ import { useFAQ } from '@/pages/top/hooks/useFAQ';
 import { FAQItem } from '@/pages/top/components/FAQItem';
 
 export const FAQItemList: FC = () => {
-  const { isAnswerVisible, getActiveIndex } = useFAQ();
+  const { isAnswerVisible: isOpen, getActiveIndex: onClick } = useFAQ();
 
   return (
     <ul className={styles.container}>
@@ -13,8 +13,8 @@ export const FAQItemList: FC = () => {
         <FAQItem
           key={item.id}
           item={item}
-          onClick={() => getActiveIndex(index)}
-          isOpen={isAnswerVisible(index)}
+          onClick={onClick(index)}
+          isOpen={isOpen(index)}
         />
       ))}
     </ul>
