@@ -7,8 +7,9 @@ import {
   PRICING_PLAN_LINK,
   pricingPlanList,
 } from '@/pages/top/const/pricingSectionData';
+import { FC } from 'react';
 
-export const PriceSection = () => {
+export const PriceSection: FC = () => {
   return (
     <div
       className={styles.container}
