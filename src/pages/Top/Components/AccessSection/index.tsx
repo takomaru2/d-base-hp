@@ -1,7 +1,8 @@
 import { SectionTitle } from '@/components/SectionTitle';
 import styles from './index.module.scss';
+import { FC } from 'react';
 
-export const AccessSection = () => {
+export const AccessSection: FC = () => {
   return (
     <div className={styles.container}>
       <SectionTitle jpTitle={'アクセス'} enTitle={'Access'} color={'white'} />
