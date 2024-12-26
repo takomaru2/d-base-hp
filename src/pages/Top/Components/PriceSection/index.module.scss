@@ -4,7 +4,7 @@
 .container {
   position: relative;
   width: 100%;
-  padding-bottom: linear-clamp(57, 200);
+  padding: linear-clamp(50, 150) 0;
   overflow: hidden;
   background-repeat: no-repeat;
   background-position: center;
@@ -25,10 +25,6 @@
   @include pcStyle {
     padding-left: linear-clamp(70, 140);
   }
-}
-
-.sectionTitle {
-  padding-top: linear-clamp(50, 150);
 }
 
 .sectionTitle,
