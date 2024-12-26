@@ -1,0 +1,39 @@
+@import '@/styles/variables';
+@import '@/styles/mixin';
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  color: $colorPureWhite;
+  text-align: center;
+}
+
+.containerWithBg {
+  position: absolute;
+  z-index: -1; /* 背景に配置 */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.wrapper {
+  padding: 30px 60px 60px 20px;
+}
+
+.polymerCoat {
+  font-size: 10px;
+}
+
+.minPrice {
+  font-size: 24px;
+}
+
+.promotionText {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-size: 10px;
+}
