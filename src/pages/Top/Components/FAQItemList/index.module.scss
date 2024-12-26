@@ -7,35 +7,3 @@
   row-gap: linear-clamp(10, 15);
   align-items: center;
 }
-
-.question,
-.answer {
-  display: flex;
-  column-gap: linear-clamp(10, 25);
-  width: linear-clamp(350, 936);
-  padding: linear-clamp(15, 30) linear-clamp(30, 50);
-  font-family: $mainFontJP;
-  font-size: linear-clamp(14, 30);
-  color: $colorBlack;
-  text-align: left;
-  background-color: $colorWhite;
-
-  @include letterSpacing10(linear-clamp(14, 30));
-}
-
-.question {
-  justify-content: space-between;
-}
-
-.answer {
-  justify-content: center;
-  margin-top: 5px;
-}
-
-.questionIcon {
-  color: $questionColor;
-}
-
-.answerIcon {
-  color: $answerColor;
-}
