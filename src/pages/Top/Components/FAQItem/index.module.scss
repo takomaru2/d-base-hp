@@ -25,10 +25,20 @@
   margin-top: 5px;
 }
 
-.questionIcon {
+.icon {
+  width: linear-clamp(15, 40);
+  height: auto;
+}
+
+.questionMark,
+.answerMark {
+  font-family: $mainFontEN;
+}
+
+.questionMark {
   color: $questionColor;
 }
 
-.answerIcon {
+.answerMark {
   color: $answerColor;
 }
