@@ -11,6 +11,7 @@ const meta: Meta<typeof Component> = {
       answer:
         '1週間から1週間くらいとなりますが、時期や車種、車の状態によっても変わることがありますので、詳しい期間についてはお問い合わせください',
     },
+    isOpen: true,
   },
 };
 
