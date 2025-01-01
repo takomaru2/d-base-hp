@@ -3,9 +3,10 @@ import { useState } from 'react';
 export const useFAQ = () => {
   const [showAnswerIndex, setShowAnswerIndex] = useState<number[]>([]);
 
-  const isAnswerVisible = (index: number) => showAnswerIndex.includes(index);
+  const isAnswerVisible = (index: number): boolean =>
+    showAnswerIndex.includes(index);
 
-  const getActiveIndex = (index: number) => {
+  const getActiveIndex = (index: number): (() => void) => {
     return () => {
       if (isAnswerVisible(index)) {
         setShowAnswerIndex(showAnswerIndex.filter((num) => num !== index));
