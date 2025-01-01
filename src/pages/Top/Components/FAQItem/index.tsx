@@ -28,7 +28,7 @@ export const FAQItem: FC<FAQItemProps> = ({ item, onClick, isOpen }) => {
       >
         <div className={`${styles.questionMark} ${styles.faqMark}`}>Q</div>
         <p>{item.question}</p>
-        <div>{icon}</div>
+        <div className={styles.icon}>{icon}</div>
       </button>
       {isOpen && (
         <div className={`${styles.answer} ${styles.faqItem}`}>
