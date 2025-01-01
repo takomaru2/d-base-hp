@@ -23,6 +23,7 @@ export const FAQItem: FC<FAQItemProps> = ({ item, onClick, isOpen }) => {
   return (
     <li className={styles.block}>
       <button
+        type={'button'}
         className={`${styles.question} ${styles.faqItem}`}
         onClick={onClick}
       >
