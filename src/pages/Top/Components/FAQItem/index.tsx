@@ -10,16 +10,16 @@ type FAQItemProps = {
   isOpen: boolean;
 };
 
-const minusIcon = (
+const MINUS_ICON = (
   <Image src={minusImage} alt={'minus icon'} className={styles.icon} />
 );
 
-const plusIcon = (
+const PLUS_ICON = (
   <Image src={plusImage} alt={'plus icon'} className={styles.icon} />
 );
 
 export const FAQItem: FC<FAQItemProps> = ({ item, onClick, isOpen }) => {
-  const icon = isOpen ? minusIcon : plusIcon;
+  const icon = isOpen ? MINUS_ICON : PLUS_ICON;
   return (
     <li className={styles.block}>
       <button
