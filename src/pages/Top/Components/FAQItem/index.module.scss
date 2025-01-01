@@ -1,8 +1,7 @@
 @import '@/styles/mixin';
 @import '@/styles/variables';
 
-.question,
-.answer {
+.faqItem {
   display: flex;
   column-gap: linear-clamp(10, 25);
   width: linear-clamp(350, 936);
@@ -30,8 +29,7 @@
   height: auto;
 }
 
-.questionMark,
-.answerMark {
+.faqMark {
   font-family: $mainFontEN;
 }
 

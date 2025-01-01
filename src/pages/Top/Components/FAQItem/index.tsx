@@ -22,14 +22,17 @@ export const FAQItem: FC<FAQItemProps> = ({ item, onClick, isOpen }) => {
   const icon = isOpen ? minusIcon : plusIcon;
   return (
     <li className={styles.block}>
-      <button className={styles.question} onClick={onClick}>
-        <div className={styles.questionMark}>Q</div>
+      <button
+        className={`${styles.question} ${styles.faqItem}`}
+        onClick={onClick}
+      >
+        <div className={`${styles.questionMark} ${styles.faqMark}`}>Q</div>
         <p>{item.question}</p>
         <div>{icon}</div>
       </button>
       {isOpen && (
-        <div className={styles.answer}>
-          <div className={styles.answerMark}>A</div>
+        <div className={`${styles.answer} ${styles.faqItem}`}>
+          <div className={`${styles.answerMark} ${styles.faqMark}`}>A</div>
           <p>{item.answer}</p>
         </div>
       )}
