@@ -1,4 +1,10 @@
-export const FAQList = [
+type FAQListResult = {
+  id: string;
+  question: string;
+  answer: string;
+};
+
+export const FAQList: FAQListResult[] = [
   {
     id: '1',
     question: 'コーティングの期間は？',
