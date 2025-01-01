@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { FAQItemList as Component } from '.';
+import { FAQContainer as Component } from '.';
 
 const meta: Meta<typeof Component> = {
   component: Component,

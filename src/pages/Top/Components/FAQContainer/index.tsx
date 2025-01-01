@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 import styles from './index.module.scss';
-import { FAQList } from '@/pages/top/components/FAQItemList/const/FAQList';
+import { FAQList } from '@/pages/top/components/FAQContainer/const/FAQList';
 import { useFAQ } from '@/pages/top/hooks/useFAQ';
 import { FAQItem } from '@/pages/top/components/FAQItem';
 
-export const FAQItemList: FC = () => {
+export const FAQContainer: FC = () => {
   const { isAnswerVisible: isOpen, getActiveIndex: onClick } = useFAQ();
 
   return (
