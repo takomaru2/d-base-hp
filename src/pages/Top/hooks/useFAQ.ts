@@ -9,7 +9,6 @@ export const useFAQ = () => {
     showAnswerIndex.has(index);
 
   const getActiveIndex = (index: number): void => {
-    console.log(isAnswerVisible(index));
     const newSet = new Set(showAnswerIndex);
     if (isAnswerVisible(index)) {
       newSet.delete(index);
