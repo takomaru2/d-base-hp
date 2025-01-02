@@ -13,7 +13,7 @@ export const FAQContainer: FC = () => {
         <FAQItem
           key={item.id}
           item={item}
-          onClick={getActiveIndex(index)}
+          onClick={() => getActiveIndex(index)}
           isOpen={isAnswerVisible(index)}
         />
       ))}
