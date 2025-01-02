@@ -1,16 +1,22 @@
 import { useState } from 'react';
 
 export const useFAQ = () => {
-  const [showAnswerIndex, setShowAnswerIndex] = useState<number[]>([]);
+  const [showAnswerIndex, setShowAnswerIndex] = useState<Set<number>>(
+    new Set(),
+  );
 
   const isAnswerVisible = (index: number): boolean =>
-    showAnswerIndex.includes(index);
+    showAnswerIndex.has(index);
 
   const getActiveIndex = (index: number): void => {
+    console.log(isAnswerVisible(index));
+    const newSet = new Set(showAnswerIndex);
     if (isAnswerVisible(index)) {
-      setShowAnswerIndex(showAnswerIndex.filter((num) => num !== index));
+      newSet.delete(index);
+      setShowAnswerIndex(newSet);
     } else {
-      setShowAnswerIndex([...showAnswerIndex, index]);
+      newSet.add(index);
+      setShowAnswerIndex(newSet);
     }
   };
 
