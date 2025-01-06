@@ -12,10 +12,6 @@
   }
 }
 
-//@mixin rest($num) {
-//  left: linear-clamp(250, 815) + linear-clamp($num(85, 300));
-//}
-
 @mixin letterSpacing($fontSize, $letterSpacing) {
   letter-spacing: calc($fontSize * $letterSpacing);
 }

@@ -1,0 +1,43 @@
+@import '@/styles/variables';
+@import '@/styles/mixin';
+
+.container {
+  max-width: linear-clamp(590, 1400);
+  text-align: center;
+
+  @include pcStyle {
+    margin-inline: auto;
+    text-align: left;
+  }
+}
+
+.flexWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  margin-top: linear-clamp(50, 107);
+
+  @include pcStyle {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    max-width: linear-clamp(590, 1400);
+    margin-inline: auto;
+  }
+}
+
+.map {
+  width: linear-clamp(343, 752);
+  height: linear-clamp(207, 426);
+}
+
+.textWrapper {
+  width: linear-clamp(300, 545);
+}
+
+.text {
+  font-size: linear-clamp(12, 22);
+  text-align: left;
+
+  @include letterSpacing10(12px);
+}
