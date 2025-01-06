@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Button as Component } from '.';
+import { ButtonLink as Component } from './index';
 
 const meta: Meta<typeof Component> = {
   component: Component,
@@ -12,12 +12,14 @@ type Story = StoryObj<typeof Component>;
 
 export const MoreButton: Story = {
   args: {
-    label: '詳しく見る',
+    link: '/',
+    children: '詳しく見る',
   },
 };
 
 export const PriceButton: Story = {
   args: {
-    label: '詳しい価格表を見る',
+    link: '/',
+    children: '詳しい価格表を見る',
   },
 };
