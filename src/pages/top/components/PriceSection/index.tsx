@@ -17,10 +17,10 @@ export const PriceSection: FC = () => {
         backgroundImage: `url(${backgroundImage})`,
       }}
     >
-      <div className={styles.sectionTitle}>
+      <div className={`${styles.textAlign} ${styles.sectionTitle}`}>
         <SectionTitle jpTitle={'価格表'} enTitle={'Price'} color={'white'} />
       </div>
-      <div className={styles.planWrapper}>
+      <div className={`${styles.textAlign} ${styles.planWrapper}`}>
         {pricingPlans.map((item) => (
           <PricingPlan
             key={item.id}
