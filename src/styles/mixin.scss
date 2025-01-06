@@ -12,6 +12,38 @@
   }
 }
 
-@mixin rest($num) {
-  left: linear-clamp(250, 815) + linear-clamp($num(85, 300));
+//@mixin rest($num) {
+//  left: linear-clamp(250, 815) + linear-clamp($num(85, 300));
+//}
+
+@mixin letterSpacing($fontSize, $letterSpacing) {
+  letter-spacing: calc($fontSize * $letterSpacing);
+}
+
+@mixin letterSpacing5($fontSize) {
+  @include letterSpacing($fontSize, 0.05);
+}
+
+@mixin letterSpacing8($fontSize) {
+  @include letterSpacing($fontSize, 0.08);
+}
+
+@mixin letterSpacing10($fontSize) {
+  @include letterSpacing($fontSize, 0.1);
+}
+
+@mixin letterSpacing15($fontSize) {
+  @include letterSpacing($fontSize, 0.15);
+}
+
+@mixin letterSpacing30($fontSize) {
+  @include letterSpacing($fontSize, 0.3);
+}
+
+@mixin letterSpacing58($fontSize) {
+  @include letterSpacing($fontSize, 0.58);
+}
+
+@mixin letterSpacing11($fontSize) {
+  @include letterSpacing($fontSize, 0.11);
 }

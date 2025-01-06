@@ -16,7 +16,9 @@
   font-family: $mainFontJP;
   font-size: linear-clamp(24, 40);
   color: $verticalColor;
-  letter-spacing: calc(24px * $verticalSpacing);
+
+  @include letterSpacing58(24px);
+
   writing-mode: vertical-rl;
   text-orientation: upright;
 }
@@ -30,7 +32,9 @@
   padding-top: 70px;
   font-family: $mainFontJP;
   font-size: linear-clamp(14, 30);
-  letter-spacing: calc(14px * $verticalSpacing);
+
+  @include letterSpacing58(14px);
+
   writing-mode: vertical-rl;
   text-orientation: upright;
 }

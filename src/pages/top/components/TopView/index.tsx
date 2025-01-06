@@ -15,7 +15,7 @@ export const TopView: FC = () => {
           <br />
           あなたの愛車に
         </h2>
-        <Logo />
+        <Logo isTopPageLink={true} />
       </div>
       <TopViewAutoImageSlide topViewImageList={topViewImageList} />
     </div>

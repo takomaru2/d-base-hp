@@ -26,11 +26,12 @@
   position: absolute;
   top: linear-clamp(100, 170);
   font-family: $subFontEN;
-  font-size: linear-clamp(14, 60);
-  letter-spacing: calc(14px * $textLetterSpacingEN);
+  font-size: linear-clamp(20, 60);
   white-space: wrap;
   opacity: 1;
   transform: rotate(-90deg);
+
+  @include letterSpacing10(14px);
 }
 
 .priceWrapper {
@@ -38,10 +39,11 @@
   top: linear-clamp(100, 250);
   left: 264px;
   font-size: linear-clamp(14, 40);
-  letter-spacing: calc(14px * $letterSpacingKana);
   white-space: nowrap;
   opacity: 0;
   animation: fadeInUp 0.3s ease-in-out 0.3s forwards;
+
+  @include letterSpacing8(14px);
 }
 
 @include pcStyle {
