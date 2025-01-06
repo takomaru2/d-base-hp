@@ -1,6 +1,6 @@
 import { PricingPlan } from '@/pages/top/components/PricingPlan';
 import { SectionTitle } from '@/components/SectionTitle';
-import { Button } from '@/pages/top/components/Button';
+import { ButtonLink } from '../ButtonLink';
 import styles from './index.module.scss';
 import {
   backgroundImage,
@@ -30,7 +30,7 @@ export const PriceSection: FC = () => {
           />
         ))}
         <div className={styles.button}>
-          <Button label={'price'} link={PRICING_PLAN_LINK} />
+          <ButtonLink link={PRICING_PLAN_LINK}>詳しい価格表を見る</ButtonLink>
         </div>
       </div>
     </section>
