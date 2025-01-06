@@ -1,0 +1,71 @@
+@import '@/styles/variables';
+@import '@/styles/mixin';
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modelDetail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: $colorBlack;
+  opacity: 0;
+  animation: fadeInUp 0.3s ease-in-out forwards;
+}
+
+.model {
+  position: absolute;
+  top: linear-clamp(100, 170);
+  font-family: $subFontEN;
+  font-size: linear-clamp(20, 60);
+  white-space: wrap;
+  opacity: 1;
+  transform: rotate(-90deg);
+
+  @include letterSpacing10(14px);
+}
+
+.priceWrapper {
+  position: absolute;
+  top: linear-clamp(100, 250);
+  left: 264px;
+  font-size: linear-clamp(14, 40);
+  white-space: nowrap;
+  opacity: 0;
+  animation: fadeInUp 0.3s ease-in-out 0.3s forwards;
+
+  @include letterSpacing8(14px);
+}
+
+@include pcStyle {
+  .model {
+    left: linear-clamp(0, 50);
+    white-space: wrap;
+  }
+
+  .priceWrapper {
+    left: 490px;
+  }
+}
+
+@include full {
+  .model {
+    top: linear-clamp(150, 170);
+    left: 0;
+    font-size: linear-clamp(50, 60);
+    white-space: wrap;
+  }
+
+  .priceWrapper {
+    left: 850px;
+  }
+}

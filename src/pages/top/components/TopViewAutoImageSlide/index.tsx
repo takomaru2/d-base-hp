@@ -3,7 +3,8 @@ import styles from './index.module.scss';
 import { getImageStateIndex } from '@/pages/top/logics/getImageStateIndex';
 import Image from 'next/image';
 import { FC } from 'react';
-import { useAutoSlide } from '@/hooks/useAutoSlide';
+import { useAnimationFrameInterval } from '@/hooks/useAnimationFrameInterval';
+import { useActiveIndex } from '@/hooks/useActiveIndex';
 
 type TopViewAutoImageSlideProps = {
   topViewImageList: TopViewImage[];
@@ -12,7 +13,13 @@ type TopViewAutoImageSlideProps = {
 export const TopViewAutoImageSlide: FC<TopViewAutoImageSlideProps> = ({
   topViewImageList,
 }) => {
-  const activeIndex = useAutoSlide(topViewImageList.length);
+  const [activeIndex, setActiveIndex] = useActiveIndex();
+
+  const length = topViewImageList.length;
+  useAnimationFrameInterval(() => {
+    setActiveIndex((previousIndex) => (previousIndex + 1) % length);
+  }, 4000);
+
   return (
     <>
       {topViewImageList.map((item, index) => (
