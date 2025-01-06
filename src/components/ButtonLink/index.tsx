@@ -1,4 +1,4 @@
-import styles from '@/pages/top/components/ButtonLink/index.module.scss';
+import styles from '@/components/ButtonLink/index.module.scss';
 import Link from 'next/link';
 import { FC } from 'react';
 

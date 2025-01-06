@@ -1,6 +1,6 @@
 import { PricingPlan } from '@/pages/top/components/PricingPlan';
 import { SectionTitle } from '@/components/SectionTitle';
-import { ButtonLink } from '../ButtonLink';
+import { ButtonLink } from '../../../../components/ButtonLink';
 import styles from './index.module.scss';
 import {
   backgroundImage,
