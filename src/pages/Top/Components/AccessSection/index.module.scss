@@ -2,7 +2,13 @@
 @import '@/styles/mixin';
 
 .container {
+  max-width: linear-clamp(590, 1400);
   text-align: center;
+
+  @include pcStyle {
+    margin-inline: auto;
+    text-align: left;
+  }
 }
 
 .flexWrap {
@@ -32,5 +38,6 @@
 .text {
   font-size: linear-clamp(12, 22);
   text-align: left;
-  letter-spacing: calc(12px * $letterSpacingKana);
+
+  @include letterSpacing10(12px);
 }
