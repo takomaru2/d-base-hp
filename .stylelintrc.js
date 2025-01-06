@@ -8,5 +8,6 @@ module.exports = {
     'scss/dollar-variable-pattern': lowerCamel,
     'selector-class-pattern': lowerCamel,
     'scss/at-mixin-pattern': lowerCamel,
+    'keyframes-name-pattern': lowerCamel,
   },
 };
