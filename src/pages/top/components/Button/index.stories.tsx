@@ -12,14 +12,14 @@ type Story = StoryObj<typeof Component>;
 
 export const MoreButton: Story = {
   args: {
-    label: '詳しく見る',
+    label: 'normal',
     link: '/',
   },
 };
 
 export const PriceButton: Story = {
   args: {
-    label: '詳しい価格表を見る',
+    label: 'price',
     link: '/',
   },
 };

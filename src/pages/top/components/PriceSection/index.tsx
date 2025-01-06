@@ -30,7 +30,7 @@ export const PriceSection: FC = () => {
           />
         ))}
         <div className={styles.button}>
-          <Button label={'詳しい価格表を見る'} link={PRICING_PLAN_LINK} />
+          <Button label={'price'} link={PRICING_PLAN_LINK} />
         </div>
       </div>
     </section>

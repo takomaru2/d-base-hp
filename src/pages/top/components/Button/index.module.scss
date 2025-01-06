@@ -2,7 +2,7 @@
 @import '@/styles/mixin';
 
 .button {
-  display: inline-block;
+  display: block;
   padding: linear-clamp(10, 33) linear-clamp(25, 88);
   font-family: $mainFontJP;
   font-size: linear-clamp(14, 30);
@@ -19,4 +19,12 @@
     background-color: $colorWhite;
     border: $buttonColor 1px solid;
   }
+}
+
+.normal {
+  width: linear-clamp(127, 336);
+}
+
+.price {
+  width: linear-clamp(174, 458);
 }
