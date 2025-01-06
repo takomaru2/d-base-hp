@@ -4,7 +4,7 @@ import { FC } from 'react';
 
 export const AccessSection: FC = () => {
   return (
-    <div className={styles.container}>
+    <section className={styles.container}>
       <SectionTitle jpTitle={'アクセス'} enTitle={'Access'} color={'white'} />
       <div className={styles.flexWrap}>
         <iframe
@@ -22,6 +22,6 @@ export const AccessSection: FC = () => {
           </p>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
