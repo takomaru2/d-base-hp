@@ -14,7 +14,7 @@ export const PriceSection: FC = () => {
     <section
       className={styles.container}
       style={{
-        backgroundImage: backgroundImage,
+        backgroundImage: `url(${backgroundImage})`,
       }}
     >
       <div className={styles.sectionTitle}>

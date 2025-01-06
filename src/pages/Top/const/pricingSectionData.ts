@@ -25,4 +25,4 @@ export const pricingPlans: PricingPlan[] = [
 export const PRICING_PLAN_LINK =
   'https://www.dmm.co.jp/digital/videoa/-/detail/=/cid=h_1472bukgb00003/';
 
-export const backgroundImage = `url("/assets/top/price/priceSectionBackImage.jpg")`;
+export const backgroundImage = '/assets/top/price/priceSectionBackImage.jpg';
