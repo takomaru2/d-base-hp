@@ -1,4 +1,11 @@
-export const pricingPlanList = [
+type PricingPlan = {
+  id: string;
+  title: string;
+  description: string;
+  minPrice: string;
+};
+
+export const pricingPlans: PricingPlan[] = [
   {
     id: '1',
     title: '新車〜登録３ヶ月',

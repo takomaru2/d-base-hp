@@ -5,13 +5,13 @@ import styles from './index.module.scss';
 import {
   backgroundImage,
   PRICING_PLAN_LINK,
-  pricingPlanList,
+  pricingPlans,
 } from '@/pages/top/const/pricingSectionData';
 import { FC } from 'react';
 
 export const PriceSection: FC = () => {
   return (
-    <div
+    <section
       className={styles.container}
       style={{
         backgroundImage: backgroundImage,
@@ -21,7 +21,7 @@ export const PriceSection: FC = () => {
         <SectionTitle jpTitle={'価格表'} enTitle={'Price'} color={'white'} />
       </div>
       <div className={styles.planWrapper}>
-        {pricingPlanList.map((item) => (
+        {pricingPlans.map((item) => (
           <PricingPlan
             key={item.id}
             title={item.title}
@@ -33,6 +33,6 @@ export const PriceSection: FC = () => {
           <Button label={'詳しい価格表を見る'} link={PRICING_PLAN_LINK} />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
