@@ -1,0 +1,42 @@
+@import '@/styles/variables';
+@import '@/styles/mixin';
+
+.container {
+  max-width: 100%;
+  margin-inline: linear-clamp(20, 40);
+  overflow: hidden;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  margin-inline: auto;
+  background-color: $colorBlack;
+
+  @include pcStyle {
+    display: none;
+  }
+}
+
+.description {
+  flex: 1 0 20%;
+  padding-inline: linear-clamp(12, 18);
+  font-family: $mainFontEN;
+  font-size: linear-clamp(16, 30);
+  text-align: center;
+
+  @include letterSpacing5(16px);
+}
+
+.image {
+  height: 100%;
+  object-fit: cover;
+}
+
+.pcImage {
+  display: none;
+
+  @include pcStyle {
+    display: block;
+  }
+}
