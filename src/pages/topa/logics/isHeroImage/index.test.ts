@@ -2,7 +2,7 @@ import { isHeroImage } from '.';
 import {
   testSlideList,
   tooManySlideList,
-} from '@/pages/top/logics/isHeroImage/fixtures';
+} from '@/pages/topa/logics/isHeroImage/fixtures';
 
 describe('isHeroImage', () => {
   test.each([

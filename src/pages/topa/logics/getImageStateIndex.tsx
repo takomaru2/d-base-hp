@@ -1,5 +1,5 @@
-import styles from '@/pages/top/components/TopView/index.module.scss';
-import { TopViewImage } from '@/pages/top/const/topViewImageList';
+import styles from '@/pages/topa/components/TopView/index.module.scss';
+import { TopViewImage } from '@/pages/topa/const/topViewImageList';
 
 export const getImageStateIndex = (
   index: number,

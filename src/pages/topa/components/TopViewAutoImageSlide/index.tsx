@@ -1,6 +1,6 @@
-import { TopViewImage } from '@/pages/top/const/topViewImageList';
+import { TopViewImage } from '@/pages/topa/const/topViewImageList';
 import styles from './index.module.scss';
-import { getImageStateIndex } from '@/pages/top/logics/getImageStateIndex';
+import { getImageStateIndex } from '@/pages/topa/logics/getImageStateIndex';
 import Image from 'next/image';
 import { FC } from 'react';
 import { useAnimationFrameInterval } from '@/hooks/useAnimationFrameInterval';

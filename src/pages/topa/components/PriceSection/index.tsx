@@ -1,4 +1,4 @@
-import { PricingPlan } from '@/pages/top/components/PricingPlan';
+import { PricingPlan } from '@/pages/topa/components/PricingPlan';
 import { SectionTitle } from '@/components/SectionTitle';
 import { ButtonLink } from '@/components/ButtonLink';
 import styles from './index.module.scss';
@@ -6,7 +6,7 @@ import {
   backgroundImage,
   PRICING_PLAN_LINK,
   pricingPlans,
-} from '@/pages/top/const/pricingSectionData';
+} from '@/pages/topa/const/pricingSectionData';
 import { FC } from 'react';
 
 export const PriceSection: FC = () => {

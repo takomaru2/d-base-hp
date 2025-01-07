@@ -1,5 +1,5 @@
 import { generateSlideStyle } from '.';
-import { testSlideList } from '@/pages/top/logics/getDynamicSliderStyle/fixtures';
+import { testSlideList } from '@/pages/topa/logics/getDynamicSliderStyle/fixtures';
 
 describe('getDynamicSliderStyle', () => {
   test('スライドが4枚で左から2番目が大きい画像(DISTANCE_TO_HERO=1)のとき、正しいスタイルが返る', () => {
