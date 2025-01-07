@@ -7,36 +7,34 @@
   overflow: hidden;
 }
 
-.card {
-  display: flex;
-  align-items: center;
-  margin-inline: auto;
-  background-color: $colorBlack;
-
-  @include pcStyle {
-    display: none;
-  }
-}
-
-.description {
-  flex: 1 0 20%;
-  padding-inline: linear-clamp(12, 18);
-  font-family: $mainFontEN;
-  font-size: linear-clamp(16, 30);
-  text-align: center;
-
-  @include letterSpacing5(16px);
-}
-
-.image {
-  height: 100%;
-  object-fit: cover;
-}
-
-.pcImage {
+.pcContainer {
   display: none;
 
   @include pcStyle {
-    display: block;
+    display: flex;
+    justify-content: space-around;
+    color: $colorBlack;
+  }
+}
+
+.verticalTitle {
+  @include pcStyle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: $subFontEN;
+    font-size: linear-clamp(20, 50);
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    direction: rtl;
+
+    @include letterSpacing10(30px);
+  }
+}
+
+.pcImage {
+  @include pcStyle {
+    width: linear-clamp(300, 1250);
+    height: auto;
   }
 }

@@ -1,0 +1,43 @@
+@import '@/styles/variables';
+@import '@/styles/mixin';
+
+.card {
+  display: flex;
+  align-items: center;
+  margin-inline: auto;
+  background-color: $colorBlack;
+
+  @include pcStyle {
+    display: none;
+  }
+}
+
+.description {
+  display: flex;
+  flex: 1 0 20%;
+  flex-direction: column;
+  padding-inline: linear-clamp(12, 18);
+  font-family: $mainFontEN;
+  font-size: linear-clamp(16, 30);
+  text-align: center;
+
+  @include letterSpacing5(16px);
+}
+
+.textWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.text {
+  font-family: $mainFontJP;
+  font-size: linear-clamp(12, 20);
+  font-weight: lighter;
+  white-space: pre-wrap;
+}
+
+.image {
+  height: 100%;
+  object-fit: cover;
+}
