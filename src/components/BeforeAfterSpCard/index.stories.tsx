@@ -14,7 +14,7 @@ export const BeforeCard: Story = {
   args: {
     title: 'Before',
     reverse: false,
-    image: before,
+    spImage: before,
   },
   parameters: {
     layout: 'fullscreen',
@@ -29,7 +29,7 @@ export const AfterCard: Story = {
     title: 'After',
     description: '200,000\n全3週間',
     reverse: false,
-    image: before,
+    spImage: before,
   },
   parameters: {
     layout: 'fullscreen',
@@ -44,7 +44,7 @@ export const AfterCardReverse: Story = {
     title: 'After',
     description: '200,000\n全3週間',
     reverse: true,
-    image: before,
+    spImage: before,
   },
   parameters: {
     layout: 'fullscreen',

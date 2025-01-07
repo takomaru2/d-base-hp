@@ -6,14 +6,14 @@ type BeforeAfterSpCardProps = {
   title: 'Before' | 'After';
   description?: string;
   reverse: boolean;
-  image: StaticImageData;
+  spImage: StaticImageData;
 };
 
 export const BeforeAfterSpCard: FC<BeforeAfterSpCardProps> = ({
   title,
   description,
   reverse,
-  image,
+  spImage,
 }) => {
   return (
     <div className={`${styles.card} ${reverse ? styles.reverse : ''}`}>
@@ -25,7 +25,11 @@ export const BeforeAfterSpCard: FC<BeforeAfterSpCardProps> = ({
           </div>
         )}
       </div>
-      <Image src={image} alt={'汚れている車の側面'} className={styles.image} />
+      <Image
+        src={spImage}
+        alt={'汚れている車の側面'}
+        className={styles.image}
+      />
     </div>
   );
 };

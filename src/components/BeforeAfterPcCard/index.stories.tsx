@@ -6,7 +6,7 @@ const meta: Meta<typeof Component> = {
   component: Component,
   args: {
     model: 'SUZUKI Jimny',
-    image: pcImage,
+    pcImage: pcImage,
   },
 };
 
