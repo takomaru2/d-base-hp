@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { BeforeAfterSpCard as Component } from '.';
+import before from '../../../public/assets/top/works/before.jpg';
 
 const meta: Meta<typeof Component> = {
   component: Component,
@@ -13,6 +14,7 @@ export const BeforeCard: Story = {
   args: {
     title: 'Before',
     reverse: false,
+    image: before,
   },
   parameters: {
     layout: 'fullscreen',
@@ -27,6 +29,7 @@ export const AfterCard: Story = {
     title: 'After',
     description: '200,000\n全3週間',
     reverse: false,
+    image: before,
   },
   parameters: {
     layout: 'fullscreen',
@@ -41,6 +44,7 @@ export const AfterCardReverse: Story = {
     title: 'After',
     description: '200,000\n全3週間',
     reverse: true,
+    image: before,
   },
   parameters: {
     layout: 'fullscreen',
