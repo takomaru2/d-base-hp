@@ -1,13 +1,21 @@
 import styles from './index.module.scss';
-import Image from 'next/image';
-import pc from '../../../public/assets/top/works/beforeafter-pc.jpg';
+import Image, { StaticImageData } from 'next/image';
+import { FC } from 'react';
 
-export const BeforeAfterPcCard = () => {
+type BeforeAfterPcCardProps = {
+  image: StaticImageData;
+  model: string;
+};
+
+export const BeforeAfterPcCard: FC<BeforeAfterPcCardProps> = ({
+  image,
+  model,
+}) => {
   return (
     <div className={styles.pcContainer}>
-      <div className={styles.verticalTitle}>SUZUKI Jimny</div>
+      <div className={styles.verticalTitle}>{model}</div>
       <Image
-        src={pc}
+        src={image}
         alt={'施工前、施工後の比較写真'}
         className={styles.pcImage}
       />

@@ -1,12 +1,6 @@
 @import '@/styles/variables';
 @import '@/styles/mixin';
 
-.container {
-  max-width: 100%;
-  margin-inline: linear-clamp(20, 40);
-  overflow: hidden;
-}
-
 .pcContainer {
   display: none;
 

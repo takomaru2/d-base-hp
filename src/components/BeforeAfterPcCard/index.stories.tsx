@@ -1,8 +1,13 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { BeforeAfterPcCard as Component } from '.';
+import pcImage from '@/../public/assets/top/works/beforeafter-pc.jpg';
 
 const meta: Meta<typeof Component> = {
   component: Component,
+  args: {
+    model: 'SUZUKI Jimny',
+    image: pcImage,
+  },
 };
 
 export default meta;
