@@ -6,7 +6,11 @@ import { BeforeAfterSpCard } from '@/components/BeforeAfterSpCard';
 export const BeforeAfterCard = () => {
   return (
     <div className={styles.container}>
-      <BeforeAfterSpCard title={'Before'} description={'150,000\n全2週間'} />
+      <BeforeAfterSpCard
+        title={'Before'}
+        description={'150,000\n全2週間'}
+        reverse={true}
+      />
       <div className={styles.pcContainer}>
         <div className={styles.verticalTitle}>SUZUKI Jimny</div>
         <Image

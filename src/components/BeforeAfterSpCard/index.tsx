@@ -6,14 +6,16 @@ import { FC } from 'react';
 type BeforeAfterSpCardProps = {
   title: 'Before' | 'After';
   description?: string;
+  reverse: boolean;
 };
 
 export const BeforeAfterSpCard: FC<BeforeAfterSpCardProps> = ({
   title,
   description,
+  reverse,
 }) => {
   return (
-    <div className={styles.card}>
+    <div className={`${styles.card} ${reverse ? styles.reverse : ''}`}>
       <div className={styles.description}>
         <div>{title}</div>
         {description && (
