@@ -1,4 +1,4 @@
-import { BaseSlideList } from '@/pages/topa/logics/getDynamicSliderStyle';
+import { BaseSlideList } from '@/pages/top/logics/getDynamicSliderStyle';
 
 /**
  * 一番左にあるimageIndexを返す関数

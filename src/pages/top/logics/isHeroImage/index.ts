@@ -1,4 +1,4 @@
-import { BaseSlideList } from '@/pages/topa/logics/getDynamicSliderStyle';
+import { BaseSlideList } from '@/pages/top/logics/getDynamicSliderStyle';
 
 /**
  * どのimageIndexがhero画像(一番大きい画像がhero)か判定するロジック。

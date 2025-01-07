@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import styles from './index.module.scss';
 import { Logo } from '@/components/Logo';
-import { topViewImageList } from '@/pages/topa/const/topViewImageList';
+import { topViewImageList } from '@/pages/top/const/topViewImageList';
 import { TopViewAutoImageSlide } from '../TopViewAutoImageSlide';
 
 export const TopView: FC = () => {
