@@ -9,7 +9,7 @@ export const BeforeAfterCard = () => {
       <BeforeAfterSpCard
         title={'Before'}
         description={'150,000\n全2週間'}
-        reverse={true}
+        reverse={false}
       />
       <div className={styles.pcContainer}>
         <div className={styles.verticalTitle}>SUZUKI Jimny</div>
