@@ -1,0 +1,64 @@
+@import '@/styles/mixin';
+@import '@/styles/variables';
+
+.container {
+  display: grid;
+  grid-template:
+    'reviewerWrapper reviewerWrapper' auto
+    'slider model' auto
+    'slider comment' auto / 1fr 1fr;
+  margin: 0 auto;
+  color: $colorBlack;
+
+  @include pcStyle {
+    grid-template:
+      'model .' auto
+      'slider reviewerWrapper' auto
+      'slider comment' auto / 40% 60%;
+  }
+}
+
+.reviewerWrapper {
+  grid-area: reviewerWrapper;
+  width: linear-clamp(317, 513);
+  margin-inline: auto;
+  font-family: $mainFontJP;
+  text-align: left;
+}
+
+.textWrapper {
+  margin-top: 8px;
+}
+
+.title {
+  font-size: linear-clamp(16, 35);
+}
+
+.reviewer,
+.craft {
+  font-size: linear-clamp(12, 22);
+}
+
+.slider {
+  display: flex;
+  grid-area: slider;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.model {
+  grid-area: model;
+  font-size: linear-clamp(20, 60);
+  font-weight: bold;
+  text-align: center;
+
+  @include pcStyle {
+    text-align: left;
+  }
+}
+
+.comment {
+  grid-area: comment;
+  font-size: linear-clamp(12, 22);
+}

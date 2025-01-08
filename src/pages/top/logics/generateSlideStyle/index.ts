@@ -12,7 +12,7 @@ type SlideStyle = Pick<
   'width' | 'height' | 'left' | 'zIndex'
 >;
 
-type DynamicSliderStyleResult = {
+type generateSlideStyleResult = {
   style: SlideStyle;
 };
 /**
@@ -42,7 +42,7 @@ export const generateSlideStyle = (
   }: UseWorksSliderBreakPoints,
   DISTANCE_TO_HERO: number,
   slideList: BaseSlideList[],
-): DynamicSliderStyleResult => {
+): generateSlideStyleResult => {
   if (0 <= DISTANCE_TO_HERO && DISTANCE_TO_HERO > 3) {
     throw new Error('DISTANCE_TO_HEROがスライド枚数こえちょる');
   }
