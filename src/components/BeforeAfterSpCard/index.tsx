@@ -4,19 +4,12 @@ import { FC } from 'react';
 
 type BeforeAfterSpCardProps = {
   title: 'Before' | 'After';
+  // もし¥200,000 全2週間のように二つ以上の説明を加えたければ、'¥200,000\n全2週間'のようにして渡す
   description?: string;
   reverse: boolean;
   image: StaticImageData;
 };
 
-/**
- *
- * @param title
- * @param description もし¥200,000 全2週間のように二つ以上の説明を加えたければ、'¥200,000\n全2週間'のようにして渡す
- * @param reverse
- * @param image
- * @constructor
- */
 export const BeforeAfterSpCard: FC<BeforeAfterSpCardProps> = ({
   title,
   description,
