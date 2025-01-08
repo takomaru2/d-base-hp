@@ -25,11 +25,13 @@ export const BeforeAfterSpCard: FC<BeforeAfterSpCardProps> = ({
           </div>
         )}
       </div>
-      <Image
-        src={spImage}
-        alt={'汚れている車の側面'}
-        className={styles.image}
-      />
+      <div className={styles.imageWrapper}>
+        <Image
+          src={spImage}
+          alt={'汚れている車の側面'}
+          className={styles.image}
+        />
+      </div>
     </div>
   );
 };
