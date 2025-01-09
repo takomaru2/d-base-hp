@@ -15,17 +15,26 @@
     grid-template:
       'model .' auto
       'slider reviewerWrapper' auto
-      'slider comment' auto / 40% 60%;
+      'slider comment' auto / 60% 40%;
+    column-gap: 44px;
   }
 }
 
 .reviewerWrapper {
   grid-area: reviewerWrapper;
-  width: linear-clamp(317, 513);
+  width: linear-clamp(317, 530);
   margin-inline: auto;
   margin-bottom: linear-clamp(30, 40);
   font-family: $mainFontJP;
   text-align: left;
+
+  @include pcStyle {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 20px;
+    justify-content: end;
+    margin: 0;
+  }
 }
 
 .textWrapper {
@@ -68,19 +77,29 @@
   display: flex;
   grid-area: comment;
   align-items: end;
-  padding-right: linear-clamp(10, 20);
+  width: linear-clamp(153, 334);
   margin-bottom: 10px;
   font-size: linear-clamp(12, 22);
+
+  @include pcStyle {
+    align-items: normal;
+    margin-top: linear-clamp(10, 20);
+    margin-bottom: 0;
+  }
 }
 
 .leftImage {
   position: absolute;
   bottom: 0;
   left: -23%;
+  width: linear-clamp(74, 200);
+  height: linear-clamp(117, 315);
 }
 
 .heroImage {
   position: absolute;
   right: 0;
   bottom: 0;
+  width: linear-clamp(144, 448);
+  height: linear-clamp(259, 700);
 }
