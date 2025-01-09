@@ -26,8 +26,9 @@ export const ReviewSlider = () => {
         <Image
           src={heroImage}
           alt={'利用者の車外観'}
-          width={165}
+          width={144}
           height={259}
+          className={styles.heroImage}
         />
       </div>
       <div className={styles.model}>SUZUKI Jimny</div>
