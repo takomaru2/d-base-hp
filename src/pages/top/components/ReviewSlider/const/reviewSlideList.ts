@@ -1,5 +1,4 @@
 import { StaticImageData } from 'next/image';
-
 import image1 from '@/../public/assets/top/works/worksImage01.jpg';
 import image2 from '@/../public/assets/top/works/worksImage02.jpg';
 
@@ -10,6 +9,8 @@ type reviewSlideListType = {
   craft: string;
   image: StaticImageData;
   alt: string;
+  model: string;
+  comment: string;
 };
 
 export const reviewSlideList: reviewSlideListType[] = [
@@ -20,6 +21,9 @@ export const reviewSlideList: reviewSlideListType[] = [
     craft: 'ナノセラミックコーティング・・・¥150,000',
     image: image1,
     alt: '施工後の利用者の車外観',
+    model: 'SUZUKI Jimny',
+    comment:
+      '思わず抱きしめたくなるような肉感溢れるヘルシースレンダーなもっちり美肌に仕上がりました。綺麗系か可愛い系のどちらかと問われると両方です。',
   },
   {
     id: '2',
@@ -28,14 +32,20 @@ export const reviewSlideList: reviewSlideListType[] = [
     craft: 'ナノセラミックコーティング・・・¥150,000',
     image: image2,
     alt: '施工後の利用者の車外観',
+    model: 'SUZUKI Jimny',
+    comment:
+      '思わず抱きしめたくなるような肉感溢れるヘルシースレンダーなもっちり美肌に仕上がりました。綺麗系か可愛い系のどちらかと問われると両方です。',
   },
   {
     id: '3',
     title: '松谷健太郎',
-    reviewer: 'スガちゃん最高No.1様',
-    craft: 'ナノセラミックコーティング・・・¥150,000',
+    reviewer: '松谷健太郎',
+    craft: 'ナノセラミックコーティング・・・¥松谷健太郎',
     image: image1,
-    alt: '施工後の利用者の車外観',
+    alt: '松谷健太郎',
+    model: 'SUZUKI Jimny',
+    comment:
+      '思わず抱きしめたくなるような肉感溢れるヘルシースレンダーなもっちり美肌に仕上がりました。綺麗系か可愛い系のどちらかと問われると両方です。',
   },
   {
     id: '4',
@@ -44,5 +54,8 @@ export const reviewSlideList: reviewSlideListType[] = [
     craft: 'ナノセラミックコーティング・・・¥150,000',
     image: image2,
     alt: '施工後の利用者の車外観',
+    model: 'SUZUKI Jimny',
+    comment:
+      '思わず抱きしめたくなるような肉感溢れるヘルシースレンダーなもっちり美肌に仕上がりました。綺麗系か可愛い系のどちらかと問われると両方です。',
   },
 ];

@@ -88,18 +88,8 @@
   }
 }
 
-.leftImage {
+.image {
   position: absolute;
   bottom: 0;
-  left: -23%;
-  width: linear-clamp(74, 200);
-  height: linear-clamp(117, 315);
-}
-
-.heroImage {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: linear-clamp(144, 448);
-  height: linear-clamp(259, 700);
+  transition: all ease-in 0.3s;
 }

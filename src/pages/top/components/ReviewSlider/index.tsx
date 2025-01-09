@@ -1,36 +1,78 @@
 import styles from './index.module.scss';
 import Image from 'next/image';
-import leftImage from '@/../public/assets/top/works/worksImage01.jpg';
-import heroImage from '@/../public/assets/top/works/worksImage02.jpg';
+import { useActiveIndex } from '@/hooks/useActiveIndex';
+import { useReviewSliderBreakPointsStyle } from '@/pages/top/hooks/useReviewSliderBreakPointStyle';
+import { useAnimationFrameInterval } from '@/hooks/useAnimationFrameInterval';
+import { reviewSlideList } from '@/pages/top/components/ReviewSlider/const/reviewSlideList';
+import { isHeroImage } from '@/pages/top/logics/isHeroImage';
+import { getLeftIndex } from '@/pages/top/logics/getLeftIndex';
+import { generateSlideStyle } from '@/pages/top/logics/generateSlideStyle';
+
+const DISTANCE_TO_HERO = 3;
 
 export const ReviewSlider = () => {
+  const [activeIndex, setActiveIndex] = useActiveIndex();
+  const { basicWidth, heroWidth, basicHeight, heroHeight, gap } =
+    useReviewSliderBreakPointsStyle();
+
+  useAnimationFrameInterval(() => {
+    const infinityIncrement = (prevIndex: number) =>
+      (prevIndex + 1) % reviewSlideList.length;
+    setActiveIndex(infinityIncrement);
+  }, 4000);
+
+  const leftStyle: number = -(basicWidth / 2);
+  console.log(leftStyle);
+
   return (
     <div className={styles.container}>
-      <div className={styles.reviewerWrapper}>
-        <h2 className={styles.title}>見違えるほど綺麗になりました！</h2>
-        <div className={styles.textWrapper}>
-          <div className={styles.reviewer}>スガちゃん最高No.1様</div>
-          <div className={styles.craft}>
-            ナノセラミックコーティング・・・¥150,000
-          </div>
-        </div>
-      </div>
-      <div className={styles.slider}>
-        <Image
-          src={leftImage}
-          alt={'利用者の車外観'}
-          className={styles.leftImage}
-        />
-        <Image
-          src={heroImage}
-          alt={'利用者の車外観'}
-          className={styles.heroImage}
-        />
-      </div>
-      <div className={styles.model}>SUZUKI Jimny</div>
-      <div className={styles.comment}>
-        「愛車のコーティングをお願いしましたが、仕上がりに大満足です！ツヤが復活し、水弾きも素晴らしいので洗車が楽になりました。スタッフも丁寧で、また依頼したいです！」
-      </div>
+      {reviewSlideList.map((slideItem, imageIndex) => {
+        const isHero = isHeroImage(
+          activeIndex,
+          DISTANCE_TO_HERO,
+          reviewSlideList,
+          imageIndex,
+        );
+        const leftIndex = getLeftIndex(
+          imageIndex,
+          activeIndex,
+          reviewSlideList,
+        );
+        const { style } = generateSlideStyle(
+          isHero,
+          leftIndex,
+          { basicWidth, heroWidth, basicHeight, heroHeight, gap },
+          DISTANCE_TO_HERO,
+          reviewSlideList,
+        );
+        return (
+          <>
+            {isHero && (
+              <div className={styles.reviewerWrapper}>
+                <h2 className={styles.title}>{slideItem.title}</h2>
+                <div className={styles.textWrapper}>
+                  <div className={styles.reviewer}>{slideItem.reviewer}</div>
+                  <div className={styles.craft}>{slideItem.craft}</div>
+                </div>
+              </div>
+            )}
+            <div className={styles.slider} style={{ left: `${leftStyle}px` }}>
+              <Image
+                src={slideItem.image}
+                alt={slideItem.alt}
+                className={styles.image}
+                style={style}
+              />
+            </div>
+            {isHero && (
+              <>
+                <div className={styles.model}>{slideItem.model}</div>
+                <div className={styles.comment}>{slideItem.comment}</div>
+              </>
+            )}
+          </>
+        );
+      })}
     </div>
   );
 };
