@@ -6,6 +6,7 @@ type BeforeAfterSpCardProps = {
   title: 'Before' | 'After';
   // もし¥200,000 全2週間のように二つ以上の説明を加えたければ、'¥200,000\n全2週間'のようにして渡す
   description?: string;
+  // trueは説明文が左にくる。falseだと右。デザイン要件に沿って判断してください。
   reverse: boolean;
   image: StaticImageData;
 };
