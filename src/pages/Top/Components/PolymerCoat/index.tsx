@@ -12,7 +12,6 @@ export const PolymerCoat = () => {
           '※通常のコーティングではありません\n中古のMINIを買ったはいいけどコーティングはしたい\nだけどコーティングは高い\nそんな見えはりなあなたに！！'
         }
       </p>
-
       <div className={styles.button}>
         <ButtonLink children="詳しい価格表を見る" link="/details" />
       </div>

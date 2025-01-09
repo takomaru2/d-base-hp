@@ -3,16 +3,16 @@
 
 .container {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  width: 100%;
   padding: 30px 60px 20px;
   color: $colorPureWhite;
   text-align: center;
   background-image: url('/assets/top/price/polymerCoatBackImage.jpg');
   background-position: center;
   background-size: cover;
+
+  @include pcStyle {
+    display: none;
+  }
 }
 
 .polymerCoat {
@@ -20,6 +20,7 @@
 }
 
 .minPrice {
+  margin-top: 16px;
   font-size: 24px;
 }
 
@@ -27,4 +28,8 @@
   font-size: 10px;
   line-height: 28px;
   white-space: pre-wrap;
+}
+
+.button {
+  margin-top: 15px;
 }
