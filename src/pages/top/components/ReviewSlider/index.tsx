@@ -21,8 +21,7 @@ export const ReviewSlider = () => {
     setActiveIndex(infinityIncrement);
   }, 4000);
 
-  const leftStyle: number = -(basicWidth / 2);
-  console.log(leftStyle);
+  const leftPosition: number = -(basicWidth / 2);
 
   return (
     <div className={styles.container}>
@@ -56,7 +55,10 @@ export const ReviewSlider = () => {
                 </div>
               </div>
             )}
-            <div className={styles.slider} style={{ left: `${leftStyle}px` }}>
+            <div
+              className={styles.slider}
+              style={{ left: `${leftPosition}px` }}
+            >
               <Image
                 src={slideItem.image}
                 alt={slideItem.alt}
