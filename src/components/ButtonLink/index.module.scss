@@ -8,6 +8,7 @@
   font-size: linear-clamp(14, 30);
   font-weight: bold;
   color: $colorWhite;
+  white-space: nowrap;
   background-color: $buttonColor;
   border-radius: 2px;
   transition: all 0.3s ease;

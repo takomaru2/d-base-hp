@@ -1,0 +1,37 @@
+@import '@/styles/variables';
+@import '@/styles/mixin';
+
+.container {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  max-width: 430px;
+  height: linear-clamp(316, 500);
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.image {
+  position: absolute;
+  bottom: 0;
+  object-fit: cover;
+  transition: all ease-in 0.3s;
+}
+
+@include pcStyle {
+  .container {
+    max-width: 1400px;
+    height: linear-clamp(450, 700);
+  }
+
+  .imageWrapper {
+    max-width: 795px;
+  }
+}
+
+@include full {
+  .container {
+    max-width: 1400px;
+    height: linear-clamp(700, 800);
+  }
+}

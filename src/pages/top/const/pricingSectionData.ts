@@ -1,4 +1,11 @@
-export const pricingPlanList = [
+type PricingPlan = {
+  id: string;
+  title: string;
+  description: string;
+  minPrice: string;
+};
+
+export const pricingPlans: PricingPlan[] = [
   {
     id: '1',
     title: '新車〜登録３ヶ月',
@@ -18,4 +25,4 @@ export const pricingPlanList = [
 export const PRICING_PLAN_LINK =
   'https://www.dmm.co.jp/digital/videoa/-/detail/=/cid=h_1472bukgb00003/';
 
-export const backgroundImage = `url("/assets/top/price/priceSectionBackImage.jpg")`;
+export const backgroundImage = '/assets/top/price/priceSectionBackImage.jpg';

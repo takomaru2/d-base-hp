@@ -1,16 +1,16 @@
-import styles from '@/pages/top/components/Button/index.module.scss';
+import styles from '@/components/ButtonLink/index.module.scss';
 import Link from 'next/link';
 import { FC } from 'react';
 
 type ButtonProps = {
-  label: string;
   link: string;
+  children: string;
 };
 
-export const Button: FC<ButtonProps> = ({ label, link }) => {
+export const ButtonLink: FC<ButtonProps> = ({ link, children }) => {
   return (
     <Link href={link} className={styles.button}>
-      {label}
+      {children}
     </Link>
   );
 };

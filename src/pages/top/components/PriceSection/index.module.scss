@@ -6,9 +6,7 @@
   width: 100%;
   padding: linear-clamp(50, 150) 0;
   overflow: hidden;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+  background: center / cover no-repeat;
 
   &::before {
     position: absolute;
@@ -27,8 +25,7 @@
   }
 }
 
-.sectionTitle,
-.planWrapper {
+.textAlign {
   position: relative;
   z-index: 2;
   text-align: center;

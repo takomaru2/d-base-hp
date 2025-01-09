@@ -1,5 +1,13 @@
+@import 'variables';
+
 @mixin pcStyle {
   @media (width > 600px) {
+    @content;
+  }
+}
+
+@mixin full {
+  @media (width > 1000px) {
     @content;
   }
 }
