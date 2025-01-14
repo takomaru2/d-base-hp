@@ -4,7 +4,6 @@ import { useActiveIndex } from '@/hooks/useActiveIndex';
 import { useReviewSliderBreakPointsStyle } from '@/pages/top/hooks/useReviewSliderBreakPointStyle';
 import { useAnimationFrameInterval } from '@/hooks/useAnimationFrameInterval';
 import { reviewSlideList } from '@/pages/top/components/ReviewSlider/const/reviewSlideList';
-import { isHeroImage } from '@/pages/top/logics/isHeroImage';
 import { getRightIndex } from '@/pages/top/logics/getRightIndex';
 import { generateReviewSlideStyle } from '@/pages/top/logics/generateReviewSlideStyle';
 import { isHeroReviewSlide } from '@/pages/top/logics/isHeroReviewSlide';
@@ -64,7 +63,9 @@ export const ReviewSlider = () => {
             </div>
             {isHero && (
               <>
-                <div className={styles.model}>{slideItem.model}</div>
+                <div className={styles.model} style={{}}>
+                  {slideItem.model}
+                </div>
                 <div className={styles.comment}>{slideItem.comment}</div>
               </>
             )}

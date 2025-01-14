@@ -21,7 +21,7 @@ export const reviewSlideList: reviewSlideListType[] = [
     craft: 'ナノセラミックコーティング・・・¥150,000',
     image: image1,
     alt: '施工後の利用者の車外観',
-    model: 'SUZUKI Jimny',
+    model: 'SUZUKI\nJimny',
     comment:
       '思わず抱きしめたくなるような肉感溢れるヘルシースレンダーなもっちり美肌に仕上がりました。綺麗系か可愛い系のどちらかと問われると両方です。',
   },
@@ -32,7 +32,7 @@ export const reviewSlideList: reviewSlideListType[] = [
     craft: 'ナノセラミックコーティング・・・¥150,000',
     image: image2,
     alt: '施工後の利用者の車外観',
-    model: 'SUZUKI Jimny',
+    model: 'CROWN\nJimny',
     comment:
       '思わず抱きしめたくなるような肉感溢れるヘルシースレンダーなもっちり美肌に仕上がりました。綺麗系か可愛い系のどちらかと問われると両方です。',
   },
@@ -43,7 +43,7 @@ export const reviewSlideList: reviewSlideListType[] = [
     craft: 'ナノセラミックコーティング・・・¥松谷健太朗',
     image: image1,
     alt: '松谷健太朗',
-    model: 'SUZUKI Jimny',
+    model: 'TOYOTA\nJimny',
     comment:
       '思わず抱きしめたくなるような肉感溢れるヘルシースレンダーなもっちり美肌に仕上がりました。綺麗系か可愛い系のどちらかと問われると両方です。',
   },
@@ -54,7 +54,7 @@ export const reviewSlideList: reviewSlideListType[] = [
     craft: 'ナノセラミックコーティング・・・¥150,000',
     image: image2,
     alt: '施工後の利用者の車外観',
-    model: 'SUZUKI Jimny',
+    model: 'DAIHATSU\nJimny',
     comment:
       '思わず抱きしめたくなるような肉感溢れるヘルシースレンダーなもっちり美肌に仕上がりました。綺麗系か可愛い系のどちらかと問われると両方です。',
   },

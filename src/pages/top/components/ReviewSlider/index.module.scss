@@ -2,12 +2,14 @@
 @import '@/styles/variables';
 
 .container {
+  position: relative;
   display: grid;
   grid-template:
     'reviewerWrapper reviewerWrapper' auto
     'slider model' auto
     'slider comment' auto / 52% 45%;
   column-gap: 10px;
+  height: auto;
   margin: 0 auto;
   color: $colorBlack;
 
@@ -67,22 +69,30 @@
   display: flex;
   grid-area: slider;
   gap: 8px;
-  align-items: center;
-  justify-content: center;
   height: linear-clamp(259, 700);
-  overflow: hidden;
 }
 
 .model {
   display: flex;
   grid-area: model;
   align-items: end;
-  font-size: linear-clamp(20, 60);
+  font-family: $subFontEN;
+  font-size: 20px;
   font-weight: bold;
-  text-align: center;
+  text-align: left;
+  text-wrap: pretty;
+  white-space: pre-wrap;
 
   @include pcStyle {
-    text-align: left;
+    position: absolute;
+    right: 250px;
+    font-size: 25px;
+    transform: rotate(-90deg) translateX(-30%);
+  }
+
+  @include full {
+    right: 500px;
+    font-size: linear-clamp(10, 60);
   }
 }
 
