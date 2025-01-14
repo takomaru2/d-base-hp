@@ -7,7 +7,6 @@ export type UseReviewSliderBreakPoints = {
   basicHeight: number;
   heroHeight: number;
   gap: number;
-  leftMinusPosition: number;
 };
 
 const pc = {
@@ -16,7 +15,6 @@ const pc = {
   basicHeight: 315,
   heroHeight: 700,
   gap: 26,
-  leftMinusPosition: -100,
 };
 
 const tablet = {
@@ -25,7 +23,6 @@ const tablet = {
   basicHeight: 200,
   heroHeight: 350,
   gap: 18,
-  leftMinusPosition: 0,
 };
 
 const sp = {
@@ -34,7 +31,6 @@ const sp = {
   basicHeight: 117,
   heroHeight: 259,
   gap: 10,
-  leftMinusPosition: -30,
 };
 
 export const useReviewSliderBreakPointsStyle =

@@ -13,14 +13,8 @@ const DISTANCE_TO_HERO = 0;
 
 export const ReviewSlider = () => {
   const [activeIndex, setActiveIndex] = useActiveIndex();
-  const {
-    basicWidth,
-    heroWidth,
-    basicHeight,
-    heroHeight,
-    gap,
-    leftMinusPosition,
-  } = useReviewSliderBreakPointsStyle();
+  const { basicWidth, heroWidth, basicHeight, heroHeight, gap } =
+    useReviewSliderBreakPointsStyle();
 
   useAnimationFrameInterval(() => {
     const infinityIncrement = (prevIndex: number) =>
@@ -60,10 +54,7 @@ export const ReviewSlider = () => {
                 </div>
               </div>
             )}
-            <div
-              className={styles.slider}
-              style={{ left: `${leftMinusPosition}px` }}
-            >
+            <div className={styles.slider}>
               <Image
                 src={slideItem.image}
                 alt={slideItem.alt}
