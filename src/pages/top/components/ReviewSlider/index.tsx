@@ -31,18 +31,12 @@ export const ReviewSlider = () => {
   return (
     <div className={styles.container}>
       {reviewSlideList.map((slideItem, imageIndex) => {
-        const isHero = isHeroReviewSlide(
-          activeIndex,
-          DISTANCE_TO_HERO,
-          reviewSlideList,
-          imageIndex,
-        );
-        console.log(isHero);
         const rightIndex = getRightIndex(
           imageIndex,
           activeIndex,
           reviewSlideList,
         );
+        const isHero = isHeroReviewSlide(DISTANCE_TO_HERO, rightIndex);
         const { style } = generateReviewSlideStyle(
           isHero,
           rightIndex,
