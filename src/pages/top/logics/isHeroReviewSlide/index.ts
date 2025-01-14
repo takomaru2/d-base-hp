@@ -9,8 +9,8 @@ export const isHeroReviewSlide = (
   rightIndex: number,
   slideList: BaseSlideList[],
 ) => {
-  const isMinusNumber = -Infinity;
-  const isSlideOver = slideList.length;
+  const isMinusNumber = 0 > DISTANCE_TO_HERO;
+  const isSlideOver = slideList.length < DISTANCE_TO_HERO;
   if (isMinusNumber || isSlideOver) {
     throw new Error(
       'activeIndexがスライド枚数より多くなっちょるか、マイナスの値になっちょるで',
