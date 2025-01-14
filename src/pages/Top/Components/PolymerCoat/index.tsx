@@ -1,10 +1,18 @@
 import styles from './index.module.scss';
 import { ButtonLink } from '@/components/ButtonLink';
-import { backgroundImage } from '@/pages/top/const/polymerCoatData';
+import {
+  backgroundImage,
+  POLYMER_COAT_LINK,
+} from '@/pages/top/const/polymerCoatData';
 
 export const PolymerCoat = () => {
   return (
-    <div className={styles.container}>
+    <div
+      className={styles.container}
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+      }}
+    >
       <h1 className={styles.polymerCoat}>ポリマーコート</h1>
       <h2 className={styles.minPrice}>50,000~</h2>
       <p className={styles.description}>
@@ -13,7 +21,7 @@ export const PolymerCoat = () => {
         }
       </p>
       <div className={styles.button}>
-        <ButtonLink children="詳しい価格表を見る" link="/details" />
+        <ButtonLink link={POLYMER_COAT_LINK}>詳しい価格表を見る</ButtonLink>
       </div>
     </div>
   );
