@@ -5,15 +5,22 @@ import { useReviewSliderBreakPointsStyle } from '@/pages/top/hooks/useReviewSlid
 import { useAnimationFrameInterval } from '@/hooks/useAnimationFrameInterval';
 import { reviewSlideList } from '@/pages/top/components/ReviewSlider/const/reviewSlideList';
 import { isHeroImage } from '@/pages/top/logics/isHeroImage';
-import { getLeftIndex } from '@/pages/top/logics/getLeftIndex';
-import { generateSlideStyle } from '@/pages/top/logics/generateSlideStyle';
+import { getRightIndex } from '@/pages/top/logics/getRightIndex';
+import { generateReviewSlideStyle } from '@/pages/top/logics/generateReviewSlideStyle';
+import { isHeroReviewSlide } from '@/pages/top/logics/isHeroReviewSlide';
 
-const DISTANCE_TO_HERO = 3;
+const DISTANCE_TO_HERO = 0;
 
 export const ReviewSlider = () => {
   const [activeIndex, setActiveIndex] = useActiveIndex();
-  const { basicWidth, heroWidth, basicHeight, heroHeight, gap } =
-    useReviewSliderBreakPointsStyle();
+  const {
+    basicWidth,
+    heroWidth,
+    basicHeight,
+    heroHeight,
+    gap,
+    leftMinusPosition,
+  } = useReviewSliderBreakPointsStyle();
 
   useAnimationFrameInterval(() => {
     const infinityIncrement = (prevIndex: number) =>
@@ -21,29 +28,29 @@ export const ReviewSlider = () => {
     setActiveIndex(infinityIncrement);
   }, 4000);
 
-  const leftPosition: number = -(basicWidth / 2);
-
   return (
     <div className={styles.container}>
       {reviewSlideList.map((slideItem, imageIndex) => {
-        const isHero = isHeroImage(
+        const isHero = isHeroReviewSlide(
           activeIndex,
           DISTANCE_TO_HERO,
           reviewSlideList,
           imageIndex,
         );
-        const leftIndex = getLeftIndex(
+        console.log(isHero);
+        const rightIndex = getRightIndex(
           imageIndex,
           activeIndex,
           reviewSlideList,
         );
-        const { style } = generateSlideStyle(
+        const { style } = generateReviewSlideStyle(
           isHero,
-          leftIndex,
+          rightIndex,
           { basicWidth, heroWidth, basicHeight, heroHeight, gap },
           DISTANCE_TO_HERO,
           reviewSlideList,
         );
+
         return (
           <>
             {isHero && (
@@ -57,7 +64,7 @@ export const ReviewSlider = () => {
             )}
             <div
               className={styles.slider}
-              style={{ left: `${leftPosition}px` }}
+              style={{ left: `${leftMinusPosition}px` }}
             >
               <Image
                 src={slideItem.image}

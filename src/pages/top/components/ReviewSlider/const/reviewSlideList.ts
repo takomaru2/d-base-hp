@@ -38,11 +38,11 @@ export const reviewSlideList: reviewSlideListType[] = [
   },
   {
     id: '3',
-    title: '松谷健太郎',
-    reviewer: '松谷健太郎',
-    craft: 'ナノセラミックコーティング・・・¥松谷健太郎',
+    title: '松谷健太朗',
+    reviewer: '松谷健太朗',
+    craft: 'ナノセラミックコーティング・・・¥松谷健太朗',
     image: image1,
-    alt: '松谷健太郎',
+    alt: '松谷健太朗',
     model: 'SUZUKI Jimny',
     comment:
       '思わず抱きしめたくなるような肉感溢れるヘルシースレンダーなもっちり美肌に仕上がりました。綺麗系か可愛い系のどちらかと問われると両方です。',
