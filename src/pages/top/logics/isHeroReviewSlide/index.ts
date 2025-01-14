@@ -1,4 +1,4 @@
-// import { BaseSlideList } from '../generateSlideStyle';
+import { BaseSlideList } from '../generateSlideStyle';
 
 /**
  * imageIndexとDISTANCE_TO_HEROを受け取って、
@@ -7,12 +7,15 @@
 export const isHeroReviewSlide = (
   DISTANCE_TO_HERO: number,
   rightIndex: number,
+  slideList: BaseSlideList[],
 ) => {
-  // if (isMinusActiveIndex || slideOverActiveIndex) {
-  //   throw new Error(
-  //     'activeIndexがスライド枚数より多くなっちょるか、マイナスの値になっちょるで',
-  //   );
-  // }
+  const isMinusNumber = -Infinity;
+  const isSlideOver = slideList.length;
+  if (isMinusNumber || isSlideOver) {
+    throw new Error(
+      'activeIndexがスライド枚数より多くなっちょるか、マイナスの値になっちょるで',
+    );
+  }
 
   const isHero = DISTANCE_TO_HERO === rightIndex;
 

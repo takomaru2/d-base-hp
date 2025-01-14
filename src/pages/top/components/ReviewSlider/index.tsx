@@ -36,7 +36,11 @@ export const ReviewSlider = () => {
           activeIndex,
           reviewSlideList,
         );
-        const isHero = isHeroReviewSlide(DISTANCE_TO_HERO, rightIndex);
+        const isHero = isHeroReviewSlide(
+          DISTANCE_TO_HERO,
+          rightIndex,
+          reviewSlideList,
+        );
         const { style } = generateReviewSlideStyle(
           isHero,
           rightIndex,
