@@ -63,9 +63,7 @@ export const ReviewSlider = () => {
             </div>
             {isHero && (
               <>
-                <div className={styles.model} style={{}}>
-                  {slideItem.model}
-                </div>
+                <div className={styles.model}>{slideItem.model}</div>
                 <div className={styles.comment}>{slideItem.comment}</div>
               </>
             )}

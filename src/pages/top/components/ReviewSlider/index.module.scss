@@ -34,6 +34,8 @@
   font-family: $mainFontJP;
   text-align: left;
 
+  @include letterSpacing8(13px);
+
   @include pcStyle {
     display: flex;
     flex-direction: column-reverse;
@@ -56,6 +58,8 @@
 .title {
   font-size: linear-clamp(16, 35);
   white-space: pre-wrap;
+
+  @include letterSpacing8(16px);
 }
 
 .reviewer,
@@ -83,6 +87,8 @@
   text-wrap: pretty;
   white-space: pre-wrap;
 
+  @include letterSpacing15(20px);
+
   @include pcStyle {
     position: absolute;
     right: 250px;
@@ -103,6 +109,8 @@
   width: linear-clamp(153, 334);
   margin-bottom: 10px;
   font-size: linear-clamp(12, 22);
+
+  @include letterSpacing8(12px);
 
   @include pcStyle {
     align-items: normal;
