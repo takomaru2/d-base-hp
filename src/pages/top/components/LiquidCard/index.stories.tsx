@@ -1,7 +1,7 @@
 import item1 from '../../../../../public/assets/top/liquidItem/item1.jpg';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { LiquidItem as Component } from '.';
+import { LiquidCard as Component } from '.';
 
 const meta: Meta<typeof Component> = {
   component: Component,
@@ -19,8 +19,8 @@ export const Default: Story = {
   args: {
     src: item1,
     alt: '液剤',
-    title: 'NS-10H',
-    text: (
+    name: 'NS-10H',
+    description: (
       <>
         雨染みの元を徹底的に排除した
         <br />
