@@ -25,7 +25,26 @@ const preview: Preview = {
         },
       ],
     },
+    viewport: {
+      viewports: {
+        desktop: {
+          name: 'Desktop',
+          styles: {
+            width: '1680px',
+            height: '1080px',
+          },
+        },
+        mobile: {
+          name: 'Mobile',
+          styles: {
+            width: '375px',
+            height: '667px',
+          },
+        },
+      },
+    },
   },
+
   decorators: [
     (Story) => (
       <>
