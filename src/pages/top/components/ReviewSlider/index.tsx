@@ -7,10 +7,12 @@ import { reviewSlideList } from '@/pages/top/components/ReviewSlider/const/revie
 import { getRightIndex } from '@/pages/top/logics/getRightIndex';
 import { generateReviewSlideStyle } from '@/pages/top/logics/generateReviewSlideStyle';
 import { isHeroReviewSlide } from '@/pages/top/logics/isHeroReviewSlide';
+import { FC } from 'react';
+import { Reviewer } from '@/pages/top/components/Reviewer';
 
 const DISTANCE_TO_HERO = 0;
 
-export const ReviewSlider = () => {
+export const ReviewSlider: FC = () => {
   const [activeIndex, setActiveIndex] = useActiveIndex();
   const { basicWidth, heroWidth, basicHeight, heroHeight, gap } =
     useReviewSliderBreakPointsStyle();
@@ -44,15 +46,7 @@ export const ReviewSlider = () => {
 
         return (
           <>
-            {isHero && (
-              <div className={styles.reviewerWrapper}>
-                <h2 className={styles.title}>{slideItem.title}</h2>
-                <div className={styles.textWrapper}>
-                  <div className={styles.reviewer}>{slideItem.reviewer}</div>
-                  <div className={styles.craft}>{slideItem.craft}</div>
-                </div>
-              </div>
-            )}
+            {isHero && <Reviewer slideItem={slideItem} />}
             <div className={styles.slider}>
               <Image
                 src={slideItem.image}
