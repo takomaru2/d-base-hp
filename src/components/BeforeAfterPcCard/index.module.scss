@@ -1,7 +1,7 @@
 @import '@/styles/variables';
 @import '@/styles/mixin';
 
-.pcContainer {
+.container {
   display: none;
 
   @include pcStyle {
@@ -11,7 +11,7 @@
   }
 }
 
-.verticalTitle {
+.model {
   @include pcStyle {
     display: flex;
     align-items: center;
@@ -26,7 +26,7 @@
   }
 }
 
-.pcImage {
+.image {
   @include pcStyle {
     width: linear-clamp(300, 1250);
     height: auto;

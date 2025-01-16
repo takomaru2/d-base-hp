@@ -12,12 +12,12 @@ export const BeforeAfterPcCard: FC<BeforeAfterPcCardProps> = ({
   model,
 }) => {
   return (
-    <div className={styles.pcContainer}>
-      <div className={styles.verticalTitle}>{model}</div>
+    <div className={styles.container}>
+      <div className={styles.model}>{model}</div>
       <Image
         src={image}
         alt={'施工前、施工後の比較写真'}
-        className={styles.pcImage}
+        className={styles.image}
       />
     </div>
   );
