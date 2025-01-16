@@ -10,13 +10,18 @@ type LiquidCardProps = {
   description: ReactNode;
 };
 
-export const LiquidCard: FC<LiquidCardProps> = (props) => {
+export const LiquidCard: FC<LiquidCardProps> = ({
+  src,
+  alt,
+  name,
+  description,
+}) => {
   return (
     <div className={styles.wrapper}>
-      <Image className={styles.image} alt={props.alt} src={props.src} />
+      <Image className={styles.image} alt={alt} src={src} />
       <div className={styles.textBox}>
-        <div className={styles.name}>{props.name}</div>
-        <p className={styles.description}>{props.description}</p>
+        <div className={styles.name}>{name}</div>
+        <p className={styles.description}>{description}</p>
       </div>
     </div>
   );
