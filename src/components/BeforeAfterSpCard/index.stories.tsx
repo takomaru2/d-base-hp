@@ -10,6 +10,7 @@ export default meta;
 
 type Story = StoryObj<typeof Component>;
 
+// pcサイズではdisplay:noneにしてあるから、storyBookで見る際に注意
 export const BeforeCard: Story = {
   args: {
     title: 'Before',

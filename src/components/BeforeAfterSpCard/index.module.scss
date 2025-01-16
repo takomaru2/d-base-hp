@@ -17,7 +17,7 @@
   flex-direction: row-reverse;
 }
 
-.description {
+.title {
   display: flex;
   flex: 1;
   flex-basis: 20%;
@@ -30,13 +30,13 @@
   @include letterSpacing5(16px);
 }
 
-.textWrapper {
+.descriptionWrapper {
   display: flex;
   flex-direction: column;
   margin-top: 20px;
 }
 
-.text {
+.description {
   font-family: $mainFontJP;
   font-size: linear-clamp(12, 20);
   font-weight: lighter;

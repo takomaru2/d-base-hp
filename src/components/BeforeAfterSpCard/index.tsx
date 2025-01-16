@@ -19,11 +19,11 @@ export const BeforeAfterSpCard: FC<BeforeAfterSpCardProps> = ({
 }) => {
   return (
     <div className={`${styles.card} ${reverse ? styles.reverse : ''}`}>
-      <div className={styles.description}>
-        <div>{title}</div>
+      <div className={styles.title}>
+        {title}
         {description && (
-          <div className={styles.textWrapper}>
-            <div className={styles.text}>{description}</div>
+          <div className={styles.descriptionWrapper}>
+            <div className={styles.description}>{description}</div>
           </div>
         )}
       </div>
