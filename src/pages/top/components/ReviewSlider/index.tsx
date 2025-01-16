@@ -9,6 +9,7 @@ import { generateReviewSlideStyle } from '@/pages/top/logics/generateReviewSlide
 import { isHeroReviewSlide } from '@/pages/top/logics/isHeroReviewSlide';
 import { FC } from 'react';
 import { Reviewer } from '@/pages/top/components/Reviewer';
+import { ReviewComment } from '@/pages/top/components/ReviewComment';
 
 const DISTANCE_TO_HERO = 0;
 
@@ -55,12 +56,7 @@ export const ReviewSlider: FC = () => {
                 style={style}
               />
             </div>
-            {isHero && (
-              <>
-                <div className={styles.model}>{slideItem.model}</div>
-                <div className={styles.comment}>{slideItem.comment}</div>
-              </>
-            )}
+            {isHero && <ReviewComment slideItem={slideItem} />}
           </>
         );
       })}
