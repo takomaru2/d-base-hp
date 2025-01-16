@@ -1,0 +1,20 @@
+@import '@/styles/mixin';
+@import '@/styles/variables';
+
+.slider {
+  position: relative;
+  display: flex;
+  grid-area: slider;
+  gap: 8px;
+  height: 259px;
+
+  @include pcStyle {
+    height: linear-clamp(259, 700);
+  }
+}
+
+.image {
+  position: absolute;
+  bottom: 0;
+  transition: all ease-in 0.3s;
+}

@@ -1,5 +1,4 @@
 import styles from './index.module.scss';
-import Image from 'next/image';
 import { useActiveIndex } from '@/hooks/useActiveIndex';
 import { useReviewSliderBreakPointsStyle } from '@/pages/top/hooks/useReviewSliderBreakPointStyle';
 import { useAnimationFrameInterval } from '@/hooks/useAnimationFrameInterval';
@@ -7,10 +6,11 @@ import { reviewSlideList } from '@/pages/top/components/ReviewSlider/const/revie
 import { getRightIndex } from '@/pages/top/logics/getRightIndex';
 import { generateSlideStyle } from '../../logics/generateSlideStyle';
 import { isHeroImage } from '../../logics/isHeroImage';
-import { FC } from 'react';
+import { FC, Fragment } from 'react';
 import { Reviewer } from '@/pages/top/components/Reviewer';
 import { ReviewComment } from '@/pages/top/components/ReviewComment';
 import { REVIEW_DISTANCE_TO_HERO } from '@/pages/top/components/ReviewSlider/const/distanceToHero';
+import { ReviewSlideImage } from '@/pages/top/components/ReviewSlideImage';
 
 export const ReviewSlider: FC = () => {
   const [activeIndex, setActiveIndex] = useActiveIndex();
@@ -45,18 +45,11 @@ export const ReviewSlider: FC = () => {
         );
 
         return (
-          <>
+          <Fragment key={slideItem.id}>
             {isHero && <Reviewer slideItem={slideItem} />}
-            <div className={styles.slider}>
-              <Image
-                src={slideItem.image}
-                alt={slideItem.alt}
-                className={styles.image}
-                style={style}
-              />
-            </div>
+            <ReviewSlideImage slideItem={slideItem} style={style} />
             {isHero && <ReviewComment slideItem={slideItem} />}
-          </>
+          </Fragment>
         );
       })}
     </div>
