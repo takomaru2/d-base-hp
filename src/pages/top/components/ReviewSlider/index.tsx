@@ -5,14 +5,12 @@ import { useReviewSliderBreakPointsStyle } from '@/pages/top/hooks/useReviewSlid
 import { useAnimationFrameInterval } from '@/hooks/useAnimationFrameInterval';
 import { reviewSlideList } from '@/pages/top/components/ReviewSlider/const/reviewSlideList';
 import { getRightIndex } from '@/pages/top/logics/getRightIndex';
-import { generateReviewSlideStyle } from '@/pages/top/logics/generateReviewSlideStyle';
-import { isHeroReviewSlide } from '@/pages/top/logics/isHeroReviewSlide';
+import { generateSlideStyle } from '../../logics/generateSlideStyle';
+import { isHeroImage } from '../../logics/isHeroImage';
 import { FC } from 'react';
 import { Reviewer } from '@/pages/top/components/Reviewer';
 import { ReviewComment } from '@/pages/top/components/ReviewComment';
-
-// todo: workSliderとの統合時に命名変更
-const DISTANCE_TO_HERO = 0;
+import { REVIEW_DISTANCE_TO_HERO } from '@/pages/top/components/ReviewSlider/const/distanceToHero';
 
 export const ReviewSlider: FC = () => {
   const [activeIndex, setActiveIndex] = useActiveIndex();
@@ -33,16 +31,16 @@ export const ReviewSlider: FC = () => {
           activeIndex,
           reviewSlideList,
         );
-        const isHero = isHeroReviewSlide(
-          DISTANCE_TO_HERO,
+        const isHero = isHeroImage(
+          REVIEW_DISTANCE_TO_HERO,
           rightIndex,
           reviewSlideList,
         );
-        const { style } = generateReviewSlideStyle(
+        const { style } = generateSlideStyle(
           isHero,
           rightIndex,
           { basicWidth, heroWidth, basicHeight, heroHeight, gap },
-          DISTANCE_TO_HERO,
+          REVIEW_DISTANCE_TO_HERO,
           reviewSlideList,
         );
 

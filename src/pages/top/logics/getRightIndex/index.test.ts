@@ -2,7 +2,7 @@ import { getRightIndex } from '.';
 import {
   testSlideList,
   tooManySlideList,
-} from '@/pages/top/logics/getLeftIndex/fixtures';
+} from '@/pages/top/logics/getRightIndex/fixtures';
 
 describe('getRightIndex', () => {
   test.each([
