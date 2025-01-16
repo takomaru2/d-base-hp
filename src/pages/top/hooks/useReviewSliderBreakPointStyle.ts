@@ -21,7 +21,7 @@ const tablet = {
   basicWidth: 132,
   heroWidth: 232,
   basicHeight: 200,
-  heroHeight: 350,
+  heroHeight: 400,
   gap: 18,
 };
 

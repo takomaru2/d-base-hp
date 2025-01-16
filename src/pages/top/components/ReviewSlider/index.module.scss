@@ -92,13 +92,14 @@
   @include pcStyle {
     position: absolute;
     right: 250px;
-    font-size: 25px;
-    transform: rotate(-90deg) translateX(-30%);
+    font-size: linear-clamp(15, 50);
+    transform: rotate(-90deg) translateX(-50%);
   }
 
   @include full {
     right: 500px;
     font-size: linear-clamp(10, 60);
+    transform: rotate(-90deg) translateX(-30%);
   }
 }
 
