@@ -1,6 +1,30 @@
 @import '@/styles/mixin';
 @import '@/styles/variables';
 
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: rotate(-90deg) translateX(-10%);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotate(-90deg) translateX(-30%);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(20%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 .container {
   position: relative;
   display: grid;
@@ -33,6 +57,7 @@
   margin-bottom: linear-clamp(30, 40);
   font-family: $mainFontJP;
   text-align: left;
+  animation: slideInFromRight 0.8s ease-in-out forwards;
 
   @include letterSpacing8(13px);
 
@@ -47,7 +72,7 @@
   }
 
   @include full {
-    width: 550px;
+    width: linear-clamp(230, 513);
   }
 }
 
@@ -86,6 +111,7 @@
   text-align: left;
   text-wrap: pretty;
   white-space: pre-wrap;
+  animation: slideInFromRight 0.8s ease-in-out forwards;
 
   @include letterSpacing15(20px);
 
@@ -94,12 +120,13 @@
     right: 250px;
     font-size: linear-clamp(15, 50);
     transform: rotate(-90deg) translateX(-50%);
+    animation: slideInFromLeft 0.8s ease-in-out forwards;
   }
 
   @include full {
     right: 500px;
     font-size: linear-clamp(10, 60);
-    transform: rotate(-90deg) translateX(-30%);
+    animation: slideInFromLeft 0.8s ease-in-out forwards;
   }
 }
 
@@ -110,6 +137,7 @@
   width: linear-clamp(153, 334);
   margin-bottom: 10px;
   font-size: linear-clamp(12, 22);
+  animation: slideInFromRight 0.8s ease-in-out forwards;
 
   @include letterSpacing8(12px);
 
