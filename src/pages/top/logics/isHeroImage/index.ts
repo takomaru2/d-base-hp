@@ -10,10 +10,10 @@ export const isHeroImage = (
   slideList: BaseSlideList[],
 ) => {
   const isMinusNumber = 0 > DISTANCE_TO_HERO;
-  const isSlideOver = slideList.length < DISTANCE_TO_HERO;
+  const isSlideOver = slideList.length <= DISTANCE_TO_HERO;
   if (isMinusNumber || isSlideOver) {
     throw new Error(
-      'activeIndexがスライド枚数より多くなっちょるか、マイナスの値になっちょるで',
+      'DISTANCE_TO_HEROがスライド枚数より多くなっちょるか、マイナスの値になっちょるで',
     );
   }
 

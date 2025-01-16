@@ -19,7 +19,7 @@ type generateSlideStyleResult = {
  * 受け取った引数に対応するスタイルを返す関数
  *
  * @param {boolean} isHero - ヒーロースライドかどうかの判定
- * @param {number} rightIndex - スライドの左端インデックス
+ * @param {number} rightIndex - スライドの右端インデックス
  * @param {number} basicWidth - 基本スライドの幅
  * @param {number} heroWidth - ヒーロースライドの幅
  * @param {number} basicHeight - 基本スライドの高さ

@@ -13,6 +13,7 @@ import { generateSlideStyle } from '../../logics/generateSlideStyle';
 
 export const WorksSlider: FC = () => {
   const [activeIndex, setActiveIndex] = useActiveIndex();
+
   const { basicWidth, heroWidth, basicHeight, heroHeight, gap } =
     useWorksSliderBreakPointsStyle();
 
