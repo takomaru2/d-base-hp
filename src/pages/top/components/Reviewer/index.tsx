@@ -14,7 +14,7 @@ type SlideItem = {
 export const Reviewer: FC<ReviewerProps> = ({ slideItem }) => {
   const { title, reviewer, craft } = slideItem;
   return (
-    <div className={styles.reviewerWrapper}>
+    <div className={styles.container}>
       <h2 className={styles.title}>{title}</h2>
       <div className={styles.textWrapper}>
         <div className={styles.reviewer}>{reviewer}</div>

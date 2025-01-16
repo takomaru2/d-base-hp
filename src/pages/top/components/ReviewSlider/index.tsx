@@ -11,6 +11,7 @@ import { FC } from 'react';
 import { Reviewer } from '@/pages/top/components/Reviewer';
 import { ReviewComment } from '@/pages/top/components/ReviewComment';
 
+// todo: workSliderとの統合時に命名変更
 const DISTANCE_TO_HERO = 0;
 
 export const ReviewSlider: FC = () => {
