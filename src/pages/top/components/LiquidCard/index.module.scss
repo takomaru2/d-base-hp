@@ -1,0 +1,32 @@
+@import '@/styles/mixin';
+@import '@/styles/variables';
+
+.wrapper {
+  flex-shrink: 0;
+  width: linear-clamp(300, 400);
+  color: $colorBlack;
+  scroll-snap-align: center;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+}
+
+.textBox {
+  text-align: center;
+
+  @include letterSpacing5(10px);
+}
+
+.name {
+  margin-top: 20px;
+  font-family: $subFontEN;
+  font-size: linear-clamp(14, 26);
+}
+
+.description {
+  margin-top: 4px;
+  font-family: $mainFontJP;
+  font-size: linear-clamp(14, 18);
+}
