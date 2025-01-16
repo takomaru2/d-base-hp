@@ -1,26 +1,23 @@
 import { BaseSlideList } from '../generateSlideStyle';
 
 /**
- * どのimageIndexがhero画像(一番大きい画像がhero)か判定するロジック。
- * heroImageはDISTANCE_TO_HERO(一番左からhero画像までの枚数。左から2番目なら1)分、足されたimageIndexとしている。
- * slideListの枚数が増えても、DISTANCE_TO_HEROに対応するimageIndexをheroImageとする
+ * imageIndexとDISTANCE_TO_HEROを受け取って、
+ * imageIndexとDISTANCE_TO_HEROがイコールであれば、HeroImageとなる
  */
 export const isHeroImage = (
-  activeIndex: number,
   DISTANCE_TO_HERO: number,
+  rightIndex: number,
   slideList: BaseSlideList[],
-  imageIndex: number,
 ) => {
-  const isMinusActiveIndex = 0 > activeIndex;
-  const slideOverActiveIndex = activeIndex >= slideList.length;
-  if (isMinusActiveIndex || slideOverActiveIndex) {
+  const isMinusNumber = 0 > DISTANCE_TO_HERO;
+  const isSlideOver = slideList.length < DISTANCE_TO_HERO;
+  if (isMinusNumber || isSlideOver) {
     throw new Error(
       'activeIndexがスライド枚数より多くなっちょるか、マイナスの値になっちょるで',
     );
   }
 
-  const isHero =
-    (activeIndex + DISTANCE_TO_HERO) % slideList.length === imageIndex;
+  const isHero = DISTANCE_TO_HERO === rightIndex;
 
   return isHero;
 };

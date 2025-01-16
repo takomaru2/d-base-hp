@@ -1,1 +1,1 @@
-export const DISTANCE_TO_HERO = 1;
+export const WORKS_DISTANCE_TO_HERO = 2;

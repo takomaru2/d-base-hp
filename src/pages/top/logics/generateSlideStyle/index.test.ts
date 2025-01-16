@@ -21,7 +21,7 @@ describe('generateSlideStyle', () => {
       style: {
         width: '500px',
         height: '710px',
-        left: '300px',
+        right: '300px',
         zIndex: 10,
       },
     });
@@ -45,7 +45,7 @@ describe('generateSlideStyle', () => {
       style: {
         width: '500px',
         height: '710px',
-        left: '900px',
+        right: '900px',
         zIndex: 0,
       },
     });
@@ -69,7 +69,7 @@ describe('generateSlideStyle', () => {
       style: {
         width: '166px',
         height: '259px',
-        left: '88px',
+        right: '88px',
         zIndex: 10,
       },
     });
