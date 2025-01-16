@@ -30,13 +30,8 @@
   @include letterSpacing5(16px);
 }
 
-.descriptionWrapper {
-  display: flex;
-  flex-direction: column;
-  margin-top: 20px;
-}
-
 .description {
+  margin-top: 20px;
   font-family: $mainFontJP;
   font-size: linear-clamp(12, 20);
   font-weight: lighter;
