@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint '**/*.{ts,tsx}'",
     "format": "prettier \"./src/**/*.{ts,tsx,css,json,md}\" --write --cache",
     "lint:css": "stylelint '**/*.{css,scss}'",
     "lint:css:fix": "pnpm run lint:css --fix",
