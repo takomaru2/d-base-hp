@@ -26,6 +26,8 @@ export const ReviewSlider: FC = () => {
   return (
     <div className={styles.container}>
       {reviewSlideList.map((slideItem, imageIndex) => {
+        const { id, title, reviewer, craft, image, alt, model, comment } =
+          slideItem;
         const rightIndex = getRightIndex(
           imageIndex,
           activeIndex,
@@ -45,10 +47,12 @@ export const ReviewSlider: FC = () => {
         );
 
         return (
-          <Fragment key={slideItem.id}>
-            {isHero && <Reviewer slideItem={slideItem} />}
-            <ReviewSlideImage slideItem={slideItem} style={style} />
-            {isHero && <ReviewComment slideItem={slideItem} />}
+          <Fragment key={id}>
+            {isHero && (
+              <Reviewer title={title} reviewer={reviewer} craft={craft} />
+            )}
+            <ReviewSlideImage image={image} alt={alt} style={style} />
+            {isHero && <ReviewComment model={model} comment={comment} />}
           </Fragment>
         );
       })}

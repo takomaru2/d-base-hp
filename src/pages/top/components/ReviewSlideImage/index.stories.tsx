@@ -5,10 +5,8 @@ import image1 from '@/../public/assets/top/works/worksImage01.jpg';
 const meta: Meta<typeof Component> = {
   component: Component,
   args: {
-    slideItem: {
-      image: image1,
-      alt: '施工後の利用者の車外観',
-    },
+    image: image1,
+    alt: '施工後の利用者の車外観',
     style: {
       width: '500px',
       height: '710px',
