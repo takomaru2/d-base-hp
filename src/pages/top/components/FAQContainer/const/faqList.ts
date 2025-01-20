@@ -4,7 +4,7 @@ type FAQListResult = {
   answer: string;
 };
 
-export const FAQList: FAQListResult[] = [
+export const FaqList: FAQListResult[] = [
   {
     id: '1',
     question: 'コーティングの期間は？',
