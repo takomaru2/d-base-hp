@@ -60,7 +60,7 @@ export const worksSlideList: WorksSlideImage[] = [
     id: '6',
     image: muscle,
     model: 'MENS PHYSIQUE',
-    alt: '石飛という名のマッチョ',
+    alt: '石飛という名のマッチョ(仮)',
     craft: '鶏胸肉',
     pricing: '９位',
   },
