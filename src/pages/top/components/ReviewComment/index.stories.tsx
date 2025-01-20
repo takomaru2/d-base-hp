@@ -4,11 +4,9 @@ import { ReviewComment as Component } from '.';
 const meta: Meta<typeof Component> = {
   component: Component,
   args: {
-    slideItem: {
-      model: 'SUZUKI\nJimny',
-      comment:
-        '思わず抱きしめたくなるような肉感溢れるヘルシースレンダーなもっちり美肌に仕上がりました。綺麗系か可愛い系のどちらかと問われると両方です。',
-    },
+    model: 'SUZUKI\nJimny',
+    comment:
+      '思わず抱きしめたくなるような肉感溢れるヘルシースレンダーなもっちり美肌に仕上がりました。綺麗系か可愛い系のどちらかと問われると両方です。',
   },
   decorators: [
     (Story) => (
