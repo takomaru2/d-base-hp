@@ -65,7 +65,10 @@
       "pnpm run lint:css:fix-order",
       "pnpm run lint:css"
     ],
-    "*.{ts,tsx}": "bash -c tsc --noEmit"
+    "*.{ts,tsx}": [
+      "pnpm lint",
+      "bash -c tsc --noEmit"
+    ]
   },
   "engines": {
     "node": "20.x",
