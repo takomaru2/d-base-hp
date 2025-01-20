@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export const useFAQ = () => {
+export const useFaq = () => {
   const [showAnswerIndex, setShowAnswerIndex] = useState<Set<number>>(
     new Set(),
   );

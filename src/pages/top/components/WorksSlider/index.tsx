@@ -11,14 +11,15 @@ import { isHeroImage } from '@/pages/top/logics/isHeroImage';
 import { getLeftIndex } from '@/pages/top/logics/getLeftIndex';
 import { DISTANCE_TO_HERO } from '@/pages/top/components/WorksSlider/const/distanceToHero';
 
+const infinityIncrement = (prevIndex: number) =>
+  (prevIndex + 1) % worksSlideList.length;
+
 export const WorksSlider: FC = () => {
   const [activeIndex, setActiveIndex] = useActiveIndex();
   const { basicWidth, heroWidth, basicHeight, heroHeight, gap } =
     useWorksSliderBreakPointsStyle();
 
   useAnimationFrameInterval(() => {
-    const infinityIncrement = (prevIndex: number) =>
-      (prevIndex + 1) % worksSlideList.length;
     setActiveIndex(infinityIncrement);
   }, 4000);
 
