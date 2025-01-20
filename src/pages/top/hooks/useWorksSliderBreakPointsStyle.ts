@@ -9,7 +9,6 @@ export type UseWorksSliderBreakPoints = {
   gap: number;
 };
 
-// todo: review開発時に、同じ条件でよさそうなら、constに切り出して共通化
 const pc = {
   basicWidth: 250,
   heroWidth: 500,

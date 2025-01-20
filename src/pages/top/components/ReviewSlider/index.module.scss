@@ -1,0 +1,41 @@
+@import '@/styles/mixin';
+@import '@/styles/variables';
+
+.container {
+  position: relative;
+  display: grid;
+  grid-template:
+    'reviewerWrapper reviewerWrapper' auto
+    'slider model' auto
+    'slider comment' auto / 52% 45%;
+  column-gap: 10px;
+  height: auto;
+  margin: 0 auto;
+  color: $colorBlack;
+
+  @include pcStyle {
+    grid-template:
+      'model .' auto
+      'slider reviewerWrapper' auto
+      'slider comment' auto / 60% 40%;
+    column-gap: 20px;
+  }
+
+  @include full {
+    column-gap: 44px;
+  }
+}
+
+.slider {
+  position: relative;
+  display: flex;
+  grid-area: slider;
+  gap: 8px;
+  height: linear-clamp(259, 700);
+}
+
+.image {
+  position: absolute;
+  bottom: 0;
+  transition: all ease-in 0.3s;
+}

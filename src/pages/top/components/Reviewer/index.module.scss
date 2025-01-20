@@ -1,0 +1,57 @@
+@import '@/styles/mixin';
+@import '@/styles/variables';
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(20%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.container {
+  grid-area: reviewerWrapper;
+  width: 288px;
+  margin-inline: auto;
+  margin-bottom: linear-clamp(30, 40);
+  font-family: $mainFontJP;
+  text-align: left;
+  animation: slideInFromRight 0.8s ease-in-out forwards;
+
+  @include letterSpacing8(13px);
+
+  @include pcStyle {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 20px;
+    justify-content: end;
+    width: 230px;
+    margin: 0;
+    white-space: pre-wrap;
+  }
+
+  @include full {
+    width: linear-clamp(230, 513);
+  }
+}
+
+.textWrapper {
+  margin-top: 8px;
+}
+
+.title {
+  font-size: linear-clamp(16, 35);
+  white-space: pre-wrap;
+
+  @include letterSpacing8(16px);
+}
+
+.reviewer,
+.craft {
+  font-size: linear-clamp(12, 22);
+  text-wrap: pretty;
+}

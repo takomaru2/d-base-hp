@@ -1,0 +1,73 @@
+@import '@/styles/mixin';
+@import '@/styles/variables';
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: rotate(-90deg) translateX(-10%);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotate(-90deg) translateX(-30%);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(20%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.model {
+  display: flex;
+  grid-area: model;
+  align-items: end;
+  font-family: $subFontEN;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: left;
+  text-wrap: pretty;
+  white-space: pre-wrap;
+  animation: slideInFromRight 0.8s ease-in-out forwards;
+
+  @include letterSpacing15(20px);
+
+  @include pcStyle {
+    position: absolute;
+    right: 250px;
+    font-size: linear-clamp(15, 50);
+    transform: rotate(-90deg) translateX(-50%);
+    animation: slideInFromLeft 0.8s ease-in-out forwards;
+  }
+
+  @include full {
+    right: 500px;
+    font-size: linear-clamp(10, 60);
+    animation: slideInFromLeft 0.8s ease-in-out forwards;
+  }
+}
+
+.comment {
+  display: flex;
+  grid-area: comment;
+  align-items: end;
+  width: linear-clamp(153, 334);
+  margin-bottom: 10px;
+  font-size: linear-clamp(12, 22);
+  animation: slideInFromRight 0.8s ease-in-out forwards;
+
+  @include letterSpacing8(12px);
+
+  @include pcStyle {
+    align-items: normal;
+    margin-top: linear-clamp(10, 20);
+    margin-bottom: 0;
+  }
+}
