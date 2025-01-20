@@ -25,17 +25,3 @@
     column-gap: 44px;
   }
 }
-
-.slider {
-  position: relative;
-  display: flex;
-  grid-area: slider;
-  gap: 8px;
-  height: linear-clamp(259, 700);
-}
-
-.image {
-  position: absolute;
-  bottom: 0;
-  transition: all ease-in 0.3s;
-}

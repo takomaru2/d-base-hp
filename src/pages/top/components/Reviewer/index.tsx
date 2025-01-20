@@ -2,17 +2,12 @@ import styles from './index.module.scss';
 import { FC } from 'react';
 
 type ReviewerProps = {
-  slideItem: SlideItem;
-};
-
-type SlideItem = {
   title: string;
   reviewer: string;
   craft: string;
 };
 
-export const Reviewer: FC<ReviewerProps> = ({ slideItem }) => {
-  const { title, reviewer, craft } = slideItem;
+export const Reviewer: FC<ReviewerProps> = ({ title, reviewer, craft }) => {
   return (
     <div className={styles.container}>
       <h2 className={styles.title}>{title}</h2>

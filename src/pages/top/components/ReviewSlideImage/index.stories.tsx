@@ -1,20 +1,19 @@
 import { Meta, StoryObj } from '@storybook/react';
-import { Reviewer as Component } from '.';
+import { ReviewSlideImage as Component } from '.';
+import image1 from '@/../public/assets/top/works/worksImage01.jpg';
 
 const meta: Meta<typeof Component> = {
   component: Component,
   args: {
-    title: '見違えるほど綺麗になりました！',
-    reviewer: '島田　鉄平',
-    craft: 'ナノセラミックコーティング・・・¥150,000',
+    image: image1,
+    alt: '施工後の利用者の車外観',
+    style: {
+      width: '500px',
+      height: '710px',
+      right: '300px',
+      zIndex: 10,
+    },
   },
-  decorators: [
-    (Story) => (
-      <div style={{ color: 'black' }}>
-        <Story />
-      </div>
-    ),
-  ],
   parameters: {
     layout: 'fullscreen',
     backgrounds: {

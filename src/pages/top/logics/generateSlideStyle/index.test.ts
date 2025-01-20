@@ -2,7 +2,7 @@ import { generateSlideStyle } from '.';
 import { testSlideList } from '@/pages/top/logics/generateSlideStyle/fixtures';
 
 describe('generateSlideStyle', () => {
-  test('スライドが4枚で左から2番目が大きい画像(DISTANCE_TO_HERO=1)のとき、正しいスタイルが返る', () => {
+  test('スライドが4枚で右から2番目が大きい画像(DISTANCE_TO_HERO=1)のとき、正しいスタイルが返る', () => {
     expect(
       generateSlideStyle(
         true,
@@ -14,19 +14,19 @@ describe('generateSlideStyle', () => {
           heroHeight: 710,
           gap: 50,
         },
-        2,
+        1,
         testSlideList,
       ),
     ).toStrictEqual({
       style: {
         width: '500px',
         height: '710px',
-        left: '300px',
+        right: '300px',
         zIndex: 10,
       },
     });
   });
-  test('DISTANCE_TO_HEROが3の時でも適切なstyleが返る', () => {
+  test('DISTANCE_TO_HEROが3（右から４番目）の時でも適切なstyleが返る', () => {
     expect(
       generateSlideStyle(
         true,
@@ -45,7 +45,7 @@ describe('generateSlideStyle', () => {
       style: {
         width: '500px',
         height: '710px',
-        left: '900px',
+        right: '900px',
         zIndex: 0,
       },
     });
@@ -69,7 +69,7 @@ describe('generateSlideStyle', () => {
       style: {
         width: '166px',
         height: '259px',
-        left: '88px',
+        right: '88px',
         zIndex: 10,
       },
     });
