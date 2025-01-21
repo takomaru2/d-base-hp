@@ -11,6 +11,9 @@ import { isHeroImage } from '../../logics/isHeroImage';
 import { getRightIndex } from '@/pages/top/logics/getRightIndex';
 import { generateSlideStyle } from '../../logics/generateSlideStyle';
 
+const infinityIncrement = (prevIndex: number) =>
+  (prevIndex + 1) % worksSlideList.length;
+
 export const WorksSlider: FC = () => {
   const [activeIndex, setActiveIndex] = useActiveIndex();
 
@@ -18,8 +21,6 @@ export const WorksSlider: FC = () => {
     useWorksSliderBreakPointsStyle();
 
   useAnimationFrameInterval(() => {
-    const infinityIncrement = (prevIndex: number) =>
-      (prevIndex + 1) % worksSlideList.length;
     setActiveIndex(infinityIncrement);
   }, 4000);
 

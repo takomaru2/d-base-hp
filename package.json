@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint 'src/**/*.{ts,tsx}'",
     "format": "prettier \"./src/**/*.{ts,tsx,css,json,md}\" --write --cache",
     "lint:css": "stylelint '**/*.{css,scss}'",
     "lint:css:fix": "pnpm run lint:css --fix",
@@ -29,6 +29,7 @@
     "@storybook/addon-essentials": "^8.4.2",
     "@storybook/addon-interactions": "^8.4.2",
     "@storybook/addon-onboarding": "^8.4.2",
+    "@storybook/addon-viewport": "^8.4.7",
     "@storybook/blocks": "^8.4.2",
     "@storybook/nextjs": "^8.4.2",
     "@storybook/react": "^8.4.2",
@@ -39,7 +40,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@typescript-eslint/parser": "^8.13.0",
-    "eslint": "^9.14.0",
+    "eslint": "^8.57.1",
     "eslint-config-next": "15.0.2",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-jsx-a11y": "^6.10.2",
@@ -59,12 +60,15 @@
     "typescript": "^5"
   },
   "lint-staged": {
-    "**/*.{ts,tsx,css,scss,json,md}": "pnpm run format",
+    "**/*.{ts,tsx,css,scss,json,md}": "pnpm format",
     "*.{css,scss}": [
-      "pnpm run lint:css:fix-order",
-      "pnpm run lint:css"
+      "pnpm lint:css:fix-order",
+      "pnpm lint:css"
     ],
-    "*.{ts,tsx}": "bash -c tsc --noEmit"
+    "*.{ts,tsx}": [
+      "pnpm lint",
+      "bash -c tsc --noEmit"
+    ]
   },
   "engines": {
     "node": "20.x",
