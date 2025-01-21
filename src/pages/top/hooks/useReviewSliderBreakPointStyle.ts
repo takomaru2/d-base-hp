@@ -37,12 +37,12 @@ export const useReviewSliderBreakPointsStyle =
   (): UseReviewSliderBreakPoints => {
     const windowWidth = useWindowWidth();
 
-    const pcBreakPoint = windowWidth > PC;
-    const tabletBreakPoint = windowWidth > TABLET;
+    const isPcSize = windowWidth > PC;
+    const isTabletSize = windowWidth > TABLET;
 
-    if (pcBreakPoint) {
+    if (isPcSize) {
       return pc;
-    } else if (tabletBreakPoint) {
+    } else if (isTabletSize) {
       return tablet;
     } else {
       return sp;
