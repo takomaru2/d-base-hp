@@ -1,12 +1,22 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import styles from './index.module.scss';
-import { liquidSlideItemList } from '@/pages/top/components/LiquidCardSlide/const/liquidSlideItemList';
 import { LiquidCard } from '@/pages/top/components/LiquidCard';
+import { StaticImageData } from 'next/image';
 
-export const LiquidCardSlide: FC = () => {
+export type LiquidCardSlideProps = {
+  swipeList: {
+    id: string;
+    src: StaticImageData;
+    alt: string;
+    name: string;
+    description: ReactNode;
+  }[];
+};
+
+export const LiquidCardSlide: FC<LiquidCardSlideProps> = ({ swipeList }) => {
   return (
     <div className={styles.wrapper}>
-      {liquidSlideItemList.map((item) => (
+      {swipeList.map((item) => (
         <LiquidCard
           key={item.id}
           src={item.src}
