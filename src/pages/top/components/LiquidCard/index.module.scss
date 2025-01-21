@@ -6,6 +6,10 @@
   width: linear-clamp(300, 400);
   color: $colorBlack;
   scroll-snap-align: center;
+
+  @include pcStyle {
+    scroll-snap-align: none;
+  }
 }
 
 .image {
@@ -14,15 +18,24 @@
 }
 
 .textBox {
+  width: linear-clamp(250, 350);
+  margin-inline: auto;
   text-align: center;
 
   @include letterSpacing5(10px);
+
+  @include pcStyle {
+    width: auto;
+    margin: 0;
+    text-align: left;
+  }
 }
 
 .name {
   margin-top: 20px;
   font-family: $subFontEN;
   font-size: linear-clamp(14, 26);
+  overflow-wrap: break-word;
 }
 
 .description {
