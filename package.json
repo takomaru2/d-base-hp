@@ -15,7 +15,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "commit": "pnpm lint-staged && git-cz",
-    "test": "jest"
+    "test": "jest",
+    "check-all": "pnpm lint && pnpm lint:css && pnpm type-check"
   },
   "dependencies": {
     "next": "14.2.17",
