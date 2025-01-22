@@ -13,9 +13,4 @@ export default meta;
 
 type Story = StoryObj<typeof Component>;
 
-export const MoreButton: Story = {
-  args: {
-    label: 'ポリマーコート',
-    backgroundImage: '/assets/top/price/polymerCoatBackImage.jpg',
-  },
-};
+export const Default: Story = {};

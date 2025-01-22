@@ -1,9 +1,9 @@
 import styles from './index.module.scss';
 import { ButtonLink } from '@/components/ButtonLink';
-import {
-  backgroundImage,
-  POLYMER_COAT_LINK,
-} from '@/pages/top/const/polymerCoatData';
+
+const POLYMER_COAT_LINK =
+  'https://www.dmm.co.jp/digital/videoa/-/detail/=/cid=h_1472bukgb00003/';
+const backgroundImage = '/assets/top/price/polymerCoatBackImage.jpg';
 
 export const PolymerCoat = () => {
   return (
