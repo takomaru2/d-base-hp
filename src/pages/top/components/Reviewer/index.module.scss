@@ -24,7 +24,7 @@
 
   @include letterSpacing8(13px);
 
-  @include pcStyle {
+  @include lg {
     display: flex;
     flex-direction: column-reverse;
     gap: 20px;
@@ -34,7 +34,7 @@
     white-space: pre-wrap;
   }
 
-  @include full {
+  @include xl {
     width: linear-clamp(230, 513);
   }
 }

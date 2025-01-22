@@ -39,7 +39,7 @@
 
   @include letterSpacing15(20px);
 
-  @include pcStyle {
+  @include lg {
     position: absolute;
     right: 250px;
     font-size: linear-clamp(15, 50);
@@ -47,7 +47,7 @@
     animation: slideInFromLeft 0.8s ease-in-out forwards;
   }
 
-  @include full {
+  @include xl {
     right: 500px;
     font-size: linear-clamp(10, 60);
     animation: slideInFromLeft 0.8s ease-in-out forwards;
@@ -65,7 +65,7 @@
 
   @include letterSpacing8(12px);
 
-  @include pcStyle {
+  @include lg {
     align-items: normal;
     margin-top: linear-clamp(10, 20);
     margin-bottom: 0;
