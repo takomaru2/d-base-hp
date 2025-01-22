@@ -6,23 +6,37 @@
   width: linear-clamp(300, 400);
   color: $colorBlack;
   scroll-snap-align: center;
+
+  @include lg {
+    scroll-snap-align: none;
+  }
 }
 
 .image {
   width: 100%;
-  height: auto;
+  height: linear-clamp(234, 297);
+  object-fit: cover;
 }
 
 .textBox {
+  width: linear-clamp(250, 350);
+  margin-inline: auto;
   text-align: center;
 
   @include letterSpacing5(10px);
+
+  @include lg {
+    width: auto;
+    margin: 0;
+    text-align: left;
+  }
 }
 
 .name {
   margin-top: 20px;
   font-family: $subFontEN;
   font-size: linear-clamp(14, 26);
+  overflow-wrap: break-word;
 }
 
 .description {

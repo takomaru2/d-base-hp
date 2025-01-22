@@ -46,7 +46,7 @@
   @include letterSpacing10(20px);
 }
 
-@include pcStyle {
+@include lg {
   .spMenu {
     display: none;
   }

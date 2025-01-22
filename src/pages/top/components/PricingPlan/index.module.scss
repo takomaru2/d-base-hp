@@ -33,7 +33,7 @@
   @include letterSpacing30(30px);
 }
 
-@include pcStyle {
+@include lg {
   .container {
     align-items: flex-start;
   }

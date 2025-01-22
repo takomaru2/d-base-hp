@@ -46,7 +46,7 @@
   @include letterSpacing8(14px);
 }
 
-@include pcStyle {
+@include lg {
   .model {
     left: linear-clamp(0, 50);
     white-space: wrap;
@@ -57,7 +57,7 @@
   }
 }
 
-@include full {
+@include xl {
   .model {
     top: linear-clamp(150, 170);
     left: 0;

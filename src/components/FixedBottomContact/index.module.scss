@@ -51,7 +51,7 @@
   @include letterSpacing5(40px);
 }
 
-@include pcStyle {
+@include lg {
   .container {
     display: grid;
     grid-template-rows: auto;

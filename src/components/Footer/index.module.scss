@@ -12,7 +12,7 @@
 
   @include letterSpacing15(14px);
 
-  @include pcStyle {
+  @include lg {
     flex-direction: row;
     column-gap: 60px;
     justify-content: center;

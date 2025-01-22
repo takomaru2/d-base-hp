@@ -18,7 +18,7 @@
   transition: all ease-in 0.3s;
 }
 
-@include pcStyle {
+@include lg {
   .container {
     max-width: 1400px;
     height: linear-clamp(450, 700);
@@ -29,7 +29,7 @@
   }
 }
 
-@include full {
+@include xl {
   .container {
     max-width: 1400px;
     height: linear-clamp(700, 800);

@@ -1,0 +1,27 @@
+@import '@/styles/mixin';
+@import '@/styles/variables';
+
+.wrapper {
+  display: flex;
+  column-gap: 25px;
+  overflow: scroll;
+  color: $colorBlack;
+
+  /**
+  中途半端なところでスクロールが止まらないようにするCSSだお
+   */
+  scroll-snap-type: x mandatory;
+
+  @include lg {
+    flex-wrap: wrap;
+    row-gap: 80px;
+    justify-content: center;
+    width: linear-clamp(350, 1400);
+    padding: 0;
+    margin-inline: auto;
+  }
+
+  @include xl {
+    justify-content: space-between;
+  }
+}

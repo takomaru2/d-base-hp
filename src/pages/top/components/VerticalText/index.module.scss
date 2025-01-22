@@ -43,7 +43,7 @@
   line-height: linear-clamp(29, 60);
 }
 
-@include pcStyle {
+@include lg {
   .text {
     padding: 0;
   }
