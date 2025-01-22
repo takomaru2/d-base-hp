@@ -4,7 +4,7 @@ import { useWorksSliderBreakPointsStyle } from '@/pages/top/hooks/useWorksSlider
 import { useAnimationFrameInterval } from '@/hooks/useAnimationFrameInterval';
 import { worksSlideList } from '@/pages/top/components/WorksSlider/const/worksSlideList';
 import styles from '@/pages/top/components/WorksSlider/index.module.scss';
-import { generateSlideStyle } from '@/pages/top/logics/getDynamicSliderStyle';
+import { generateSlideStyle } from '../../logics/generateSlideStyle';
 import Image from 'next/image';
 import { WorksHeroImageDescription } from '../WorksHeroImageDescription';
 import { isHeroImage } from '@/pages/top/logics/isHeroImage';
