@@ -26,7 +26,7 @@
   width: 0;
 }
 
-@include pcStyle {
+@include lg {
   .image {
     height: 782px;
   }

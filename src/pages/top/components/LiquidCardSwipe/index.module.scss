@@ -12,7 +12,7 @@
    */
   scroll-snap-type: x mandatory;
 
-  @include pcStyle {
+  @include lg {
     flex-wrap: wrap;
     row-gap: 80px;
     justify-content: center;
@@ -21,7 +21,7 @@
     margin-inline: auto;
   }
 
-  @include full {
+  @include xl {
     justify-content: space-between;
   }
 }

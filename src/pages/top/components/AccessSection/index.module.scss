@@ -5,7 +5,7 @@
   max-width: linear-clamp(590, 1400);
   text-align: center;
 
-  @include pcStyle {
+  @include lg {
     margin-inline: auto;
     text-align: left;
   }
@@ -18,7 +18,7 @@
   align-items: center;
   margin-top: linear-clamp(50, 107);
 
-  @include pcStyle {
+  @include lg {
     flex-direction: row-reverse;
     justify-content: space-between;
     max-width: linear-clamp(590, 1400);

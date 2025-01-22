@@ -1,12 +1,12 @@
 @import 'variables';
 
-@mixin pcStyle {
+@mixin lg {
   @media (width > 600px) {
     @content;
   }
 }
 
-@mixin full {
+@mixin xl {
   @media (width > 1000px) {
     @content;
   }

@@ -4,7 +4,7 @@
 .container {
   display: none;
 
-  @include pcStyle {
+  @include lg {
     display: flex;
     justify-content: space-around;
     color: $colorBlack;
@@ -12,7 +12,7 @@
 }
 
 .model {
-  @include pcStyle {
+  @include lg {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -27,7 +27,7 @@
 }
 
 .image {
-  @include pcStyle {
+  @include lg {
     width: linear-clamp(300, 1250);
     height: auto;
   }

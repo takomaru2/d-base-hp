@@ -7,7 +7,7 @@
   color: $colorBlack;
   scroll-snap-align: center;
 
-  @include pcStyle {
+  @include lg {
     scroll-snap-align: none;
   }
 }
@@ -25,7 +25,7 @@
 
   @include letterSpacing5(10px);
 
-  @include pcStyle {
+  @include lg {
     width: auto;
     margin: 0;
     text-align: left;

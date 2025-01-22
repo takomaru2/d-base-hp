@@ -2,11 +2,11 @@ import { ComponentProps, FC } from 'react';
 import styles from './index.module.scss';
 import { LiquidCard } from '@/pages/top/components/LiquidCard';
 
-type SwipeItem = { id: string } & ComponentProps<typeof LiquidCard>;
-
 export type LiquidCardSlideProps = {
   swipeList: SwipeItem[];
 };
+
+type SwipeItem = { id: string } & ComponentProps<typeof LiquidCard>;
 
 export const LiquidCardSwipe: FC<LiquidCardSlideProps> = ({ swipeList }) => {
   return (

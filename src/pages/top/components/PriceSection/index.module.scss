@@ -20,7 +20,7 @@
     opacity: 0.55;
   }
 
-  @include pcStyle {
+  @include lg {
     padding-left: linear-clamp(70, 140);
   }
 }
@@ -30,7 +30,7 @@
   z-index: 2;
   text-align: center;
 
-  @include pcStyle {
+  @include lg {
     text-align: left;
   }
 }
@@ -46,7 +46,7 @@
   background-color: $colorWhite;
   border-radius: 4px;
 
-  @include pcStyle {
+  @include lg {
     margin-inline: 0;
   }
 }
@@ -54,7 +54,7 @@
 .button {
   margin-top: linear-clamp(10, 60);
 
-  @include pcStyle {
+  @include lg {
     text-align: left;
   }
 }

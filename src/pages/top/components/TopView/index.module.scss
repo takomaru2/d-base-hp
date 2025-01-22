@@ -50,7 +50,7 @@
   width: 0;
 }
 
-@include pcStyle {
+@include lg {
   .container {
     max-width: linear-clamp(600, 1400);
     margin: 0 auto;

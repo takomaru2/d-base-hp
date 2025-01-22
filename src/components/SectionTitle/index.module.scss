@@ -59,7 +59,7 @@
   letter-spacing: 4px;
 }
 
-@include pcStyle {
+@include lg {
   .enTitle {
     text-align: left;
   }

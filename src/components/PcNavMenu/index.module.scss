@@ -6,7 +6,7 @@
   height: 100%;
 }
 
-@include pcStyle {
+@include lg {
   .container {
     display: flex;
     column-gap: linear-clamp(5, 60);
