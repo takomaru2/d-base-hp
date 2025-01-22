@@ -13,7 +13,7 @@
   background-size: cover;
   background-blend-mode: overlay;
 
-  @include pcStyle {
+  @include lg {
     display: none;
   }
 }
