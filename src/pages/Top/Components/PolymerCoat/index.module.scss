@@ -4,10 +4,10 @@
 .container {
   position: relative;
   width: 100%;
-  padding: 30px 60px 20px;
+  padding-block: 30px;
   color: $colorPureWhite;
   text-align: center;
-  background-color: #434343;
+  background-color: $colorShadow;
   background-position: center;
   background-size: cover;
   background-blend-mode: overlay;
@@ -18,11 +18,11 @@
 }
 
 .polymerCoat {
-  font-size: 10px;
+  font-size: 14px;
 }
 
 .minPrice {
-  margin-top: 16px;
+  margin-top: 10px;
   font-size: 24px;
 }
 
