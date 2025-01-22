@@ -11,13 +11,13 @@
   white-space: nowrap;
   background-color: $buttonColor;
   border-radius: 2px;
-  transition: all 0.3s ease;
+  transition: all 0.3s ease-in;
 
   @include letterSpacing8(14px);
 
   &:hover {
     color: $buttonColor;
     background-color: $colorWhite;
-    border: $buttonColor 1px solid;
+    outline: $buttonColor 1px solid;
   }
 }
