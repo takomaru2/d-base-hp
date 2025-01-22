@@ -8,6 +8,7 @@
   color: $colorPureWhite;
   text-align: center;
   background-color: $colorShadow;
+  background-image: url('/assets/top/price/polymerCoatBackImage.jpg');
   background-position: center;
   background-size: cover;
   background-blend-mode: overlay;
@@ -29,7 +30,6 @@
 .description {
   font-size: 10px;
   line-height: 28px;
-  white-space: pre-wrap;
 }
 
 .button {
