@@ -49,8 +49,7 @@ export const liquidSlideItemList: LiquidSlideItem[] = [
     name: 'NASIOLZR54 aaaaaa bbbb ccccc accccc accccc accccc accccc accccc accccc aaaaaaaa-aaaaa',
     description: (
       <>
-        雨染みの元を徹底的に排除した雨染みの元を徹底的に排除した雨染みの元を徹底的に排除した雨染みの元を徹底的に排除した雨染みの元を徹底的に排除した雨染みの元を徹底的に排除した雨染みの元を徹底的に排除した
-        <br />
+        dd <br />
         青空駐車専用コーティング。 <br />
         3層コーティングからなる圧倒的な艶と耐久性
       </>
@@ -64,7 +63,7 @@ export const liquidSlideItemList: LiquidSlideItem[] = [
     name: 'NAaaa',
     description: (
       <>
-        雨染みの元を徹底的に排除した雨染みの元を徹底的に排除した雨染みの元を徹底的に排除した雨染みの元を徹底的に排除した雨染みの元を徹底的に排除した雨染みの元を徹底的に排除した雨染みの元を徹底的に排除した
+        した雨染みの元を
         <br />
         青空駐車専用コーティング。 <br />
         3層コーティングからなる圧倒的な艶と耐久性

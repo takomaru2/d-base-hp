@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { LiquidCardSlide as Component } from '.';
-import { liquidSlideItemList } from '@/pages/top/components/LiquidCardSlide/const/liquidSlideItemList';
+import { LiquidCardSwipe as Component } from '.';
+import { liquidSlideItemList } from '@/pages/top/components/LiquidCardSwipe/const/liquidSlideItemList';
 
 const meta: Meta<typeof Component> = {
   component: Component,

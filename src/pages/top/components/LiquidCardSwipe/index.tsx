@@ -8,7 +8,7 @@ export type LiquidCardSlideProps = {
   swipeList: SwipeItem[];
 };
 
-export const LiquidCardSlide: FC<LiquidCardSlideProps> = ({ swipeList }) => {
+export const LiquidCardSwipe: FC<LiquidCardSlideProps> = ({ swipeList }) => {
   return (
     <div className={styles.wrapper}>
       {swipeList.map((item) => (

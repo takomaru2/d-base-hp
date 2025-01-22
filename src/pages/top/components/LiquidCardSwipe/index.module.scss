@@ -4,7 +4,6 @@
 .wrapper {
   display: flex;
   column-gap: 25px;
-  padding-inline: linear-clamp(50, 140);
   overflow: scroll;
   color: $colorBlack;
 
@@ -15,10 +14,14 @@
 
   @include pcStyle {
     flex-wrap: wrap;
-    row-gap: 50px;
-    justify-content: space-between;
+    row-gap: 80px;
+    justify-content: center;
     width: linear-clamp(350, 1400);
     padding: 0;
     margin-inline: auto;
+  }
+
+  @include full {
+    justify-content: space-between;
   }
 }
