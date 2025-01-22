@@ -1,64 +1,60 @@
 import styles from './index.module.scss';
-import Image from 'next/image';
 import { useActiveIndex } from '@/hooks/useActiveIndex';
 import { useReviewSliderBreakPointsStyle } from '@/pages/top/hooks/useReviewSliderBreakPointStyle';
 import { useAnimationFrameInterval } from '@/hooks/useAnimationFrameInterval';
 import { reviewSlideList } from '@/pages/top/components/ReviewSlider/const/reviewSlideList';
 import { getRightIndex } from '@/pages/top/logics/getRightIndex';
-import { generateReviewSlideStyle } from '@/pages/top/logics/generateReviewSlideStyle';
-import { isHeroReviewSlide } from '@/pages/top/logics/isHeroReviewSlide';
-import { FC } from 'react';
+import { generateSlideStyle } from '../../logics/generateSlideStyle';
+import { isHeroImage } from '../../logics/isHeroImage';
+import { FC, Fragment } from 'react';
 import { Reviewer } from '@/pages/top/components/Reviewer';
 import { ReviewComment } from '@/pages/top/components/ReviewComment';
-
-// todo: workSliderとの統合時に命名変更
-const DISTANCE_TO_HERO = 0;
+import { REVIEW_DISTANCE_TO_HERO } from '@/pages/top/components/ReviewSlider/const/distanceToHero';
+import { ReviewSlideImage } from '@/pages/top/components/ReviewSlideImage';
 
 export const ReviewSlider: FC = () => {
   const [activeIndex, setActiveIndex] = useActiveIndex();
   const { basicWidth, heroWidth, basicHeight, heroHeight, gap } =
     useReviewSliderBreakPointsStyle();
 
+  const infinityIncrement = (prevIndex: number) =>
+    (prevIndex + 1) % reviewSlideList.length;
+
   useAnimationFrameInterval(() => {
-    const infinityIncrement = (prevIndex: number) =>
-      (prevIndex + 1) % reviewSlideList.length;
     setActiveIndex(infinityIncrement);
   }, 4000);
 
   return (
     <div className={styles.container}>
       {reviewSlideList.map((slideItem, imageIndex) => {
+        const { id, title, reviewer, craft, image, alt, model, comment } =
+          slideItem;
         const rightIndex = getRightIndex(
           imageIndex,
           activeIndex,
           reviewSlideList,
         );
-        const isHero = isHeroReviewSlide(
-          DISTANCE_TO_HERO,
+        const isHero = isHeroImage(
+          REVIEW_DISTANCE_TO_HERO,
           rightIndex,
           reviewSlideList,
         );
-        const { style } = generateReviewSlideStyle(
+        const { style } = generateSlideStyle(
           isHero,
           rightIndex,
           { basicWidth, heroWidth, basicHeight, heroHeight, gap },
-          DISTANCE_TO_HERO,
+          REVIEW_DISTANCE_TO_HERO,
           reviewSlideList,
         );
 
         return (
-          <>
-            {isHero && <Reviewer slideItem={slideItem} />}
-            <div className={styles.slider}>
-              <Image
-                src={slideItem.image}
-                alt={slideItem.alt}
-                className={styles.image}
-                style={style}
-              />
-            </div>
-            {isHero && <ReviewComment slideItem={slideItem} />}
-          </>
+          <Fragment key={id}>
+            {isHero && (
+              <Reviewer title={title} reviewer={reviewer} craft={craft} />
+            )}
+            <ReviewSlideImage image={image} alt={alt} style={style} />
+            {isHero && <ReviewComment model={model} comment={comment} />}
+          </Fragment>
         );
       })}
     </div>

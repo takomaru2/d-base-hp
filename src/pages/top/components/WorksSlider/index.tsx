@@ -4,18 +4,19 @@ import { useWorksSliderBreakPointsStyle } from '@/pages/top/hooks/useWorksSlider
 import { useAnimationFrameInterval } from '@/hooks/useAnimationFrameInterval';
 import { worksSlideList } from '@/pages/top/components/WorksSlider/const/worksSlideList';
 import styles from '@/pages/top/components/WorksSlider/index.module.scss';
-import { generateSlideStyle } from '../../logics/generateSlideStyle';
 import Image from 'next/image';
 import { WorksHeroImageDescription } from '../WorksHeroImageDescription';
-import { isHeroImage } from '@/pages/top/logics/isHeroImage';
-import { getLeftIndex } from '@/pages/top/logics/getLeftIndex';
-import { DISTANCE_TO_HERO } from '@/pages/top/components/WorksSlider/const/distanceToHero';
+import { WORKS_DISTANCE_TO_HERO } from '@/pages/top/components/WorksSlider/const/distanceToHero';
+import { isHeroImage } from '../../logics/isHeroImage';
+import { getRightIndex } from '@/pages/top/logics/getRightIndex';
+import { generateSlideStyle } from '../../logics/generateSlideStyle';
 
 const infinityIncrement = (prevIndex: number) =>
   (prevIndex + 1) % worksSlideList.length;
 
 export const WorksSlider: FC = () => {
   const [activeIndex, setActiveIndex] = useActiveIndex();
+
   const { basicWidth, heroWidth, basicHeight, heroHeight, gap } =
     useWorksSliderBreakPointsStyle();
 
@@ -26,18 +27,21 @@ export const WorksSlider: FC = () => {
   return (
     <div className={styles.container}>
       {worksSlideList.map((slideItem, imageIndex) => {
-        const isHero = isHeroImage(
-          activeIndex,
-          DISTANCE_TO_HERO,
-          worksSlideList,
+        const rightIndex = getRightIndex(
           imageIndex,
+          activeIndex,
+          worksSlideList,
         );
-        const leftIndex = getLeftIndex(imageIndex, activeIndex, worksSlideList);
+        const isHero = isHeroImage(
+          WORKS_DISTANCE_TO_HERO,
+          rightIndex,
+          worksSlideList,
+        );
         const { style } = generateSlideStyle(
           isHero,
-          leftIndex,
+          rightIndex,
           { basicWidth, heroWidth, basicHeight, heroHeight, gap },
-          DISTANCE_TO_HERO,
+          WORKS_DISTANCE_TO_HERO,
           worksSlideList,
         );
         return (
