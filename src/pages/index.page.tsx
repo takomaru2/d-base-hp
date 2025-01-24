@@ -1,3 +1,11 @@
+import { Header } from '@/components/Header';
+
 export default function Top() {
-  return <></>;
+  return (
+    <>
+      <div>
+        <Header />
+      </div>
+    </>
+  );
 }
