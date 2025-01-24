@@ -13,7 +13,7 @@
   margin: 0 auto;
   color: $colorBlack;
 
-  @include pcStyle {
+  @include lg {
     grid-template:
       'model .' auto
       'slider reviewerWrapper' auto
@@ -21,7 +21,7 @@
     column-gap: 20px;
   }
 
-  @include full {
+  @include xl {
     column-gap: 44px;
   }
 }
