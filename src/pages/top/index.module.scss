@@ -1,8 +1,12 @@
 @use '../../styles/variables' as *;
 
-.top {
+.hero {
   position: fixed;
   inset: 0 0 auto;
   z-index: 100;
   padding-inline: linear-clamp(25, 70);
+}
+
+.vertical {
+  margin-block: linear-clamp(66, 230) linear-clamp(100, 160);
 }
