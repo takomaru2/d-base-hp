@@ -7,6 +7,10 @@
   right: 0;
   height: 100vh;
   object-fit: cover;
+
+  @include xl {
+    object-fit: fill;
+  }
 }
 
 .imageVisible {
