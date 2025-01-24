@@ -46,12 +46,14 @@ export const WorksSlider: FC = () => {
         );
         return (
           <div key={slideItem.id}>
-            <Image
-              src={slideItem.image}
-              alt={slideItem.alt}
-              style={style}
-              className={styles.image}
-            />
+            <div className={styles.imageWrapper}>
+              <Image
+                src={slideItem.image}
+                alt={slideItem.alt}
+                style={style}
+                className={styles.image}
+              />
+            </div>
             {isHero && (
               <WorksHeroImageDescription
                 model={slideItem.model}

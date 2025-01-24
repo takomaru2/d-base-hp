@@ -9,6 +9,16 @@
   height: linear-clamp(316, 500);
   margin: 0 auto;
   overflow: hidden;
+
+  @include lg {
+    max-width: 1400px;
+    height: linear-clamp(450, 700);
+  }
+
+  @include xl {
+    max-width: 1400px;
+    height: linear-clamp(700, 800);
+  }
 }
 
 .image {
@@ -18,20 +28,16 @@
   transition: all ease-in 0.3s;
 }
 
-@include lg {
-  .container {
-    max-width: 1400px;
-    height: linear-clamp(450, 700);
-  }
+.imageWrapper {
+  position: absolute;
+  left: 426px;
 
-  .imageWrapper {
+  @include lg {
+    left: 740px;
     max-width: 795px;
   }
-}
 
-@include xl {
-  .container {
-    max-width: 1400px;
-    height: linear-clamp(700, 800);
+  @include xl {
+    position: static;
   }
 }

@@ -1,4 +1,5 @@
-@use '../../styles/variables' as *;
+@import '@/styles/mixin';
+@import '@/styles/variables';
 
 .hero {
   position: fixed;
@@ -9,4 +10,19 @@
 
 .vertical {
   margin-block: linear-clamp(66, 230) linear-clamp(100, 160);
+}
+
+.works {
+  padding-top: linear-clamp(55, 74);
+  background-color: $colorWhite;
+}
+
+.worksTitle {
+  width: linear-clamp(375, 1400);
+  margin-inline: auto;
+  text-align: center;
+
+  @include lg {
+    text-align: left;
+  }
 }
