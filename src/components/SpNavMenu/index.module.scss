@@ -4,6 +4,7 @@
 .container {
   position: absolute;
   inset: 0;
+  z-index: 100;
   background-color: $colorBlack;
   transition: all ease 0.7s;
 }

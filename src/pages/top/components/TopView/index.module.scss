@@ -25,23 +25,15 @@
   white-space: nowrap;
 }
 
-.image {
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 100vh;
-  object-fit: cover;
-}
-
 .imageVisible {
   z-index: 30;
-  width: linear-clamp(375, 1098);
+  width: linear-clamp(480, 1098);
   transition: width 0.7s ease-in;
 }
 
 .imageSecondary {
   z-index: 20;
-  width: linear-clamp(375, 1098);
+  width: linear-clamp(480, 1098);
   transition: width 0.7s ease-in;
 }
 
@@ -54,10 +46,6 @@
   .container {
     max-width: linear-clamp(600, 1400);
     margin: 0 auto;
-  }
-
-  .image {
-    height: 782px;
   }
 
   .titleLogoWrap {

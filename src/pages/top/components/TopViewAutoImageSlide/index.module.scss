@@ -9,23 +9,6 @@
   object-fit: cover;
 }
 
-.imageVisible {
-  z-index: 30;
-  width: linear-clamp(600, 1098);
-  transition: width 0.7s ease-in;
-}
-
-.imageSecondary {
-  z-index: 20;
-  width: linear-clamp(600, 1098);
-  transition: width 1s ease-in;
-}
-
-.imageHidden {
-  z-index: 10;
-  width: 0;
-}
-
 @include lg {
   .image {
     height: 782px;
