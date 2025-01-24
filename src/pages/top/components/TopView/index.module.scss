@@ -4,6 +4,12 @@
 .container {
   position: relative;
   height: 100vh;
+
+  @include lg {
+    max-width: linear-clamp(600, 1400);
+    height: 800px;
+    margin: 147px auto 0;
+  }
 }
 
 .titleLogoWrap {
@@ -43,11 +49,6 @@
 }
 
 @include lg {
-  .container {
-    max-width: linear-clamp(600, 1400);
-    margin: 0 auto;
-  }
-
   .titleLogoWrap {
     top: 19%;
     left: 0;
