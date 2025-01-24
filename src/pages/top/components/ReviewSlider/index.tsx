@@ -19,9 +19,10 @@ export const ReviewSlider: FC = () => {
   const { basicWidth, heroWidth, basicHeight, heroHeight, gap } =
     useReviewSliderBreakPointsStyle();
 
+  const infinityIncrement = (prevIndex: number) =>
+    (prevIndex + 1) % reviewSlideList.length;
+
   useAnimationFrameInterval(() => {
-    const infinityIncrement = (prevIndex: number) =>
-      (prevIndex + 1) % reviewSlideList.length;
     setActiveIndex(infinityIncrement);
   }, 4000);
 
