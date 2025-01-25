@@ -8,6 +8,8 @@ import { BeforeAfterSpCard } from '@/components/BeforeAfterSpCard';
 import before from '@/../public/assets/top/works/before.jpg';
 import { BeforeAfterPcCard } from '@/components/BeforeAfterPcCard';
 import pcBefore from '@/../public/assets/top/works/beforeafter-pc.jpg';
+import { ButtonLink } from '@/components/ButtonLink';
+import { PriceSection } from '@/pages/top/components/PriceSection';
 
 export default function Top() {
   return (
@@ -16,9 +18,11 @@ export default function Top() {
         <Header />
       </div>
       <TopView />
+
       <div className={styles.vertical}>
         <VerticalText />
       </div>
+
       <div className={styles.works}>
         <div className={styles.worksTitle}>
           <SectionTitle
@@ -48,7 +52,12 @@ export default function Top() {
           />
           <BeforeAfterPcCard image={pcBefore} model={'SUZUKI Jimny'} />
         </div>
+        <div className={styles.worksButton}>
+          <ButtonLink link={'/'}>詳しくみる</ButtonLink>
+        </div>
       </div>
+
+      <PriceSection />
     </>
   );
 }

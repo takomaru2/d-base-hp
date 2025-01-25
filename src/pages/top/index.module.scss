@@ -47,3 +47,9 @@
     margin-top: 0;
   }
 }
+
+.worksButton {
+  padding-bottom: linear-clamp(50, 145);
+  margin-top: linear-clamp(50, 100);
+  text-align: center;
+}
