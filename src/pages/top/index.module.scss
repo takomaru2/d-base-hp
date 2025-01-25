@@ -27,3 +27,23 @@
     text-align: left;
   }
 }
+
+.worksCard {
+  margin-top: linear-clamp(80, 240);
+}
+
+.worksMargin {
+  margin-top: 80px;
+
+  @include lg {
+    margin-top: 0;
+  }
+}
+
+.worksSpMargin {
+  margin-top: 40px;
+
+  @include lg {
+    margin-top: 0;
+  }
+}

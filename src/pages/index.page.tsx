@@ -4,6 +4,10 @@ import { TopView } from '@/pages/top/components/TopView';
 import { VerticalText } from '@/pages/top/components/VerticalText';
 import { SectionTitle } from '@/components/SectionTitle';
 import { WorksSlider } from '@/pages/top/components/WorksSlider';
+import { BeforeAfterSpCard } from '@/components/BeforeAfterSpCard';
+import before from '@/../public/assets/top/works/before.jpg';
+import { BeforeAfterPcCard } from '@/components/BeforeAfterPcCard';
+import pcBefore from '@/../public/assets/top/works/beforeafter-pc.jpg';
 
 export default function Top() {
   return (
@@ -24,6 +28,26 @@ export default function Top() {
           />
         </div>
         <WorksSlider />
+        <div className={styles.worksCard}>
+          <BeforeAfterSpCard title={'Before'} reverse={false} image={before} />
+          <div className={styles.worksSpMargin} />
+          <BeforeAfterSpCard
+            title={'After'}
+            reverse={false}
+            image={before}
+            description={'¥200,000\n全2週間'}
+          />
+          <div className={styles.worksMargin} />
+          <BeforeAfterSpCard title={'Before'} reverse={false} image={before} />
+          <div className={styles.worksSpMargin} />
+          <BeforeAfterSpCard
+            title={'After'}
+            reverse={false}
+            image={before}
+            description={'¥200,000\n全2週間'}
+          />
+          <BeforeAfterPcCard image={pcBefore} model={'SUZUKI Jimny'} />
+        </div>
       </div>
     </>
   );
