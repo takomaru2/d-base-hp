@@ -10,6 +10,8 @@ import { BeforeAfterPcCard } from '@/components/BeforeAfterPcCard';
 import pcBefore from '@/../public/assets/top/works/beforeafter-pc.jpg';
 import { ButtonLink } from '@/components/ButtonLink';
 import { PriceSection } from '@/pages/top/components/PriceSection';
+import { LiquidCardSwipe } from '@/pages/top/components/LiquidCardSwipe';
+import { liquidSlideItemList } from '@/pages/top/components/LiquidCardSwipe/const/liquidSlideItemList';
 
 export default function Top() {
   return (
@@ -58,6 +60,21 @@ export default function Top() {
       </div>
 
       <PriceSection />
+      <div className={styles.liquid}>
+        <div className={styles.liquidTitle}>
+          <SectionTitle
+            jpTitle={'使用液剤'}
+            enTitle={'Introduction'}
+            color={'black'}
+          />
+        </div>
+        <div className={styles.liquidSwipe}>
+          <LiquidCardSwipe swipeList={liquidSlideItemList} />
+        </div>
+        <div className={styles.liquidButton}>
+          <ButtonLink link={'/'}>詳しく見る</ButtonLink>
+        </div>
+      </div>
     </>
   );
 }
