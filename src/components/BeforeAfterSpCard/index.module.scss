@@ -22,6 +22,7 @@
   flex: 1;
   flex-basis: 20%;
   flex-direction: column;
+  min-width: 92px;
   padding-inline: linear-clamp(12, 18);
   font-family: $mainFontEN;
   font-size: linear-clamp(16, 30);
