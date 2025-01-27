@@ -77,3 +77,30 @@
 .reviewSlide {
   padding-block: linear-clamp(50, 90) linear-clamp(85, 120);
 }
+
+.faq {
+  display: flex;
+  flex-direction: column;
+  width: linear-clamp(375, 1400);
+  margin-inline: auto;
+  margin-top: 37px;
+
+  @include lg {
+    flex-direction: row;
+    margin-top: linear-clamp(200, 354);
+  }
+}
+
+.faqContainer {
+  margin-top: 50px;
+
+  @include lg {
+    margin-top: 0;
+  }
+}
+
+.faqTitle {
+  @include lg {
+    padding-top: 100px;
+  }
+}

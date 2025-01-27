@@ -14,6 +14,7 @@ import { LiquidCardSwipe } from '@/pages/top/components/LiquidCardSwipe';
 import { liquidSlideItemList } from '@/pages/top/components/LiquidCardSwipe/const/liquidSlideItemList';
 import { PolymerCoat } from '@/pages/top/components/PolymerCoat';
 import { ReviewSlider } from '@/pages/top/components/ReviewSlider';
+import { FAQContainer } from '@/pages/top/components/FAQContainer';
 
 export default function Top() {
   return (
@@ -100,6 +101,19 @@ export default function Top() {
           <div className={styles.reviewSlide}>
             <ReviewSlider />
           </div>
+        </div>
+      </div>
+
+      <div className={styles.faq}>
+        <div className={`${styles.sectionTitle} ${styles.faqTitle}`}>
+          <SectionTitle
+            jpTitle={'よくあるご質問'}
+            enTitle={'Q ＆ A'}
+            color={'white'}
+          />
+        </div>
+        <div className={styles.faqContainer}>
+          <FAQContainer />
         </div>
       </div>
     </>
