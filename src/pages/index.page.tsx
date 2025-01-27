@@ -12,6 +12,7 @@ import { ButtonLink } from '@/components/ButtonLink';
 import { PriceSection } from '@/pages/top/components/PriceSection';
 import { LiquidCardSwipe } from '@/pages/top/components/LiquidCardSwipe';
 import { liquidSlideItemList } from '@/pages/top/components/LiquidCardSwipe/const/liquidSlideItemList';
+import { PolymerCoat } from '@/pages/top/components/PolymerCoat';
 
 export default function Top() {
   return (
@@ -74,6 +75,7 @@ export default function Top() {
         <div className={styles.liquidButton}>
           <ButtonLink link={'/'}>詳しく見る</ButtonLink>
         </div>
+        <PolymerCoat />
       </div>
     </>
   );
