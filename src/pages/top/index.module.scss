@@ -13,9 +13,12 @@
   margin-block: linear-clamp(66, 230) linear-clamp(100, 160);
 }
 
+.whiteBackGround {
+  background-color: $colorWhite;
+}
+
 .works {
   padding-top: linear-clamp(55, 74);
-  background-color: $colorWhite;
 }
 
 .sectionTitle {
@@ -57,7 +60,6 @@
 .liquid {
   padding-top: linear-clamp(50, 150);
   text-align: center;
-  background-color: $colorWhite;
 }
 
 .liquidSwipe {
@@ -70,7 +72,6 @@
 
 .review {
   padding-top: linear-clamp(50, 150);
-  background-color: $colorWhite;
 }
 
 .reviewSlide {
