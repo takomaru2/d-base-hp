@@ -11,6 +11,7 @@
   column-gap: 10px;
   height: auto;
   margin: 0 auto;
+  overflow: hidden;
   color: $colorBlack;
 
   @include lg {
