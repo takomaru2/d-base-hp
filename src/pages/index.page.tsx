@@ -13,6 +13,7 @@ import { PriceSection } from '@/pages/top/components/PriceSection';
 import { LiquidCardSwipe } from '@/pages/top/components/LiquidCardSwipe';
 import { liquidSlideItemList } from '@/pages/top/components/LiquidCardSwipe/const/liquidSlideItemList';
 import { PolymerCoat } from '@/pages/top/components/PolymerCoat';
+import { ReviewSlider } from '@/pages/top/components/ReviewSlider';
 
 export default function Top() {
   return (
@@ -27,7 +28,7 @@ export default function Top() {
       </div>
 
       <div className={styles.works}>
-        <div className={styles.worksTitle}>
+        <div className={styles.sectionTitle}>
           <SectionTitle
             jpTitle={'施工実績'}
             enTitle={'Works'}
@@ -62,7 +63,7 @@ export default function Top() {
 
       <PriceSection />
       <div className={styles.liquid}>
-        <div className={styles.liquidTitle}>
+        <div className={styles.sectionTitle}>
           <SectionTitle
             jpTitle={'使用液剤'}
             enTitle={'Introduction'}
@@ -76,6 +77,19 @@ export default function Top() {
           <ButtonLink link={'/'}>詳しく見る</ButtonLink>
         </div>
         <PolymerCoat />
+      </div>
+
+      <div className={styles.review}>
+        <div className={styles.sectionTitle}>
+          <SectionTitle
+            jpTitle={'お客様からの声'}
+            enTitle={'Review'}
+            color={'black'}
+          />
+        </div>
+        <div className={styles.reviewSlide}>
+          <ReviewSlider />
+        </div>
       </div>
     </>
   );

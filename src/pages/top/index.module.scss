@@ -18,7 +18,7 @@
   background-color: $colorWhite;
 }
 
-.worksTitle {
+.sectionTitle {
   width: linear-clamp(375, 1400);
   margin-inline: auto;
   text-align: center;
@@ -60,20 +60,19 @@
   background-color: $colorWhite;
 }
 
-.liquidTitle {
-  width: linear-clamp(375, 1400);
-  margin-inline: auto;
-  text-align: center;
-
-  @include lg {
-    text-align: left;
-  }
-}
-
 .liquidSwipe {
   padding-top: linear-clamp(75, 120);
 }
 
 .liquidButton {
   padding-block: linear-clamp(40, 80);
+}
+
+.review {
+  padding-top: linear-clamp(50, 150);
+  background-color: $colorWhite;
+}
+
+.reviewSlide {
+  padding-block: linear-clamp(50, 90) linear-clamp(85, 120);
 }
