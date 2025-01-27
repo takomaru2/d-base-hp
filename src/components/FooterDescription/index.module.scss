@@ -1,0 +1,58 @@
+@import '@/styles/mixin';
+@import '@/styles/variables';
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: $colorWhite;
+  background-color: $colorBlack;
+
+  @include lg {
+    position: static;
+    flex-direction: row;
+    column-gap: linear-clamp(15, 40);
+  }
+
+  @include xl {
+    column-gap: linear-clamp(50, 170);
+  }
+}
+
+.description {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+  padding: 16px;
+  font-family: $mainFontJP;
+  font-size: linear-clamp(14, 22);
+  text-align: center;
+  white-space: nowrap;
+  transform: translate(-50%, -50%);
+
+  @include lg {
+    position: static;
+    box-shadow: none;
+    transform: none;
+  }
+}
+
+.image {
+  z-index: 0;
+  width: 100%;
+  height: linear-clamp(236, 1100);
+  object-fit: contain;
+  filter: brightness(0.7);
+
+  @include lg {
+    width: linear-clamp(375, 720);
+    height: auto;
+    filter: none;
+  }
+}
