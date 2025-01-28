@@ -7,7 +7,7 @@ import { WorksSlider } from '@/pages/top/components/WorksSlider';
 import { BeforeAfterSpCard } from '@/components/BeforeAfterSpCard';
 import before from '@/../public/assets/top/works/before.jpg';
 import { BeforeAfterPcCard } from '@/components/BeforeAfterPcCard';
-import pcBefore from '@/../public/assets/top/works/beforeafter-pc.jpg';
+import pcBefore from '../../public/assets/top/works/beforeafter-pc.jpg';
 import { ButtonLink } from '@/components/ButtonLink';
 import { PriceSection } from '@/pages/top/components/PriceSection';
 import { LiquidCardSwipe } from '@/pages/top/components/LiquidCardSwipe';
