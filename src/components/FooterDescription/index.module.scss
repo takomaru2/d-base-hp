@@ -36,6 +36,8 @@
   white-space: nowrap;
   transform: translate(-50%, -50%);
 
+  @include letterSpacing5(14px);
+
   @include lg {
     position: static;
     box-shadow: none;
