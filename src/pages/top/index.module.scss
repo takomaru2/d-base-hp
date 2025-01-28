@@ -1,1 +1,116 @@
-@use '../../styles/variables' as *;
+@import '@/styles/mixin';
+@import '@/styles/variables';
+
+.hero {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  padding-inline: linear-clamp(25, 70);
+  background-color: $colorBlack;
+}
+
+.vertical {
+  margin-block: linear-clamp(66, 230) linear-clamp(100, 160);
+}
+
+.whiteBackGround {
+  background-color: $colorWhite;
+}
+
+.works {
+  padding-top: linear-clamp(55, 74);
+}
+
+.sectionTitle {
+  width: linear-clamp(375, 1400);
+  margin-inline: auto;
+  text-align: center;
+
+  @include lg {
+    text-align: left;
+  }
+}
+
+.worksCard {
+  margin-top: linear-clamp(80, 240);
+}
+
+.worksMargin {
+  margin-top: 80px;
+
+  @include lg {
+    margin-top: 0;
+  }
+}
+
+.worksSpMargin {
+  margin-top: 40px;
+
+  @include lg {
+    margin-top: 0;
+  }
+}
+
+.worksButton {
+  padding-bottom: linear-clamp(50, 145);
+  margin-top: linear-clamp(50, 100);
+  text-align: center;
+}
+
+.liquid {
+  padding-top: linear-clamp(50, 150);
+  text-align: center;
+}
+
+.liquidSwipe {
+  padding-top: linear-clamp(75, 120);
+}
+
+.liquidButton {
+  padding-block: linear-clamp(40, 80);
+}
+
+.review {
+  padding-top: linear-clamp(50, 150);
+}
+
+.reviewSlide {
+  padding-block: linear-clamp(50, 90) linear-clamp(85, 120);
+}
+
+.faq {
+  display: flex;
+  flex-direction: column;
+  width: linear-clamp(375, 1400);
+  margin-inline: auto;
+  margin-top: 37px;
+
+  @include lg {
+    flex-direction: row;
+    margin-top: linear-clamp(200, 354);
+  }
+}
+
+.faqContainer {
+  margin-top: 50px;
+
+  @include lg {
+    margin-top: 0;
+  }
+}
+
+.faqTitle {
+  @include lg {
+    padding-top: 100px;
+  }
+}
+
+.access {
+  width: linear-clamp(375, 1400);
+  padding-top: linear-clamp(60, 150);
+  margin-inline: auto;
+}
+
+.footer {
+  padding-block: linear-clamp(30, 140) linear-clamp(50, 65);
+}

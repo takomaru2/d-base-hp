@@ -1,0 +1,37 @@
+@import '@/styles/variables';
+@import '@/styles/mixin';
+
+.container {
+  position: relative;
+  width: 100%;
+  padding-block: 30px;
+  color: $colorPureWhite;
+  text-align: center;
+  background-color: $colorShadow;
+  background-image: url('/assets/top/price/polymerCoatBackImage.jpg');
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: overlay;
+
+  @include lg {
+    display: none;
+  }
+}
+
+.polymerCoat {
+  font-size: 14px;
+}
+
+.minPrice {
+  margin-top: 10px;
+  font-size: 24px;
+}
+
+.description {
+  font-size: 10px;
+  line-height: 28px;
+}
+
+.button {
+  margin-top: 15px;
+}
