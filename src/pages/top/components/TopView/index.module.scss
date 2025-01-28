@@ -2,50 +2,85 @@
 @import '@/styles/mixin';
 
 .container {
-  display: flex;
-  column-gap: linear-clamp(15, 60);
-  align-items: center;
-  justify-content: space-between;
-  height: linear-clamp(67, 147);
+  position: relative;
+  height: 100vh;
 }
 
-.menu {
-  display: flex;
-  align-items: center;
-  height: inherit;
-  transition: all ease 0.7s;
+.titleLogoWrap {
+  position: absolute;
+  top: 31%;
+  left: 50%;
+  z-index: 40;
+  font-family: $mainFontJP;
+  line-height: linear-clamp(42, 65);
+  text-align: center;
+  transform: translate(-50%, -50%);
+
+  @include lg {
+    top: 19%;
+    left: 65px;
+    display: flex;
+    flex-flow: column;
+    row-gap: 15px;
+    text-align: left;
+    transform: translate(0);
+  }
+
+  @include xl {
+    left: 0;
+  }
 }
 
-.spNavMenu {
+.title {
+  font-size: linear-clamp(26, 40);
+
+  @include letterSpacing8(26px);
+
+  white-space: nowrap;
+}
+
+.image {
   position: absolute;
   top: 0;
   right: 0;
+  height: 100vh;
+  object-fit: cover;
+}
+
+.imageSecondary,
+.imageVisible {
   width: 100%;
-  height: 100%;
-  transition: transform 0.3s ease-in-out;
-  transform: translateX(100%);
+  transition: width 0.7s ease-in;
+
+  @include lg {
+    width: linear-clamp(375, 1098);
+  }
 }
 
-.spNavMenu.open {
-  transform: translateX(0);
+.imageVisible {
+  z-index: 30;
 }
 
-.spNavMenu.closed {
-  transform: translateX(-100%);
+.imageSecondary {
+  z-index: 20;
 }
 
-.spMenu {
-  padding: 5px 15px;
-  font-size: linear-clamp(20, 24);
-  color: $colorBlack;
-  background-color: $colorWhite;
-  border-radius: 1px;
-
-  @include letterSpacing10(20px);
+.imageHidden {
+  z-index: 10;
+  width: 0;
 }
 
 @include lg {
-  .spMenu {
-    display: none;
+  .container {
+    max-width: linear-clamp(600, 1400);
+    margin: 0 auto;
+  }
+
+  .image {
+    height: 782px;
+  }
+
+  .title {
+    @include letterSpacing11(40px);
   }
 }
