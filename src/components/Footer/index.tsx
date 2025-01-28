@@ -17,7 +17,9 @@ export const Footer: FC = () => {
           </li>
         ))}
       </ul>
-      <Logo color="white" isTopPageLink={true} />
+      <div className={styles.title}>
+        <Logo color="white" isTopPageLink={true} />
+      </div>
     </footer>
   );
 };
