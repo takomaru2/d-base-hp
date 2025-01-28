@@ -22,7 +22,7 @@ export const Header: FC = () => {
             isOpenMenu ? styles.open : styles.closed
           }`}
         >
-          {isOpenMenu && <SpNavMenu close={close} />}
+          <SpNavMenu close={close} />
         </div>
       </div>
     </div>
