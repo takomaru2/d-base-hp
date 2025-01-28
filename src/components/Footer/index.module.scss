@@ -8,6 +8,7 @@
 .menu {
   display: flex;
   flex-direction: column;
+  margin-top: linear-clamp(20, 140);
   font-size: linear-clamp(14, 24);
 
   @include letterSpacing15(14px);

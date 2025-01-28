@@ -20,6 +20,7 @@
     width: linear-clamp(350, 1400);
     padding: 0;
     margin-inline: auto;
+    overflow: auto;
   }
 
   @include xl {
