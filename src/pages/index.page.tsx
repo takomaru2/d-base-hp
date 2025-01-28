@@ -16,6 +16,7 @@ import { PolymerCoat } from '@/pages/top/components/PolymerCoat';
 import { ReviewSlider } from '@/pages/top/components/ReviewSlider';
 import { FAQContainer } from '@/pages/top/components/FAQContainer';
 import { AccessSection } from '@/pages/top/components/AccessSection';
+import { Footer } from '@/components/Footer';
 
 export default function Top() {
   return (
@@ -120,6 +121,9 @@ export default function Top() {
 
       <div className={styles.access}>
         <AccessSection />
+      </div>
+      <div className={styles.footer}>
+        <Footer />
       </div>
     </>
   );
