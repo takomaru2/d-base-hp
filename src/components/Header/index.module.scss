@@ -27,12 +27,10 @@
 }
 
 .spNavMenu.open {
-  opacity: 1;
   transform: translateX(0);
 }
 
 .spNavMenu.closed {
-  opacity: 0;
   transform: translateX(-100%);
 }
 
