@@ -104,3 +104,9 @@
     padding-top: 100px;
   }
 }
+
+.access {
+  width: linear-clamp(375, 1400);
+  padding-top: linear-clamp(60, 150);
+  margin-inline: auto;
+}
