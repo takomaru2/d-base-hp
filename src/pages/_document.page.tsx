@@ -59,7 +59,7 @@ export default function Document() {
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Revalia&family=Russo+One&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Revalia&family=Russo+One&display=swap"
           rel="stylesheet"
         />
 
