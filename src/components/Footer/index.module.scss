@@ -15,8 +15,9 @@
 
   @include lg {
     flex-direction: row;
-    column-gap: 60px;
-    justify-content: center;
+    justify-content: space-between;
+    width: linear-clamp(375, 1400);
+    margin: 0 auto;
   }
 }
 
