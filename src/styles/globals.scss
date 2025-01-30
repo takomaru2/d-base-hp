@@ -6,6 +6,10 @@ body {
   background-color: $colorBlack;
 }
 
+.noScroll {
+  overflow: hidden;
+}
+
 ul,
 li {
   list-style: none;
