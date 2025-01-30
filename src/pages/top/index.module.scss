@@ -9,6 +9,14 @@
   background-color: $colorBlack;
 }
 
+.fixedBottom {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+}
+
 .vertical {
   margin-block: linear-clamp(10, 30) linear-clamp(100, 160);
 }

@@ -17,12 +17,16 @@ import { ReviewSlider } from '@/pages/top/components/ReviewSlider';
 import { FAQContainer } from '@/pages/top/components/FAQContainer';
 import { AccessSection } from '@/pages/top/components/AccessSection';
 import { Footer } from '@/components/Footer';
+import { FixedBottomContact } from '@/components/FixedBottomContact';
 
 export default function Top() {
   return (
     <>
       <div className={styles.hero}>
         <Header />
+      </div>
+      <div className={styles.fixedBottom}>
+        <FixedBottomContact />
       </div>
       <TopView />
 

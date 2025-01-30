@@ -22,8 +22,8 @@
 }
 
 .icon {
-  width: linear-clamp(40, 80);
-  height: linear-clamp(40, 80);
+  width: linear-clamp(40, 60);
+  height: linear-clamp(40, 60);
 }
 
 .guide {
@@ -44,7 +44,7 @@
 }
 
 .tel {
-  font-size: linear-clamp(30, 50);
+  font-size: linear-clamp(20, 40);
   font-style: normal;
 
   @include letterSpacing5(40px);
