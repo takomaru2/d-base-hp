@@ -1,12 +1,20 @@
 import { Logo } from '../Logo';
 import styles from './index.module.scss';
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { SpNavMenu } from '../SpNavMenu';
 import { PcNavMenu } from '../PcNavMenu';
 import { useIsBoolean } from '@/hooks/useBoolean';
 
 export const Header: FC = () => {
   const [isOpenMenu, { on: open, off: close }] = useIsBoolean();
+
+  useEffect(() => {
+    if (isOpenMenu) {
+      document.body.classList.add('noScroll');
+    } else {
+      document.body.classList.remove('noScroll');
+    }
+  }, [isOpenMenu]);
   return (
     <div className={styles.container}>
       <div className={styles.logo}>
