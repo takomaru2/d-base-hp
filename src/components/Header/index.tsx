@@ -17,6 +17,7 @@ export const Header: FC = () => {
     close();
     document.body.classList.remove('noScroll');
   };
+
   return (
     <div className={styles.container}>
       <div className={styles.logo}>
