@@ -1,6 +1,6 @@
 import { Logo } from '../Logo';
 import styles from './index.module.scss';
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { SpNavMenu } from '../SpNavMenu';
 import { PcNavMenu } from '../PcNavMenu';
 import { useIsBoolean } from '@/hooks/useBoolean';
@@ -8,20 +8,22 @@ import { useIsBoolean } from '@/hooks/useBoolean';
 export const Header: FC = () => {
   const [isOpenMenu, { on: open, off: close }] = useIsBoolean();
 
-  useEffect(() => {
-    if (isOpenMenu) {
-      document.body.classList.add('noScroll');
-    } else {
-      document.body.classList.remove('noScroll');
-    }
-  }, [isOpenMenu]);
+  const handleOpenMenu = () => {
+    open();
+    document.body.classList.add('noScroll');
+  };
+
+  const handleCloseMenu = () => {
+    close();
+    document.body.classList.remove('noScroll');
+  };
   return (
     <div className={styles.container}>
       <div className={styles.logo}>
         <Logo color="white" isTopPageLink={true} />
       </div>
       <div className={styles.menu}>
-        <button className={styles.spMenu} onClick={open}>
+        <button className={styles.spMenu} onClick={handleOpenMenu}>
           MENU
         </button>
         <PcNavMenu />
@@ -30,7 +32,7 @@ export const Header: FC = () => {
             isOpenMenu ? styles.open : styles.closed
           }`}
         >
-          <SpNavMenu close={close} />
+          <SpNavMenu close={handleCloseMenu} />
         </div>
       </div>
     </div>
