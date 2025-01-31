@@ -13,9 +13,7 @@ export const FixedBottomContact: FC = () => {
       <Link href="https://line.me/ja/" className={styles.link}>
         <Image className={styles.icon} src={line} alt="LINE" />
         <div className={styles.guide}>
-          <span className={styles.green}>LINE</span>で
-          <br />
-          のお問い合わせはこちらから
+          <span className={styles.green}>LINE</span>でのお問い合わせはこちら
         </div>
       </Link>
       <ul className={styles.scheduleList}>
