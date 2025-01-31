@@ -13,7 +13,7 @@
 .title {
   display: block;
   max-height: linear-clamp(370, 700);
-  font-size: linear-clamp(24, 40);
+  font-size: linear-clamp(22, 40);
   color: $verticalColor;
 
   @include letterSpacing58(24px);
@@ -28,7 +28,7 @@
 }
 
 .text {
-  padding-top: 70px;
+  padding-top: 15px;
   font-size: linear-clamp(14, 30);
 
   @include letterSpacing58(14px);
