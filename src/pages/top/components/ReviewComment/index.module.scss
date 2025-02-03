@@ -43,12 +43,12 @@
     position: absolute;
     right: 250px;
     font-size: linear-clamp(15, 50);
-    transform: rotate(-90deg) translateX(-50%);
+    transform: rotate(-90deg) translate(-50%, -50%);
     animation: slideInFromLeft 0.8s ease-in-out forwards;
   }
 
   @include xl {
-    right: 500px;
+    right: 400px;
     font-size: linear-clamp(10, 60);
     animation: slideInFromLeft 0.8s ease-in-out forwards;
   }
