@@ -10,10 +10,10 @@ export type UseReviewSliderBreakPoints = {
 };
 
 const pc = {
-  basicWidth: 200,
-  heroWidth: 448,
-  basicHeight: 315,
-  heroHeight: 700,
+  basicWidth: 190,
+  heroWidth: 400,
+  basicHeight: 290,
+  heroHeight: 630,
   gap: 26,
 };
 
