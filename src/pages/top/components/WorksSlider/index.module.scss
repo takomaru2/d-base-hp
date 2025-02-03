@@ -11,13 +11,13 @@
   overflow: hidden;
 
   @include lg {
-    max-width: 1400px;
-    height: linear-clamp(450, 700);
+    max-width: 1150px;
+    height: linear-clamp(450, 600);
   }
 
   @include xl {
-    max-width: 1400px;
-    height: linear-clamp(700, 800);
+    max-width: 1150px;
+    height: linear-clamp(700, 700);
   }
 }
 
@@ -33,7 +33,7 @@
   left: 426px;
 
   @include lg {
-    left: 740px;
+    left: 700px;
     max-width: 795px;
   }
 
