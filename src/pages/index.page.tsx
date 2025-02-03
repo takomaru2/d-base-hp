@@ -73,7 +73,7 @@ export default function Top() {
             <BeforeAfterPcCard image={pcBefore} model={'SUZUKI Jimny'} />
           </div>
           <div className={styles.worksButton}>
-            <ButtonLink link={'/'}>詳しくみる</ButtonLink>
+            <ButtonLink link={'/works'}>詳しくみる</ButtonLink>
           </div>
         </div>
 
