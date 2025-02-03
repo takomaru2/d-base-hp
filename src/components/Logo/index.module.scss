@@ -4,6 +4,7 @@
 .heading {
   font-family: $mainFontEN;
   font-size: linear-clamp(20, 40);
+  text-shadow: 2px 2px 4px $colorBlack;
 
   @include letterSpacing10(20px);
 }
