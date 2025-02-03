@@ -24,19 +24,20 @@
 
 .model {
   position: absolute;
-  top: linear-clamp(100, 170);
+  top: 100px;
+  left: 50px;
   font-family: $subFontEN;
-  font-size: linear-clamp(20, 60);
+  font-size: linear-clamp(20, 40);
   white-space: wrap;
   opacity: 1;
-  transform: rotate(-90deg);
+  transform: translate(-50%, -50%) rotate(-90deg);
 
   @include letterSpacing10(14px);
 }
 
 .priceWrapper {
   position: absolute;
-  top: linear-clamp(100, 250);
+  top: linear-clamp(100, 300);
   left: 264px;
   font-size: linear-clamp(14, 40);
   white-space: nowrap;
@@ -48,24 +49,25 @@
 
 @include lg {
   .model {
+    top: linear-clamp(100, 250);
     left: linear-clamp(0, 50);
     white-space: wrap;
   }
 
   .priceWrapper {
-    left: 490px;
+    left: 400px;
   }
 }
 
 @include xl {
   .model {
-    top: linear-clamp(150, 170);
-    left: 0;
-    font-size: linear-clamp(50, 60);
+    top: 230px;
+    left: 150px;
+    font-size: linear-clamp(30, 50);
     white-space: wrap;
   }
 
   .priceWrapper {
-    left: 850px;
+    left: 700px;
   }
 }

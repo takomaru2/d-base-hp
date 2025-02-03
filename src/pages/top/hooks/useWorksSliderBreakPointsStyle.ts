@@ -10,10 +10,10 @@ export type UseWorksSliderBreakPoints = {
 };
 
 const pc = {
-  basicWidth: 250,
-  heroWidth: 500,
-  basicHeight: 355,
-  heroHeight: 710,
+  basicWidth: 200,
+  heroWidth: 400,
+  basicHeight: 330,
+  heroHeight: 580,
   gap: 50,
 };
 
