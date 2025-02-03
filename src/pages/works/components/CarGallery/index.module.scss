@@ -1,0 +1,41 @@
+@import '@/styles/variables';
+@import '@/styles/mixin';
+
+.imageWrapper {
+  display: flex;
+  width: linear-clamp(363, 700);
+  height: linear-clamp(270, 525);
+  margin-inline: auto;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+
+  &::after {
+    position: absolute;
+    right: 10px;
+    bottom: 50%;
+    font-size: 24px;
+    font-weight: bold;
+    color: $colorBlack;
+    content: '…';
+    transform: translateY(-50%);
+    animation: fadeInOut 1.5s infinite alternate;
+  }
+}
+
+@keyframes fadeInOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0.3;
+  }
+}
+
+.image {
+  flex-shrink: 0;
+  width: 100vw;
+  height: auto;
+  scroll-snap-align: center;
+  object-fit: cover;
+}
