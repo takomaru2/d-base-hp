@@ -2,7 +2,7 @@ import { FC } from 'react';
 import styles from './index.module.scss';
 import Image, { StaticImageData } from 'next/image';
 
-type CarGalleryProps = {
+type CarGallerySwiperProps = {
   swiperItem: SwipeItem[];
 };
 
@@ -11,7 +11,7 @@ type SwipeItem = {
   image: StaticImageData;
 };
 
-export const CarGallery: FC<CarGalleryProps> = ({ swiperItem }) => {
+export const CarGallerySwiper: FC<CarGallerySwiperProps> = ({ swiperItem }) => {
   return (
     <div className={styles.imageWrapper}>
       {swiperItem.map((item) => (

@@ -1,6 +1,5 @@
-import { CarGallery as Component } from './index';
+import { CarGallerySubTitle as Component } from './index';
 import { Meta, StoryObj } from '@storybook/react';
-import { swiperItemList } from '@/pages/works/const/swiperItemList01';
 
 const meta: Meta<typeof Component> = {
   component: Component,
@@ -8,7 +7,8 @@ const meta: Meta<typeof Component> = {
     layout: 'fullscreen',
   },
   args: {
-    swiperItem: swiperItemList,
+    title: '使用液剤',
+    description: 'FITR-103',
   },
 };
 
