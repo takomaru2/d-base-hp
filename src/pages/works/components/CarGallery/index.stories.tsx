@@ -1,10 +1,14 @@
 import { CarGallery as Component } from './index';
 import { Meta, StoryObj } from '@storybook/react';
+import { swiperItemList } from '@/pages/works/const/swiperItemList01';
 
 const meta: Meta<typeof Component> = {
   component: Component,
   parameters: {
     layout: 'fullscreen',
+  },
+  args: {
+    swiperItem: swiperItemList,
   },
 };
 
