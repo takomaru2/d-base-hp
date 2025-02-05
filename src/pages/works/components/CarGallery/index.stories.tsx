@@ -1,6 +1,6 @@
 import { CarGallery as Component } from './index';
 import { Meta, StoryObj } from '@storybook/react';
-import { swiperItemList } from '@/pages/works/const/swiperItemList01';
+import { swiperItemList01 } from '@/pages/works/const/swiperItemList';
 import styles from '@/pages/works/components/CarGallery/index.module.scss';
 
 const meta: Meta<typeof Component> = {
@@ -9,7 +9,7 @@ const meta: Meta<typeof Component> = {
     layout: 'fullscreen',
   },
   args: {
-    swiperItemList: swiperItemList,
+    swiperItemList: swiperItemList01,
     model: 'TOYOTA HILUX',
     craft: 'NS10-H',
     size: 'LLサイズ',
