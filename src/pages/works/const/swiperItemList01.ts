@@ -3,7 +3,7 @@ import image2 from '../../../../public/assets/works/carGallery02.jpg';
 import image3 from '../../../../public/assets/works/carGallery03.jpg';
 import { StaticImageData } from 'next/image';
 
-type SwiperItem = {
+export type SwiperItem = {
   id: string;
   image: StaticImageData;
 };
