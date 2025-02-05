@@ -1,0 +1,14 @@
+@import '@/styles/variables';
+@import '@/styles/mixin';
+
+.title {
+  font-family: $mainFontJP;
+  font-size: linear-clamp(14, 30);
+  font-weight: normal;
+
+  @include letterSpacing10(20px);
+
+  @include lg {
+    font-weight: bold;
+  }
+}
