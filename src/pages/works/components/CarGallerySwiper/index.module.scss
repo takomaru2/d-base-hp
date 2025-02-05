@@ -6,7 +6,6 @@
   display: flex;
   width: linear-clamp(363, 700);
   height: linear-clamp(270, 525);
-  margin-inline: auto;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
 
@@ -14,7 +13,7 @@
     position: absolute;
     right: 10px;
     bottom: 0;
-    font-size: 24px;
+    font-size: 40px;
     font-weight: bold;
     color: $colorBlack;
     content: '…';
