@@ -8,8 +8,10 @@
 .textWrapper {
   display: flex;
   column-gap: linear-clamp(50, 100);
+  justify-content: space-between;
   padding-inline: 15px 55px;
   font-size: 20px;
+  white-space: nowrap;
 
   @include letterSpacing5(20px);
 }

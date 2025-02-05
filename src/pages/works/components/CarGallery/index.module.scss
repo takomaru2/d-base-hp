@@ -1,0 +1,46 @@
+@import '@/styles/variables';
+@import '@/styles/mixin';
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: linear-clamp(375, 1400);
+  margin-inline: auto;
+
+  @include xl {
+    flex-direction: row;
+    column-gap: linear-clamp(50, 100);
+    justify-content: center;
+  }
+}
+
+.title {
+  font-family: $subFontEN;
+  font-size: linear-clamp(32, 50);
+
+  @include letterSpacing5(40px);
+}
+
+.subTitleWrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+  margin-top: 25px;
+}
+
+.titleWrapper {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.textWrapper {
+  width: linear-clamp(348, 1400);
+  margin-inline: auto;
+  margin-top: 36px;
+}
+
+.text {
+  margin-top: 14px;
+}
