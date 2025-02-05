@@ -2,7 +2,7 @@ import { FC, ReactNode } from 'react';
 import styles from './index.module.scss';
 import { CarGallerySubTitle } from '@/pages/works/components/CargallerySubTitle';
 import { CarGallerySwiper } from '@/pages/works/components/CarGallerySwiper';
-import { SwiperItem } from '@/pages/works/const/swiperItemList01';
+import { SwiperItem } from '@/pages/works/const/swiperItemList';
 
 type CarGalleryProps = {
   swiperItemList: SwiperItem[];

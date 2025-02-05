@@ -38,3 +38,9 @@
     margin-top: 0;
   }
 }
+
+.reverse {
+  @include lg {
+    flex-direction: row-reverse;
+  }
+}

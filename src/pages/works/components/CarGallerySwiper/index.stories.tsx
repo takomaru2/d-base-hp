@@ -1,6 +1,6 @@
 import { CarGallerySwiper as Component } from './index';
 import { Meta, StoryObj } from '@storybook/react';
-import { swiperItemList } from '@/pages/works/const/swiperItemList01';
+import { swiperItemList01 } from '@/pages/works/const/swiperItemList';
 
 const meta: Meta<typeof Component> = {
   component: Component,
@@ -8,7 +8,7 @@ const meta: Meta<typeof Component> = {
     layout: 'fullscreen',
   },
   args: {
-    swiperItem: swiperItemList,
+    swiperItem: swiperItemList01,
   },
 };
 
