@@ -1,0 +1,29 @@
+@import '@/styles/variables';
+@import '@/styles/mixin';
+
+.container {
+  @include lg {
+    position: relative;
+    width: linear-clamp(400, 1400);
+    margin-inline: auto;
+  }
+}
+
+.imageWrapper {
+  width: inherit;
+  height: linear-clamp(320, 782);
+}
+
+.title {
+  margin-top: 110px;
+  text-align: center;
+
+  @include lg {
+    position: absolute;
+    top: 40%;
+    left: 17%;
+    z-index: 30;
+    margin-top: 0;
+    transform: translate(-50%, -50%);
+  }
+}
