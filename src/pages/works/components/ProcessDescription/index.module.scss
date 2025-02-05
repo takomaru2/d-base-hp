@@ -1,0 +1,40 @@
+@import '@/styles/variables';
+@import '@/styles/mixin';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-inline: auto;
+
+  @include lg {
+    flex-direction: row;
+    column-gap: linear-clamp(40, 90);
+    align-items: center;
+    width: linear-clamp(375, 1300);
+  }
+}
+
+.image {
+  width: inherit;
+  height: auto;
+  object-fit: contain;
+
+  @include lg {
+    width: linear-clamp(375, 660);
+  }
+}
+
+.textWrapper {
+  width: linear-clamp(307, 531);
+  margin-inline: auto;
+  margin-top: 24px;
+  font-family: $mainFontJP;
+  font-size: linear-clamp(14, 22);
+  font-weight: normal;
+
+  @include letterSpacing15(18px);
+
+  @include lg {
+    margin-top: 0;
+  }
+}
