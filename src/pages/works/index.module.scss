@@ -1,0 +1,9 @@
+@import '@/styles/mixin';
+@import '@/styles/variables';
+
+.hero {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  padding-inline: linear-clamp(25, 70);
+}
