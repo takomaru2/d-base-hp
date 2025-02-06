@@ -17,10 +17,6 @@
   background-color: $colorWhite;
 }
 
-.works {
-  padding-top: linear-clamp(55, 74);
-}
-
 .sectionTitle {
   width: linear-clamp(375, 1400);
   margin-inline: auto;
@@ -29,32 +25,6 @@
   @include lg {
     text-align: left;
   }
-}
-
-.worksCard {
-  margin-top: linear-clamp(80, 240);
-}
-
-.worksMargin {
-  margin-top: 80px;
-
-  @include lg {
-    margin-top: 0;
-  }
-}
-
-.worksSpMargin {
-  margin-top: 40px;
-
-  @include lg {
-    margin-top: 0;
-  }
-}
-
-.worksButton {
-  padding-bottom: linear-clamp(50, 145);
-  margin-top: linear-clamp(50, 100);
-  text-align: center;
 }
 
 .liquid {
