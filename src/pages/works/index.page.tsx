@@ -1,10 +1,6 @@
 import { TopView } from '@/pages/works/components/TopView';
 import styles from './index.module.scss';
 import { Header } from '@/components/Header';
-import { BeforeAfterSpCard } from '@/components/BeforeAfterSpCard';
-import { BeforeAfterPcCard } from '@/components/BeforeAfterPcCard';
-import before from '../../../public/assets/top/works/before.jpg';
-import pcBefore from '../../../public/assets/top/works/beforeafter-pc.jpg';
 import { CarGallery } from '@/pages/works/components/CarGallery';
 import {
   swiperItemList01,
@@ -19,6 +15,7 @@ import processImage03 from '@/../public/assets/works/procedure03.jpg';
 import { SectionTitle } from '@/components/SectionTitle';
 import { Footer } from '@/components/Footer';
 import { text } from '@/pages/works/components/CarGallery/const/carGalleryData';
+import { BeforeAfterSection } from '@/pages/works/components/BeforeAfterSection';
 
 export default function Works() {
   return (
@@ -30,27 +27,7 @@ export default function Works() {
         <TopView />
       </div>
       <div className={styles.whiteBackground}>
-        <div className={styles.cardWrapper}>
-          <div className={styles.cardTitle}>SUZUKI Jimny</div>
-          <BeforeAfterSpCard title={'Before'} reverse={false} image={before} />
-          <BeforeAfterSpCard
-            title={'After'}
-            reverse={false}
-            image={before}
-            description={'¥200,000\n全2週間'}
-          />
-          <BeforeAfterPcCard image={pcBefore} model={'SUZUKI Jimny'} />
-        </div>
-        <div className={`${styles.cardWrapper} ${styles.cardGap}`}>
-          <BeforeAfterSpCard title={'Before'} reverse={true} image={before} />
-          <BeforeAfterSpCard
-            title={'After'}
-            reverse={true}
-            image={before}
-            description={'¥200,000\n全2週間'}
-          />
-          <BeforeAfterPcCard image={pcBefore} model={'SUZUKI Jimny'} />
-        </div>
+        <BeforeAfterSection />
       </div>
 
       <div className={styles.carGallery}>

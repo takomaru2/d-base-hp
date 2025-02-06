@@ -20,27 +20,6 @@
   background-color: $colorWhite;
 }
 
-.cardWrapper {
-  display: flex;
-  flex-direction: column;
-  row-gap: 20px;
-  align-items: center;
-}
-
-.cardGap {
-  margin-top: 80px;
-}
-
-.cardTitle {
-  font-family: $subFontEN;
-  font-size: 18px;
-  color: $colorBlack;
-
-  @include lg {
-    display: none;
-  }
-}
-
 .carGallery {
   display: flex;
   flex-direction: column;
