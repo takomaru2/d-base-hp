@@ -1,0 +1,25 @@
+@import '@/styles/mixin';
+@import '@/styles/variables';
+
+.liquid {
+  padding-top: linear-clamp(50, 150);
+  text-align: center;
+}
+
+.liquidSwipe {
+  padding-top: linear-clamp(75, 120);
+}
+
+.liquidButton {
+  padding-block: linear-clamp(40, 80);
+}
+
+.sectionTitle {
+  width: linear-clamp(375, 1400);
+  margin-inline: auto;
+  text-align: center;
+
+  @include lg {
+    text-align: left;
+  }
+}

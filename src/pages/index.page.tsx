@@ -2,16 +2,13 @@ import styles from './top/index.module.scss';
 import { TopView } from '@/pages/top/components/TopView';
 import { VerticalText } from '@/pages/top/components/VerticalText';
 import { SectionTitle } from '@/components/SectionTitle';
-import { ButtonLink } from '@/components/ButtonLink';
 import { PriceSection } from '@/pages/top/components/PriceSection';
-import { LiquidCardSwipe } from '@/pages/top/components/LiquidCardSwipe';
-import { liquidSlideItemList } from '@/pages/top/components/LiquidCardSwipe/const/liquidSlideItemList';
-import { PolymerCoat } from '@/pages/top/components/PolymerCoat';
 import { ReviewSlider } from '@/pages/top/components/ReviewSlider';
 import { FAQContainer } from '@/pages/top/components/FAQContainer';
 import { AccessSection } from '@/pages/top/components/AccessSection';
 import { FixedBottomContact } from '@/components/FixedBottomContact';
 import { WorksSection } from '@/pages/top/components/WorksSection';
+import { LiquidSection } from '@/pages/top/components/LiquidSection';
 
 export default function Top() {
   return (
@@ -30,22 +27,7 @@ export default function Top() {
 
         <PriceSection />
 
-        <div className={styles.liquid}>
-          <div className={styles.sectionTitle}>
-            <SectionTitle
-              jpTitle={'使用液剤'}
-              enTitle={'Introduction'}
-              color={'black'}
-            />
-          </div>
-          <div className={styles.liquidSwipe}>
-            <LiquidCardSwipe swipeList={liquidSlideItemList} />
-          </div>
-          <div className={styles.liquidButton}>
-            <ButtonLink link={'/'}>詳しく見る</ButtonLink>
-          </div>
-          <PolymerCoat />
-        </div>
+        <LiquidSection />
 
         <div className={styles.review}>
           <div className={styles.sectionTitle}>
