@@ -1,13 +1,6 @@
 @import '@/styles/mixin';
 @import '@/styles/variables';
 
-.hero {
-  position: fixed;
-  inset: 0 0 auto;
-  z-index: 100;
-  padding-inline: linear-clamp(25, 70);
-}
-
 .topView {
   @include xl {
     height: 80vh;
@@ -18,8 +11,4 @@
   padding-block: linear-clamp(30, 116) 64px;
   margin-top: 84px;
   background-color: $colorWhite;
-}
-
-.footer {
-  padding-block: linear-clamp(30, 140) 120px;
 }
