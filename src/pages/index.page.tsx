@@ -3,12 +3,12 @@ import { TopView } from '@/pages/top/components/TopView';
 import { VerticalText } from '@/pages/top/components/VerticalText';
 import { SectionTitle } from '@/components/SectionTitle';
 import { PriceSection } from '@/pages/top/components/PriceSection';
-import { ReviewSlider } from '@/pages/top/components/ReviewSlider';
 import { FAQContainer } from '@/pages/top/components/FAQContainer';
 import { AccessSection } from '@/pages/top/components/AccessSection';
 import { FixedBottomContact } from '@/components/FixedBottomContact';
 import { WorksSection } from '@/pages/top/components/WorksSection';
 import { LiquidSection } from '@/pages/top/components/LiquidSection';
+import { ReviewSection } from '@/pages/top/components/ReviewSection';
 
 export default function Top() {
   return (
@@ -29,18 +29,7 @@ export default function Top() {
 
         <LiquidSection />
 
-        <div className={styles.review}>
-          <div className={styles.sectionTitle}>
-            <SectionTitle
-              jpTitle={'お客様からの声'}
-              enTitle={'Review'}
-              color={'black'}
-            />
-          </div>
-          <div className={styles.reviewSlide}>
-            <ReviewSlider />
-          </div>
-        </div>
+        <ReviewSection />
       </div>
 
       <div className={styles.faq}>

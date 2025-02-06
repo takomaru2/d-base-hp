@@ -1,0 +1,20 @@
+@import '@/styles/mixin';
+@import '@/styles/variables';
+
+.review {
+  padding-top: linear-clamp(50, 150);
+}
+
+.reviewSlide {
+  padding-block: linear-clamp(50, 90) linear-clamp(85, 120);
+}
+
+.sectionTitle {
+  width: linear-clamp(375, 1400);
+  margin-inline: auto;
+  text-align: center;
+
+  @include lg {
+    text-align: left;
+  }
+}
