@@ -1,6 +1,6 @@
 import { CarGallerySwiper as Component } from './index';
 import { Meta, StoryObj } from '@storybook/react';
-import { swiperItemList01 } from '@/pages/works/const/swiperItemList';
+import { swiperItemList01 } from '@/pages/works/components/CarGallery/const/carGalleryData';
 
 const meta: Meta<typeof Component> = {
   component: Component,
