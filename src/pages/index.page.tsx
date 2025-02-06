@@ -1,4 +1,3 @@
-import { Header } from '@/components/Header';
 import styles from './top/index.module.scss';
 import { TopView } from '@/pages/top/components/TopView';
 import { VerticalText } from '@/pages/top/components/VerticalText';
@@ -16,15 +15,11 @@ import { PolymerCoat } from '@/pages/top/components/PolymerCoat';
 import { ReviewSlider } from '@/pages/top/components/ReviewSlider';
 import { FAQContainer } from '@/pages/top/components/FAQContainer';
 import { AccessSection } from '@/pages/top/components/AccessSection';
-import { Footer } from '@/components/Footer';
 import { FixedBottomContact } from '@/components/FixedBottomContact';
 
 export default function Top() {
   return (
     <>
-      <div className={styles.hero}>
-        <Header />
-      </div>
       <div className={styles.fixedBottom}>
         <FixedBottomContact />
       </div>
@@ -125,9 +120,6 @@ export default function Top() {
 
       <div className={styles.access}>
         <AccessSection />
-      </div>
-      <div className={styles.footer}>
-        <Footer />
       </div>
     </>
   );
