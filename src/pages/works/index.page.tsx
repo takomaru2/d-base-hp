@@ -1,12 +1,6 @@
 import { TopView } from '@/pages/works/components/TopView';
 import styles from './index.module.scss';
 import { Header } from '@/components/Header';
-import { CarGallery } from '@/pages/works/components/CarGallery';
-import {
-  swiperItemList01,
-  swiperItemList02,
-  swiperItemList03,
-} from '@/pages/works/components/CarGallery/const/carGalleryData';
 import { ProcessTitle } from '@/pages/works/components/ProcessTitle';
 import { ProcessDescription } from '@/pages/works/components/ProcessDescription';
 import processImage01 from '@/../public/assets/works/procedure01.jpg';
@@ -14,8 +8,8 @@ import processImage02 from '@/../public/assets/works/procedure02.jpg';
 import processImage03 from '@/../public/assets/works/procedure03.jpg';
 import { SectionTitle } from '@/components/SectionTitle';
 import { Footer } from '@/components/Footer';
-import { text } from '@/pages/works/components/CarGallery/const/carGalleryData';
 import { BeforeAfterSection } from '@/pages/works/components/BeforeAfterSection';
+import { CarGallerySection } from '@/pages/works/components/CarGallerySection';
 
 export default function Works() {
   return (
@@ -30,32 +24,7 @@ export default function Works() {
         <BeforeAfterSection />
       </div>
 
-      <div className={styles.carGallery}>
-        <CarGallery
-          swiperItemList={swiperItemList01}
-          model={'TOYOTA　HILUX '}
-          craft={'NS10-H '}
-          size={'LLサイズ'}
-          price={'420,000円'}
-          text={text}
-        />
-        <CarGallery
-          swiperItemList={swiperItemList02}
-          model={'TOYOTA HARRIER '}
-          craft={'NS10-H '}
-          size={'LLサイズ'}
-          price={'550,000円'}
-          text={text}
-        />
-        <CarGallery
-          swiperItemList={swiperItemList03}
-          model={'LEXUS LC-500'}
-          craft={'NS10-H '}
-          size={'LLサイズ'}
-          price={'100,000円'}
-          text={text}
-        />
-      </div>
+      <CarGallerySection />
 
       <div className={styles.process}>
         <div className={styles.processTitle}>

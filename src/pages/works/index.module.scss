@@ -20,13 +20,6 @@
   background-color: $colorWhite;
 }
 
-.carGallery {
-  display: flex;
-  flex-direction: column;
-  row-gap: linear-clamp(64, 131);
-  margin-top: linear-clamp(64, 220);
-}
-
 .process {
   @include lg {
     width: linear-clamp(375, 1300);
