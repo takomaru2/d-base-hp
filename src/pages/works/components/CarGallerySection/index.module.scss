@@ -1,0 +1,9 @@
+@import '@/styles/mixin';
+@import '@/styles/variables';
+
+.carGallery {
+  display: flex;
+  flex-direction: column;
+  row-gap: linear-clamp(64, 131);
+  margin-top: linear-clamp(64, 220);
+}
