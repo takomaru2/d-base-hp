@@ -1,0 +1,39 @@
+@import '@/styles/mixin';
+@import '@/styles/variables';
+
+.faq {
+  display: flex;
+  flex-direction: column;
+  width: linear-clamp(375, 1400);
+  margin-inline: auto;
+  margin-top: 37px;
+
+  @include lg {
+    flex-direction: row;
+    margin-top: linear-clamp(200, 354);
+  }
+}
+
+.faqContainer {
+  margin-top: 50px;
+
+  @include lg {
+    margin-top: 0;
+  }
+}
+
+.faqTitle {
+  @include lg {
+    padding-top: 100px;
+  }
+}
+
+.sectionTitle {
+  width: linear-clamp(375, 1400);
+  margin-inline: auto;
+  text-align: center;
+
+  @include lg {
+    text-align: left;
+  }
+}
