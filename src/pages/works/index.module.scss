@@ -20,35 +20,6 @@
   background-color: $colorWhite;
 }
 
-.process {
-  @include lg {
-    width: linear-clamp(375, 1300);
-    margin-inline: auto;
-  }
-}
-
-.processTitle {
-  margin-top: linear-clamp(60, 90);
-  text-align: center;
-
-  @include lg {
-    text-align: left;
-  }
-}
-
-.processSubTitle {
-  margin-top: linear-clamp(30, 111);
-  text-align: center;
-
-  @include lg {
-    text-align: left;
-  }
-}
-
-.processDescription {
-  margin-block: linear-clamp(20, 50) linear-clamp(100, 220);
-}
-
 .footer {
   padding-block: linear-clamp(30, 140) 120px;
 }
