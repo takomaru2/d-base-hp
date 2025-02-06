@@ -1,13 +1,6 @@
 @import '@/styles/mixin';
 @import '@/styles/variables';
 
-.hero {
-  position: fixed;
-  inset: 0 0 auto;
-  z-index: 100;
-  padding-inline: linear-clamp(25, 70);
-}
-
 .fixedBottom {
   position: fixed;
   right: 0;
@@ -116,8 +109,4 @@
   width: linear-clamp(375, 1400);
   padding-top: linear-clamp(60, 150);
   margin-inline: auto;
-}
-
-.footer {
-  padding-block: linear-clamp(30, 140) 120px;
 }
