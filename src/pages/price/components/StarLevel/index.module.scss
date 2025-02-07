@@ -1,0 +1,13 @@
+@import '@/styles/mixin';
+@import '@/styles/variables';
+
+.container {
+  display: flex;
+  column-gap: 8px;
+
+  @include letterSpacing5(16px);
+}
+
+.title {
+  width: linear-clamp(85, 110);
+}
