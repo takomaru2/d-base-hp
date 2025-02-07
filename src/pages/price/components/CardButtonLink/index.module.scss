@@ -1,0 +1,67 @@
+@import '@/styles/mixin';
+@import '@/styles/variables';
+
+.container {
+  display: block;
+  width: 342px;
+  height: auto;
+  color: $colorBlack;
+  text-align: center;
+
+  @include lg {
+    position: relative;
+  }
+}
+
+.image {
+  width: inherit;
+  height: linear-clamp(340, 530);
+  object-fit: cover;
+  border-radius: 5px;
+
+  @include lg {
+    height: auto;
+  }
+}
+
+.craft {
+  font-size: linear-clamp(20, 22);
+  font-weight: bold;
+
+  @include letterSpacing5(20px);
+
+  @include lg {
+    margin-left: 20px;
+    text-align: left;
+  }
+}
+
+.price {
+  font-size: linear-clamp(46, 50);
+  font-weight: bold;
+
+  @include letterSpacing5(48px);
+}
+
+.descriptionWrapper {
+  @include lg {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    color: $colorWhite;
+    white-space: nowrap;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.text {
+  margin-top: linear-clamp(10, 25);
+  font-size: 14px;
+  white-space: pre-wrap;
+
+  @include letterSpacing5(14px);
+
+  @include lg {
+    text-align: left;
+  }
+}
