@@ -3,7 +3,7 @@
 
 .container {
   display: block;
-  width: 342px;
+  width: linear-clamp(342, 1600);
   height: auto;
   color: $colorBlack;
   text-align: center;

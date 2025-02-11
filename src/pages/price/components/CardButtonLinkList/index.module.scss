@@ -4,21 +4,17 @@
 .container {
   position: relative;
   display: flex;
-  column-gap: 10px;
+  column-gap: 20px;
+  width: linear-clamp(342, 1600);
   padding-inline: 15px;
+  margin-inline: auto;
   overflow: scroll;
   scroll-snap-type: x mandatory;
-
-  @include lg {
-    top: 50%;
-    gap: 0;
-    justify-content: center;
-    padding: 0;
-  }
+  background-color: $colorWhite;
 
   &::before {
-    position: absolute;
-    top: 35%;
+    position: fixed;
+    top: 200px;
     right: 0;
     left: 0;
     z-index: -1;
@@ -27,5 +23,39 @@
     content: '';
     background-color: $answerColor;
     transform: translate(-50%, -50%);
+  }
+
+  &::after {
+    position: absolute;
+    top: 65%;
+    left: 53%;
+    font-size: 40px;
+    font-weight: bold;
+    color: $colorBlack;
+    content: '…';
+    transform: translate(-50%, -50%);
+    animation: fadeInOut 1.5s infinite alternate;
+  }
+
+  @include lg {
+    top: 50%;
+    gap: 0;
+    justify-content: center;
+    max-width: fit-content;
+    padding: 0;
+
+    &::before {
+      top: 300px;
+    }
+  }
+
+  @keyframes fadeInOut {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0.3;
+    }
   }
 }
