@@ -1,0 +1,21 @@
+@import '@/styles/mixin';
+@import '@/styles/variables';
+
+.container {
+  font-size: linear-clamp(12, 14);
+  color: $colorBlack;
+  text-align: center;
+
+  @include letterSpacing5(12px);
+}
+
+.title {
+  font-weight: bold;
+}
+
+.text {
+  width: 300px;
+  margin-inline: auto;
+  margin-top: 10px;
+  white-space: pre-wrap;
+}
