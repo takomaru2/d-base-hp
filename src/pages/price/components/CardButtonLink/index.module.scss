@@ -3,13 +3,27 @@
 
 .container {
   display: block;
-  width: 342px;
+  width: linear-clamp(342, 1600);
   height: auto;
   color: $colorBlack;
   text-align: center;
+  scroll-snap-align: center;
 
   @include lg {
     position: relative;
+  }
+
+  @include xl {
+    width: linear-clamp(250, 342);
+  }
+}
+
+.imageWrapper {
+  width: inherit;
+
+  @include lg {
+    height: 530px;
+    overflow: hidden;
   }
 }
 
@@ -20,7 +34,15 @@
   border-radius: 5px;
 
   @include lg {
-    height: auto;
+    height: 100%;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      overflow: hidden;
+      background-color: $colorWhite;
+      background-blend-mode: overlay;
+      transform: scale(1.1);
+    }
   }
 }
 
