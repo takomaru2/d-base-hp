@@ -16,6 +16,6 @@
 .text {
   width: 300px;
   margin-inline: auto;
-  margin-top: 10px;
+  margin-top: linear-clamp(10, 20);
   white-space: pre-wrap;
 }
