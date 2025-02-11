@@ -2,7 +2,6 @@
 
 .wrapper {
   width: 100%;
-  font-size: 14px;
   text-align: center;
   background-color: $colorShadow;
   background-image: url('/assets/price/craftSelectionCard.jpg');
@@ -10,13 +9,49 @@
   background-blend-mode: overlay;
 
   @include letterSpacing5(14px);
+
+  @include lg {
+    display: flex;
+    flex-direction: column;
+    max-width: 1400px;
+    height: 510px;
+    padding-top: 60px;
+    margin-inline: auto;
+    text-align: left;
+  }
 }
 
 .title {
   padding-top: 24px;
+  font-size: linear-clamp(18, 30);
+  font-weight: bold;
+
+  @include letterSpacing15(25px);
+
+  @include lg {
+    padding-left: 82px;
+  }
 }
 
 .description {
-  padding-top: 67px;
+  padding-top: 40px;
   padding-bottom: 20px;
+  font-size: linear-clamp(12, 20);
+
+  @include lg {
+    padding-left: 82px;
+  }
+}
+
+.comments {
+  display: none;
+
+  @include lg {
+    display: block;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    margin-top: auto;
+    font-size: 12px;
+    font-weight: lighter;
+  }
 }
