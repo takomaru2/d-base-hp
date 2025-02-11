@@ -1,0 +1,22 @@
+@import '@/styles/mixin';
+
+.wrapper {
+  width: 100%;
+  font-size: 14px;
+  text-align: center;
+  background-color: $colorShadow;
+  background-image: url('/assets/price/craftSelectionCard.jpg');
+  background-size: cover;
+  background-blend-mode: overlay;
+
+  @include letterSpacing5(14px);
+}
+
+.title {
+  padding-top: 24px;
+}
+
+.description {
+  padding-top: 67px;
+  padding-bottom: 20px;
+}
