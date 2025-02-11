@@ -1,0 +1,15 @@
+@import '@/styles/mixin';
+@import '@/styles/variables';
+
+.container {
+  display: flex;
+  column-gap: 20px;
+  justify-content: space-between;
+  width: linear-clamp(160, 300);
+  margin-inline: auto;
+  font-size: linear-clamp(20, 32);
+  font-weight: bold;
+  color: $colorBlack;
+
+  @include letterSpacing5(26px);
+}
