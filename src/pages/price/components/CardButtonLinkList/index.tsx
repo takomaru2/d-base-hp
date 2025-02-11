@@ -1,8 +1,6 @@
 import styles from './index.module.scss';
 import { CardButtonLink } from '@/pages/price/components/CardButtonLink';
 import { ComponentProps, FC } from 'react';
-import Image from 'next/image';
-import image from '@/../public/assets/price/suzumoriremu.jpg';
 
 type CardButtonLinkListProps = {
   cardButtonLinkListProps: CardButtonLinkProps[];
@@ -26,7 +24,6 @@ export const CardButtonLinkList: FC<CardButtonLinkListProps> = ({
           text={text}
         />
       ))}
-      <Image src={image} alt={'remuchan'} className={styles.remu} />
     </div>
   );
 };

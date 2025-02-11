@@ -16,12 +16,6 @@
   @include xl {
     width: linear-clamp(250, 342);
   }
-
-  /**
-  &:hover .descriptionWrapper {
-    opacity: 0;
-  }
-   */
 }
 
 .imageWrapper {
@@ -47,7 +41,6 @@
       overflow: hidden;
       background-color: $colorWhite;
       background-blend-mode: overlay;
-      opacity: 0.5;
       transform: scale(1.1);
     }
   }

@@ -10,6 +10,7 @@
   scroll-snap-type: x mandatory;
 
   @include lg {
+    top: 50%;
     gap: 0;
     justify-content: center;
     padding: 0;
@@ -26,27 +27,5 @@
     content: '';
     background-color: $answerColor;
     transform: translate(-50%, -50%);
-
-    @include lg {
-      top: 50%;
-    }
-  }
-}
-
-.remu {
-  position: absolute;
-  top: 35%;
-  left: 50%;
-  z-index: -1;
-  width: 337px;
-  height: 335px;
-  object-fit: cover;
-  transform: translate(-50%, -50%);
-
-  @include lg {
-    top: 50%;
-    left: 40%;
-    width: 337px;
-    height: 500px;
   }
 }
