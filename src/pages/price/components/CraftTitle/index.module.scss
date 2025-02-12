@@ -1,0 +1,31 @@
+@import '@/styles/mixin';
+@import '@/styles/variables';
+
+.wrapper {
+  color: $colorWhite;
+  text-align: center;
+}
+
+.title {
+  position: relative;
+  display: inline-block;
+  font-size: linear-clamp(36, 40);
+  border-bottom: 2px solid #bc611e;
+
+  &::before {
+    position: absolute;
+    bottom: -7px;
+    left: -6px;
+    width: 12px;
+    height: 12px;
+    content: '';
+    background-color: #bc611e;
+    border-radius: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.description {
+  padding-top: 15px;
+  font-size: linear-clamp(14, 22);
+}
