@@ -3,7 +3,7 @@ import styles from './index.module.scss';
 export const CraftSelectionCard = () => {
   return (
     <div className={styles.wrapper}>
-      <h1 className={styles.title}>最適なコーティングの選び方</h1>
+      <div className={styles.title}>最適なコーティングの選び方</div>
       <div className={styles.description}>
         <p>
           他のコーティング屋はまじで腕がカスです。
