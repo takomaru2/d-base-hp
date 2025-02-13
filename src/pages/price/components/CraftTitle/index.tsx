@@ -1,13 +1,16 @@
 import styles from './index.module.scss';
+import { FC, ReactNode } from 'react';
 
-export const CraftTitle = () => {
+type CraftTitleProps = {
+  title: string;
+  description: ReactNode;
+};
+
+export const CraftTitle: FC<CraftTitleProps> = ({ title, description }) => {
   return (
     <div className={styles.wrapper}>
-      <h2 className={styles.title}>NS-10H</h2>
-      <p className={styles.description}>
-        圧倒的な艶と持続する強靭な保護力。
-        <br /> 最高峰の露天駐車対応コーティング
-      </p>
+      <div className={styles.title}>{title}</div>
+      <p className={styles.description}>{description}</p>
     </div>
   );
 };

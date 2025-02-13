@@ -4,6 +4,10 @@
 .wrapper {
   color: $colorWhite;
   text-align: center;
+
+  @include lg {
+    text-align: left;
+  }
 }
 
 .title {
