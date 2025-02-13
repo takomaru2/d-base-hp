@@ -1,29 +1,28 @@
-import { FC } from 'react';
+import { ComponentProps, FC } from 'react';
 import styles from './index.module.scss';
 import { PriceCardText } from '@/pages/price/components/PriceCardText';
 import { SizeCardText } from '@/pages/price/components/SizeCardText';
 
-type List = {
+export type Price = {
   id: string;
   size: string;
   price: string;
 };
 
 type PriceCardList = {
-  list: List[];
+  priceCardText: ComponentProps<typeof PriceCardText>;
+  priceList: Price[];
 };
 
-export const PriceCard: FC<PriceCardList> = ({ list }) => {
+export const PriceCard: FC<PriceCardList> = ({ priceCardText, priceList }) => {
   return (
     <div className={styles.container}>
       <PriceCardText
-        title={'エントリー'}
-        text={
-          '推奨: 新車～登録3ヶ月\n低価格でコーティングの効果を重視する方におすすめ。ボディ全面を塗装の負担なく研磨します。'
-        }
+        carCondition={priceCardText.carCondition}
+        advice={priceCardText.advice}
       />
       <div className={styles.priceWrapper}>
-        {list.map(({ id, size, price }) => (
+        {priceList.map(({ id, size, price }) => (
           <SizeCardText size={size} price={price} key={id} />
         ))}
       </div>

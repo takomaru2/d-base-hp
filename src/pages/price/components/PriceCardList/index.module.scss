@@ -1,0 +1,17 @@
+@import '@/styles/mixin';
+@import '@/styles/variables';
+
+.container {
+  display: flex;
+  column-gap: 15px;
+  max-width: 300px;
+  margin-inline: auto;
+  overflow: auto;
+  scroll-snap-type: x mandatory;
+
+  @include xl {
+    column-gap: 20px;
+    max-width: 1400px;
+    margin-inline: auto;
+  }
+}
