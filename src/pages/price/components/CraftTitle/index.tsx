@@ -1,9 +1,9 @@
 import styles from './index.module.scss';
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
 
 type CraftTitleProps = {
   title: string;
-  description: ReactNode;
+  description: string;
 };
 
 export const CraftTitle: FC<CraftTitleProps> = ({ title, description }) => {
