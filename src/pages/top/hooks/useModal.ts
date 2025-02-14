@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export const useFaq = () => {
+export const useModal = () => {
   const [showAnswerIndex, setShowAnswerIndex] = useState<Set<number>>(
     new Set(),
   );

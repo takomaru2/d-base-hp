@@ -1,0 +1,41 @@
+@import '@/styles/mixin';
+@import '@/styles/variables';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  color: $colorBlack;
+}
+
+.carSize,
+.carList {
+  background-color: $colorWhite;
+  border-radius: 2px;
+}
+
+.carSize {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: linear-clamp(13, 56) linear-clamp(30, 100);
+}
+
+.carList {
+  padding: linear-clamp(13, 56) linear-clamp(10, 20);
+  font-size: linear-clamp(12, 32);
+
+  @include letterSpacing5(20px);
+}
+
+.title {
+  font-size: linear-clamp(14, 32);
+  font-weight: bold;
+
+  @include letterSpacing10(22px);
+}
+
+.icon {
+  width: linear-clamp(12, 30);
+  height: linear-clamp(12, 30);
+}
