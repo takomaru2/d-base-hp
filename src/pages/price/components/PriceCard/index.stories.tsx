@@ -7,7 +7,7 @@ import {
 
 const meta: Meta<typeof Component> = {
   component: Component,
-  args: { priceCardText, priceList: ns10hNew },
+  args: { priceCardText: priceCardText, priceList: ns10hNew },
   parameters: {
     layout: 'fullscreen',
   },

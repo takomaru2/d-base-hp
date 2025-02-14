@@ -20,6 +20,12 @@
     content: '…';
     animation: fadeInOut 1.5s infinite alternate;
   }
+
+  @include xl {
+    &::after {
+      display: none;
+    }
+  }
 }
 
 @keyframes fadeInOut {
