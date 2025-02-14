@@ -6,18 +6,17 @@ import plusImage from '../../../../../public/assets/top/plus.png';
 
 export const CarModal: FC = () => {
   return (
-    <div className={styles.container}>
-      <button
+    <details className={styles.container}>
+      <summary
         className={styles.carSize}
-        type={'button'}
         // onClick={onClick}
       >
         <div className={styles.title}>SSサイズ</div>
         <Image src={plusImage} alt={'push button'} className={styles.icon} />
-      </button>
+      </summary>
       <div className={styles.carList}>
         I / IQ / N-ONE / N-WGN / S660 / モコ / ロードスター / SMART / UP! / など
       </div>
-    </div>
+    </details>
   );
 };
