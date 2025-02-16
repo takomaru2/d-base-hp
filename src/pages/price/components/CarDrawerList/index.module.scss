@@ -1,0 +1,8 @@
+@import '@/styles/mixin';
+@import '@/styles/variables';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  row-gap: linear-clamp(5, 20);
+}

@@ -1,4 +1,4 @@
-import { CarModal as Component } from './index';
+import { CarDrawerList as Component } from '.';
 import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Component> = {
