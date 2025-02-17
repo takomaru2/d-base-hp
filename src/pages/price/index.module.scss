@@ -1,0 +1,41 @@
+@import '@/styles/variables';
+@import '@/styles/mixin';
+
+.topView {
+  position: relative;
+  padding-top: linear-clamp(75, 95);
+  padding-bottom: linear-clamp(47, 80);
+  margin-inline: auto;
+  background-color: $colorWhite;
+
+  &::before {
+    position: absolute;
+    top: 35%;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100px;
+    content: '';
+    background-color: $answerColor;
+
+    @include lg {
+      top: 47%;
+      width: 100%;
+    }
+  }
+}
+
+.sectionTitle {
+  width: linear-clamp(375, 1300);
+  margin-inline: auto;
+  text-align: center;
+
+  @include lg {
+    text-align: left;
+  }
+}
+
+.cardButtonList {
+  margin-top: linear-clamp(54, 30);
+}

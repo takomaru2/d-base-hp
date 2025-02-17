@@ -12,19 +12,6 @@
   scroll-snap-type: x mandatory;
   background-color: $colorWhite;
 
-  &::before {
-    position: fixed;
-    top: 200px;
-    right: 0;
-    left: 0;
-    z-index: -1;
-    width: 200%;
-    height: 100px;
-    content: '';
-    background-color: $answerColor;
-    transform: translate(-50%, -50%);
-  }
-
   &::after {
     position: absolute;
     top: 65%;
@@ -43,10 +30,6 @@
     justify-content: center;
     max-width: fit-content;
     padding: 0;
-
-    &::before {
-      top: 300px;
-    }
   }
 
   @keyframes fadeInOut {
