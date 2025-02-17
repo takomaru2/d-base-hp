@@ -1,74 +1,77 @@
+import { v4 as uuidv4 } from 'uuid';
+
 export const ns10hNew = [
   {
-    id: '1',
+    id: uuidv4(),
     size: 'SS',
     price: '¥134,100',
   },
   {
-    id: '2',
+    id: uuidv4(),
     size: 'S',
     price: '¥134,100',
   },
   {
-    id: '3',
+    id: uuidv4(),
     size: 'M',
     price: '¥134,100',
   },
   {
-    id: '4',
+    id: uuidv4(),
     size: 'L',
     price: '¥134,100',
   },
   {
-    id: '5',
+    id: uuidv4(),
     size: 'LL',
     price: '¥134,100',
   },
   {
-    id: '6',
+    id: uuidv4(),
     size: '3L',
     price: '¥134,100',
   },
   {
-    id: '7',
+    id: uuidv4(),
     size: '4L',
     price: '¥134,100',
   },
 ];
+console.log(ns10hNew);
 
 export const ns10hUsed = [
   {
-    id: '1',
+    id: uuidv4(),
     size: 'SS',
     price: '¥134,100',
   },
   {
-    id: '2',
+    id: uuidv4(),
     size: 'S',
     price: '¥200,000',
   },
   {
-    id: '3',
+    id: uuidv4(),
     size: 'M',
     price: '¥300,100',
   },
   {
-    id: '4',
+    id: uuidv4(),
     size: 'L',
     price: '¥499,100',
   },
   {
-    id: '5',
+    id: uuidv4(),
     size: 'LL',
     price: '¥599,100',
   },
   {
-    id: '6',
+    id: uuidv4(),
     size: '3L',
     price: '¥699,100',
   },
   {
-    id: '7',
+    id: uuidv4(),
     size: '4L',
     price: '¥799,100',
   },
@@ -76,37 +79,37 @@ export const ns10hUsed = [
 
 export const ns10hOld = [
   {
-    id: '1',
+    id: uuidv4(),
     size: 'SS',
     price: '¥222,100',
   },
   {
-    id: '2',
+    id: uuidv4(),
     size: 'S',
     price: '¥555,100',
   },
   {
-    id: '3',
+    id: uuidv4(),
     size: 'M',
     price: '¥666,100',
   },
   {
-    id: '4',
+    id: uuidv4(),
     size: 'L',
     price: '¥777,100',
   },
   {
-    id: '5',
+    id: uuidv4(),
     size: 'LL',
     price: '¥888,100',
   },
   {
-    id: '6',
+    id: uuidv4(),
     size: '3L',
     price: '¥999,100',
   },
   {
-    id: '7',
+    id: uuidv4(),
     size: '4L',
     price: '¥1340,100',
   },
