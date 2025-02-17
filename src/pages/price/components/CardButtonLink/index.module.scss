@@ -2,6 +2,7 @@
 @import '@/styles/variables';
 
 .container {
+  z-index: 1;
   display: block;
   width: linear-clamp(342, 1600);
   height: auto;

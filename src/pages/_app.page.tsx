@@ -11,7 +11,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <div className={styles.hero}>
         <Header />
       </div>
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
       <div className={styles.footer}>
         <Footer />
       </div>

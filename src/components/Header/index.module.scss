@@ -39,6 +39,7 @@
   font-size: linear-clamp(20, 24);
   color: $colorBlack;
   background-color: $colorWhite;
+  filter: drop-shadow(1px 1px 4px $colorShadow);
   border-radius: 1px;
 
   @include letterSpacing10(20px);
