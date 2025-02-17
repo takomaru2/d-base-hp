@@ -1,0 +1,40 @@
+@import '@/styles/mixin';
+@import '@/styles/variables';
+
+.wrapper {
+  text-align: center;
+
+  @include lg {
+    text-align: left;
+  }
+}
+
+.title {
+  position: relative;
+  display: inline-block;
+  font-size: linear-clamp(28, 40);
+  font-weight: bold;
+  border-bottom: 2px solid $colorOrange;
+
+  @include letterSpacing5(34px);
+
+  &::before {
+    position: absolute;
+    bottom: -7px;
+    left: -6px;
+    width: 12px;
+    height: 12px;
+    content: '';
+    background-color: $colorOrange;
+    border-radius: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.description {
+  padding-top: 15px;
+  font-size: linear-clamp(14, 22);
+  white-space: pre-wrap;
+
+  @include letterSpacing10(18px);
+}
