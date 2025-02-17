@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 import styles from './index.module.scss';
 import { FaqList } from '@/pages/top/components/FAQContainer/const/faqList';
-import { useFaq } from '@/pages/top/hooks/useFaq';
+import { useModal } from '@/pages/top/hooks/useModal';
 import { FAQItem } from '@/pages/top/components/FAQItem';
 
 export const FAQContainer: FC = () => {
-  const { isAnswerVisible, getActiveIndex } = useFaq();
+  const { isAnswerVisible, getActiveIndex } = useModal();
 
   return (
     <ul className={styles.container}>
