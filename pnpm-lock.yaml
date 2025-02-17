@@ -23,6 +23,9 @@ importers:
       sass:
         specifier: ^1.80.6
         version: 1.80.6
+      uuid:
+        specifier: ^11.0.5
+        version: 11.0.5
     devDependencies:
       '@chromatic-com/storybook':
         specifier: ^3.2.2
@@ -5053,6 +5056,10 @@ packages:
 
   utila@0.4.0:
     resolution: {integrity: sha512-Z0DbgELS9/L/75wZbro8xAnT50pBVFQZ+hUEueGDU5FN51YSCYM+jdxsfCiHjwNP/4LCDD0i/graKpeBnOXKRA==}
+
+  uuid@11.0.5:
+    resolution: {integrity: sha512-508e6IcKLrhxKdBbcA2b4KQZlLVp2+J5UwQ6F7Drckkc5N9ZJwFa4TgWtsww9UG8fGHbm6gbV19TdM5pQ4GaIA==}
+    hasBin: true
 
   uuid@9.0.1:
     resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
@@ -11059,6 +11066,8 @@ snapshots:
       which-typed-array: 1.1.15
 
   utila@0.4.0: {}
+
+  uuid@11.0.5: {}
 
   uuid@9.0.1: {}
 
