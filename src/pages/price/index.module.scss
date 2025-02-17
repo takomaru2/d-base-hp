@@ -39,3 +39,16 @@
 .cardButtonList {
   margin-top: linear-clamp(54, 30);
 }
+
+.carDrawer {
+  padding: 45px 20px 30px;
+  background-color: $colorPureWhite;
+}
+
+.comments {
+  padding: 20px 50px 15px 20px;
+  font-size: 10px;
+  font-weight: 100;
+  color: $colorBlack;
+  background-color: $colorPureWhite;
+}
