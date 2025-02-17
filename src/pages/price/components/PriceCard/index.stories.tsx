@@ -1,10 +1,13 @@
 import { PriceCard as Component } from './index';
 import { Meta, StoryObj } from '@storybook/react';
-import { priceCardList } from '@/pages/price/components/PriceCard/const/priceCardList';
+import {
+  ns10hNew,
+  priceCardText,
+} from '@/pages/price/components/PriceCard/const/priceCardList';
 
 const meta: Meta<typeof Component> = {
   component: Component,
-  args: { list: priceCardList },
+  args: { priceCardText: priceCardText, priceList: ns10hNew },
   parameters: {
     layout: 'fullscreen',
   },

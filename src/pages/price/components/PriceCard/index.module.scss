@@ -2,11 +2,40 @@
 @import '@/styles/variables';
 
 .container {
+  position: relative;
   width: linear-clamp(340, 400);
-  padding-block: linear-clamp(10, 25) linear-clamp(15, 75);
+  padding-block: linear-clamp(10, 25) linear-clamp(45, 75);
   margin-inline: auto;
+  scroll-snap-align: center;
   background-color: $colorWhite;
   border-radius: 5px;
+
+  &::after {
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+    font-size: 40px;
+    font-weight: bold;
+    color: $colorBlack;
+    content: '…';
+    animation: fadeInOut 1.5s infinite alternate;
+  }
+
+  @include xl {
+    &::after {
+      display: none;
+    }
+  }
+}
+
+@keyframes fadeInOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0.3;
+  }
 }
 
 .priceWrapper {
