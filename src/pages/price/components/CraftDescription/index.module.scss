@@ -11,6 +11,8 @@
   font-weight: bold;
   text-align: center;
 
+  @include letterSpacing10(22px);
+
   @include lg {
     text-align: left;
   }
@@ -21,4 +23,6 @@
   font-size: linear-clamp(14, 22);
   line-height: linear-clamp(20, 30);
   white-space: pre-wrap;
+
+  @include letterSpacing10(16px);
 }
