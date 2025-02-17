@@ -1,0 +1,24 @@
+@import '@/styles/mixin';
+@import '@/styles/variables';
+
+.container {
+  max-width: linear-clamp(340, 1300);
+  margin-inline: auto;
+}
+
+.title {
+  font-size: linear-clamp(20, 24);
+  font-weight: bold;
+  text-align: center;
+
+  @include lg {
+    text-align: left;
+  }
+}
+
+.description {
+  margin-top: linear-clamp(5, 15);
+  font-size: linear-clamp(14, 22);
+  line-height: linear-clamp(20, 30);
+  white-space: pre-wrap;
+}
