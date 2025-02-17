@@ -22,7 +22,7 @@ export const CarDrawer: FC<CarDrawerProps> = ({
     <details className={styles.container}>
       <summary className={styles.carSize} onClick={onClick}>
         <div className={styles.title}>{title}</div>
-        <Image src={icon} alt={'push button'} className={styles.icon} />
+        <Image src={icon} alt={'open button'} className={styles.icon} />
       </summary>
       <div className={styles.carList}>{description}</div>
     </details>
