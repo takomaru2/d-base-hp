@@ -26,15 +26,15 @@ export default function Price() {
         <div className={styles.carDrawer}>
           <CarDrawerList />
         </div>
-      </div>
-      <div className={styles.comments}>
-        ※代車のご用意が必要な場合はご予約時にお申し付けください。
-        <br />
-        ※施工価格は予告なく変更する場合がございます。
-        <br />
-        ※表示価格は税込み表示となります。
-        <br />
-        ※コーティングの効果は車両の使用状況や環境により 異なる場合があります。
+        <div className={styles.comments}>
+          ※代車のご用意が必要な場合はご予約時にお申し付けください。
+          <br />
+          ※施工価格は予告なく変更する場合がございます。
+          <br />
+          ※表示価格は税込み表示となります。
+          <br />
+          ※コーティングの効果は車両の使用状況や環境により 異なる場合があります。
+        </div>
       </div>
       <div className={styles.craftSection}>
         <CraftSectionNS10H />
