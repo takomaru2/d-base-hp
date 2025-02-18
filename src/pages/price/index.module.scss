@@ -40,9 +40,21 @@
   margin-top: linear-clamp(54, 30);
 }
 
-.carDrawer {
-  padding: 45px 20px 30px;
+.craftCard {
+  @include lg {
+    padding-block: 140px 100px;
+    padding-inline: linear-clamp(30, 50);
+  }
+}
+
+.backGroundCarDrawer {
   background-color: $colorPureWhite;
+}
+
+.carDrawer {
+  width: linear-clamp(350, 1400);
+  padding-block: 45px 30px;
+  margin-inline: auto;
 }
 
 .comments {
@@ -51,4 +63,8 @@
   font-weight: 100;
   color: $colorBlack;
   background-color: $colorPureWhite;
+
+  @include lg {
+    display: none;
+  }
 }

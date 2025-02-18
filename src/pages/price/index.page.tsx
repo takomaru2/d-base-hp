@@ -16,11 +16,13 @@ export default function Price() {
           <CardButtonLinkList cardButtonLinkListProps={cardButtonLinkList} />
         </div>
       </div>
-      <div>
+      <div className={styles.craftCard}>
         <CraftSelectionCard />
       </div>
-      <div className={styles.carDrawer}>
-        <CarDrawerList />
+      <div className={styles.backGroundCarDrawer}>
+        <div className={styles.carDrawer}>
+          <CarDrawerList />
+        </div>
       </div>
       <div className={styles.comments}>
         ※代車のご用意が必要な場合はご予約時にお申し付けください。
