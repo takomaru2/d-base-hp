@@ -1,0 +1,62 @@
+@import '@/styles/variables';
+@import '@/styles/mixin';
+
+.craftCard {
+  @include lg {
+    padding-block: 140px 100px;
+    padding-inline: linear-clamp(30, 50);
+  }
+}
+
+.craftTitle {
+  width: linear-clamp(350, 1300);
+  margin-inline: auto;
+  margin-top: linear-clamp(62, 110);
+}
+
+.priceCardList {
+  margin-top: linear-clamp(25, 68);
+
+  @include lg {
+    width: linear-clamp(340, 1300);
+    margin-inline: auto;
+  }
+}
+
+.craftDescription {
+  display: flex;
+  flex-direction: column;
+  row-gap: linear-clamp(30, 76);
+  margin-top: linear-clamp(20, 30);
+}
+
+.craftImageWrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  align-items: center;
+  margin-top: linear-clamp(30, 45);
+
+  @include lg {
+    flex-direction: row;
+    column-gap: linear-clamp(100, 200);
+    justify-content: left;
+    width: linear-clamp(340, 1300);
+    margin-inline: auto;
+  }
+}
+
+.craftImage {
+  width: linear-clamp(350, 655);
+  height: linear-clamp(181, 367);
+  margin-inline: auto;
+  object-fit: cover;
+
+  @include lg {
+    margin: 0;
+  }
+}
+
+.ratingText {
+  text-align: center;
+}

@@ -3,6 +3,7 @@
 
 .wrapper {
   width: 100%;
+  padding-top: 24px;
   text-align: center;
   background-color: $colorShadow;
   background-image: url('/assets/price/craftSelectionCard.jpg');
@@ -15,20 +16,22 @@
     display: flex;
     flex-direction: column;
     max-width: 1400px;
-    height: 510px;
-    padding-top: 60px;
+    max-height: 780px;
+    padding-top: linear-clamp(0, 220);
     margin-inline: auto;
     text-align: left;
   }
 }
 
 .title {
-  padding-top: 24px;
   font-size: linear-clamp(18, 30);
   font-weight: bold;
 
   @include letterSpacing15(25px);
+}
 
+.title,
+.description {
   @include lg {
     padding-left: 82px;
   }
@@ -38,10 +41,6 @@
   padding-top: 40px;
   padding-bottom: 20px;
   font-size: linear-clamp(12, 20);
-
-  @include lg {
-    padding-left: 82px;
-  }
 }
 
 .comments {
