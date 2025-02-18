@@ -4,7 +4,7 @@ import { FAQContainer } from '@/pages/top/components/FAQContainer';
 
 export const FaqSection = () => {
   return (
-    <div className={styles.faq}>
+    <div className={styles.faq} id={'faq'}>
       <div className={`${styles.sectionTitle} ${styles.faqTitle}`}>
         <SectionTitle
           jpTitle={'よくあるご質問'}

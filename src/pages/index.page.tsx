@@ -33,7 +33,7 @@ export default function Top() {
 
       <FaqSection />
 
-      <div className={styles.access}>
+      <div className={styles.access} id={'access'}>
         <AccessSection />
       </div>
     </>
