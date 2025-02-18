@@ -1,0 +1,33 @@
+@import '@/styles/mixin';
+@import '@/styles/variables';
+
+.heroImage {
+  width: 100vw;
+  height: linear-clamp(164, 707);
+  margin-top: linear-clamp(67, 109);
+  object-fit: cover;
+}
+
+.title {
+  width: linear-clamp(350, 1300);
+  margin-inline: auto;
+  margin-top: linear-clamp(10, 15);
+  text-align: center;
+
+  @include lg {
+    text-align: left;
+  }
+}
+
+.container {
+  width: linear-clamp(340, 1300);
+  margin-inline: auto;
+  margin-top: linear-clamp(50, 100);
+  font-size: linear-clamp(14, 22);
+  font-weight: 300;
+  line-height: 28px;
+}
+
+.leftPadding {
+  padding-left: linear-clamp(14, 22);
+}
