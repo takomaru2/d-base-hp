@@ -1,0 +1,24 @@
+@import '@/styles/variables';
+@import '@/styles/mixin';
+
+.backGroundCarDrawer {
+  background-color: $colorPureWhite;
+}
+
+.carDrawer {
+  width: linear-clamp(350, 1400);
+  padding-block: 45px 30px;
+  margin-inline: auto;
+}
+
+.comments {
+  padding: 20px 50px 15px 20px;
+  font-size: 10px;
+  font-weight: 100;
+  color: $colorBlack;
+  background-color: $colorPureWhite;
+
+  @include lg {
+    display: none;
+  }
+}
