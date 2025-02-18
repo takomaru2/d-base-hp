@@ -29,7 +29,6 @@ type GenerateSlideStyleResult = {
  * @param {Array<Object>} slideList - スライドリスト（オブジェクトの配列）
  * @returns {{width: string, height: string, right: string, zIndex: string}} style オブジェクト
  */
-// todo: reviewスライド作成時に関数統合
 export const generateSlideStyle = (
   isHero: boolean,
   rightIndex: number,
