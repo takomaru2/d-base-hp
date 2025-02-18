@@ -4,6 +4,9 @@ import { CardButtonLinkList } from '@/pages/price/components/CardButtonLinkList'
 import { cardButtonLinkList } from '@/pages/price/components/CardButtonLinkList/const/cardButtonLinkList';
 import { CraftSelectionCard } from '@/pages/price/components/CraftSelectionCard';
 import { CarDrawerList } from '@/pages/price/components/CarDrawerList';
+import { CraftSectionNS10H } from '@/pages/price/components/CraftSectionNS10H';
+import { CraftSectionNASIOL } from '@/pages/price/components/CraftSectionNASIOL';
+import { CraftSectionKUBEBOND } from '@/pages/price/components/CraftSectionKUBEBOND';
 
 export default function Price() {
   return (
@@ -32,6 +35,11 @@ export default function Price() {
         ※表示価格は税込み表示となります。
         <br />
         ※コーティングの効果は車両の使用状況や環境により 異なる場合があります。
+      </div>
+      <div className={styles.craftSection}>
+        <CraftSectionNS10H />
+        <CraftSectionNASIOL />
+        <CraftSectionKUBEBOND />
       </div>
     </>
   );
