@@ -100,7 +100,7 @@
 
   @include lg {
     flex-direction: row;
-    gap: 200px;
+    column-gap: linear-clamp(100, 200);
     justify-content: left;
     width: linear-clamp(340, 1300);
     margin-inline: auto;
