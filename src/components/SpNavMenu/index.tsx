@@ -22,7 +22,7 @@ export const SpNavMenu: FC<SpNavMenuProps> = ({ close }) => {
       <ul className={styles.navMenuList}>
         {navMenu.map((item) => (
           <li key={item.id} className={styles.navMenuItem}>
-            <Link className={styles.link} href={item.href}>
+            <Link className={styles.link} href={item.href} onClick={close}>
               {item.label}
             </Link>
           </li>
