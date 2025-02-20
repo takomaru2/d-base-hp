@@ -2,8 +2,6 @@ import worksImage01 from '@/../public/assets/top/works/worksImage01.jpg';
 import worksImage02 from '@/../public/assets/top/works/worksImage02.jpg';
 import worksImage03 from '@/../public/assets/top/works/worksImage03.jpg';
 import worksImage04 from '@/../public/assets/top/works/worksImage04.jpg';
-import gonta from '@/../public/assets/top/works/gonta.jpg';
-import muscle from '@/../public/assets/top/works/muscle.jpg';
 import { StaticImageData } from 'next/image';
 
 type WorksSlideImage = {
@@ -47,21 +45,5 @@ export const worksSlideList: WorksSlideImage[] = [
     alt: '車の前部分',
     craft: 'NS-10H4',
     pricing: '¥460,000',
-  },
-  {
-    id: '5',
-    image: gonta,
-    model: 'GONTA',
-    alt: 'ごんたという名の犬',
-    craft: '境港産',
-    pricing: 'ご縁',
-  },
-  {
-    id: '6',
-    image: muscle,
-    model: 'MENS PHYSIQUE',
-    alt: '石飛という名のマッチョ(仮)',
-    craft: '鶏胸肉',
-    pricing: '９位',
   },
 ];
