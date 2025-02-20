@@ -24,6 +24,11 @@
 .footerLink {
   display: inline-block;
   padding: 8px 20px;
+
+  &:hover {
+    opacity: 0.5;
+    transition: all 0.3s;
+  }
 }
 
 .title {
