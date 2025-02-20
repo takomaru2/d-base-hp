@@ -37,7 +37,6 @@ export const ns10hNew = [
     price: '¥134,100',
   },
 ];
-console.log(ns10hNew);
 
 export const ns10hUsed = [
   {
