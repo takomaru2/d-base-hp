@@ -8,6 +8,7 @@ import { WorksSection } from '@/pages/top/components/WorksSection';
 import { LiquidSection } from '@/pages/top/components/LiquidSection';
 import { ReviewSection } from '@/pages/top/components/ReviewSection';
 import { FaqSection } from '@/pages/top/components/FaqSection';
+import { scrollToId } from '@/logics/scrollToId';
 
 export default function Top() {
   return (
@@ -16,6 +17,7 @@ export default function Top() {
         <FixedBottomContact />
       </div>
       <TopView />
+      <button onClick={() => scrollToId('access')}>aaaまで移動</button>
 
       <div className={styles.vertical}>
         <VerticalText />
@@ -36,6 +38,7 @@ export default function Top() {
       <div className={styles.access} id={'access'}>
         <AccessSection />
       </div>
+      <div id="aaa">よくここまできた</div>
     </>
   );
 }
