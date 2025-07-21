@@ -12,6 +12,8 @@ type InitialInput = {
   postContent: string;
 };
 
+type ErrorState = Partial<Record<keyof InitialInput, string>>;
+
 export default function Form() {
   const [selected, setSelected] = useState<string[]>([]);
 
@@ -24,9 +26,10 @@ export default function Form() {
     material: '1',
     postContent: '',
   };
+
   const [input, setInput] = useState<InitialInput>(initialInput);
-  const [errorName, setErrorName] = useState('');
-  const [errorMassage, setErrorMassage] = useState('');
+
+  const [errorState, setErrorState] = useState<ErrorState>({});
 
   const handleChange = (value: string) => {
     setSelected((prev) =>
@@ -38,37 +41,65 @@ export default function Form() {
 
   const onBlur: FocusEventHandler<HTMLInputElement> = (event) => {
     event.preventDefault();
-    const value = input[event.target.name as keyof InitialInput];
+    const fieldName = event.target.name as keyof InitialInput;
+    const value = input[fieldName];
 
-    // 空文字
-    const isEmpty = !value.trim();
-    if (isEmpty) {
-      setErrorName(event.target.name);
-      const nameError = 'これは必須項目でやんすねぇ';
-      setErrorMassage(nameError);
+    if (!value.trim()) {
+      setErrorState((prev) => ({
+        ...prev,
+        [fieldName]: 'これは必須項目でやんすねぇ',
+      }));
       return;
     }
 
-    // カタカナのみ入力可能
-    const isKatakana = !/^[ァ-ン]+$/.test(value);
-    if (isKatakana) {
-      setErrorName(event.target.name);
-      const nameError = 'カタカナのみ入力が可能です';
-      setErrorMassage(nameError);
-      return;
+    setErrorState((prev) => {
+      const newState = { ...prev };
+      delete newState[fieldName];
+      return newState;
+    });
+  };
+
+  const katakanaOnBlur: FocusEventHandler<HTMLInputElement> = (event) => {
+    event.preventDefault();
+    const fieldName = event.target.name as keyof InitialInput;
+    const value = input[fieldName];
+
+    const isEmpty = !value.trim();
+    if (isEmpty) {
+      setErrorState((prev) => ({
+        ...prev,
+        [fieldName]: 'これは必須項目でやんすねぇ',
+      }));
+    } else if (fieldName === 'katakana' && !/^[ァ-ン]+$/.test(value)) {
+      setErrorState((prev) => ({
+        ...prev,
+        [fieldName]: 'カタカナのみ入力が可能です',
+      }));
+    } else {
+      setErrorState((prev) => {
+        const newState = { ...prev };
+        delete newState[fieldName];
+        return newState;
+      });
     }
   };
 
   const onBlurTextAria: FocusEventHandler<HTMLTextAreaElement> = (event) => {
     event.preventDefault();
-    const isInput = !input[event.target.name as keyof InitialInput].trim();
+    const field = event.target.name as keyof InitialInput;
+    const isInput = !input[field].trim();
+
     if (isInput) {
-      setErrorName(event.target.name);
-      const nameError = 'これは必須項目でやんすねぇ';
-      setErrorMassage(nameError);
-      return;
+      setErrorState((prev) => ({
+        ...prev,
+        [field]: 'これは必須です',
+      }));
     } else {
-      setErrorName('');
+      setErrorState((prev) => {
+        const newState = { ...prev };
+        delete newState[field];
+        return newState;
+      });
     }
   };
 
@@ -85,61 +116,65 @@ export default function Form() {
 
   const emailOnBlur: FocusEventHandler<HTMLInputElement> = (event) => {
     event.preventDefault();
-    const value = input[event.target.name as keyof InitialInput];
+    const field = event.target.name as keyof InitialInput;
+    const value = input[field];
+    const isEmailPath = !(/^[a-zA-Z0-9@]+$/.test(value) && /@/.test(value));
 
     // 空文字
     const isEmpty = !value.trim();
     if (isEmpty) {
-      setErrorName(event.target.name);
-      const nameError = 'これは必須項目でやんすねぇ';
-      setErrorMassage(nameError);
-      return;
+      setErrorState((prev) => ({
+        ...prev,
+        [field]: 'これは必須です。',
+      }));
+    } else if (isEmailPath) {
+      // 英数字のみで@があるか確認
+      setErrorState((prev) => ({
+        ...prev,
+        [field]: '英数字のみで入力して必ず@を使ってください',
+      }));
+    } else {
+      setErrorState((prev) => {
+        const newState = { ...prev };
+        delete newState[field];
+        return newState;
+      });
     }
-
-    // 英数字のみで@があるか確認
-    const isEmailPath = !(/^[a-zA-Z0-9@]+$/.test(value) && /@/.test(value));
-    if (isEmailPath) {
-      console.log('通った');
-      setErrorName(event.target.name);
-      const nameError = '英数字のみで入力して必ず@を使ってください';
-      setErrorMassage(nameError);
-      return;
-    }
-    setErrorName('');
   };
 
   const phoneOnBlur: FocusEventHandler<HTMLInputElement> = (event) => {
     event.preventDefault();
-    const value = input[event.target.name as keyof InitialInput];
+    const field = event.target.name as keyof InitialInput;
+    const value = input[field];
+    const isNumber = !/^[0-9]+$/.test(value);
+    const isUnderTwenty = value.length >= 20;
 
     // 空文字
     const isEmpty = !value.trim();
     if (isEmpty) {
-      setErrorName(event.target.name);
-      const nameError = 'これは必須項目でやんすねぇ';
-      setErrorMassage(nameError);
-      return;
+      setErrorState((prev) => ({
+        ...prev,
+        [field]: 'これは必須です',
+      }));
+    } else if (isNumber) {
+      // 数字のみ
+      setErrorState((prev) => ({
+        ...prev,
+        [field]: '半角英数字のみで入力してください',
+      }));
+    } else if (isUnderTwenty) {
+      // 20文字以下
+      setErrorState((prev) => ({
+        ...prev,
+        [field]: '入力されている数字が多い可能性があります。いや、多いです。',
+      }));
+    } else {
+      setErrorState((prev) => {
+        const newState = { ...prev };
+        delete newState.phone;
+        return newState;
+      });
     }
-
-    // 数字のみ
-    const isNumber = !/^[0-9]+$/.test(value);
-    if (isNumber) {
-      setErrorName(event.target.name);
-      setErrorMassage('半角数字のみ入力してください');
-      return;
-    }
-
-    // 20文字以下
-    const isUnderTwenty = value.length >= 20;
-    if (isUnderTwenty) {
-      setErrorName(event.target.name);
-      setErrorMassage(
-        '入力されている数字が多い可能性があります。いや、多いです。',
-      );
-      return;
-    }
-
-    setErrorName('');
   };
 
   // console.log(input);
@@ -159,8 +194,8 @@ export default function Form() {
               </label>
               <span className={styles.required}>必須</span>
             </div>
-            {errorName === 'name' && (
-              <p style={{ color: 'red' }}>{errorMassage}</p>
+            {errorState.name && (
+              <p style={{ color: 'red' }}>{errorState.name}</p>
             )}
             <input
               type="text"
@@ -179,8 +214,8 @@ export default function Form() {
               </label>
               <span className={styles.required}>必須</span>
             </div>
-            {errorName === 'katakana' && (
-              <p style={{ color: 'red' }}>{errorMassage}</p>
+            {errorState.katakana && (
+              <p style={{ color: 'red' }}>{errorState.katakana}</p>
             )}
             <input
               type="text"
@@ -188,7 +223,7 @@ export default function Form() {
               className={styles.input}
               placeholder={'ヤマダ　タロウ'}
               onChange={onChange}
-              onBlur={onBlur}
+              onBlur={katakanaOnBlur}
             />
           </div>
           <div className={`${styles.inputWrapper} ${styles.marginTop}`}>
@@ -196,8 +231,8 @@ export default function Form() {
               <label htmlFor="mail">メールアドレス</label>
               <span className={styles.required}>必須</span>
             </div>
-            {errorName === 'mail' && (
-              <p style={{ color: 'red' }}>{errorMassage}</p>
+            {errorState.mail && (
+              <p style={{ color: 'red' }}>{errorState.mail}</p>
             )}
             <input
               type="email"
@@ -213,8 +248,8 @@ export default function Form() {
               <label htmlFor="phone">電話番号</label>
               <span className={styles.required}>必須</span>
             </div>
-            {errorName === 'phone' && (
-              <p style={{ color: 'red' }}>{errorMassage}</p>
+            {errorState.phone && (
+              <p style={{ color: 'red' }}>{errorState.phone}</p>
             )}
             <input
               type="phone"
@@ -329,8 +364,8 @@ export default function Form() {
           </div>
           <div className={`${styles.inputWrapper} ${styles.marginTop}`}>
             <span>お問い合わせ内容</span>
-            {errorName === 'postContent' && (
-              <p style={{ color: 'red' }}>{errorMassage}</p>
+            {errorState.postContent && (
+              <p style={{ color: 'red' }}>{errorState.postContent}</p>
             )}
             <textarea
               name="postContent"
