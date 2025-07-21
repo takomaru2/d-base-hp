@@ -38,9 +38,10 @@ export default function Form() {
 
   const onBlur: FocusEventHandler<HTMLInputElement> = (event) => {
     event.preventDefault();
+    const value = input[event.target.name as keyof InitialInput];
 
     // 空文字
-    const isEmpty = !input[event.target.name as keyof InitialInput].trim();
+    const isEmpty = !value.trim();
     if (isEmpty) {
       setErrorName(event.target.name);
       const nameError = 'これは必須項目でやんすねぇ';
@@ -49,7 +50,6 @@ export default function Form() {
     }
 
     // カタカナのみ入力可能
-    const value = input[event.target.name as keyof InitialInput];
     const isKatakana = !/^[ァ-ン]+$/.test(value);
     if (isKatakana) {
       setErrorName(event.target.name);
@@ -57,8 +57,6 @@ export default function Form() {
       setErrorMassage(nameError);
       return;
     }
-
-    setErrorName('');
   };
 
   const onBlurTextAria: FocusEventHandler<HTMLTextAreaElement> = (event) => {
@@ -66,6 +64,8 @@ export default function Form() {
     const isInput = !input[event.target.name as keyof InitialInput].trim();
     if (isInput) {
       setErrorName(event.target.name);
+      const nameError = 'これは必須項目でやんすねぇ';
+      setErrorMassage(nameError);
       return;
     } else {
       setErrorName('');
@@ -81,6 +81,31 @@ export default function Form() {
       ...prev,
       [event.target.name]: event.target.value,
     }));
+  };
+
+  const emailOnBlur: FocusEventHandler<HTMLInputElement> = (event) => {
+    event.preventDefault();
+    const value = input[event.target.name as keyof InitialInput];
+
+    // 空文字
+    const isEmpty = !value.trim();
+    if (isEmpty) {
+      setErrorName(event.target.name);
+      const nameError = 'これは必須項目でやんすねぇ';
+      setErrorMassage(nameError);
+      return;
+    }
+
+    // 英数字のみで@があるか確認
+    const isEmailPath = !(/^[a-zA-Z0-9@]+$/.test(value) && /@/.test(value));
+    if (isEmailPath) {
+      console.log('通った');
+      setErrorName(event.target.name);
+      const nameError = '英数字のみで入力して必ず@を使ってください';
+      setErrorMassage(nameError);
+      return;
+    }
+    setErrorName('');
   };
 
   console.log(input);
@@ -146,7 +171,7 @@ export default function Form() {
               className={styles.input}
               placeholder="react@example.com"
               onChange={onChange}
-              onBlur={onBlur}
+              onBlur={emailOnBlur}
             />
           </div>
           <div className={`${styles.inputWrapper} ${styles.marginTop}`}>
