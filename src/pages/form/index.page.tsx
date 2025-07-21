@@ -1,15 +1,76 @@
 import styles from './index.module.scss';
 import { FORM_DATA_IMG } from '@/pages/form/const/form.data';
-import { useState } from 'react';
+import { ChangeEventHandler, FocusEventHandler, useState } from 'react';
+
+type InitialInput = {
+  name: string;
+  katakana: string;
+  mail: string;
+  phone: string;
+  period: string;
+  material: string;
+  postContent: string;
+};
 
 export default function Form() {
   const [selected, setSelected] = useState<string[]>([]);
 
+  const initialInput = {
+    name: '',
+    katakana: '',
+    mail: '',
+    phone: '',
+    period: '',
+    material: '1',
+    postContent: '',
+  };
+  const [input, setInput] = useState<InitialInput>(initialInput);
+  const [errorName, setErrorName] = useState('');
+
   const handleChange = (value: string) => {
     setSelected((prev) =>
-      prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value],
+      prev.includes(value)
+        ? prev.filter((item) => item !== value)
+        : [...prev, value],
     );
   };
+
+  const nameError = 'これは必須項目でやんすねぇ';
+
+  const onBlur: FocusEventHandler<HTMLInputElement> = (event) => {
+    event.preventDefault();
+    const isInput = !input[event.target.name as keyof InitialInput].trim();
+    if (isInput) {
+      setErrorName(event.target.name);
+      return;
+    } else {
+      setErrorName('');
+    }
+  };
+
+  const onBlurTextAria: FocusEventHandler<HTMLTextAreaElement> = (event) => {
+    event.preventDefault();
+    const isInput = !input[event.target.name as keyof InitialInput].trim();
+    if (isInput) {
+      setErrorName(event.target.name);
+      return;
+    } else {
+      setErrorName('');
+    }
+  };
+
+  const onSubmit = (event: React.FormEvent) => {
+    console.log('送信完了', input.name, event);
+  };
+
+  const onChange: ChangeEventHandler<HTMLInputElement> = (event) => {
+    setInput((prev) => ({
+      ...prev,
+      [event.target.name]: event.target.value,
+    }));
+  };
+
+  console.log(input);
 
   return (
     <>
@@ -18,7 +79,7 @@ export default function Form() {
         style={{ backgroundImage: `url(${FORM_DATA_IMG})` }}
       >
         <h2 className={styles.title}>お問い合わせフォーム</h2>
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={onSubmit}>
           <div className={styles.inputWrapper}>
             <div className={styles.flex}>
               <label htmlFor="name" className={styles.label}>
@@ -26,49 +87,70 @@ export default function Form() {
               </label>
               <span className={styles.required}>必須</span>
             </div>
+            {errorName === 'name' && (
+              <p style={{ color: 'red' }}>{nameError}</p>
+            )}
             <input
               type="text"
-              id="name"
+              name="name"
               className={styles.input}
               placeholder={'山田　太郎'}
+              value={input.name}
+              onChange={onChange}
+              onBlur={onBlur}
             />
           </div>
           <div className={`${styles.inputWrapper} ${styles.marginTop}`}>
             <div className={styles.flex}>
-              <label htmlFor="kanaName" className={styles.label}>
+              <label htmlFor="katakana" className={styles.label}>
                 フリガナ
               </label>
               <span className={styles.required}>必須</span>
             </div>
+            {errorName === 'katakana' && (
+              <p style={{ color: 'red' }}>{nameError}</p>
+            )}
             <input
               type="text"
-              id="kanaName"
+              name="katakana"
               className={styles.input}
               placeholder={'ヤマダ　タロウ'}
+              onChange={onChange}
+              onBlur={onBlur}
             />
           </div>
           <div className={`${styles.inputWrapper} ${styles.marginTop}`}>
             <div className={styles.flex}>
-              <label htmlFor="email">メールアドレス</label>
+              <label htmlFor="mail">メールアドレス</label>
               <span className={styles.required}>必須</span>
             </div>
+            {errorName === 'mail' && (
+              <p style={{ color: 'red' }}>{nameError}</p>
+            )}
             <input
               type="email"
-              id="email"
+              name="mail"
               className={styles.input}
               placeholder="react@example.com"
+              onChange={onChange}
+              onBlur={onBlur}
             />
           </div>
           <div className={`${styles.inputWrapper} ${styles.marginTop}`}>
             <div className={styles.flex}>
-              <label htmlFor="email">電話番号</label>
+              <label htmlFor="phone">電話番号</label>
               <span className={styles.required}>必須</span>
             </div>
+            {errorName === 'phone' && (
+              <p style={{ color: 'red' }}>{nameError}</p>
+            )}
             <input
               type="phone"
-              id="phone"
+              name="phone"
               className={styles.input}
               placeholder="080-1234-5678"
+              onBlur={onBlur}
+              onChange={onChange}
             />
           </div>
           <div className={styles.checkBoxContainer}>
@@ -124,36 +206,40 @@ export default function Form() {
             <label className={styles.checkBoxLabel}>
               <input
                 type="radio"
-                name="myRadio"
+                name="period"
                 value="1"
                 className={styles.checkBox}
+                onChange={onChange}
               />
               1年未満
             </label>
             <label className={styles.checkBoxLabel}>
               <input
                 type="radio"
-                name="myRadio"
+                name="period"
                 value="2"
                 className={styles.checkBox}
+                onChange={onChange}
               />
               1年から3年
             </label>
             <label className={styles.checkBoxLabel}>
               <input
                 type="radio"
-                name="myRadio"
+                name="period"
                 value="3"
                 className={styles.checkBox}
+                onChange={onChange}
               />
               3年から5年
             </label>
             <label className={styles.checkBoxLabel}>
               <input
                 type="radio"
-                name="myRadio"
+                name="period"
                 value="3"
                 className={styles.checkBox}
+                onChange={onChange}
               />
               5年以上
             </label>
@@ -171,11 +257,21 @@ export default function Form() {
           </div>
           <div className={`${styles.inputWrapper} ${styles.marginTop}`}>
             <span>お問い合わせ内容</span>
+            {errorName === 'postContent' && (
+              <p style={{ color: 'red' }}>{nameError}</p>
+            )}
             <textarea
               name="postContent"
               rows={4}
               cols={40}
               className={styles.textArea}
+              onChange={(event) =>
+                setInput((prev) => ({
+                  ...prev,
+                  postContent: event.target.value,
+                }))
+              }
+              onBlur={onBlurTextAria}
             />
           </div>
           <div className={`${styles.inputWrapper} ${styles.marginTop}`}>
