@@ -26,6 +26,7 @@ export default function Form() {
   };
   const [input, setInput] = useState<InitialInput>(initialInput);
   const [errorName, setErrorName] = useState('');
+  const [errorMassage, setErrorMassage] = useState('');
 
   const handleChange = (value: string) => {
     setSelected((prev) =>
@@ -35,17 +36,29 @@ export default function Form() {
     );
   };
 
-  const nameError = 'これは必須項目でやんすねぇ';
-
   const onBlur: FocusEventHandler<HTMLInputElement> = (event) => {
     event.preventDefault();
-    const isInput = !input[event.target.name as keyof InitialInput].trim();
-    if (isInput) {
+
+    // 空文字
+    const isEmpty = !input[event.target.name as keyof InitialInput].trim();
+    if (isEmpty) {
       setErrorName(event.target.name);
+      const nameError = 'これは必須項目でやんすねぇ';
+      setErrorMassage(nameError);
       return;
-    } else {
-      setErrorName('');
     }
+
+    // カタカナのみ入力可能
+    const value = input[event.target.name as keyof InitialInput];
+    const isKatakana = !/^[ァ-ン]+$/.test(value);
+    if (isKatakana) {
+      setErrorName(event.target.name);
+      const nameError = 'カタカナのみ入力が可能です';
+      setErrorMassage(nameError);
+      return;
+    }
+
+    setErrorName('');
   };
 
   const onBlurTextAria: FocusEventHandler<HTMLTextAreaElement> = (event) => {
@@ -88,7 +101,7 @@ export default function Form() {
               <span className={styles.required}>必須</span>
             </div>
             {errorName === 'name' && (
-              <p style={{ color: 'red' }}>{nameError}</p>
+              <p style={{ color: 'red' }}>{errorMassage}</p>
             )}
             <input
               type="text"
@@ -108,7 +121,7 @@ export default function Form() {
               <span className={styles.required}>必須</span>
             </div>
             {errorName === 'katakana' && (
-              <p style={{ color: 'red' }}>{nameError}</p>
+              <p style={{ color: 'red' }}>{errorMassage}</p>
             )}
             <input
               type="text"
@@ -125,7 +138,7 @@ export default function Form() {
               <span className={styles.required}>必須</span>
             </div>
             {errorName === 'mail' && (
-              <p style={{ color: 'red' }}>{nameError}</p>
+              <p style={{ color: 'red' }}>{errorMassage}</p>
             )}
             <input
               type="email"
@@ -142,7 +155,7 @@ export default function Form() {
               <span className={styles.required}>必須</span>
             </div>
             {errorName === 'phone' && (
-              <p style={{ color: 'red' }}>{nameError}</p>
+              <p style={{ color: 'red' }}>{errorMassage}</p>
             )}
             <input
               type="phone"
@@ -258,7 +271,7 @@ export default function Form() {
           <div className={`${styles.inputWrapper} ${styles.marginTop}`}>
             <span>お問い合わせ内容</span>
             {errorName === 'postContent' && (
-              <p style={{ color: 'red' }}>{nameError}</p>
+              <p style={{ color: 'red' }}>{errorMassage}</p>
             )}
             <textarea
               name="postContent"
