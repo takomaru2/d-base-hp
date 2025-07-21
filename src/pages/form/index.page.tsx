@@ -108,7 +108,41 @@ export default function Form() {
     setErrorName('');
   };
 
-  console.log(input);
+  const phoneOnBlur: FocusEventHandler<HTMLInputElement> = (event) => {
+    event.preventDefault();
+    const value = input[event.target.name as keyof InitialInput];
+
+    // 空文字
+    const isEmpty = !value.trim();
+    if (isEmpty) {
+      setErrorName(event.target.name);
+      const nameError = 'これは必須項目でやんすねぇ';
+      setErrorMassage(nameError);
+      return;
+    }
+
+    // 数字のみ
+    const isNumber = !/^[0-9]+$/.test(value);
+    if (isNumber) {
+      setErrorName(event.target.name);
+      setErrorMassage('半角数字のみ入力してください');
+      return;
+    }
+
+    // 20文字以下
+    const isUnderTwenty = value.length >= 20;
+    if (isUnderTwenty) {
+      setErrorName(event.target.name);
+      setErrorMassage(
+        '入力されている数字が多い可能性があります。いや、多いです。',
+      );
+      return;
+    }
+
+    setErrorName('');
+  };
+
+  // console.log(input);
 
   return (
     <>
@@ -186,8 +220,8 @@ export default function Form() {
               type="phone"
               name="phone"
               className={styles.input}
-              placeholder="080-1234-5678"
-              onBlur={onBlur}
+              placeholder="08012345678"
+              onBlur={phoneOnBlur}
               onChange={onChange}
             />
           </div>
