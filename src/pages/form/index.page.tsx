@@ -269,7 +269,7 @@ export default function Form() {
                 onChange={() => handleChange('ss')}
                 className={styles.checkBox}
               />
-              <span>SSサイズ</span>
+              <span className={styles.size}>SSサイズ</span>
             </label>
             <label className={styles.checkBoxLabel}>
               <input
@@ -278,7 +278,7 @@ export default function Form() {
                 onChange={() => handleChange('s')}
                 className={styles.checkBox}
               />
-              <span>Sサイズ</span>
+              <span className={styles.size}>Sサイズ</span>
             </label>
             <label className={styles.checkBoxLabel}>
               <input
@@ -287,7 +287,7 @@ export default function Form() {
                 onChange={() => handleChange('m')}
                 className={styles.checkBox}
               />
-              <span>Mサイズ</span>
+              <span className={styles.size}>Mサイズ</span>
             </label>
             <label className={styles.checkBoxLabel}>
               <input
@@ -296,7 +296,7 @@ export default function Form() {
                 onChange={() => handleChange('l')}
                 className={styles.checkBox}
               />
-              <span>Lサイズ</span>
+              <span className={styles.size}>Lサイズ</span>
             </label>
             <label className={styles.checkBoxLabel}>
               <input
@@ -305,7 +305,7 @@ export default function Form() {
                 onChange={() => handleChange('ll')}
                 className={styles.checkBox}
               />
-              <span>LLサイズ</span>
+              <span className={styles.size}>LLサイズ</span>
             </label>
           </div>
           <div className={styles.checkBoxContainer}>
