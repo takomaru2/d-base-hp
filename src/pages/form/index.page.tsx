@@ -1,6 +1,10 @@
 import styles from './index.module.scss';
-import { FORM_DATA_IMG } from '@/pages/form/const/form.data';
-import { ChangeEventHandler, FocusEventHandler, useState } from 'react';
+import {
+  ChangeEventHandler,
+  FocusEventHandler,
+  FormEvent,
+  useState,
+} from 'react';
 
 type InitialInput = {
   name: string;
@@ -30,6 +34,23 @@ export default function Form() {
   const [input, setInput] = useState<InitialInput>(initialInput);
 
   const [errorState, setErrorState] = useState<ErrorState>({});
+
+  // const [result, setResult] = useState('');
+
+  async function onSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const response = await fetch('/api/sample/route', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ input }),
+    });
+
+    const data = await response.json();
+    console.log(data);
+  }
 
   const handleChange = (value: string) => {
     setSelected((prev) =>
@@ -73,7 +94,7 @@ export default function Form() {
     } else if (fieldName === 'katakana' && !/^[ァ-ン]+$/.test(value)) {
       setErrorState((prev) => ({
         ...prev,
-        [fieldName]: 'カタカナのみ入力が可能です',
+        [fieldName]: 'カタカナ入力でスペースを入れないでください',
       }));
     } else {
       setErrorState((prev) => {
@@ -101,10 +122,6 @@ export default function Form() {
         return newState;
       });
     }
-  };
-
-  const onSubmit = (event: React.FormEvent) => {
-    console.log('送信完了', input.name, event);
   };
 
   const onChange: ChangeEventHandler<HTMLInputElement> = (event) => {
@@ -181,10 +198,7 @@ export default function Form() {
 
   return (
     <>
-      <section
-        className={styles.container}
-        style={{ backgroundImage: `url(${FORM_DATA_IMG})` }}
-      >
+      <section className={styles.container}>
         <h2 className={styles.title}>お問い合わせフォーム</h2>
         <form className={styles.form} onSubmit={onSubmit}>
           <div className={styles.inputWrapper}>

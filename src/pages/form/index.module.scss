@@ -13,7 +13,8 @@
   width: 100%;
   padding: linear-clamp(60, 150) 0;
   overflow: hidden;
-  background: center / cover no-repeat;
+  background: url('/assets/form/bg.jpg') no-repeat;
+  background-size: contain;
 
   &::before {
     position: fixed;
