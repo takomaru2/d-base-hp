@@ -135,7 +135,7 @@ export default function Form() {
     event.preventDefault();
     const field = event.target.name as keyof InitialInput;
     const value = input[field];
-    const isEmailPath = !(/^[a-zA-Z0-9@]+$/.test(value) && /@/.test(value));
+    const isEmailPath = !(/^[a-zA-Z0-9@.,]+$/.test(value) && /@/.test(value));
 
     // 空文字
     const isEmpty = !value.trim();
