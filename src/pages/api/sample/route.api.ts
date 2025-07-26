@@ -25,8 +25,9 @@ export default async function handler(
 <p>内容: ${postContent}</p>`,
     });
 
-    console.log(result);
-
+    if (result.error) {
+      return res.status(500).json({ message: '送信エラー(Resend)' });
+    }
     return res.status(200).json({ message: '送信完了' });
   } catch {
     return res.status(500).json({ error: '送信失敗' });

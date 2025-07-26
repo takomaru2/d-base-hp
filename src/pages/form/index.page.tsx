@@ -26,7 +26,7 @@ export default function Form() {
     katakana: '',
     mail: '',
     phone: '',
-    period: '',
+    period: '1',
     material: '1',
     postContent: '',
   };
@@ -35,7 +35,7 @@ export default function Form() {
 
   const [errorState, setErrorState] = useState<ErrorState>({});
 
-  // const [result, setResult] = useState('');
+  const [submitResult, setSubmitResult] = useState('');
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -79,16 +79,27 @@ export default function Form() {
       return;
     }
 
-    const response = await fetch('/api/sample/route', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(input),
-    });
+    try {
+      const response = await fetch('/api/sample/route', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(input),
+      });
 
-    const data = await response.json();
-    console.log(data);
+      const data = await response.json();
+      if (response.ok) {
+        setSubmitResult('success');
+        console.log(submitResult);
+      } else {
+        console.error(data.error);
+        setSubmitResult('error');
+      }
+    } catch (error) {
+      console.error('通信エラー:', error);
+      setSubmitResult('error');
+    }
   }
 
   const handleChange = (value: string) => {
@@ -397,7 +408,7 @@ export default function Form() {
               <input
                 type="radio"
                 name="period"
-                value="3"
+                value="4"
                 className={styles.checkBox}
                 onChange={onChange}
               />
@@ -439,6 +450,16 @@ export default function Form() {
               送信する
             </button>
           </div>
+          {submitResult === 'success' && (
+            <p style={{ color: 'green' }}>
+              送信完了しました。ありがとうございます！
+            </p>
+          )}
+          {submitResult === 'error' && (
+            <p style={{ color: 'red' }}>
+              送信中にエラーが発生しました。再度お試しください。
+            </p>
+          )}
         </form>
       </section>
     </>
