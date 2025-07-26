@@ -8,7 +8,7 @@ export default async function handler(
   res: NextApiResponse,
 ) {
   const { name, katakana, mail, phone, period, material, postContent } =
-    req.body?.input;
+    req.body;
 
   try {
     const result = await resend.emails.send({
@@ -27,7 +27,7 @@ export default async function handler(
 
     console.log(result);
 
-    return res.status(200).json({ message: '送信成功' });
+    return res.status(200).json({ message: '送信完了' });
   } catch {
     return res.status(500).json({ error: '送信失敗' });
   }
