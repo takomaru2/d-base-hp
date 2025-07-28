@@ -1,0 +1,41 @@
+@import '@/styles/mixin';
+@import '@/styles/variables';
+
+.container {
+  margin-top: linear-clamp(67, 90);
+}
+
+.titleWrapper {
+  padding-top: linear-clamp(50, 100);
+  text-align: center;
+}
+
+.list {
+  display: flex;
+  column-gap: linear-clamp(50, 100);
+  justify-content: center;
+  margin-top: linear-clamp(30, 50);
+}
+
+.listKey,
+.listContent {
+  display: flex;
+  flex-direction: column;
+  row-gap: linear-clamp(20, 30);
+}
+
+.listKey {
+  text-align: right;
+}
+
+.listContent {
+  text-align: left;
+}
+
+.listItem {
+  width: 100%;
+  max-width: linear-clamp(150, 388);
+  line-height: 24px;
+
+  @include letterSpacing5(16px);
+}
