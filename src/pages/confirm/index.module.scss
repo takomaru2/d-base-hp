@@ -35,7 +35,13 @@
 .listItem {
   width: 100%;
   max-width: linear-clamp(150, 388);
+  font-size: linear-clamp(16, 24);
   line-height: 24px;
 
   @include letterSpacing5(16px);
+}
+
+.buttonWrapper {
+  margin-top: linear-clamp(40, 80);
+  text-align: center;
 }
