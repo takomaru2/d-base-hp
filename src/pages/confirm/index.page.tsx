@@ -1,5 +1,4 @@
 import styles from './index.module.scss';
-import { ButtonLink } from '@/components/ButtonLink';
 import { InitialInput } from '@/pages/form/index.page';
 import { useEffect, useState } from 'react';
 
@@ -31,7 +30,7 @@ export default function Confirm() {
   if (!input || !selected) return <p>読み込み中...</p>;
 
   return (
-    <div className={styles.container}>
+    <form className={styles.container}>
       <div className={styles.titleWrapper}>
         <h2 className={styles.title}>以下の内容でよろしいでしょうか？</h2>
       </div>
@@ -76,8 +75,8 @@ export default function Confirm() {
       </div>
 
       <div className={styles.buttonWrapper}>
-        <ButtonLink link={'#'}>送信する</ButtonLink>
+        <button type={'submit'}>送信する</button>
       </div>
-    </div>
+    </form>
   );
 }

@@ -56,8 +56,8 @@ export default function Form() {
       }
 
       // カタカナだけ特別なチェック（空でなくても）
-      if (key === 'katakana' && value && !/^[ァ-ン]+$/.test(value)) {
-        newErrors.katakana = 'カタカナ入力でスペースを入れないでください';
+      if (key === 'katakana' && value && !/^[ァ-ン　]+$/.test(value)) {
+        newErrors.katakana = 'カタカナのみで入力してください';
       }
 
       // メール形式チェック
@@ -150,10 +150,10 @@ export default function Form() {
         ...prev,
         [fieldName]: 'これは必須項目でやんすねぇ',
       }));
-    } else if (fieldName === 'katakana' && !/^[ァ-ン]+$/.test(value)) {
+    } else if (fieldName === 'katakana' && !/^[ァ-ン　]+$/.test(value)) {
       setErrorState((prev) => ({
         ...prev,
-        [fieldName]: 'カタカナ入力でスペースを入れないでください',
+        [fieldName]: 'カタカナのみで入力してください',
       }));
     } else {
       setErrorState((prev) => {
@@ -338,8 +338,8 @@ export default function Form() {
             <label className={styles.checkBoxLabel}>
               <input
                 type="checkbox"
-                checked={selected.includes('ss')}
-                onChange={() => handleChange('ss')}
+                checked={selected.includes('SS')}
+                onChange={() => handleChange('SS')}
                 className={styles.checkBox}
               />
               <span className={styles.size}>SSサイズ</span>
@@ -347,8 +347,8 @@ export default function Form() {
             <label className={styles.checkBoxLabel}>
               <input
                 type="checkbox"
-                checked={selected.includes('s')}
-                onChange={() => handleChange('s')}
+                checked={selected.includes('S')}
+                onChange={() => handleChange('S')}
                 className={styles.checkBox}
               />
               <span className={styles.size}>Sサイズ</span>
@@ -356,8 +356,8 @@ export default function Form() {
             <label className={styles.checkBoxLabel}>
               <input
                 type="checkbox"
-                checked={selected.includes('m')}
-                onChange={() => handleChange('m')}
+                checked={selected.includes('M')}
+                onChange={() => handleChange('M')}
                 className={styles.checkBox}
               />
               <span className={styles.size}>Mサイズ</span>
@@ -365,8 +365,8 @@ export default function Form() {
             <label className={styles.checkBoxLabel}>
               <input
                 type="checkbox"
-                checked={selected.includes('l')}
-                onChange={() => handleChange('l')}
+                checked={selected.includes('L')}
+                onChange={() => handleChange('L')}
                 className={styles.checkBox}
               />
               <span className={styles.size}>Lサイズ</span>
@@ -374,8 +374,8 @@ export default function Form() {
             <label className={styles.checkBoxLabel}>
               <input
                 type="checkbox"
-                checked={selected.includes('ll')}
-                onChange={() => handleChange('ll')}
+                checked={selected.includes('LL')}
+                onChange={() => handleChange('LL')}
                 className={styles.checkBox}
               />
               <span className={styles.size}>LLサイズ</span>
