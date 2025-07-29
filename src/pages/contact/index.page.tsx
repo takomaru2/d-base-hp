@@ -20,7 +20,7 @@ export type InitialInput = {
 
 type ErrorState = Partial<Record<keyof InitialInput, string>>;
 
-export default function Form() {
+export default function Contact() {
   const [selected, setSelected] = useState<string[]>([]);
   const router = useRouter();
 
@@ -99,7 +99,7 @@ export default function Form() {
       if (response.ok) {
         setSubmitResult('success');
         sessionStorage.setItem('formInput', JSON.stringify(input));
-        await router.push('/confirm');
+        await router.push('/contact/confirm');
         console.log(submitResult);
       } else {
         console.error(data.error);

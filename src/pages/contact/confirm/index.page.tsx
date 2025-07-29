@@ -1,5 +1,5 @@
 import styles from './index.module.scss';
-import { InitialInput } from '@/pages/form/index.page';
+import { InitialInput } from '@/pages/contact/index.page';
 import { useEffect, useState } from 'react';
 
 export default function Confirm() {
