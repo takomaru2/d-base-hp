@@ -107,7 +107,9 @@ export default function Confirm() {
       </div>
 
       <div className={styles.buttonWrapper}>
-        <button type={'submit'}>送信する</button>
+        <button type={'submit'} className={styles.button}>
+          送信する
+        </button>
         {submitResult === 'error' && (
           <p style={{ color: 'red' }}>
             送信中にエラーが発生しました。再度お試しください。
