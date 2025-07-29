@@ -3,10 +3,12 @@ import {
   ChangeEventHandler,
   FocusEventHandler,
   FormEvent,
+  useEffect,
   useState,
 } from 'react';
+import { useRouter } from 'next/router';
 
-type InitialInput = {
+export type InitialInput = {
   name: string;
   katakana: string;
   mail: string;
@@ -20,6 +22,7 @@ type ErrorState = Partial<Record<keyof InitialInput, string>>;
 
 export default function Form() {
   const [selected, setSelected] = useState<string[]>([]);
+  const router = useRouter();
 
   const initialInput = {
     name: '',
@@ -32,6 +35,10 @@ export default function Form() {
   };
 
   const [input, setInput] = useState<InitialInput>(initialInput);
+  useEffect(() => {
+    sessionStorage.setItem('formInput', JSON.stringify(input));
+    sessionStorage.setItem('size', JSON.stringify(selected));
+  }, [input, selected]);
 
   const [errorState, setErrorState] = useState<ErrorState>({});
 
@@ -49,8 +56,8 @@ export default function Form() {
       }
 
       // カタカナだけ特別なチェック（空でなくても）
-      if (key === 'katakana' && value && !/^[ァ-ン]+$/.test(value)) {
-        newErrors.katakana = 'カタカナ入力でスペースを入れないでください';
+      if (key === 'katakana' && value && !/^[ァ-ン　]+$/.test(value)) {
+        newErrors.katakana = 'カタカナのみで入力してください';
       }
 
       // メール形式チェック
@@ -91,6 +98,8 @@ export default function Form() {
       const data = await response.json();
       if (response.ok) {
         setSubmitResult('success');
+        sessionStorage.setItem('formInput', JSON.stringify(input));
+        await router.push('/confirm');
         console.log(submitResult);
       } else {
         console.error(data.error);
@@ -141,10 +150,10 @@ export default function Form() {
         ...prev,
         [fieldName]: 'これは必須項目でやんすねぇ',
       }));
-    } else if (fieldName === 'katakana' && !/^[ァ-ン]+$/.test(value)) {
+    } else if (fieldName === 'katakana' && !/^[ァ-ン　]+$/.test(value)) {
       setErrorState((prev) => ({
         ...prev,
-        [fieldName]: 'カタカナ入力でスペースを入れないでください',
+        [fieldName]: 'カタカナのみで入力してください',
       }));
     } else {
       setErrorState((prev) => {
@@ -329,8 +338,8 @@ export default function Form() {
             <label className={styles.checkBoxLabel}>
               <input
                 type="checkbox"
-                checked={selected.includes('ss')}
-                onChange={() => handleChange('ss')}
+                checked={selected.includes('SS')}
+                onChange={() => handleChange('SS')}
                 className={styles.checkBox}
               />
               <span className={styles.size}>SSサイズ</span>
@@ -338,8 +347,8 @@ export default function Form() {
             <label className={styles.checkBoxLabel}>
               <input
                 type="checkbox"
-                checked={selected.includes('s')}
-                onChange={() => handleChange('s')}
+                checked={selected.includes('S')}
+                onChange={() => handleChange('S')}
                 className={styles.checkBox}
               />
               <span className={styles.size}>Sサイズ</span>
@@ -347,8 +356,8 @@ export default function Form() {
             <label className={styles.checkBoxLabel}>
               <input
                 type="checkbox"
-                checked={selected.includes('m')}
-                onChange={() => handleChange('m')}
+                checked={selected.includes('M')}
+                onChange={() => handleChange('M')}
                 className={styles.checkBox}
               />
               <span className={styles.size}>Mサイズ</span>
@@ -356,8 +365,8 @@ export default function Form() {
             <label className={styles.checkBoxLabel}>
               <input
                 type="checkbox"
-                checked={selected.includes('l')}
-                onChange={() => handleChange('l')}
+                checked={selected.includes('L')}
+                onChange={() => handleChange('L')}
                 className={styles.checkBox}
               />
               <span className={styles.size}>Lサイズ</span>
@@ -365,8 +374,8 @@ export default function Form() {
             <label className={styles.checkBoxLabel}>
               <input
                 type="checkbox"
-                checked={selected.includes('ll')}
-                onChange={() => handleChange('ll')}
+                checked={selected.includes('LL')}
+                onChange={() => handleChange('LL')}
                 className={styles.checkBox}
               />
               <span className={styles.size}>LLサイズ</span>
@@ -420,7 +429,16 @@ export default function Form() {
               <span>選択</span>
               <span className={styles.required}>必須</span>
             </div>
-            <select name="selectedMaterial" className={styles.selected}>
+            <select
+              name="material"
+              className={styles.selected}
+              onChange={(event) => {
+                setInput((prev) => ({
+                  ...prev,
+                  [event.target.name]: event.target.value,
+                }));
+              }}
+            >
               <option value="1">液剤１</option>
               <option value="2">液剤２</option>
               <option value="3">液剤３</option>
@@ -450,11 +468,6 @@ export default function Form() {
               送信する
             </button>
           </div>
-          {submitResult === 'success' && (
-            <p style={{ color: 'green' }}>
-              送信完了しました。ありがとうございます！
-            </p>
-          )}
           {submitResult === 'error' && (
             <p style={{ color: 'red' }}>
               送信中にエラーが発生しました。再度お試しください。
