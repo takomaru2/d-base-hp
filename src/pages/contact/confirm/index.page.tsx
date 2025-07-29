@@ -1,10 +1,13 @@
 import styles from './index.module.scss';
 import { InitialInput } from '@/pages/contact/index.page';
-import { useEffect, useState } from 'react';
+import { FormEventHandler, useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 
 export default function Confirm() {
   const [input, setInput] = useState<InitialInput | null>();
   const [selected, setSelected] = useState<string[]>();
+  const [submitResult, setSubmitResult] = useState('');
+  const router = useRouter();
 
   useEffect(() => {
     const stored = sessionStorage.getItem('formInput');
@@ -29,8 +32,37 @@ export default function Confirm() {
 
   if (!input || !selected) return <p>読み込み中...</p>;
 
+  const onSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
+    event.preventDefault();
+
+    await router.push('/contact/thanks');
+    try {
+      const response = await fetch('/api/sample/route', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(input),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        setSubmitResult('success');
+        sessionStorage.setItem('formInput', JSON.stringify(input));
+        await router.push('/contact/thanks');
+        console.log(submitResult);
+      } else {
+        console.error(data.error);
+        setSubmitResult('error');
+      }
+    } catch (error) {
+      console.error('通信エラー:', error);
+      setSubmitResult('error');
+    }
+  };
+
   return (
-    <form className={styles.container}>
+    <form className={styles.container} onSubmit={onSubmit}>
       <div className={styles.titleWrapper}>
         <h2 className={styles.title}>以下の内容でよろしいでしょうか？</h2>
       </div>
@@ -76,6 +108,11 @@ export default function Confirm() {
 
       <div className={styles.buttonWrapper}>
         <button type={'submit'}>送信する</button>
+        {submitResult === 'error' && (
+          <p style={{ color: 'red' }}>
+            送信中にエラーが発生しました。再度お試しください。
+          </p>
+        )}
       </div>
     </form>
   );

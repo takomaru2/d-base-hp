@@ -42,8 +42,6 @@ export default function Contact() {
 
   const [errorState, setErrorState] = useState<ErrorState>({});
 
-  const [submitResult, setSubmitResult] = useState('');
-
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
@@ -85,30 +83,31 @@ export default function Contact() {
       setErrorState(newErrors);
       return;
     }
+    await router.push('/contact/confirm');
 
-    try {
-      const response = await fetch('/api/sample/route', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(input),
-      });
-
-      const data = await response.json();
-      if (response.ok) {
-        setSubmitResult('success');
-        sessionStorage.setItem('formInput', JSON.stringify(input));
-        await router.push('/contact/confirm');
-        console.log(submitResult);
-      } else {
-        console.error(data.error);
-        setSubmitResult('error');
-      }
-    } catch (error) {
-      console.error('通信エラー:', error);
-      setSubmitResult('error');
-    }
+    // try {
+    //   const response = await fetch('/api/sample/route', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify(input),
+    //   });
+    //
+    //   const data = await response.json();
+    //   if (response.ok) {
+    //     setSubmitResult('success');
+    //     sessionStorage.setItem('formInput', JSON.stringify(input));
+    //     await router.push('/contact/confirm');
+    //     console.log(submitResult);
+    //   } else {
+    //     console.error(data.error);
+    //     setSubmitResult('error');
+    //   }
+    // } catch (error) {
+    //   console.error('通信エラー:', error);
+    //   setSubmitResult('error');
+    // }
   }
 
   const handleChange = (value: string) => {
@@ -465,14 +464,9 @@ export default function Contact() {
           </div>
           <div className={`${styles.inputWrapper} ${styles.marginTop}`}>
             <button type={'submit'} className={styles.submit}>
-              送信する
+              確認
             </button>
           </div>
-          {submitResult === 'error' && (
-            <p style={{ color: 'red' }}>
-              送信中にエラーが発生しました。再度お試しください。
-            </p>
-          )}
         </form>
       </section>
     </>
