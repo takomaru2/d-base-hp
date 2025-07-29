@@ -50,7 +50,6 @@ export default function Confirm() {
         setSubmitResult('success');
         sessionStorage.setItem('formInput', JSON.stringify(input));
         await router.push('/contact/thanks');
-        console.log(submitResult);
       } else {
         console.error(data.error);
         setSubmitResult('error');

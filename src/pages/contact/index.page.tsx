@@ -84,30 +84,6 @@ export default function Contact() {
       return;
     }
     await router.push('/contact/confirm');
-
-    // try {
-    //   const response = await fetch('/api/sample/route', {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify(input),
-    //   });
-    //
-    //   const data = await response.json();
-    //   if (response.ok) {
-    //     setSubmitResult('success');
-    //     sessionStorage.setItem('formInput', JSON.stringify(input));
-    //     await router.push('/contact/confirm');
-    //     console.log(submitResult);
-    //   } else {
-    //     console.error(data.error);
-    //     setSubmitResult('error');
-    //   }
-    // } catch (error) {
-    //   console.error('通信エラー:', error);
-    //   setSubmitResult('error');
-    // }
   }
 
   const handleChange = (value: string) => {
@@ -251,8 +227,6 @@ export default function Contact() {
       });
     }
   };
-
-  // console.log(input);
 
   return (
     <>
