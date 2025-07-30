@@ -48,7 +48,6 @@ export default function Confirm() {
       const data = await response.json();
       if (response.ok) {
         setSubmitResult('success');
-        sessionStorage.setItem('formInput', JSON.stringify(input));
         await router.push('/contact/thanks');
       } else {
         console.error(data.error);
@@ -59,6 +58,16 @@ export default function Confirm() {
       setSubmitResult('error');
     }
   };
+
+  console.log(selected);
+  console.log(
+    {
+      '1': '1年未満',
+      '2': '1年から3年',
+      '3': '3年から5年',
+      '4': '5年以上',
+    }[input.period],
+  );
 
   return (
     <form className={styles.container} onSubmit={onSubmit}>
@@ -81,16 +90,23 @@ export default function Confirm() {
           <li className={styles.listItem}>{input.katakana}</li>
           <li className={styles.listItem}>{input.mail}</li>
           <li className={styles.listItem}>{input.phone}</li>
-          <li className={styles.listItem}>{selected.join(', ')}</li>
           <li className={styles.listItem}>
-            {
-              {
-                '1': '1年未満',
-                '2': '1年から3年',
-                '3': '3年から5年',
-                '4': '5年以上',
-              }[input.period]
-            }
+            {selected.length === 0 ? '未選択' : selected.join(', ')}
+          </li>
+          <li className={styles.listItem}>
+            {{
+              '1': '1年未満',
+              '2': '1年から3年',
+              '3': '3年から5年',
+              '4': '5年以上',
+            }[input.period]
+              ? {
+                  '1': '1年未満',
+                  '2': '1年から3年',
+                  '3': '3年から5年',
+                  '4': '5年以上',
+                }[input.period]
+              : '未選択'}
           </li>
           <li className={styles.listItem}>
             {
