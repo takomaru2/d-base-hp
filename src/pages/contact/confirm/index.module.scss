@@ -45,3 +45,23 @@
   margin-top: linear-clamp(40, 80);
   text-align: center;
 }
+
+.button {
+  display: inline-block;
+  padding: linear-clamp(5, 30) linear-clamp(20, 80);
+  font-size: linear-clamp(14, 28);
+  font-weight: bold;
+  color: $colorWhite;
+  white-space: nowrap;
+  background-color: $buttonColor;
+  border-radius: 2px;
+  transition: all 0.3s ease-in;
+
+  @include letterSpacing8(14px);
+
+  &:hover {
+    color: $buttonColor;
+    background-color: $colorWhite;
+    outline: $buttonColor 1px solid;
+  }
+}

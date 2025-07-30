@@ -20,7 +20,7 @@ export type InitialInput = {
 
 type ErrorState = Partial<Record<keyof InitialInput, string>>;
 
-export default function Form() {
+export default function Contact() {
   const [selected, setSelected] = useState<string[]>([]);
   const router = useRouter();
 
@@ -41,8 +41,6 @@ export default function Form() {
   }, [input, selected]);
 
   const [errorState, setErrorState] = useState<ErrorState>({});
-
-  const [submitResult, setSubmitResult] = useState('');
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -85,30 +83,7 @@ export default function Form() {
       setErrorState(newErrors);
       return;
     }
-
-    try {
-      const response = await fetch('/api/sample/route', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(input),
-      });
-
-      const data = await response.json();
-      if (response.ok) {
-        setSubmitResult('success');
-        sessionStorage.setItem('formInput', JSON.stringify(input));
-        await router.push('/confirm');
-        console.log(submitResult);
-      } else {
-        console.error(data.error);
-        setSubmitResult('error');
-      }
-    } catch (error) {
-      console.error('通信エラー:', error);
-      setSubmitResult('error');
-    }
+    await router.push('/contact/confirm');
   }
 
   const handleChange = (value: string) => {
@@ -252,8 +227,6 @@ export default function Form() {
       });
     }
   };
-
-  // console.log(input);
 
   return (
     <>
@@ -465,14 +438,9 @@ export default function Form() {
           </div>
           <div className={`${styles.inputWrapper} ${styles.marginTop}`}>
             <button type={'submit'} className={styles.submit}>
-              送信する
+              確認
             </button>
           </div>
-          {submitResult === 'error' && (
-            <p style={{ color: 'red' }}>
-              送信中にエラーが発生しました。再度お試しください。
-            </p>
-          )}
         </form>
       </section>
     </>
