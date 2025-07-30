@@ -360,6 +360,7 @@ export default function Contact() {
               <input
                 type="radio"
                 name="period"
+                defaultChecked={true}
                 value="1"
                 className={styles.checkBox}
                 onChange={onChange}

@@ -94,19 +94,14 @@ export default function Confirm() {
             {selected.length === 0 ? '未選択' : selected.join(', ')}
           </li>
           <li className={styles.listItem}>
-            {{
-              '1': '1年未満',
-              '2': '1年から3年',
-              '3': '3年から5年',
-              '4': '5年以上',
-            }[input.period]
-              ? {
-                  '1': '1年未満',
-                  '2': '1年から3年',
-                  '3': '3年から5年',
-                  '4': '5年以上',
-                }[input.period]
-              : '未選択'}
+            {
+              {
+                '1': '1年未満',
+                '2': '1年から3年',
+                '3': '3年から5年',
+                '4': '5年以上',
+              }[input.period]
+            }
           </li>
           <li className={styles.listItem}>
             {
