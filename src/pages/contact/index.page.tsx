@@ -1,5 +1,5 @@
 import styles from './index.module.scss';
-import {
+import React, {
   ChangeEventHandler,
   FocusEventHandler,
   FormEvent,
@@ -8,6 +8,11 @@ import {
 } from 'react';
 import { useRouter } from 'next/router';
 import { judgmentErrorState } from '@/pages/contact/logic/judgmentErrorState';
+import { SelectedField } from '@/pages/contact/comonents/SelectedField';
+import { RadioButtonField } from '@/pages/contact/comonents/RadioButtonField';
+import { CheckBoxField } from '@/pages/contact/comonents/CheckBoxField';
+import { TextAriaFiled } from '@/pages/contact/comonents/TextAriaFiled';
+import { TextField } from '@/pages/contact/comonents/TextField';
 
 export type InitialInput = {
   name: string;
@@ -36,6 +41,7 @@ export default function Contact() {
   };
 
   const [input, setInput] = useState<InitialInput>(initialInput);
+
   useEffect(() => {
     sessionStorage.setItem('formInput', JSON.stringify(input));
     sessionStorage.setItem('size', JSON.stringify(selected));
@@ -63,6 +69,21 @@ export default function Contact() {
         : [...prev, value],
     );
   };
+
+  const checkBoxOnChange: ChangeEventHandler<HTMLSelectElement> = (event) => {
+    setInput((prev) => ({
+      ...prev,
+      [event.target.name]: event.target.value,
+    }));
+  };
+
+  const textAriaOnChange: React.FocusEventHandler<HTMLTextAreaElement> = (
+    event,
+  ) =>
+    setInput((prev) => ({
+      ...prev,
+      postContent: event.target.value,
+    }));
 
   const onBlur: FocusEventHandler<HTMLInputElement> = (event) => {
     event.preventDefault();
@@ -203,215 +224,50 @@ export default function Contact() {
       <section className={styles.container}>
         <h2 className={styles.title}>お問い合わせフォーム</h2>
         <form className={styles.form} onSubmit={onSubmit}>
-          <div className={styles.inputWrapper}>
-            <div className={styles.flex}>
-              <label htmlFor="name" className={styles.label}>
-                お名前
-              </label>
-              <span className={styles.required}>必須</span>
-            </div>
-            {errorState.name && (
-              <p style={{ color: 'red' }}>{errorState.name}</p>
-            )}
-            <input
-              type="text"
-              name="name"
-              className={styles.input}
-              placeholder={'山田　太郎'}
-              value={input.name}
-              onChange={onChange}
-              onBlur={onBlur}
-            />
-          </div>
-          <div className={`${styles.inputWrapper} ${styles.marginTop}`}>
-            <div className={styles.flex}>
-              <label htmlFor="katakana" className={styles.label}>
-                フリガナ
-              </label>
-              <span className={styles.required}>必須</span>
-            </div>
-            {errorState.katakana && (
-              <p style={{ color: 'red' }}>{errorState.katakana}</p>
-            )}
-            <input
-              type="text"
-              name="katakana"
-              className={styles.input}
-              placeholder={'ヤマダ　タロウ'}
-              onChange={onChange}
-              onBlur={katakanaOnBlur}
-            />
-          </div>
-          <div className={`${styles.inputWrapper} ${styles.marginTop}`}>
-            <div className={styles.flex}>
-              <label htmlFor="mail">メールアドレス</label>
-              <span className={styles.required}>必須</span>
-            </div>
-            {errorState.mail && (
-              <p style={{ color: 'red' }}>{errorState.mail}</p>
-            )}
-            <input
-              type="email"
-              name="mail"
-              className={styles.input}
-              placeholder="react@example.com"
-              onChange={onChange}
-              onBlur={emailOnBlur}
-            />
-          </div>
-          <div className={`${styles.inputWrapper} ${styles.marginTop}`}>
-            <div className={styles.flex}>
-              <label htmlFor="phone">電話番号</label>
-              <span className={styles.required}>必須</span>
-            </div>
-            {errorState.phone && (
-              <p style={{ color: 'red' }}>{errorState.phone}</p>
-            )}
-            <input
-              type="phone"
-              name="phone"
-              className={styles.input}
-              placeholder="08012345678"
-              onBlur={phoneOnBlur}
-              onChange={onChange}
-            />
-          </div>
-          <div className={styles.checkBoxContainer}>
-            <span>お客様のお車のサイズを選択してください</span>
-            <label className={styles.checkBoxLabel}>
-              <input
-                type="checkbox"
-                checked={selected.includes('SS')}
-                onChange={() => handleChange('SS')}
-                className={styles.checkBox}
-              />
-              <span className={styles.size}>SSサイズ</span>
-            </label>
-            <label className={styles.checkBoxLabel}>
-              <input
-                type="checkbox"
-                checked={selected.includes('S')}
-                onChange={() => handleChange('S')}
-                className={styles.checkBox}
-              />
-              <span className={styles.size}>Sサイズ</span>
-            </label>
-            <label className={styles.checkBoxLabel}>
-              <input
-                type="checkbox"
-                checked={selected.includes('M')}
-                onChange={() => handleChange('M')}
-                className={styles.checkBox}
-              />
-              <span className={styles.size}>Mサイズ</span>
-            </label>
-            <label className={styles.checkBoxLabel}>
-              <input
-                type="checkbox"
-                checked={selected.includes('L')}
-                onChange={() => handleChange('L')}
-                className={styles.checkBox}
-              />
-              <span className={styles.size}>Lサイズ</span>
-            </label>
-            <label className={styles.checkBoxLabel}>
-              <input
-                type="checkbox"
-                checked={selected.includes('LL')}
-                onChange={() => handleChange('LL')}
-                className={styles.checkBox}
-              />
-              <span className={styles.size}>LLサイズ</span>
-            </label>
-          </div>
-          <div className={styles.checkBoxContainer}>
-            車の経過年数を選択してください 任意
-            <label className={styles.checkBoxLabel}>
-              <input
-                type="radio"
-                name="period"
-                defaultChecked={true}
-                value="1"
-                className={styles.checkBox}
-                onChange={onChange}
-              />
-              1年未満
-            </label>
-            <label className={styles.checkBoxLabel}>
-              <input
-                type="radio"
-                name="period"
-                value="2"
-                className={styles.checkBox}
-                onChange={onChange}
-              />
-              1年から3年
-            </label>
-            <label className={styles.checkBoxLabel}>
-              <input
-                type="radio"
-                name="period"
-                value="3"
-                className={styles.checkBox}
-                onChange={onChange}
-              />
-              3年から5年
-            </label>
-            <label className={styles.checkBoxLabel}>
-              <input
-                type="radio"
-                name="period"
-                value="4"
-                className={styles.checkBox}
-                onChange={onChange}
-              />
-              5年以上
-            </label>
-          </div>
-          <div className={`${styles.inputWrapper} ${styles.marginTop}`}>
-            <div className={styles.flex}>
-              <span>選択</span>
-              <span className={styles.required}>必須</span>
-            </div>
-            <select
-              name="material"
-              className={styles.selected}
-              onChange={(event) => {
-                setInput((prev) => ({
-                  ...prev,
-                  [event.target.name]: event.target.value,
-                }));
-              }}
-            >
-              <option value="1">液剤１</option>
-              <option value="2">液剤２</option>
-              <option value="3">液剤３</option>
-            </select>
-          </div>
-          <div className={`${styles.inputWrapper} ${styles.marginTop}`}>
-            <span>お問い合わせ内容</span>
-            {errorState.postContent && (
-              <p style={{ color: 'red' }}>{errorState.postContent}</p>
-            )}
-            <textarea
-              name="postContent"
-              rows={4}
-              cols={40}
-              className={styles.textArea}
-              onChange={(event) =>
-                setInput((prev) => ({
-                  ...prev,
-                  postContent: event.target.value,
-                }))
-              }
-              onBlur={onBlurTextAria}
-            />
-          </div>
-          <div className={`${styles.inputWrapper} ${styles.marginTop}`}>
-            <button type={'submit'} className={styles.submit}>
-              確認
-            </button>
-          </div>
+          <TextField
+            fieldName={'お名前'}
+            name={'name'}
+            errorState={errorState.name}
+            onChange={onChange}
+            onBlur={onBlur}
+            placeholder={'山田　太郎'}
+            value={input.name}
+          />
+          <TextField
+            fieldName={'カタカナ'}
+            name={'katakana'}
+            errorState={errorState.katakana}
+            onChange={onChange}
+            onBlur={katakanaOnBlur}
+            placeholder={'ヤマダ　タロウ'}
+            value={input.katakana}
+          />
+          <TextField
+            fieldName={'メールアドレス'}
+            name={'mail'}
+            errorState={errorState.mail}
+            onChange={onChange}
+            onBlur={emailOnBlur}
+            placeholder={'react@example.com'}
+            value={input.mail}
+          />
+          <TextField
+            fieldName={'電話番号'}
+            name={'phone'}
+            errorState={errorState.phone}
+            onChange={onChange}
+            onBlur={phoneOnBlur}
+            placeholder={'08012345678'}
+            value={input.phone}
+          />
+          <SelectedField selected={selected} onChange={handleChange} />
+          <RadioButtonField onChange={onChange} />
+          <CheckBoxField onChange={checkBoxOnChange} />
+          <TextAriaFiled
+            onChange={textAriaOnChange}
+            onBlur={onBlurTextAria}
+            errorState={errorState}
+          />
         </form>
       </section>
     </>
