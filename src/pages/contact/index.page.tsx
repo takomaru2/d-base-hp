@@ -1,6 +1,5 @@
 import styles from './index.module.scss';
 import React, {
-  ChangeEventHandler,
   FocusEventHandler,
   FormEvent,
   useEffect,
@@ -24,21 +23,21 @@ export type InitialInput = {
   postContent: string;
 };
 
+const initialInput = {
+  name: '',
+  katakana: '',
+  mail: '',
+  phone: '',
+  period: '1',
+  material: '1',
+  postContent: '',
+};
+
 export type ErrorState = Partial<Record<keyof InitialInput, string>>;
 
 export default function Contact() {
   const [selected, setSelected] = useState<string[]>([]);
   const router = useRouter();
-
-  const initialInput = {
-    name: '',
-    katakana: '',
-    mail: '',
-    phone: '',
-    period: '1',
-    material: '1',
-    postContent: '',
-  };
 
   const [input, setInput] = useState<InitialInput>(initialInput);
 
@@ -62,6 +61,18 @@ export default function Contact() {
     await router.push('/contact/confirm');
   }
 
+  const onChange = (
+    event: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >,
+  ) => {
+    const { name, value } = event.target;
+    setInput((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
   const handleChange = (value: string) => {
     setSelected((prev) =>
       prev.includes(value)
@@ -69,21 +80,6 @@ export default function Contact() {
         : [...prev, value],
     );
   };
-
-  const checkBoxOnChange: ChangeEventHandler<HTMLSelectElement> = (event) => {
-    setInput((prev) => ({
-      ...prev,
-      [event.target.name]: event.target.value,
-    }));
-  };
-
-  const textAriaOnChange: React.FocusEventHandler<HTMLTextAreaElement> = (
-    event,
-  ) =>
-    setInput((prev) => ({
-      ...prev,
-      postContent: event.target.value,
-    }));
 
   const onBlur: FocusEventHandler<HTMLInputElement> = (event) => {
     event.preventDefault();
@@ -147,13 +143,6 @@ export default function Contact() {
         return newState;
       });
     }
-  };
-
-  const onChange: ChangeEventHandler<HTMLInputElement> = (event) => {
-    setInput((prev) => ({
-      ...prev,
-      [event.target.name]: event.target.value,
-    }));
   };
 
   const emailOnBlur: FocusEventHandler<HTMLInputElement> = (event) => {
@@ -262,9 +251,9 @@ export default function Contact() {
           />
           <SelectedField selected={selected} onChange={handleChange} />
           <RadioButtonField onChange={onChange} />
-          <CheckBoxField onChange={checkBoxOnChange} />
+          <CheckBoxField onChange={onChange} />
           <TextAriaFiled
-            onChange={textAriaOnChange}
+            onChange={onChange}
             onBlur={onBlurTextAria}
             errorState={errorState}
           />
