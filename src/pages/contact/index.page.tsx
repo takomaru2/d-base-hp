@@ -12,8 +12,8 @@ import {
   katakanaValid,
   phoneValid,
   requiredValid,
-  Valid,
 } from '@/pages/contact/logic/validation';
+import { useContactHandler } from '@/pages/contact/hooks/useContactHandler';
 
 export type InitialInput = {
   name: string;
@@ -42,6 +42,13 @@ export default function Contact() {
   const [input, setInput] = useState<InitialInput>(initialInput);
   const [errorState, setErrorState] = useState<ErrorState>({});
 
+  const { onChange, handleChange, onBlur } = useContactHandler(
+    input,
+    setInput,
+    setSelected,
+    setErrorState,
+  );
+
   const router = useRouter();
 
   useEffect(() => {
@@ -61,48 +68,6 @@ export default function Contact() {
     }
     await router.push('/contact/confirm');
   }
-
-  const onChange = (
-    event: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >,
-  ) => {
-    const { name, value } = event.target;
-    setInput((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleChange = (value: string) => {
-    setSelected((prev) =>
-      prev.includes(value)
-        ? prev.filter((item) => item !== value)
-        : [...prev, value],
-    );
-  };
-
-  const onBlur =
-    (valid: Valid) =>
-    (event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      event.preventDefault();
-      const fieldName = event.target.name as keyof InitialInput;
-      const value = input[fieldName];
-
-      const error = valid(value, fieldName);
-      if (error) {
-        setErrorState((prev) => ({
-          ...prev,
-          [fieldName]: error,
-        }));
-      } else {
-        setErrorState((prev) => {
-          const newState = { ...prev };
-          delete newState[fieldName];
-          return newState;
-        });
-      }
-    };
 
   return (
     <>
