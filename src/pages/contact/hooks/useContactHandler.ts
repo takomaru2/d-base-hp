@@ -30,27 +30,36 @@ export const useContactHandler = (
     );
   };
 
-  const onBlur =
-    (valid: Valid) =>
+  const createOnBlur =
+    (validate: Valid) =>
     (event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       event.preventDefault();
       const fieldName = event.target.name as keyof InitialInput;
       const value = input[fieldName];
 
-      const error = valid(value, fieldName);
-      if (error) {
-        setErrorState((prev) => ({
-          ...prev,
-          [fieldName]: error,
-        }));
-      } else {
-        setErrorState((prev) => {
-          const newState = { ...prev };
-          delete newState[fieldName];
-          return newState;
-        });
-      }
+      const validateResult = validate(value, fieldName);
+      setErrorState((prev) => {
+        const newErrorState = { ...prev };
+        if (validateResult) {
+          newErrorState[fieldName] = validateResult;
+        } else {
+          delete newErrorState[fieldName];
+        }
+        return newErrorState;
+      });
+      // if (validateResult) {
+      //   setErrorState((prev) => ({
+      //     ...prev,
+      //     [fieldName]: validateResult,
+      //   }));
+      // } else {
+      //   setErrorState((prev) => {
+      //     const newState = { ...prev };
+      //     delete newState[fieldName];
+      //     return newState;
+      //   });
+      // }
     };
 
-  return { onChange, handleChange, onBlur };
+  return { onChange, handleChange, createOnBlur };
 };

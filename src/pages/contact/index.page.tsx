@@ -42,7 +42,7 @@ export default function Contact() {
   const [input, setInput] = useState<InitialInput>(initialInput);
   const [errorState, setErrorState] = useState<ErrorState>({});
 
-  const { onChange, handleChange, onBlur } = useContactHandler(
+  const { onChange, handleChange, createOnBlur } = useContactHandler(
     input,
     setInput,
     setSelected,
@@ -79,7 +79,7 @@ export default function Contact() {
             name={'name'}
             errorState={errorState.name}
             onChange={onChange}
-            onBlur={onBlur(requiredValid)}
+            onBlur={createOnBlur(requiredValid)}
             placeholder={'山田　太郎'}
             value={input.name}
           />
@@ -88,7 +88,7 @@ export default function Contact() {
             name={'katakana'}
             errorState={errorState.katakana}
             onChange={onChange}
-            onBlur={onBlur(katakanaValid)}
+            onBlur={createOnBlur(katakanaValid)}
             placeholder={'ヤマダ　タロウ'}
             value={input.katakana}
           />
@@ -97,7 +97,7 @@ export default function Contact() {
             name={'mail'}
             errorState={errorState.mail}
             onChange={onChange}
-            onBlur={onBlur(emailValid)}
+            onBlur={createOnBlur(emailValid)}
             placeholder={'react@example.com'}
             value={input.mail}
           />
@@ -106,7 +106,7 @@ export default function Contact() {
             name={'phone'}
             errorState={errorState.phone}
             onChange={onChange}
-            onBlur={onBlur(phoneValid)}
+            onBlur={createOnBlur(phoneValid)}
             placeholder={'08012345678'}
             value={input.phone}
           />
@@ -115,7 +115,7 @@ export default function Contact() {
           <CheckBoxField onChange={onChange} />
           <TextAriaFiled
             onChange={onChange}
-            onBlur={onBlur(requiredValid)}
+            onBlur={createOnBlur(requiredValid)}
             errorState={errorState}
           />
         </form>
