@@ -4,30 +4,28 @@ import { FormEventHandler, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
 export default function Confirm() {
-  const [input, setInput] = useState<InitialInput | null>();
+  const [input, setInput] = useState<InitialInput | undefined>();
   const [selected, setSelected] = useState<string[]>();
   const [submitResult, setSubmitResult] = useState('');
   const router = useRouter();
 
+  const loadSessionData = () => {
+    try {
+      const input: InitialInput = JSON.parse(
+        sessionStorage.getItem('formInput') || '',
+      );
+      const size = JSON.parse(sessionStorage.getItem('size') || '');
+      return { input, size };
+    } catch (error) {
+      console.error('パースエラー:', error);
+      return { input: undefined, size: [] };
+    }
+  };
+
   useEffect(() => {
-    const stored = sessionStorage.getItem('formInput');
-    const size = sessionStorage.getItem('size');
-    if (stored) {
-      try {
-        const parsed: InitialInput = JSON.parse(stored);
-        setInput(parsed);
-      } catch (error) {
-        console.error('JSON parse error:', error);
-      }
-    }
-    if (size) {
-      try {
-        const parsed = JSON.parse(size);
-        setSelected(parsed);
-      } catch (error) {
-        console.error('JSON parse error:', error);
-      }
-    }
+    const { input, size } = loadSessionData();
+    setInput(input);
+    setSelected(size);
   }, []);
 
   if (!input || !selected) return <p>読み込み中...</p>;
@@ -59,15 +57,40 @@ export default function Confirm() {
     }
   };
 
-  console.log(selected);
-  console.log(
-    {
-      '1': '1年未満',
-      '2': '1年から3年',
-      '3': '3年から5年',
-      '4': '5年以上',
-    }[input.period],
-  );
+  const fieldLabels = [
+    { id: 'name', label: 'お名前' },
+    { id: 'katakana', label: 'フリガナ' },
+    { id: 'mail', label: 'メールアドレス' },
+    { id: 'phone', label: 'ご連絡先' },
+    { id: 'size', label: '車種・サイズ' },
+    { id: 'period', label: '車の年数' },
+    { id: 'material', label: '希望の液剤' },
+    { id: 'postContent', label: 'お問い合わせ内容' },
+  ];
+
+  const periodMap: Record<string, string> = {
+    '1': '1年未満',
+    '2': '1年から3年',
+    '3': '3年から5年',
+    '4': '5年以上',
+  };
+
+  const materialMap: Record<string, string> = {
+    '1': '液剤１',
+    '2': '液剤２',
+    '3': '液剤３',
+  };
+
+  const fieldRenderers: Record<string, () => string> = {
+    name: () => input.name,
+    katakana: () => input.katakana,
+    mail: () => input.mail,
+    phone: () => input.phone,
+    size: () => (selected.length === 0 ? '未選択' : selected.join(', ')),
+    period: () => periodMap[input.period],
+    material: () => materialMap[input.material],
+    postContent: () => input.postContent,
+  };
 
   return (
     <form className={styles.container} onSubmit={onSubmit}>
@@ -76,43 +99,18 @@ export default function Confirm() {
       </div>
       <div className={styles.list}>
         <ul className={styles.listKey}>
-          <li className={styles.listItem}>お名前</li>
-          <li className={styles.listItem}>フリガナ</li>
-          <li className={styles.listItem}>メールアドレス</li>
-          <li className={styles.listItem}>ご連絡先</li>
-          <li className={styles.listItem}>車種・サイズ</li>
-          <li className={styles.listItem}>車の年数</li>
-          <li className={styles.listItem}>希望の液剤</li>
-          <li className={styles.listItem}>お問い合わせ内容</li>
+          {fieldLabels.map(({ id, label }) => (
+            <li key={id} className={styles.listItem}>
+              {label}
+            </li>
+          ))}
         </ul>
         <ul className={styles.listContent}>
-          <li className={styles.listItem}>{input.name}</li>
-          <li className={styles.listItem}>{input.katakana}</li>
-          <li className={styles.listItem}>{input.mail}</li>
-          <li className={styles.listItem}>{input.phone}</li>
-          <li className={styles.listItem}>
-            {selected.length === 0 ? '未選択' : selected.join(', ')}
-          </li>
-          <li className={styles.listItem}>
-            {
-              {
-                '1': '1年未満',
-                '2': '1年から3年',
-                '3': '3年から5年',
-                '4': '5年以上',
-              }[input.period]
-            }
-          </li>
-          <li className={styles.listItem}>
-            {
-              {
-                '1': '液剤１',
-                '2': '液剤２',
-                '3': '液剤３',
-              }[input.material]
-            }
-          </li>
-          <li className={styles.listItem}>{input.postContent}</li>
+          {fieldLabels.map(({ id }) => (
+            <li key={id} className={styles.listItem}>
+              {fieldRenderers[id]()}
+            </li>
+          ))}
         </ul>
       </div>
 
