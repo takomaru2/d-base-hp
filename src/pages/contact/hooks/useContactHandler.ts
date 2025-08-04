@@ -1,5 +1,5 @@
 import React from 'react';
-import { Valid } from '@/pages/contact/logic/validation';
+import { ValidResult } from '@/pages/contact/logic/validation';
 import { InitialInput } from '@/pages/contact/index.page';
 
 export const useContactHandler = (
@@ -31,34 +31,22 @@ export const useContactHandler = (
   };
 
   const createOnBlur =
-    (validate: Valid) =>
+    (validate: (value: string) => ValidResult) =>
     (event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       event.preventDefault();
       const fieldName = event.target.name as keyof InitialInput;
       const value = input[fieldName];
 
-      const validateResult = validate(value, fieldName);
+      const validateResult = validate(value);
       setErrorState((prev) => {
         const newErrorState = { ...prev };
-        if (validateResult) {
-          newErrorState[fieldName] = validateResult;
-        } else {
+        if (validateResult.ok) {
           delete newErrorState[fieldName];
+        } else {
+          newErrorState[fieldName] = validateResult.message;
         }
         return newErrorState;
       });
-      // if (validateResult) {
-      //   setErrorState((prev) => ({
-      //     ...prev,
-      //     [fieldName]: validateResult,
-      //   }));
-      // } else {
-      //   setErrorState((prev) => {
-      //     const newState = { ...prev };
-      //     delete newState[fieldName];
-      //     return newState;
-      //   });
-      // }
     };
 
   return { onChange, handleChange, createOnBlur };
