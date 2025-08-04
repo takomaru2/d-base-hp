@@ -35,12 +35,12 @@ export default function Confirm() {
 
     await router.push('/contact/thanks');
     try {
-      const response = await fetch('/api/sample/route', {
+      const response = await fetch('/api/send/route', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(input),
+        body: JSON.stringify({ ...input, selected }),
       });
 
       const data = await response.json();
@@ -68,28 +68,22 @@ export default function Confirm() {
     { id: 'postContent', label: 'お問い合わせ内容' },
   ];
 
-  const periodMap: Record<string, string> = {
-    '1': '1年未満',
-    '2': '1年から3年',
-    '3': '3年から5年',
-    '4': '5年以上',
-  };
+  const period: string = ['1年未満', '1年から3年', '3年から5年', '5年以上'][
+    Number(input.period) - 1
+  ];
+  const material: string = ['液剤１', '液剤２', '液剤３'][
+    Number(input.material) - 1
+  ];
 
-  const materialMap: Record<string, string> = {
-    '1': '液剤１',
-    '2': '液剤２',
-    '3': '液剤３',
-  };
-
-  const fieldRenderers: Record<string, () => string> = {
-    name: () => input.name,
-    katakana: () => input.katakana,
-    mail: () => input.mail,
-    phone: () => input.phone,
-    size: () => (selected.length === 0 ? '未選択' : selected.join(', ')),
-    period: () => periodMap[input.period],
-    material: () => materialMap[input.material],
-    postContent: () => input.postContent,
+  const fieldRenderers: Record<string, string> = {
+    name: input.name,
+    katakana: input.katakana,
+    mail: input.mail,
+    phone: input.phone,
+    size: selected.length === 0 ? '未選択' : selected.join(', '),
+    period: period,
+    material: material,
+    postContent: input.postContent,
   };
 
   return (
@@ -108,7 +102,7 @@ export default function Confirm() {
         <ul className={styles.listContent}>
           {fieldLabels.map(({ id }) => (
             <li key={id} className={styles.listItem}>
-              {fieldRenderers[id]()}
+              {fieldRenderers[id]}
             </li>
           ))}
         </ul>
