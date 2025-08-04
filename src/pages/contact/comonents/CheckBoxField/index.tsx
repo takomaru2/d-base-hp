@@ -3,19 +3,32 @@ import React, { ChangeEventHandler, FC } from 'react';
 
 type CheckBoxFieldProps = {
   onChange: ChangeEventHandler<HTMLSelectElement>;
+  title: string;
+  options: Option[];
 };
 
-export const CheckBoxField: FC<CheckBoxFieldProps> = ({ onChange }) => {
+type Option = {
+  value: string;
+  label: string;
+};
+
+export const CheckBoxField: FC<CheckBoxFieldProps> = ({
+  onChange,
+  title,
+  options,
+}) => {
   return (
     <div className={`${styles.inputWrapper}`}>
       <div className={styles.flex}>
-        <span>選択</span>
+        <span>{title}</span>
         <span className={styles.required}>必須</span>
       </div>
       <select name="material" className={styles.selected} onChange={onChange}>
-        <option value="1">液剤１</option>
-        <option value="2">液剤２</option>
-        <option value="3">液剤３</option>
+        {options.map(({ value, label }) => (
+          <option key={value} value={value}>
+            {label}
+          </option>
+        ))}
       </select>
     </div>
   );

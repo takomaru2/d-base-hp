@@ -1,55 +1,37 @@
 import styles from '@/pages/contact/index.module.scss';
 import { ChangeEvent, FC } from 'react';
 
-type CheckBoxFIeldProps = {
+type CheckBoxFieldProps = {
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  title: string;
+  option: Option[];
 };
 
-export const RadioButtonField: FC<CheckBoxFIeldProps> = ({ onChange }) => {
+type Option = {
+  value: string;
+  label: string;
+};
+
+export const RadioButtonField: FC<CheckBoxFieldProps> = ({
+  onChange,
+  title,
+  option,
+}) => {
   return (
     <div className={styles.checkBoxContainer}>
-      車の経過年数を選択してください 任意
-      <label className={styles.checkBoxLabel}>
-        <input
-          type="radio"
-          name="period"
-          defaultChecked={true}
-          value="1"
-          className={styles.checkBox}
-          onChange={onChange}
-        />
-        1年未満
-      </label>
-      <label className={styles.checkBoxLabel}>
-        <input
-          type="radio"
-          name="period"
-          value="2"
-          className={styles.checkBox}
-          onChange={onChange}
-        />
-        1年から3年
-      </label>
-      <label className={styles.checkBoxLabel}>
-        <input
-          type="radio"
-          name="period"
-          value="3"
-          className={styles.checkBox}
-          onChange={onChange}
-        />
-        3年から5年
-      </label>
-      <label className={styles.checkBoxLabel}>
-        <input
-          type="radio"
-          name="period"
-          value="4"
-          className={styles.checkBox}
-          onChange={onChange}
-        />
-        5年以上
-      </label>
+      {title} <span>任意</span>
+      {option.map(({ value, label }) => (
+        <label className={styles.checkBoxLabel} key={value}>
+          <input
+            type="radio"
+            name="period"
+            value={value}
+            className={styles.checkBox}
+            onChange={onChange}
+          />
+          {label}
+        </label>
+      ))}
     </div>
   );
 };

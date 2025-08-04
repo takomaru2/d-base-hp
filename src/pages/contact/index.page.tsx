@@ -15,6 +15,11 @@ import {
 } from '@/pages/contact/logic/validation';
 import { useContactHandler } from '@/pages/contact/hooks/useContactHandler';
 
+type Option = {
+  value: string;
+  label: string;
+};
+
 export type InitialInput = {
   name: string;
   katakana: string;
@@ -30,10 +35,35 @@ const initialInput = {
   katakana: '',
   mail: '',
   phone: '',
-  period: '1',
+  period: '',
   material: '1',
   postContent: '',
 };
+
+export const periodOption: Option[] = [
+  {
+    value: '1',
+    label: '1年未満',
+  },
+  {
+    value: '2',
+    label: '1年から3年',
+  },
+  {
+    value: '3',
+    label: '3年から5年',
+  },
+  {
+    value: '4',
+    label: '5年以上',
+  },
+];
+
+export const materialOptions: Option[] = [
+  { value: '1', label: '液剤１' },
+  { value: '2', label: '液剤２' },
+  { value: '3', label: '液剤３' },
+];
 
 export type ErrorState = Partial<Record<keyof InitialInput, string>>;
 
@@ -111,8 +141,16 @@ export default function Contact() {
             value={input.phone}
           />
           <SelectedField selected={selected} onChange={handleChange} />
-          <RadioButtonField onChange={onChange} />
-          <CheckBoxField onChange={onChange} />
+          <RadioButtonField
+            onChange={onChange}
+            title={'車の経過年数を選択してください'}
+            option={periodOption}
+          />
+          <CheckBoxField
+            onChange={onChange}
+            title={'ご希望の液剤を選択してください'}
+            options={materialOptions}
+          />
           <TextAriaFiled
             onChange={onChange}
             onBlur={createOnBlur(requiredValid)}

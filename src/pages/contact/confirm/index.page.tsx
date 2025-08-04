@@ -1,5 +1,9 @@
 import styles from './index.module.scss';
-import { InitialInput } from '@/pages/contact/index.page';
+import {
+  InitialInput,
+  materialOptions,
+  periodOption,
+} from '@/pages/contact/index.page';
 import { FormEventHandler, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
@@ -33,7 +37,6 @@ export default function Confirm() {
   const onSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
 
-    await router.push('/contact/thanks');
     try {
       const response = await fetch('/api/send/route', {
         method: 'POST',
@@ -57,6 +60,14 @@ export default function Confirm() {
     }
   };
 
+  const periodItem = periodOption.find(
+    (option) => option.value === input.period,
+  );
+
+  const materialLabel =
+    materialOptions.find((option) => option.value === input.period)?.label ??
+    materialOptions[0]['label'];
+
   const fieldLabels = [
     { id: 'name', label: 'お名前' },
     { id: 'katakana', label: 'フリガナ' },
@@ -68,21 +79,17 @@ export default function Confirm() {
     { id: 'postContent', label: 'お問い合わせ内容' },
   ];
 
-  const period: string = ['1年未満', '1年から3年', '3年から5年', '5年以上'][
-    Number(input.period) - 1
-  ];
-  const material: string = ['液剤１', '液剤２', '液剤３'][
-    Number(input.material) - 1
-  ];
-
   const fieldRenderers: Record<string, string> = {
     name: input.name,
     katakana: input.katakana,
     mail: input.mail,
     phone: input.phone,
-    size: selected.length === 0 ? '未選択' : selected.join(', '),
-    period: period,
-    material: material,
+    size:
+      Array.isArray(selected) && selected.length > 0
+        ? '未選択'
+        : selected.join(', '),
+    period: periodItem?.label ?? '未選択',
+    material: materialLabel,
     postContent: input.postContent,
   };
 

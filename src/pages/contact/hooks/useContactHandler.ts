@@ -12,7 +12,7 @@ export const useContactHandler = (
 ) => {
   const onChange = (
     event: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
     >,
   ) => {
     const { name, value } = event.target;
