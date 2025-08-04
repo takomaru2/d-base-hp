@@ -3,19 +3,6 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY!);
 
-const periodMap: Record<string, string> = {
-  '1': '1年未満',
-  '2': '1年から3年',
-  '3': '3年から5年',
-  '4': '5年以上',
-};
-
-const materialMap: Record<string, string> = {
-  '1': '液剤１',
-  '2': '液剤２',
-  '3': '液剤３',
-};
-
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
@@ -32,6 +19,12 @@ export default async function handler(
   } = req.body;
   const size = selected.length === 0 ? '未選択' : selected.join(', ');
 
+  const periodList = ['1年未満', '1年から3年', '3年から5年', '5年以上'];
+  const materialList = ['液剤１', '液剤２', '液剤３'];
+
+  const periodIndex = Number(period) - 1;
+  const materialIndex = Number(material) - 1;
+
   if (
     !name ||
     !katakana ||
@@ -40,10 +33,15 @@ export default async function handler(
     !period ||
     !material ||
     !postContent ||
-    !Array.isArray(selected)
+    !Array.isArray(selected) ||
+    Number.isNaN(periodIndex) ||
+    Number.isNaN(materialIndex)
   ) {
     return res.status(400).json({ error: 'リクエストデータが不正です' });
   }
+
+  const periodItem = periodList[periodIndex];
+  const materialItem = materialList[materialIndex];
 
   try {
     const result = await resend.emails.send({
@@ -56,8 +54,8 @@ export default async function handler(
 <p>メール: ${mail}</p>
 <p>電話番号:${phone}</p>
 <p>車のサイズ:${size}</p> 
-<p>車の年数: ${periodMap[period]}</p>
-<p>希望液剤: ${materialMap[material]}</p>
+<p>車の年数: ${periodItem}</p>
+<p>希望液剤: ${materialItem}</p>
 <p>内容: ${postContent}</p>`,
     });
 
