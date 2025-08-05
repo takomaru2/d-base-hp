@@ -25,7 +25,7 @@ const initialInput = {
   mail: '',
   phone: '',
   period: '1',
-  material: '1',
+  material: '',
   postContent: '',
 };
 
@@ -56,19 +56,6 @@ export default function Contact() {
       setSelected(JSON.parse(sessionSelected));
     }
   }, []);
-
-  // useEffect(() => {
-  //   sessionStorage.setItem('formInput', JSON.stringify(input));
-  // }, [input]);
-  //
-  // useEffect(() => {
-  //   sessionStorage.setItem('size', JSON.stringify(selected));
-  // }, [selected]);
-
-  // useEffect(() => {
-  //   sessionStorage.setItem('formInput', JSON.stringify(input));
-  //   sessionStorage.setItem('size', JSON.stringify(selected));
-  // }, [input, selected]);
 
   return (
     <>

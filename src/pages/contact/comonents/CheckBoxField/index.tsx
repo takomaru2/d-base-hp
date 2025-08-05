@@ -21,9 +21,14 @@ export const CheckBoxField: FC<CheckBoxFieldProps> = ({
         <span>{title}</span>
         <span className={styles.required}>必須</span>
       </div>
-      <select name="material" className={styles.selected} onChange={onChange}>
+      <select
+        name="material"
+        className={styles.selected}
+        onChange={onChange}
+        value={value}
+      >
         {options.map((option) => (
-          <option key={option.value} value={value}>
+          <option key={option.value} value={option.value}>
             {option.label}
           </option>
         ))}

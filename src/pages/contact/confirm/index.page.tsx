@@ -10,8 +10,6 @@ export default function Confirm() {
   const [submitResult, setSubmitResult] = useState('');
   const router = useRouter();
 
-  console.log(input);
-
   const loadSessionData = () => {
     try {
       const input: InitialInput = JSON.parse(
@@ -76,7 +74,7 @@ export default function Confirm() {
   );
 
   const materialLabel =
-    materialOptions.find((option) => option.value === input.period)?.label ??
+    materialOptions.find((option) => option.value === input.material)?.label ??
     materialOptions[0]['label'];
 
   const fieldLabels = [
