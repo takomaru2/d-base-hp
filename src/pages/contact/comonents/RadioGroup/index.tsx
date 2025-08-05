@@ -9,7 +9,7 @@ type CheckBoxFieldProps = {
   value: string;
 };
 
-export const RadioButtonField: FC<CheckBoxFieldProps> = ({
+export const RadioGroup: FC<CheckBoxFieldProps> = ({
   onChange,
   title,
   option,

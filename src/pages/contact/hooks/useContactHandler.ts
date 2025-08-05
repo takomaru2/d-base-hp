@@ -6,9 +6,9 @@ import { InitialInput } from '@/pages/contact/type';
 
 export const useContactHandler = (
   contactForm: InitialInput,
-  selected: string[],
+  selectedSize: string[],
   setContactForm: React.Dispatch<React.SetStateAction<InitialInput>>,
-  setSelected: React.Dispatch<React.SetStateAction<string[]>>,
+  setSelectedSize: React.Dispatch<React.SetStateAction<string[]>>,
   setErrorState: React.Dispatch<
     React.SetStateAction<Partial<Record<keyof InitialInput, string>>>
   >,
@@ -27,8 +27,8 @@ export const useContactHandler = (
     }));
   };
 
-  const handleChange = (value: string) => {
-    setSelected((prev) =>
+  const handleToggle = (value: string) => {
+    setSelectedSize((prev) =>
       prev.includes(value)
         ? prev.filter((item) => item !== value)
         : [...prev, value],
@@ -65,9 +65,9 @@ export const useContactHandler = (
       return;
     }
     sessionStorage.setItem('formInput', JSON.stringify(contactForm));
-    sessionStorage.setItem('size', JSON.stringify(selected));
+    sessionStorage.setItem('size', JSON.stringify(selectedSize));
     await router.push('/contact/confirm');
   };
 
-  return { onChange, handleChange, createOnBlur, onSubmit };
+  return { onChange, handleToggle, createOnBlur, onSubmit };
 };

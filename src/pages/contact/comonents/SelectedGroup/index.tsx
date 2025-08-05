@@ -10,7 +10,7 @@ type SelectedFieldProps = {
   value: string[];
 };
 
-export const SelectedField: FC<SelectedFieldProps> = ({
+export const SelectedGroup: FC<SelectedFieldProps> = ({
   selected,
   onChange,
   title,

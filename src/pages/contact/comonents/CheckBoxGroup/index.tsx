@@ -9,7 +9,7 @@ type CheckBoxFieldProps = {
   value: string;
 };
 
-export const CheckBoxField: FC<CheckBoxFieldProps> = ({
+export const CheckBoxGroup: FC<CheckBoxFieldProps> = ({
   onChange,
   title,
   options,

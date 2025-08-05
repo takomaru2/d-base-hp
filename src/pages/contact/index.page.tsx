@@ -1,8 +1,5 @@
 import styles from './index.module.scss';
 import React, { useEffect, useState } from 'react';
-import { SelectedField } from '@/pages/contact/comonents/SelectedField';
-import { RadioButtonField } from '@/pages/contact/comonents/RadioButtonField';
-import { CheckBoxField } from '@/pages/contact/comonents/CheckBoxField';
 import { TextAriaFiled } from '@/pages/contact/comonents/TextAriaFiled';
 import { TextField } from '@/pages/contact/comonents/TextField';
 import {
@@ -18,17 +15,20 @@ import {
   sizeOptions,
 } from '@/pages/contact/const/form.data';
 import { ErrorState, initialInput, InitialInput } from '@/pages/contact/type';
+import { SelectedGroup } from '@/pages/contact/comonents/SelectedGroup';
+import { RadioGroup } from '@/pages/contact/comonents/RadioGroup';
+import { CheckBoxGroup } from '@/pages/contact/comonents/CheckBoxGroup';
 
 export default function Contact() {
-  const [selected, setSelected] = useState<string[]>([]);
+  const [selectedSize, setSelectedSize] = useState<string[]>([]);
   const [contactForm, setContactForm] = useState<InitialInput>(initialInput);
   const [errorState, setErrorState] = useState<ErrorState>({});
 
-  const { onChange, handleChange, createOnBlur, onSubmit } = useContactHandler(
+  const { onChange, handleToggle, createOnBlur, onSubmit } = useContactHandler(
     contactForm,
-    selected,
+    selectedSize,
     setContactForm,
-    setSelected,
+    setSelectedSize,
     setErrorState,
   );
 
@@ -41,7 +41,7 @@ export default function Contact() {
     }
 
     if (sessionSelected) {
-      setSelected(JSON.parse(sessionSelected));
+      setSelectedSize(JSON.parse(sessionSelected));
     }
   }, []);
 
@@ -86,20 +86,20 @@ export default function Contact() {
             placeholder={'08012345678'}
             value={contactForm.phone}
           />
-          <SelectedField
-            selected={selected}
-            onChange={handleChange}
+          <SelectedGroup
+            selected={selectedSize}
+            onChange={handleToggle}
             title={'お客様のお車のサイズを選択してください'}
             options={sizeOptions}
-            value={selected}
+            value={selectedSize}
           />
-          <RadioButtonField
+          <RadioGroup
             onChange={onChange}
             title={'車の経過年数を選択してください'}
             option={periodOption}
             value={contactForm.period}
           />
-          <CheckBoxField
+          <CheckBoxGroup
             onChange={onChange}
             title={'ご希望の液剤を選択してください'}
             options={materialOptions}
