@@ -3,36 +3,23 @@ import { FormEventHandler, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { materialOptions, periodOption } from '@/pages/contact/const/form.data';
 import { InitialInput } from '@/pages/contact/type';
+import { loadSessionData } from '@/pages/contact/confirm/logics/loadSession';
 
 export default function Confirm() {
-  const [input, setInput] = useState<InitialInput | undefined>();
-  const [selected, setSelected] = useState<string[]>();
+  const [confirmedInput, setConfirmedInput] = useState<
+    InitialInput | undefined
+  >();
+  const [confirmedSelected, setConfirmedSelected] = useState<string[]>();
   const [submitResult, setSubmitResult] = useState('');
   const router = useRouter();
 
-  const loadSessionData = () => {
-    try {
-      const input: InitialInput = JSON.parse(
-        sessionStorage.getItem('formInput') || '',
-      );
-      const size = JSON.parse(sessionStorage.getItem('size') || '');
-      return { input, size };
-    } catch (error) {
-      console.error('パースエラー:', error);
-      return {
-        input: undefined,
-        size: [],
-      };
-    }
-  };
-
   useEffect(() => {
     const { input, size } = loadSessionData();
-    setInput(input);
-    setSelected(size);
+    setConfirmedInput(input);
+    setConfirmedSelected(size);
   }, []);
 
-  if (!input || !selected)
+  if (!confirmedInput || !confirmedSelected)
     return (
       <p>
         読み込み中です。時間がかかる場合は、リロードするか、入力しなおしてください
@@ -48,7 +35,10 @@ export default function Confirm() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ ...input, selected }),
+        body: JSON.stringify({
+          ...confirmedInput,
+          selected: confirmedSelected,
+        }),
       });
 
       const data = await response.json();
@@ -70,12 +60,12 @@ export default function Confirm() {
   };
 
   const periodItem = periodOption.find(
-    (option) => option.value === input.period,
+    (option) => option.value === confirmedInput.period,
   );
 
   const materialLabel =
-    materialOptions.find((option) => option.value === input.material)?.label ??
-    materialOptions[0]['label'];
+    materialOptions.find((option) => option.value === confirmedInput.material)
+      ?.label ?? materialOptions[0]['label'];
 
   const fieldLabels = [
     { id: 'name', label: 'お名前' },
@@ -89,17 +79,17 @@ export default function Confirm() {
   ];
 
   const fieldRenderers: Record<string, string> = {
-    name: input.name,
-    katakana: input.katakana,
-    mail: input.mail,
-    phone: input.phone,
+    name: confirmedInput.name,
+    katakana: confirmedInput.katakana,
+    mail: confirmedInput.mail,
+    phone: confirmedInput.phone,
     size:
-      Array.isArray(selected) && selected.length > 0
-        ? selected.join(', ')
+      Array.isArray(confirmedSelected) && confirmedSelected.length > 0
+        ? confirmedSelected.join(', ')
         : '未選択',
     period: periodItem?.label ?? '未選択',
     material: materialLabel,
-    postContent: input.postContent,
+    postContent: confirmedInput.postContent,
   };
 
   return (
