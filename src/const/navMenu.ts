@@ -8,7 +8,7 @@ export const navMenu: NavMenuList[] = [
   { id: '5', href: '/#faq', label: 'よくある質問' },
   {
     id: '6',
-    href: 'https://form.run/@col-dd--9UTghEpb6KZmBlZ06Weo',
+    href: '/contact',
     label: 'お問い合わせ',
   },
 ];

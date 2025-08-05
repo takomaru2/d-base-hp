@@ -17,19 +17,7 @@ import {
   periodOption,
   sizeOptions,
 } from '@/pages/contact/const/form.data';
-import { InitialInput } from '@/pages/contact/type';
-
-const initialInput = {
-  name: '',
-  katakana: '',
-  mail: '',
-  phone: '',
-  period: '1',
-  material: '',
-  postContent: '',
-};
-
-export type ErrorState = Partial<Record<keyof InitialInput, string>>;
+import { ErrorState, initialInput, InitialInput } from '@/pages/contact/type';
 
 export default function Contact() {
   const [selected, setSelected] = useState<string[]>([]);
