@@ -1,5 +1,6 @@
 import { Resend } from 'resend';
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { materialOptions, periodOption } from '@/pages/contact/const/form.data';
 
 const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY!);
 
@@ -19,8 +20,8 @@ export default async function handler(
   } = req.body;
   const size = selected.length === 0 ? '未選択' : selected.join(', ');
 
-  const periodList = ['1年未満', '1年から3年', '3年から5年', '5年以上'];
-  const materialList = ['液剤１', '液剤２', '液剤３'];
+  const periodList = periodOption.map((option) => option.label);
+  const materialList = materialOptions.map((option) => option.label);
 
   const periodIndex = Number(period) - 1;
   const materialIndex = Number(material) - 1;
