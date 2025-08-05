@@ -6,12 +6,14 @@ type CheckBoxFieldProps = {
   onChange: ChangeEventHandler<HTMLSelectElement>;
   title: string;
   options: Option[];
+  value: string;
 };
 
 export const CheckBoxField: FC<CheckBoxFieldProps> = ({
   onChange,
   title,
   options,
+  value,
 }) => {
   return (
     <div className={styles.inputWrapper}>
@@ -20,9 +22,9 @@ export const CheckBoxField: FC<CheckBoxFieldProps> = ({
         <span className={styles.required}>必須</span>
       </div>
       <select name="material" className={styles.selected} onChange={onChange}>
-        {options.map(({ value, label }) => (
-          <option key={value} value={value}>
-            {label}
+        {options.map((option) => (
+          <option key={option.value} value={value}>
+            {option.label}
           </option>
         ))}
       </select>

@@ -6,6 +6,7 @@ import { InitialInput } from '@/pages/contact/type';
 
 export const useContactHandler = (
   input: InitialInput,
+  selected: string[],
   setInput: React.Dispatch<React.SetStateAction<InitialInput>>,
   setSelected: React.Dispatch<React.SetStateAction<string[]>>,
   setErrorState: React.Dispatch<
@@ -63,6 +64,8 @@ export const useContactHandler = (
       setErrorState(newErrors);
       return;
     }
+    sessionStorage.setItem('formInput', JSON.stringify(input));
+    sessionStorage.setItem('size', JSON.stringify(selected));
     await router.push('/contact/confirm');
   };
 

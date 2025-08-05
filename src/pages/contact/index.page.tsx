@@ -24,7 +24,7 @@ const initialInput = {
   katakana: '',
   mail: '',
   phone: '',
-  period: '',
+  period: '1',
   material: '1',
   postContent: '',
 };
@@ -38,15 +38,37 @@ export default function Contact() {
 
   const { onChange, handleChange, createOnBlur, onSubmit } = useContactHandler(
     input,
+    selected,
     setInput,
     setSelected,
     setErrorState,
   );
 
   useEffect(() => {
-    sessionStorage.setItem('formInput', JSON.stringify(input));
-    sessionStorage.setItem('size', JSON.stringify(selected));
-  }, [input, selected]);
+    const sessionInput = sessionStorage.getItem('formInput');
+    const sessionSelected = sessionStorage.getItem('size');
+
+    if (sessionInput) {
+      setInput(JSON.parse(sessionInput));
+    }
+
+    if (sessionSelected) {
+      setSelected(JSON.parse(sessionSelected));
+    }
+  }, []);
+
+  // useEffect(() => {
+  //   sessionStorage.setItem('formInput', JSON.stringify(input));
+  // }, [input]);
+  //
+  // useEffect(() => {
+  //   sessionStorage.setItem('size', JSON.stringify(selected));
+  // }, [selected]);
+
+  // useEffect(() => {
+  //   sessionStorage.setItem('formInput', JSON.stringify(input));
+  //   sessionStorage.setItem('size', JSON.stringify(selected));
+  // }, [input, selected]);
 
   return (
     <>
@@ -94,21 +116,26 @@ export default function Contact() {
             onChange={handleChange}
             title={'お客様のお車のサイズを選択してください'}
             options={sizeOptions}
+            value={selected}
           />
           <RadioButtonField
             onChange={onChange}
             title={'車の経過年数を選択してください'}
             option={periodOption}
+            value={input.period}
           />
           <CheckBoxField
             onChange={onChange}
             title={'ご希望の液剤を選択してください'}
             options={materialOptions}
+            value={input.material}
           />
           <TextAriaFiled
             onChange={onChange}
             onBlur={createOnBlur(requiredValid)}
             errorState={errorState}
+            value={input.postContent}
+            title={'お問い合わせ内容を入力してください'}
           />
         </form>
       </section>

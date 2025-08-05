@@ -10,6 +10,8 @@ export default function Confirm() {
   const [submitResult, setSubmitResult] = useState('');
   const router = useRouter();
 
+  console.log(input);
+
   const loadSessionData = () => {
     try {
       const input: InitialInput = JSON.parse(
@@ -63,6 +65,10 @@ export default function Confirm() {
       console.error('通信エラー:', error);
       setSubmitResult('error');
     }
+  };
+
+  const handleBackButton = async () => {
+    await router.push('/contact');
   };
 
   const periodItem = periodOption.find(
@@ -121,6 +127,13 @@ export default function Confirm() {
       </div>
 
       <div className={styles.buttonWrapper}>
+        <button
+          type={'button'}
+          onClick={handleBackButton}
+          className={styles.button}
+        >
+          戻る
+        </button>
         <button type={'submit'} className={styles.button}>
           送信する
         </button>

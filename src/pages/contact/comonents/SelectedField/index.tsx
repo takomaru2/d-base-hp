@@ -7,6 +7,7 @@ type SelectedFieldProps = {
   onChange: (size: string) => void;
   title: string;
   options: Option[];
+  value: string[];
 };
 
 export const SelectedField: FC<SelectedFieldProps> = ({
@@ -14,19 +15,21 @@ export const SelectedField: FC<SelectedFieldProps> = ({
   onChange,
   title,
   options,
+  value,
 }) => {
   return (
     <div className={styles.checkBoxContainer}>
       <span>{title}</span>
-      {options.map(({ value, label }) => (
-        <label className={styles.checkBoxLabel} key={value}>
+      {options.map((option) => (
+        <label className={styles.checkBoxLabel} key={option.value}>
           <input
             type="checkbox"
-            checked={selected.includes(value)}
-            onChange={() => onChange(value)}
+            checked={selected.includes(option.value)}
+            onChange={() => onChange(option.value)}
             className={styles.checkBox}
+            value={value}
           />
-          <span className={styles.label}>{label}</span>
+          <span className={styles.label}>{option.label}</span>
         </label>
       ))}
     </div>

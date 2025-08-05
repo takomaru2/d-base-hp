@@ -6,17 +6,21 @@ type TextAriaFiledProps = {
   errorState: Partial<Record<keyof InitialInput, string>>;
   onChange: React.ChangeEventHandler<HTMLTextAreaElement>;
   onBlur: React.FocusEventHandler<HTMLTextAreaElement>;
+  value: string;
+  title: string;
 };
 
 export const TextAriaFiled: FC<TextAriaFiledProps> = ({
   errorState,
   onChange,
   onBlur,
+  value,
+  title,
 }) => {
   return (
     <>
       <div className={styles.inputWrapper}>
-        <span>お問い合わせ内容</span>
+        <span>{title}</span>
         {errorState.postContent && (
           <p style={{ color: 'red' }}>{errorState.postContent}</p>
         )}
@@ -27,6 +31,7 @@ export const TextAriaFiled: FC<TextAriaFiledProps> = ({
           className={styles.textArea}
           onChange={onChange}
           onBlur={onBlur}
+          value={value}
         />
       </div>
       <div className={styles.inputWrapper}>
