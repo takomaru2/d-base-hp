@@ -4,60 +4,36 @@ import { FC } from 'react';
 type SelectedFieldProps = {
   selected: string[];
   onChange: (size: string) => void;
+  title: string;
+  options: Option[];
+};
+
+type Option = {
+  value: string;
+  label: string;
 };
 
 export const SelectedField: FC<SelectedFieldProps> = ({
   selected,
   onChange,
+  title,
+  options,
 }) => {
   return (
     <div className={styles.checkBoxContainer}>
-      <span>お客様のお車のサイズを選択してください</span>
-      <label className={styles.checkBoxLabel}>
-        <input
-          type="checkbox"
-          checked={selected.includes('SS')}
-          onChange={() => onChange('SS')}
-          className={styles.checkBox}
-        />
-        <span className={styles.size}>SSサイズ</span>
-      </label>
-      <label className={styles.checkBoxLabel}>
-        <input
-          type="checkbox"
-          checked={selected.includes('S')}
-          onChange={() => onChange('S')}
-          className={styles.checkBox}
-        />
-        <span className={styles.size}>Sサイズ</span>
-      </label>
-      <label className={styles.checkBoxLabel}>
-        <input
-          type="checkbox"
-          checked={selected.includes('M')}
-          onChange={() => onChange('M')}
-          className={styles.checkBox}
-        />
-        <span className={styles.size}>Mサイズ</span>
-      </label>
-      <label className={styles.checkBoxLabel}>
-        <input
-          type="checkbox"
-          checked={selected.includes('L')}
-          onChange={() => onChange('L')}
-          className={styles.checkBox}
-        />
-        <span className={styles.size}>Lサイズ</span>
-      </label>
-      <label className={styles.checkBoxLabel}>
-        <input
-          type="checkbox"
-          checked={selected.includes('LL')}
-          onChange={() => onChange('LL')}
-          className={styles.checkBox}
-        />
-        <span className={styles.size}>LLサイズ</span>
-      </label>
+      {/*<span>お客様のお車のサイズを選択してください</span>*/}
+      <span>{title}</span>
+      {options.map(({ value, label }) => (
+        <label className={styles.checkBoxLabel} key={value}>
+          <input
+            type="checkbox"
+            checked={selected.includes(value)}
+            onChange={() => onChange(value)}
+            className={styles.checkBox}
+          />
+          <span className={styles.size}>{label}</span>
+        </label>
+      ))}
     </div>
   );
 };

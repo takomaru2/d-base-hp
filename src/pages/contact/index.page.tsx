@@ -65,6 +65,14 @@ export const materialOptions: Option[] = [
   { value: '3', label: '液剤３' },
 ];
 
+export const sizeOptions = [
+  { value: 'SS', label: 'SSサイズ' },
+  { value: 'S', label: 'Sサイズ' },
+  { value: 'M', label: 'Mサイズ' },
+  { value: 'L', label: 'Lサイズ' },
+  { value: 'LL', label: 'LLサイズ' },
+];
+
 export type ErrorState = Partial<Record<keyof InitialInput, string>>;
 
 export default function Contact() {
@@ -140,7 +148,12 @@ export default function Contact() {
             placeholder={'08012345678'}
             value={input.phone}
           />
-          <SelectedField selected={selected} onChange={handleChange} />
+          <SelectedField
+            selected={selected}
+            onChange={handleChange}
+            title={'お客様のお車のサイズを選択してください'}
+            options={sizeOptions}
+          />
           <RadioButtonField
             onChange={onChange}
             title={'車の経過年数を選択してください'}

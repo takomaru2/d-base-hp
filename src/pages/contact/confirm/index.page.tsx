@@ -10,6 +10,7 @@ import { useRouter } from 'next/router';
 export default function Confirm() {
   const [input, setInput] = useState<InitialInput | undefined>();
   const [selected, setSelected] = useState<string[]>();
+
   const [submitResult, setSubmitResult] = useState('');
   const router = useRouter();
 
@@ -86,8 +87,8 @@ export default function Confirm() {
     phone: input.phone,
     size:
       Array.isArray(selected) && selected.length > 0
-        ? '未選択'
-        : selected.join(', '),
+        ? selected.join(', ')
+        : '未選択',
     period: periodItem?.label ?? '未選択',
     material: materialLabel,
     postContent: input.postContent,
