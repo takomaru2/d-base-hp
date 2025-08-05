@@ -1,446 +1,115 @@
 import styles from './index.module.scss';
+import React, { useEffect, useState } from 'react';
+import { SelectedField } from '@/pages/contact/comonents/SelectedField';
+import { RadioButtonField } from '@/pages/contact/comonents/RadioButtonField';
+import { CheckBoxField } from '@/pages/contact/comonents/CheckBoxField';
+import { TextAriaFiled } from '@/pages/contact/comonents/TextAriaFiled';
+import { TextField } from '@/pages/contact/comonents/TextField';
 import {
-  ChangeEventHandler,
-  FocusEventHandler,
-  FormEvent,
-  useEffect,
-  useState,
-} from 'react';
-import { useRouter } from 'next/router';
+  emailValid,
+  katakanaValid,
+  phoneValid,
+  requiredValid,
+} from '@/pages/contact/logic/validation';
+import { useContactHandler } from '@/pages/contact/hooks/useContactHandler';
+import {
+  materialOptions,
+  periodOption,
+  sizeOptions,
+} from '@/pages/contact/const/form.data';
+import { InitialInput } from '@/pages/contact/type';
 
-export type InitialInput = {
-  name: string;
-  katakana: string;
-  mail: string;
-  phone: string;
-  period: string;
-  material: string;
-  postContent: string;
+const initialInput = {
+  name: '',
+  katakana: '',
+  mail: '',
+  phone: '',
+  period: '',
+  material: '1',
+  postContent: '',
 };
 
-type ErrorState = Partial<Record<keyof InitialInput, string>>;
+export type ErrorState = Partial<Record<keyof InitialInput, string>>;
 
 export default function Contact() {
   const [selected, setSelected] = useState<string[]>([]);
-  const router = useRouter();
-
-  const initialInput = {
-    name: '',
-    katakana: '',
-    mail: '',
-    phone: '',
-    period: '1',
-    material: '1',
-    postContent: '',
-  };
-
   const [input, setInput] = useState<InitialInput>(initialInput);
+  const [errorState, setErrorState] = useState<ErrorState>({});
+
+  const { onChange, handleChange, createOnBlur, onSubmit } = useContactHandler(
+    input,
+    setInput,
+    setSelected,
+    setErrorState,
+  );
+
   useEffect(() => {
     sessionStorage.setItem('formInput', JSON.stringify(input));
     sessionStorage.setItem('size', JSON.stringify(selected));
   }, [input, selected]);
-
-  const [errorState, setErrorState] = useState<ErrorState>({});
-
-  async function onSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-
-    const newErrors: ErrorState = {};
-
-    // 必須項目チェック（空文字チェック）
-    for (const [key, value] of Object.entries(input)) {
-      if (!value.trim()) {
-        newErrors[key as keyof InitialInput] = 'これは必須項目でやんすねぇ';
-      }
-
-      // カタカナだけ特別なチェック（空でなくても）
-      if (key === 'katakana' && value && !/^[ァ-ン　]+$/.test(value)) {
-        newErrors.katakana = 'カタカナのみで入力してください';
-      }
-
-      // メール形式チェック
-      if (
-        key === 'mail' &&
-        value &&
-        !(/^[a-zA-Z0-9@.,]+$/.test(value) && /@/.test(value))
-      ) {
-        newErrors.mail = '英数字のみで入力して必ず@を使ってください';
-      }
-
-      // 電話番号チェック
-      if (key === 'phone' && value) {
-        if (!/^[0-9]+$/.test(value)) {
-          newErrors.phone = '半角数字のみで入力してください';
-        } else if (value.length >= 20) {
-          newErrors.phone =
-            '入力されている数字が多い可能性があります。いや、多いです。';
-        }
-      }
-    }
-
-    // エラーがあるなら送信せず、エラーをセット
-    if (Object.keys(newErrors).length > 0) {
-      setErrorState(newErrors);
-      return;
-    }
-    await router.push('/contact/confirm');
-  }
-
-  const handleChange = (value: string) => {
-    setSelected((prev) =>
-      prev.includes(value)
-        ? prev.filter((item) => item !== value)
-        : [...prev, value],
-    );
-  };
-
-  const onBlur: FocusEventHandler<HTMLInputElement> = (event) => {
-    event.preventDefault();
-    const fieldName = event.target.name as keyof InitialInput;
-    const value = input[fieldName];
-
-    if (!value.trim()) {
-      setErrorState((prev) => ({
-        ...prev,
-        [fieldName]: 'これは必須項目でやんすねぇ',
-      }));
-      return;
-    }
-
-    setErrorState((prev) => {
-      const newState = { ...prev };
-      delete newState[fieldName];
-      return newState;
-    });
-  };
-
-  const katakanaOnBlur: FocusEventHandler<HTMLInputElement> = (event) => {
-    event.preventDefault();
-    const fieldName = event.target.name as keyof InitialInput;
-    const value = input[fieldName];
-
-    const isEmpty = !value.trim();
-    if (isEmpty) {
-      setErrorState((prev) => ({
-        ...prev,
-        [fieldName]: 'これは必須項目でやんすねぇ',
-      }));
-    } else if (fieldName === 'katakana' && !/^[ァ-ン　]+$/.test(value)) {
-      setErrorState((prev) => ({
-        ...prev,
-        [fieldName]: 'カタカナのみで入力してください',
-      }));
-    } else {
-      setErrorState((prev) => {
-        const newState = { ...prev };
-        delete newState[fieldName];
-        return newState;
-      });
-    }
-  };
-
-  const onBlurTextAria: FocusEventHandler<HTMLTextAreaElement> = (event) => {
-    event.preventDefault();
-    const field = event.target.name as keyof InitialInput;
-    const isInput = !input[field].trim();
-
-    if (isInput) {
-      setErrorState((prev) => ({
-        ...prev,
-        [field]: 'これは必須です',
-      }));
-    } else {
-      setErrorState((prev) => {
-        const newState = { ...prev };
-        delete newState[field];
-        return newState;
-      });
-    }
-  };
-
-  const onChange: ChangeEventHandler<HTMLInputElement> = (event) => {
-    setInput((prev) => ({
-      ...prev,
-      [event.target.name]: event.target.value,
-    }));
-  };
-
-  const emailOnBlur: FocusEventHandler<HTMLInputElement> = (event) => {
-    event.preventDefault();
-    const field = event.target.name as keyof InitialInput;
-    const value = input[field];
-    const isEmailPath = !(/^[a-zA-Z0-9@.,]+$/.test(value) && /@/.test(value));
-
-    // 空文字
-    const isEmpty = !value.trim();
-    if (isEmpty) {
-      setErrorState((prev) => ({
-        ...prev,
-        [field]: 'これは必須です。',
-      }));
-    } else if (isEmailPath) {
-      // 英数字のみで@があるか確認
-      setErrorState((prev) => ({
-        ...prev,
-        [field]: '英数字のみで入力して必ず@を使ってください',
-      }));
-    } else {
-      setErrorState((prev) => {
-        const newState = { ...prev };
-        delete newState[field];
-        return newState;
-      });
-    }
-  };
-
-  const phoneOnBlur: FocusEventHandler<HTMLInputElement> = (event) => {
-    event.preventDefault();
-    const field = event.target.name as keyof InitialInput;
-    const value = input[field];
-    const isNumber = !/^[0-9]+$/.test(value);
-    const isUnderTwenty = value.length >= 20;
-
-    // 空文字
-    const isEmpty = !value.trim();
-    if (isEmpty) {
-      setErrorState((prev) => ({
-        ...prev,
-        [field]: 'これは必須です',
-      }));
-    } else if (isNumber) {
-      // 数字のみ
-      setErrorState((prev) => ({
-        ...prev,
-        [field]: '半角英数字のみで入力してください',
-      }));
-    } else if (isUnderTwenty) {
-      // 20文字以下
-      setErrorState((prev) => ({
-        ...prev,
-        [field]: '入力されている数字が多い可能性があります。いや、多いです。',
-      }));
-    } else {
-      setErrorState((prev) => {
-        const newState = { ...prev };
-        delete newState.phone;
-        return newState;
-      });
-    }
-  };
 
   return (
     <>
       <section className={styles.container}>
         <h2 className={styles.title}>お問い合わせフォーム</h2>
         <form className={styles.form} onSubmit={onSubmit}>
-          <div className={styles.inputWrapper}>
-            <div className={styles.flex}>
-              <label htmlFor="name" className={styles.label}>
-                お名前
-              </label>
-              <span className={styles.required}>必須</span>
-            </div>
-            {errorState.name && (
-              <p style={{ color: 'red' }}>{errorState.name}</p>
-            )}
-            <input
-              type="text"
-              name="name"
-              className={styles.input}
-              placeholder={'山田　太郎'}
-              value={input.name}
-              onChange={onChange}
-              onBlur={onBlur}
-            />
-          </div>
-          <div className={`${styles.inputWrapper} ${styles.marginTop}`}>
-            <div className={styles.flex}>
-              <label htmlFor="katakana" className={styles.label}>
-                フリガナ
-              </label>
-              <span className={styles.required}>必須</span>
-            </div>
-            {errorState.katakana && (
-              <p style={{ color: 'red' }}>{errorState.katakana}</p>
-            )}
-            <input
-              type="text"
-              name="katakana"
-              className={styles.input}
-              placeholder={'ヤマダ　タロウ'}
-              onChange={onChange}
-              onBlur={katakanaOnBlur}
-            />
-          </div>
-          <div className={`${styles.inputWrapper} ${styles.marginTop}`}>
-            <div className={styles.flex}>
-              <label htmlFor="mail">メールアドレス</label>
-              <span className={styles.required}>必須</span>
-            </div>
-            {errorState.mail && (
-              <p style={{ color: 'red' }}>{errorState.mail}</p>
-            )}
-            <input
-              type="email"
-              name="mail"
-              className={styles.input}
-              placeholder="react@example.com"
-              onChange={onChange}
-              onBlur={emailOnBlur}
-            />
-          </div>
-          <div className={`${styles.inputWrapper} ${styles.marginTop}`}>
-            <div className={styles.flex}>
-              <label htmlFor="phone">電話番号</label>
-              <span className={styles.required}>必須</span>
-            </div>
-            {errorState.phone && (
-              <p style={{ color: 'red' }}>{errorState.phone}</p>
-            )}
-            <input
-              type="phone"
-              name="phone"
-              className={styles.input}
-              placeholder="08012345678"
-              onBlur={phoneOnBlur}
-              onChange={onChange}
-            />
-          </div>
-          <div className={styles.checkBoxContainer}>
-            <span>お客様のお車のサイズを選択してください</span>
-            <label className={styles.checkBoxLabel}>
-              <input
-                type="checkbox"
-                checked={selected.includes('SS')}
-                onChange={() => handleChange('SS')}
-                className={styles.checkBox}
-              />
-              <span className={styles.size}>SSサイズ</span>
-            </label>
-            <label className={styles.checkBoxLabel}>
-              <input
-                type="checkbox"
-                checked={selected.includes('S')}
-                onChange={() => handleChange('S')}
-                className={styles.checkBox}
-              />
-              <span className={styles.size}>Sサイズ</span>
-            </label>
-            <label className={styles.checkBoxLabel}>
-              <input
-                type="checkbox"
-                checked={selected.includes('M')}
-                onChange={() => handleChange('M')}
-                className={styles.checkBox}
-              />
-              <span className={styles.size}>Mサイズ</span>
-            </label>
-            <label className={styles.checkBoxLabel}>
-              <input
-                type="checkbox"
-                checked={selected.includes('L')}
-                onChange={() => handleChange('L')}
-                className={styles.checkBox}
-              />
-              <span className={styles.size}>Lサイズ</span>
-            </label>
-            <label className={styles.checkBoxLabel}>
-              <input
-                type="checkbox"
-                checked={selected.includes('LL')}
-                onChange={() => handleChange('LL')}
-                className={styles.checkBox}
-              />
-              <span className={styles.size}>LLサイズ</span>
-            </label>
-          </div>
-          <div className={styles.checkBoxContainer}>
-            車の経過年数を選択してください 任意
-            <label className={styles.checkBoxLabel}>
-              <input
-                type="radio"
-                name="period"
-                value="1"
-                className={styles.checkBox}
-                onChange={onChange}
-              />
-              1年未満
-            </label>
-            <label className={styles.checkBoxLabel}>
-              <input
-                type="radio"
-                name="period"
-                value="2"
-                className={styles.checkBox}
-                onChange={onChange}
-              />
-              1年から3年
-            </label>
-            <label className={styles.checkBoxLabel}>
-              <input
-                type="radio"
-                name="period"
-                value="3"
-                className={styles.checkBox}
-                onChange={onChange}
-              />
-              3年から5年
-            </label>
-            <label className={styles.checkBoxLabel}>
-              <input
-                type="radio"
-                name="period"
-                value="4"
-                className={styles.checkBox}
-                onChange={onChange}
-              />
-              5年以上
-            </label>
-          </div>
-          <div className={`${styles.inputWrapper} ${styles.marginTop}`}>
-            <div className={styles.flex}>
-              <span>選択</span>
-              <span className={styles.required}>必須</span>
-            </div>
-            <select
-              name="material"
-              className={styles.selected}
-              onChange={(event) => {
-                setInput((prev) => ({
-                  ...prev,
-                  [event.target.name]: event.target.value,
-                }));
-              }}
-            >
-              <option value="1">液剤１</option>
-              <option value="2">液剤２</option>
-              <option value="3">液剤３</option>
-            </select>
-          </div>
-          <div className={`${styles.inputWrapper} ${styles.marginTop}`}>
-            <span>お問い合わせ内容</span>
-            {errorState.postContent && (
-              <p style={{ color: 'red' }}>{errorState.postContent}</p>
-            )}
-            <textarea
-              name="postContent"
-              rows={4}
-              cols={40}
-              className={styles.textArea}
-              onChange={(event) =>
-                setInput((prev) => ({
-                  ...prev,
-                  postContent: event.target.value,
-                }))
-              }
-              onBlur={onBlurTextAria}
-            />
-          </div>
-          <div className={`${styles.inputWrapper} ${styles.marginTop}`}>
-            <button type={'submit'} className={styles.submit}>
-              確認
-            </button>
-          </div>
+          <TextField
+            fieldName={'お名前'}
+            name={'name'}
+            errorState={errorState.name}
+            onChange={onChange}
+            onBlur={createOnBlur(requiredValid)}
+            placeholder={'山田　太郎'}
+            value={input.name}
+          />
+          <TextField
+            fieldName={'カタカナ'}
+            name={'katakana'}
+            errorState={errorState.katakana}
+            onChange={onChange}
+            onBlur={createOnBlur(katakanaValid)}
+            placeholder={'ヤマダ　タロウ'}
+            value={input.katakana}
+          />
+          <TextField
+            fieldName={'メールアドレス'}
+            name={'mail'}
+            errorState={errorState.mail}
+            onChange={onChange}
+            onBlur={createOnBlur(emailValid)}
+            placeholder={'react@example.com'}
+            value={input.mail}
+          />
+          <TextField
+            fieldName={'電話番号'}
+            name={'phone'}
+            errorState={errorState.phone}
+            onChange={onChange}
+            onBlur={createOnBlur(phoneValid)}
+            placeholder={'08012345678'}
+            value={input.phone}
+          />
+          <SelectedField
+            selected={selected}
+            onChange={handleChange}
+            title={'お客様のお車のサイズを選択してください'}
+            options={sizeOptions}
+          />
+          <RadioButtonField
+            onChange={onChange}
+            title={'車の経過年数を選択してください'}
+            option={periodOption}
+          />
+          <CheckBoxField
+            onChange={onChange}
+            title={'ご希望の液剤を選択してください'}
+            options={materialOptions}
+          />
+          <TextAriaFiled
+            onChange={onChange}
+            onBlur={createOnBlur(requiredValid)}
+            errorState={errorState}
+          />
         </form>
       </section>
     </>

@@ -1,54 +1,59 @@
 import styles from './index.module.scss';
-import { InitialInput } from '@/pages/contact/index.page';
 import { FormEventHandler, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import { materialOptions, periodOption } from '@/pages/contact/const/form.data';
+import { InitialInput } from '@/pages/contact/type';
 
 export default function Confirm() {
-  const [input, setInput] = useState<InitialInput | null>();
+  const [input, setInput] = useState<InitialInput | undefined>();
   const [selected, setSelected] = useState<string[]>();
   const [submitResult, setSubmitResult] = useState('');
   const router = useRouter();
 
+  const loadSessionData = () => {
+    try {
+      const input: InitialInput = JSON.parse(
+        sessionStorage.getItem('formInput') || '',
+      );
+      const size = JSON.parse(sessionStorage.getItem('size') || '');
+      return { input, size };
+    } catch (error) {
+      console.error('パースエラー:', error);
+      return {
+        input: undefined,
+        size: [],
+      };
+    }
+  };
+
   useEffect(() => {
-    const stored = sessionStorage.getItem('formInput');
-    const size = sessionStorage.getItem('size');
-    if (stored) {
-      try {
-        const parsed: InitialInput = JSON.parse(stored);
-        setInput(parsed);
-      } catch (error) {
-        console.error('JSON parse error:', error);
-      }
-    }
-    if (size) {
-      try {
-        const parsed = JSON.parse(size);
-        setSelected(parsed);
-      } catch (error) {
-        console.error('JSON parse error:', error);
-      }
-    }
+    const { input, size } = loadSessionData();
+    setInput(input);
+    setSelected(size);
   }, []);
 
-  if (!input || !selected) return <p>読み込み中...</p>;
+  if (!input || !selected)
+    return (
+      <p>
+        読み込み中です。時間がかかる場合は、リロードするか、入力しなおしてください
+      </p>
+    );
 
   const onSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
 
-    await router.push('/contact/thanks');
     try {
-      const response = await fetch('/api/sample/route', {
+      const response = await fetch('/api/send/route', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(input),
+        body: JSON.stringify({ ...input, selected }),
       });
 
       const data = await response.json();
       if (response.ok) {
         setSubmitResult('success');
-        sessionStorage.setItem('formInput', JSON.stringify(input));
         await router.push('/contact/thanks');
       } else {
         console.error(data.error);
@@ -60,6 +65,39 @@ export default function Confirm() {
     }
   };
 
+  const periodItem = periodOption.find(
+    (option) => option.value === input.period,
+  );
+
+  const materialLabel =
+    materialOptions.find((option) => option.value === input.period)?.label ??
+    materialOptions[0]['label'];
+
+  const fieldLabels = [
+    { id: 'name', label: 'お名前' },
+    { id: 'katakana', label: 'フリガナ' },
+    { id: 'mail', label: 'メールアドレス' },
+    { id: 'phone', label: 'ご連絡先' },
+    { id: 'size', label: '車種・サイズ' },
+    { id: 'period', label: '車の年数' },
+    { id: 'material', label: '希望の液剤' },
+    { id: 'postContent', label: 'お問い合わせ内容' },
+  ];
+
+  const fieldRenderers: Record<string, string> = {
+    name: input.name,
+    katakana: input.katakana,
+    mail: input.mail,
+    phone: input.phone,
+    size:
+      Array.isArray(selected) && selected.length > 0
+        ? selected.join(', ')
+        : '未選択',
+    period: periodItem?.label ?? '未選択',
+    material: materialLabel,
+    postContent: input.postContent,
+  };
+
   return (
     <form className={styles.container} onSubmit={onSubmit}>
       <div className={styles.titleWrapper}>
@@ -67,41 +105,18 @@ export default function Confirm() {
       </div>
       <div className={styles.list}>
         <ul className={styles.listKey}>
-          <li className={styles.listItem}>お名前</li>
-          <li className={styles.listItem}>フリガナ</li>
-          <li className={styles.listItem}>メールアドレス</li>
-          <li className={styles.listItem}>ご連絡先</li>
-          <li className={styles.listItem}>車種・サイズ</li>
-          <li className={styles.listItem}>車の年数</li>
-          <li className={styles.listItem}>希望の液剤</li>
-          <li className={styles.listItem}>お問い合わせ内容</li>
+          {fieldLabels.map(({ id, label }) => (
+            <li key={id} className={styles.listItem}>
+              {label}
+            </li>
+          ))}
         </ul>
         <ul className={styles.listContent}>
-          <li className={styles.listItem}>{input.name}</li>
-          <li className={styles.listItem}>{input.katakana}</li>
-          <li className={styles.listItem}>{input.mail}</li>
-          <li className={styles.listItem}>{input.phone}</li>
-          <li className={styles.listItem}>{selected.join(', ')}</li>
-          <li className={styles.listItem}>
-            {
-              {
-                '1': '1年未満',
-                '2': '1年から3年',
-                '3': '3年から5年',
-                '4': '5年以上',
-              }[input.period]
-            }
-          </li>
-          <li className={styles.listItem}>
-            {
-              {
-                '1': '液剤１',
-                '2': '液剤２',
-                '3': '液剤３',
-              }[input.material]
-            }
-          </li>
-          <li className={styles.listItem}>{input.postContent}</li>
+          {fieldLabels.map(({ id }) => (
+            <li key={id} className={styles.listItem}>
+              {fieldRenderers[id]}
+            </li>
+          ))}
         </ul>
       </div>
 
