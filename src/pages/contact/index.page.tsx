@@ -17,16 +17,7 @@ import {
   periodOption,
   sizeOptions,
 } from '@/pages/contact/const/form.data';
-
-export type InitialInput = {
-  name: string;
-  katakana: string;
-  mail: string;
-  phone: string;
-  period: string;
-  material: string;
-  postContent: string;
-};
+import { InitialInput } from '@/pages/contact/type';
 
 const initialInput = {
   name: '',
