@@ -1,11 +1,8 @@
 import styles from './index.module.scss';
-import {
-  InitialInput,
-  materialOptions,
-  periodOption,
-} from '@/pages/contact/index.page';
+import { InitialInput } from '@/pages/contact/index.page';
 import { FormEventHandler, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import { materialOptions, periodOption } from '@/pages/contact/const/form.data';
 
 export default function Confirm() {
   const [input, setInput] = useState<InitialInput | undefined>();
