@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { FormEvent } from 'react';
 import { ValidResult } from '@/pages/contact/logic/validation';
 import { InitialInput } from '@/pages/contact/index.page';
+import { judgmentErrorState } from '@/pages/contact/logic/judgmentErrorState';
+import { useRouter } from 'next/router';
 
 export const useContactHandler = (
   input: InitialInput,
@@ -10,6 +12,8 @@ export const useContactHandler = (
     React.SetStateAction<Partial<Record<keyof InitialInput, string>>>
   >,
 ) => {
+  const router = useRouter();
+
   const onChange = (
     event: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -49,5 +53,18 @@ export const useContactHandler = (
       });
     };
 
-  return { onChange, handleChange, createOnBlur };
+  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const newErrors = judgmentErrorState(input);
+
+    // エラーがあるなら送信せず、エラーをセット
+    if (Object.keys(newErrors).length > 0) {
+      setErrorState(newErrors);
+      return;
+    }
+    await router.push('/contact/confirm');
+  };
+
+  return { onChange, handleChange, createOnBlur, onSubmit };
 };

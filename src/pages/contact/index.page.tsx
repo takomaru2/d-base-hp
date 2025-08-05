@@ -1,7 +1,5 @@
 import styles from './index.module.scss';
-import React, { FormEvent, useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import { judgmentErrorState } from '@/pages/contact/logic/judgmentErrorState';
+import React, { useEffect, useState } from 'react';
 import { SelectedField } from '@/pages/contact/comonents/SelectedField';
 import { RadioButtonField } from '@/pages/contact/comonents/RadioButtonField';
 import { CheckBoxField } from '@/pages/contact/comonents/CheckBoxField';
@@ -47,32 +45,17 @@ export default function Contact() {
   const [input, setInput] = useState<InitialInput>(initialInput);
   const [errorState, setErrorState] = useState<ErrorState>({});
 
-  const { onChange, handleChange, createOnBlur } = useContactHandler(
+  const { onChange, handleChange, createOnBlur, onSubmit } = useContactHandler(
     input,
     setInput,
     setSelected,
     setErrorState,
   );
 
-  const router = useRouter();
-
   useEffect(() => {
     sessionStorage.setItem('formInput', JSON.stringify(input));
     sessionStorage.setItem('size', JSON.stringify(selected));
   }, [input, selected]);
-
-  async function onSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-
-    const newErrors = judgmentErrorState(input);
-
-    // エラーがあるなら送信せず、エラーをセット
-    if (Object.keys(newErrors).length > 0) {
-      setErrorState(newErrors);
-      return;
-    }
-    await router.push('/contact/confirm');
-  }
 
   return (
     <>
