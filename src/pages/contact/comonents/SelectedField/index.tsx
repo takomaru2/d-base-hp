@@ -1,16 +1,12 @@
 import styles from './index.module.scss';
 import { FC } from 'react';
+import { Option } from '@/pages/contact/const/form.data';
 
 type SelectedFieldProps = {
   selected: string[];
   onChange: (size: string) => void;
   title: string;
   options: Option[];
-};
-
-type Option = {
-  value: string;
-  label: string;
 };
 
 export const SelectedField: FC<SelectedFieldProps> = ({
@@ -30,7 +26,7 @@ export const SelectedField: FC<SelectedFieldProps> = ({
             onChange={() => onChange(value)}
             className={styles.checkBox}
           />
-          <span className={styles.size}>{label}</span>
+          <span className={styles.label}>{label}</span>
         </label>
       ))}
     </div>

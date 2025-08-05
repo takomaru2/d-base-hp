@@ -1,15 +1,11 @@
 import styles from './index.module.scss';
 import { ChangeEvent, FC } from 'react';
+import { Option } from '@/pages/contact/const/form.data';
 
 type CheckBoxFieldProps = {
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   title: string;
   option: Option[];
-};
-
-type Option = {
-  value: string;
-  label: string;
 };
 
 export const RadioButtonField: FC<CheckBoxFieldProps> = ({

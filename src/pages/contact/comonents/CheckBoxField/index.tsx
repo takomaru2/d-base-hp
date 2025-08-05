@@ -1,15 +1,11 @@
 import styles from './index.module.scss';
 import React, { ChangeEventHandler, FC } from 'react';
+import { Option } from '@/pages/contact/const/form.data';
 
 type CheckBoxFieldProps = {
   onChange: ChangeEventHandler<HTMLSelectElement>;
   title: string;
   options: Option[];
-};
-
-type Option = {
-  value: string;
-  label: string;
 };
 
 export const CheckBoxField: FC<CheckBoxFieldProps> = ({
