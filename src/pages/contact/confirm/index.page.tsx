@@ -135,12 +135,12 @@ export default function Confirm() {
         <button type={'submit'} className={styles.button}>
           送信する
         </button>
-        {submitResult === 'error' && (
-          <p style={{ color: 'red' }}>
-            送信中にエラーが発生しました。再度お試しください。
-          </p>
-        )}
       </div>
+      {submitResult === 'error' && (
+        <p style={{ color: 'red' }}>
+          送信中にエラーが発生しました。再度お試しください。
+        </p>
+      )}
     </form>
   );
 }

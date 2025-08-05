@@ -42,6 +42,9 @@
 }
 
 .buttonWrapper {
+  display: flex;
+  column-gap: 20px;
+  justify-content: center;
   margin-top: linear-clamp(40, 80);
   text-align: center;
 }
