@@ -5,9 +5,9 @@ import { useRouter } from 'next/router';
 import { InitialInput } from '@/pages/contact/type';
 
 export const useContactHandler = (
-  input: InitialInput,
+  contactForm: InitialInput,
   selected: string[],
-  setInput: React.Dispatch<React.SetStateAction<InitialInput>>,
+  setContactForm: React.Dispatch<React.SetStateAction<InitialInput>>,
   setSelected: React.Dispatch<React.SetStateAction<string[]>>,
   setErrorState: React.Dispatch<
     React.SetStateAction<Partial<Record<keyof InitialInput, string>>>
@@ -21,7 +21,7 @@ export const useContactHandler = (
     >,
   ) => {
     const { name, value } = event.target;
-    setInput((prev) => ({
+    setContactForm((prev) => ({
       ...prev,
       [name]: value,
     }));
@@ -40,7 +40,7 @@ export const useContactHandler = (
     (event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       event.preventDefault();
       const fieldName = event.target.name as keyof InitialInput;
-      const value = input[fieldName];
+      const value = contactForm[fieldName];
 
       const validateResult = validate(value);
       setErrorState((prev) => {
@@ -57,14 +57,14 @@ export const useContactHandler = (
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const newErrors = judgmentErrorState(input);
+    const newErrors = judgmentErrorState(contactForm);
 
     // エラーがあるなら送信せず、エラーをセット
     if (Object.keys(newErrors).length > 0) {
       setErrorState(newErrors);
       return;
     }
-    sessionStorage.setItem('formInput', JSON.stringify(input));
+    sessionStorage.setItem('formInput', JSON.stringify(contactForm));
     sessionStorage.setItem('size', JSON.stringify(selected));
     await router.push('/contact/confirm');
   };

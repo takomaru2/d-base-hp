@@ -21,13 +21,13 @@ import { ErrorState, initialInput, InitialInput } from '@/pages/contact/type';
 
 export default function Contact() {
   const [selected, setSelected] = useState<string[]>([]);
-  const [input, setInput] = useState<InitialInput>(initialInput);
+  const [contactForm, setContactForm] = useState<InitialInput>(initialInput);
   const [errorState, setErrorState] = useState<ErrorState>({});
 
   const { onChange, handleChange, createOnBlur, onSubmit } = useContactHandler(
-    input,
+    contactForm,
     selected,
-    setInput,
+    setContactForm,
     setSelected,
     setErrorState,
   );
@@ -37,7 +37,7 @@ export default function Contact() {
     const sessionSelected = sessionStorage.getItem('size');
 
     if (sessionInput) {
-      setInput(JSON.parse(sessionInput));
+      setContactForm(JSON.parse(sessionInput));
     }
 
     if (sessionSelected) {
@@ -57,7 +57,7 @@ export default function Contact() {
             onChange={onChange}
             onBlur={createOnBlur(requiredValid)}
             placeholder={'山田　太郎'}
-            value={input.name}
+            value={contactForm.name}
           />
           <TextField
             fieldName={'カタカナ'}
@@ -66,7 +66,7 @@ export default function Contact() {
             onChange={onChange}
             onBlur={createOnBlur(katakanaValid)}
             placeholder={'ヤマダ　タロウ'}
-            value={input.katakana}
+            value={contactForm.katakana}
           />
           <TextField
             fieldName={'メールアドレス'}
@@ -75,7 +75,7 @@ export default function Contact() {
             onChange={onChange}
             onBlur={createOnBlur(emailValid)}
             placeholder={'react@example.com'}
-            value={input.mail}
+            value={contactForm.mail}
           />
           <TextField
             fieldName={'電話番号'}
@@ -84,7 +84,7 @@ export default function Contact() {
             onChange={onChange}
             onBlur={createOnBlur(phoneValid)}
             placeholder={'08012345678'}
-            value={input.phone}
+            value={contactForm.phone}
           />
           <SelectedField
             selected={selected}
@@ -97,19 +97,19 @@ export default function Contact() {
             onChange={onChange}
             title={'車の経過年数を選択してください'}
             option={periodOption}
-            value={input.period}
+            value={contactForm.period}
           />
           <CheckBoxField
             onChange={onChange}
             title={'ご希望の液剤を選択してください'}
             options={materialOptions}
-            value={input.material}
+            value={contactForm.material}
           />
           <TextAriaFiled
             onChange={onChange}
             onBlur={createOnBlur(requiredValid)}
             errorState={errorState}
-            value={input.postContent}
+            value={contactForm.postContent}
             title={'お問い合わせ内容を入力してください'}
           />
         </form>
