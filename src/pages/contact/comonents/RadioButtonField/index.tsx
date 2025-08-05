@@ -1,4 +1,4 @@
-import styles from '@/pages/contact/index.module.scss';
+import styles from './index.module.scss';
 import { ChangeEvent, FC } from 'react';
 
 type CheckBoxFieldProps = {

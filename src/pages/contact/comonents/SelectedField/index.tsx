@@ -1,4 +1,4 @@
-import styles from '@/pages/contact/index.module.scss';
+import styles from './index.module.scss';
 import { FC } from 'react';
 
 type SelectedFieldProps = {
@@ -21,7 +21,6 @@ export const SelectedField: FC<SelectedFieldProps> = ({
 }) => {
   return (
     <div className={styles.checkBoxContainer}>
-      {/*<span>お客様のお車のサイズを選択してください</span>*/}
       <span>{title}</span>
       {options.map(({ value, label }) => (
         <label className={styles.checkBoxLabel} key={value}>

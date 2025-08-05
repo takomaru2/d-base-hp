@@ -1,0 +1,35 @@
+@import '@/styles/mixin';
+@import '@/styles/variables';
+
+.checkBoxContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: linear-clamp(200, 500);
+  margin-top: 30px;
+}
+
+.checkBoxLabel {
+  display: flex;
+  column-gap: 4px;
+  align-items: center;
+  width: 100%;
+  max-width: linear-clamp(95, 240);
+  padding: 4px 20px;
+  color: $colorBlack;
+  background-color: $colorWhite;
+
+  @include lg {
+    padding: 10px 20px;
+  }
+}
+
+.checkBox {
+  width: 20px;
+  height: 20px;
+}
+
+.size {
+  font-size: linear-clamp(10, 20);
+  white-space: nowrap;
+}

@@ -1,4 +1,4 @@
-import styles from '@/pages/contact/index.module.scss';
+import styles from './index.module.scss';
 import React, { FC } from 'react';
 import { InitialInput } from '@/pages/contact/index.page';
 
@@ -15,7 +15,7 @@ export const TextAriaFiled: FC<TextAriaFiledProps> = ({
 }) => {
   return (
     <>
-      <div className={`${styles.inputWrapper}`}>
+      <div className={styles.inputWrapper}>
         <span>お問い合わせ内容</span>
         {errorState.postContent && (
           <p style={{ color: 'red' }}>{errorState.postContent}</p>
@@ -29,7 +29,7 @@ export const TextAriaFiled: FC<TextAriaFiledProps> = ({
           onBlur={onBlur}
         />
       </div>
-      <div className={`${styles.inputWrapper}`}>
+      <div className={styles.inputWrapper}>
         <button type={'submit'} className={styles.submit}>
           確認
         </button>

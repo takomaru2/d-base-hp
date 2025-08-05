@@ -1,4 +1,4 @@
-import styles from '@/pages/contact/index.module.scss';
+import styles from './index.module.scss';
 import React, { ChangeEventHandler, FC } from 'react';
 
 type CheckBoxFieldProps = {
@@ -18,7 +18,7 @@ export const CheckBoxField: FC<CheckBoxFieldProps> = ({
   options,
 }) => {
   return (
-    <div className={`${styles.inputWrapper}`}>
+    <div className={styles.inputWrapper}>
       <div className={styles.flex}>
         <span>{title}</span>
         <span className={styles.required}>必須</span>
