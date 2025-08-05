@@ -1,6 +1,6 @@
 import styles from './index.module.scss';
 import React, { FC } from 'react';
-import { InitialInput } from '@/pages/contact/index.page';
+import { InitialInput } from '@/pages/contact/type';
 
 type TextAriaFiledProps = {
   errorState: Partial<Record<keyof InitialInput, string>>;

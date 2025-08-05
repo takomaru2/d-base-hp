@@ -1,4 +1,5 @@
-import { ErrorState, InitialInput } from '@/pages/contact/index.page';
+import { ErrorState } from '@/pages/contact/index.page';
+import { InitialInput } from '@/pages/contact/type';
 
 export const judgmentErrorState = (input: InitialInput) => {
   const newErrors: ErrorState = {};

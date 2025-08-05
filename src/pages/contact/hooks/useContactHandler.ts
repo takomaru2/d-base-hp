@@ -1,8 +1,8 @@
 import React, { FormEvent } from 'react';
 import { ValidResult } from '@/pages/contact/logic/validation';
-import { InitialInput } from '@/pages/contact/index.page';
 import { judgmentErrorState } from '@/pages/contact/logic/judgmentErrorState';
 import { useRouter } from 'next/router';
+import { InitialInput } from '@/pages/contact/type';
 
 export const useContactHandler = (
   input: InitialInput,

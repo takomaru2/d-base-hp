@@ -1,13 +1,12 @@
 import styles from './index.module.scss';
-import { InitialInput } from '@/pages/contact/index.page';
 import { FormEventHandler, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { materialOptions, periodOption } from '@/pages/contact/const/form.data';
+import { InitialInput } from '@/pages/contact/type';
 
 export default function Confirm() {
   const [input, setInput] = useState<InitialInput | undefined>();
   const [selected, setSelected] = useState<string[]>();
-
   const [submitResult, setSubmitResult] = useState('');
   const router = useRouter();
 
@@ -20,7 +19,10 @@ export default function Confirm() {
       return { input, size };
     } catch (error) {
       console.error('パースエラー:', error);
-      return { input: undefined, size: [] };
+      return {
+        input: undefined,
+        size: [],
+      };
     }
   };
 
@@ -30,7 +32,12 @@ export default function Confirm() {
     setSelected(size);
   }, []);
 
-  if (!input || !selected) return <p>読み込み中...</p>;
+  if (!input || !selected)
+    return (
+      <p>
+        読み込み中です。時間がかかる場合は、リロードするか、入力しなおしてください
+      </p>
+    );
 
   const onSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
