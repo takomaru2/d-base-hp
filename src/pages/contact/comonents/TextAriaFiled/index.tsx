@@ -34,11 +34,6 @@ export const TextAriaFiled: FC<TextAriaFiledProps> = ({
           value={value}
         />
       </div>
-      <div className={styles.inputWrapper}>
-        <button type={'submit'} className={styles.submit}>
-          確認
-        </button>
-      </div>
     </>
   );
 };

@@ -1,0 +1,21 @@
+@import '@/styles/mixin';
+@import '@/styles/variables';
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  width: 200px;
+
+  @include lg {
+    width: 100%;
+  }
+}
+
+.submit {
+  width: linear-clamp(200, 500);
+  padding: 5px;
+  color: $colorWhite;
+  background-color: $colorOrange;
+  border-radius: 5px;
+}

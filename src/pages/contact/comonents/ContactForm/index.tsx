@@ -15,6 +15,7 @@ import { TextAriaFiled } from '@/pages/contact/comonents/TextAriaFiled';
 import React, { FC, FormEventHandler } from 'react';
 import { ErrorState, InitialInput } from '@/pages/contact/type';
 import styles from './index.module.scss';
+import { SubmitButton } from '@/pages/contact/comonents/SubmitButton';
 
 type ContactFormProps = {
   onSubmit: FormEventHandler<HTMLFormElement>;
@@ -109,6 +110,7 @@ export const ContactForm: FC<ContactFormProps> = ({
           value={contactForm.postContent}
           title={'お問い合わせ内容を入力してください'}
         />
+        <SubmitButton />
       </form>
     </section>
   );
