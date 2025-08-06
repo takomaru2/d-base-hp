@@ -16,10 +16,11 @@ export const RadioGroup: FC<CheckBoxFieldProps> = ({
   value,
 }) => {
   return (
-    <div className={styles.checkBoxContainer}>
-      {title} <span className={styles.required}>必須</span>
+    <div className={styles.container}>
+      <h4>{title}</h4>
+      <span className={styles.required}>必須</span>
       {option.map((option) => (
-        <label className={styles.checkBoxLabel} key={option.value}>
+        <label className={styles.checkBoxItem} key={option.value}>
           <input
             type="radio"
             name="period"
@@ -28,7 +29,7 @@ export const RadioGroup: FC<CheckBoxFieldProps> = ({
             className={styles.checkBox}
             onChange={onChange}
           />
-          {option.label}
+          <span>{option.label}</span>
         </label>
       ))}
     </div>

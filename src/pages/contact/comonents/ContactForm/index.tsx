@@ -3,19 +3,19 @@ import { requiredValid, ValidResult } from '@/pages/contact/logic/validation';
 import { katakanaValid } from '@/pages/contact/logic/katakanaValid';
 import { emailValid } from '@/pages/contact/logic/emailValid';
 import { phoneValid } from '@/pages/contact/logic/phoneValid';
-import { SelectedGroup } from '@/pages/contact/comonents/SelectedGroup';
+import { CheckBoxGroup } from '../CheckBoxGroup';
 import {
   materialOptions,
   periodOption,
   sizeOptions,
 } from '@/pages/contact/const/contactOptions';
 import { RadioGroup } from '@/pages/contact/comonents/RadioGroup';
-import { CheckBoxGroup } from '@/pages/contact/comonents/CheckBoxGroup';
 import { TextAriaFiled } from '@/pages/contact/comonents/TextAriaFiled';
 import React, { FC, FormEventHandler } from 'react';
 import { ErrorState, InitialInput } from '@/pages/contact/type';
 import styles from './index.module.scss';
-import { SubmitButton } from '@/pages/contact/comonents/SubmitButton';
+import { ConfirmButton } from '../ConfirmButton';
+import { SelectedGroup } from '@/pages/contact/comonents/SelectedGroup';
 
 type ContactFormProps = {
   onSubmit: FormEventHandler<HTMLFormElement>;
@@ -84,7 +84,7 @@ export const ContactForm: FC<ContactFormProps> = ({
           placeholder={'08012345678'}
           value={contactForm.phone}
         />
-        <SelectedGroup
+        <CheckBoxGroup
           selected={selectedSize}
           onChange={handleToggle}
           title={'お客様のお車のサイズを選択してください'}
@@ -97,7 +97,7 @@ export const ContactForm: FC<ContactFormProps> = ({
           option={periodOption}
           value={contactForm.period}
         />
-        <CheckBoxGroup
+        <SelectedGroup
           onChange={onChange}
           title={'ご希望の液剤を選択してください'}
           options={materialOptions}
@@ -110,7 +110,7 @@ export const ContactForm: FC<ContactFormProps> = ({
           value={contactForm.postContent}
           title={'お問い合わせ内容を入力してください'}
         />
-        <SubmitButton />
+        <ConfirmButton />
       </form>
     </section>
   );

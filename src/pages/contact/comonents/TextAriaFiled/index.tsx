@@ -19,15 +19,13 @@ export const TextAriaFiled: FC<TextAriaFiledProps> = ({
 }) => {
   return (
     <>
-      <div className={styles.inputWrapper}>
-        <span>{title}</span>
+      <div className={styles.container}>
+        <h4>{title}</h4>
         {errorState.postContent && (
           <p style={{ color: 'red' }}>{errorState.postContent}</p>
         )}
         <textarea
           name="postContent"
-          rows={4}
-          cols={40}
           className={styles.textArea}
           onChange={onChange}
           onBlur={onBlur}

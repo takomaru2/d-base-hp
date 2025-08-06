@@ -1,35 +1,35 @@
 @import '@/styles/mixin';
 @import '@/styles/variables';
 
-.checkBoxContainer {
+.container {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  max-width: linear-clamp(200, 500);
-  margin-top: 30px;
-}
-
-.checkBoxLabel {
-  display: flex;
-  column-gap: 4px;
-  align-items: center;
-  width: 100%;
-  max-width: linear-clamp(95, 240);
-  padding: 4px 20px;
-  color: $colorBlack;
-  background-color: $colorWhite;
+  flex-direction: column;
+  row-gap: 10px;
+  width: 200px;
 
   @include lg {
-    padding: 10px 20px;
+    width: 100%;
   }
 }
 
-.checkBox {
-  width: 20px;
-  height: 20px;
+.header {
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
 }
 
-.label {
-  font-size: linear-clamp(10, 20);
-  white-space: nowrap;
+.required {
+  padding: 4px;
+  font-weight: bold;
+  background-color: $answerColor;
+  border-radius: 4px;
+}
+
+.items {
+  width: 100%;
+  max-width: linear-clamp(200, 500);
+  color: $colorBlack;
+  appearance: auto;
+  background-color: $colorWhite;
+  border: solid 1px $colorWhite;
 }

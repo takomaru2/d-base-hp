@@ -52,7 +52,7 @@ module.exports = {
       value: 'test',
     },
     messages: {
-      type: "Select the type of change that you're committing:",
+      type: "SelectedGroup the type of change that you're committing:",
       subject: 'Write a short, imperative mood description of the change:\n',
     },
   },

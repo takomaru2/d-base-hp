@@ -21,8 +21,8 @@ export const TextField: FC<InputFieldProps> = ({
   value,
 }) => {
   return (
-    <div className={styles.inputWrapper}>
-      <div className={styles.flex}>
+    <div className={styles.container}>
+      <div className={styles.fieldHeader}>
         <label htmlFor={name} className={styles.label}>
           {fieldName}
         </label>

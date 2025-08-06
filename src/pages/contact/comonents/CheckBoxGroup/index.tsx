@@ -1,38 +1,37 @@
 import styles from './index.module.scss';
-import React, { ChangeEventHandler, FC } from 'react';
+import { FC } from 'react';
 import { Option } from '@/pages/contact/const/contactOptions';
 
-type CheckBoxFieldProps = {
-  onChange: ChangeEventHandler<HTMLSelectElement>;
+type SelectedFieldProps = {
+  selected: string[];
+  onChange: (size: string) => void;
   title: string;
   options: Option[];
-  value: string;
+  value: string[];
 };
 
-export const CheckBoxGroup: FC<CheckBoxFieldProps> = ({
+export const CheckBoxGroup: FC<SelectedFieldProps> = ({
+  selected,
   onChange,
   title,
   options,
   value,
 }) => {
   return (
-    <div className={styles.inputWrapper}>
-      <div className={styles.flex}>
-        <span>{title}</span>
-        <span className={styles.required}>必須</span>
-      </div>
-      <select
-        name="material"
-        className={styles.selected}
-        onChange={onChange}
-        value={value}
-      >
-        {options.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
-        ))}
-      </select>
+    <div className={styles.container}>
+      <h4>{title}</h4>
+      {options.map((option) => (
+        <label className={styles.checkBoxItem} key={option.value}>
+          <input
+            type="checkbox"
+            checked={selected.includes(option.value)}
+            onChange={() => onChange(option.value)}
+            className={styles.checkBox}
+            value={value}
+          />
+          <span className={styles.label}>{option.label}</span>
+        </label>
+      ))}
     </div>
   );
 };
