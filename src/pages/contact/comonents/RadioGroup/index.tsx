@@ -1,6 +1,6 @@
 import styles from './index.module.scss';
 import React, { ChangeEvent, FC } from 'react';
-import { Option } from '@/pages/contact/const/form.data';
+import { Option } from '@/pages/contact/const/contactOptions';
 
 type CheckBoxFieldProps = {
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;

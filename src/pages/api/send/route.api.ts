@@ -1,6 +1,9 @@
 import { Resend } from 'resend';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { materialOptions, periodOption } from '@/pages/contact/const/form.data';
+import {
+  materialOptions,
+  periodOption,
+} from '@/pages/contact/const/contactOptions';
 
 const resend = new Resend(process.env.NEXT_PUBLIC_RESEND_API_KEY!);
 

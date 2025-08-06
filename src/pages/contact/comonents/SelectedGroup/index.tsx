@@ -1,6 +1,6 @@
 import styles from './index.module.scss';
 import { FC } from 'react';
-import { Option } from '@/pages/contact/const/form.data';
+import { Option } from '@/pages/contact/const/contactOptions';
 
 type SelectedFieldProps = {
   selected: string[];

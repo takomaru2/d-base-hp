@@ -1,7 +1,10 @@
 import styles from './index.module.scss';
 import { FormEventHandler, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { materialOptions, periodOption } from '@/pages/contact/const/form.data';
+import {
+  materialOptions,
+  periodOption,
+} from '@/pages/contact/const/contactOptions';
 import { InitialInput } from '@/pages/contact/type';
 import { loadSessionData } from '@/pages/contact/confirm/logics/loadSession';
 

@@ -8,7 +8,7 @@ import {
   materialOptions,
   periodOption,
   sizeOptions,
-} from '@/pages/contact/const/form.data';
+} from '@/pages/contact/const/contactOptions';
 import { RadioGroup } from '@/pages/contact/comonents/RadioGroup';
 import { CheckBoxGroup } from '@/pages/contact/comonents/CheckBoxGroup';
 import { TextAriaFiled } from '@/pages/contact/comonents/TextAriaFiled';
