@@ -5,13 +5,13 @@ export const loadSessionData = () => {
     const input: InitialInput = JSON.parse(
       sessionStorage.getItem('formInput') || '',
     );
-    const size = JSON.parse(sessionStorage.getItem('size') || '');
-    return { input, size };
+    const selected = JSON.parse(sessionStorage.getItem('size') || '');
+    return { input, selected };
   } catch (error) {
     console.error('パースエラー:', error);
     return {
       input: undefined,
-      size: [],
+      selected: [],
     };
   }
 };

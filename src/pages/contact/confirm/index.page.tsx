@@ -4,20 +4,19 @@ import { useRouter } from 'next/router';
 import { materialOptions, periodOption } from '@/pages/contact/const/form.data';
 import { InitialInput } from '@/pages/contact/type';
 import { loadSessionData } from '@/pages/contact/confirm/logics/loadSession';
-import { SubmitResultType } from '@/pages/contact/confirm/type';
 
 export default function Confirm() {
   const [confirmedInput, setConfirmedInput] = useState<
     InitialInput | undefined
   >();
   const [confirmedSelected, setConfirmedSelected] = useState<string[]>();
-  const [submitResult, setSubmitResult] = useState<SubmitResultType>('idle');
+  const [isErrorResult, setIsErrorResult] = useState<boolean>(false);
   const router = useRouter();
 
   useEffect(() => {
-    const { input, size } = loadSessionData();
+    const { input, selected } = loadSessionData();
     setConfirmedInput(input);
-    setConfirmedSelected(size);
+    setConfirmedSelected(selected);
   }, []);
 
   if (!confirmedInput || !confirmedSelected)
@@ -44,15 +43,14 @@ export default function Confirm() {
 
       const data = await response.json();
       if (response.ok) {
-        setSubmitResult('success');
         await router.push('/contact/thanks');
       } else {
         console.error(data.error);
-        setSubmitResult('error');
+        setIsErrorResult(true);
       }
     } catch (error) {
       console.error('通信エラー:', error);
-      setSubmitResult('error');
+      setIsErrorResult(true);
     }
   };
 
@@ -115,11 +113,6 @@ export default function Confirm() {
         </ul>
       </div>
 
-      {submitResult === 'error' && (
-        <p className={styles.errorMessage}>
-          送信中にエラーが発生しました。再度お試しください。
-        </p>
-      )}
       <div className={styles.buttonWrapper}>
         <button
           type={'button'}
@@ -132,6 +125,11 @@ export default function Confirm() {
           送信する
         </button>
       </div>
+      {isErrorResult && (
+        <p className={styles.errorMessage}>
+          送信中にエラーが発生しました。再度お試しください。
+        </p>
+      )}
     </form>
   );
 }

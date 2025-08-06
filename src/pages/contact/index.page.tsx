@@ -34,7 +34,7 @@ export default function Contact() {
 
   useEffect(() => {
     const sessionInput = sessionStorage.getItem('formInput');
-    const sessionSelected = sessionStorage.getItem('size');
+    const sessionSelected = sessionStorage.getItem('selected');
 
     if (sessionInput) {
       setContactForm(JSON.parse(sessionInput));

@@ -65,7 +65,7 @@ export const useContactHandler = (
       return;
     }
     sessionStorage.setItem('formInput', JSON.stringify(contactForm));
-    sessionStorage.setItem('size', JSON.stringify(selectedSize));
+    sessionStorage.setItem('selected', JSON.stringify(selectedSize));
     await router.push('/contact/confirm');
   };
 
