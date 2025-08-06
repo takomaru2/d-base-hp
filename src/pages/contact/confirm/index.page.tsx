@@ -4,13 +4,14 @@ import { useRouter } from 'next/router';
 import { materialOptions, periodOption } from '@/pages/contact/const/form.data';
 import { InitialInput } from '@/pages/contact/type';
 import { loadSessionData } from '@/pages/contact/confirm/logics/loadSession';
+import { SubmitResultType } from '@/pages/contact/confirm/type';
 
 export default function Confirm() {
   const [confirmedInput, setConfirmedInput] = useState<
     InitialInput | undefined
   >();
   const [confirmedSelected, setConfirmedSelected] = useState<string[]>();
-  const [submitResult, setSubmitResult] = useState('');
+  const [submitResult, setSubmitResult] = useState<SubmitResultType>('idle');
   const router = useRouter();
 
   useEffect(() => {
@@ -114,6 +115,11 @@ export default function Confirm() {
         </ul>
       </div>
 
+      {submitResult === 'error' && (
+        <p className={styles.errorMessage}>
+          送信中にエラーが発生しました。再度お試しください。
+        </p>
+      )}
       <div className={styles.buttonWrapper}>
         <button
           type={'button'}
@@ -126,11 +132,6 @@ export default function Confirm() {
           送信する
         </button>
       </div>
-      {submitResult === 'error' && (
-        <p style={{ color: 'red' }}>
-          送信中にエラーが発生しました。再度お試しください。
-        </p>
-      )}
     </form>
   );
 }

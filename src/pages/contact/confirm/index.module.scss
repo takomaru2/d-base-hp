@@ -45,7 +45,6 @@
   display: flex;
   column-gap: 20px;
   justify-content: center;
-  margin-top: linear-clamp(40, 80);
   text-align: center;
 }
 
@@ -67,4 +66,12 @@
     background-color: $colorWhite;
     outline: $buttonColor 1px solid;
   }
+}
+
+.errorMessage {
+  margin-top: linear-clamp(40, 80);
+  margin-bottom: linear-clamp(10, 20);
+  font-weight: bold;
+  color: $answerColor;
+  text-align: center;
 }
