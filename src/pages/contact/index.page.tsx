@@ -2,12 +2,7 @@ import styles from './index.module.scss';
 import React, { useEffect, useState } from 'react';
 import { TextAriaFiled } from '@/pages/contact/comonents/TextAriaFiled';
 import { TextField } from '@/pages/contact/comonents/TextField';
-import {
-  emailValid,
-  katakanaValid,
-  phoneValid,
-  requiredValid,
-} from '@/pages/contact/logic/validation';
+import { requiredValid } from '@/pages/contact/logic/validation';
 import { useContactHandler } from '@/pages/contact/hooks/useContactHandler';
 import {
   materialOptions,
@@ -18,6 +13,9 @@ import { ErrorState, initialInput, InitialInput } from '@/pages/contact/type';
 import { SelectedGroup } from '@/pages/contact/comonents/SelectedGroup';
 import { RadioGroup } from '@/pages/contact/comonents/RadioGroup';
 import { CheckBoxGroup } from '@/pages/contact/comonents/CheckBoxGroup';
+import { katakanaValid } from '@/pages/contact/logic/katakanaValid';
+import { emailValid } from '@/pages/contact/logic/emailValid';
+import { phoneValid } from '@/pages/contact/logic/phoneValid';
 
 export default function Contact() {
   const [selectedSize, setSelectedSize] = useState<string[]>([]);
