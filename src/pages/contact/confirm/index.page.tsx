@@ -1,5 +1,4 @@
-import styles from './index.module.scss';
-import { FormEventHandler, useEffect, useState } from 'react';
+import React, { FormEventHandler, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import {
   materialOptions,
@@ -7,6 +6,7 @@ import {
 } from '@/pages/contact/const/contactOptions';
 import { InitialInput } from '@/pages/contact/type';
 import { loadSessionData } from '@/pages/contact/confirm/logics/loadSession';
+import { ConfirmLayout } from '@/pages/contact/confirm/components/ConfirmLayout';
 
 export default function Confirm() {
   const [confirmedInput, setConfirmedInput] = useState<
@@ -61,78 +61,45 @@ export default function Confirm() {
     await router.push('/contact');
   };
 
-  const periodItem = periodOption.find(
-    (option) => option.value === confirmedInput.period,
-  );
-
-  const materialLabel =
-    materialOptions.find((option) => option.value === confirmedInput.material)
-      ?.label ?? materialOptions[0]['label'];
-
-  const fieldLabels = [
-    { id: 'name', label: 'お名前' },
-    { id: 'katakana', label: 'フリガナ' },
-    { id: 'mail', label: 'メールアドレス' },
-    { id: 'phone', label: 'ご連絡先' },
-    { id: 'size', label: '車種・サイズ' },
-    { id: 'period', label: '車の年数' },
-    { id: 'material', label: '希望の液剤' },
-    { id: 'postContent', label: 'お問い合わせ内容' },
+  const confirmFields = [
+    { id: 'name', label: 'お名前', value: confirmedInput.name },
+    { id: 'katakana', label: 'フリガナ', value: confirmedInput.katakana },
+    { id: 'mail', label: 'メールアドレス', value: confirmedInput.mail },
+    { id: 'phone', label: 'ご連絡先', value: confirmedInput.phone },
+    {
+      id: 'size',
+      label: '車種・サイズ',
+      value:
+        confirmedSelected.length > 0 ? confirmedSelected.join(', ') : '未選択',
+    },
+    {
+      id: 'period',
+      label: '車の年数',
+      value:
+        periodOption.find((option) => option.value === confirmedInput.period)
+          ?.label ?? '未選択',
+    },
+    {
+      id: 'material',
+      label: '希望の液剤',
+      value:
+        materialOptions.find(
+          (option) => option.value === confirmedInput.material,
+        )?.label ?? materialOptions[0].label,
+    },
+    {
+      id: 'postContent',
+      label: 'お問い合わせ内容',
+      value: confirmedInput.postContent,
+    },
   ];
 
-  const fieldRenderers: Record<string, string> = {
-    name: confirmedInput.name,
-    katakana: confirmedInput.katakana,
-    mail: confirmedInput.mail,
-    phone: confirmedInput.phone,
-    size:
-      Array.isArray(confirmedSelected) && confirmedSelected.length > 0
-        ? confirmedSelected.join(', ')
-        : '未選択',
-    period: periodItem?.label ?? '未選択',
-    material: materialLabel,
-    postContent: confirmedInput.postContent,
-  };
-
   return (
-    <form className={styles.container} onSubmit={onSubmit}>
-      <div className={styles.titleWrapper}>
-        <h2 className={styles.title}>以下の内容でよろしいでしょうか？</h2>
-      </div>
-      <div className={styles.list}>
-        <ul className={styles.listKey}>
-          {fieldLabels.map(({ id, label }) => (
-            <li key={id} className={styles.listItem}>
-              {label}
-            </li>
-          ))}
-        </ul>
-        <ul className={styles.listContent}>
-          {fieldLabels.map(({ id }) => (
-            <li key={id} className={styles.listItem}>
-              {fieldRenderers[id]}
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      <div className={styles.buttonWrapper}>
-        <button
-          type={'button'}
-          onClick={handleBackButton}
-          className={styles.button}
-        >
-          戻る
-        </button>
-        <button type={'submit'} className={styles.button}>
-          送信する
-        </button>
-      </div>
-      {isErrorResult && (
-        <p className={styles.errorMessage}>
-          送信中にエラーが発生しました。再度お試しください。
-        </p>
-      )}
-    </form>
+    <ConfirmLayout
+      onSubmit={onSubmit}
+      labels={confirmFields}
+      backButton={handleBackButton}
+      isErrorResult={isErrorResult}
+    />
   );
 }
