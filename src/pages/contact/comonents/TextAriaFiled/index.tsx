@@ -1,9 +1,9 @@
 import styles from './index.module.scss';
 import React, { FC } from 'react';
-import { InitialInput } from '@/pages/contact/type';
+import { UserInput } from '@/pages/contact/type';
 
 type TextAriaFiledProps = {
-  errorState: Partial<Record<keyof InitialInput, string>>;
+  errorState: Partial<Record<keyof UserInput, string>>;
   onChange: React.ChangeEventHandler<HTMLTextAreaElement>;
   onBlur: React.FocusEventHandler<HTMLTextAreaElement>;
   value: string;

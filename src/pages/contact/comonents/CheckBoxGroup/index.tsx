@@ -1,9 +1,10 @@
 import styles from './index.module.scss';
 import { FC } from 'react';
 import { Option } from '@/pages/contact/const/contactOptions';
+import { UserInput } from '@/pages/contact/type';
 
 type SelectedFieldProps = {
-  selected: string[];
+  selected: UserInput['size'];
   onChange: (size: string) => void;
   title: string;
   options: Option[];

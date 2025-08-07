@@ -1,14 +1,14 @@
-import { ErrorState, InitialInput } from '@/pages/contact/type';
+import { ErrorState, UserInput } from '@/pages/contact/type';
 import { requiredValid, ValidResult } from '@/pages/contact/logic/validation';
 import { katakanaValid } from '@/pages/contact/logic/katakanaValid';
 import { emailValid } from '@/pages/contact/logic/emailValid';
 import { phoneValid } from '@/pages/contact/logic/phoneValid';
 
-export const judgmentErrorState = (input: InitialInput): ErrorState => {
+export const judgmentErrorState = (input: UserInput): ErrorState => {
   const newErrors: ErrorState = {};
 
   const validators: Partial<
-    Record<keyof InitialInput, (value: string) => ValidResult>
+    Record<keyof UserInput, (value: string) => ValidResult>
   > = {
     name: requiredValid,
     katakana: katakanaValid,
@@ -18,7 +18,7 @@ export const judgmentErrorState = (input: InitialInput): ErrorState => {
   };
 
   for (const [key, value] of Object.entries(input) as [
-    keyof InitialInput,
+    keyof UserInput,
     string,
   ][]) {
     const validator = validators[key];

@@ -11,17 +11,8 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  const {
-    name,
-    katakana,
-    mail,
-    phone,
-    period,
-    material,
-    postContent,
-    selected,
-  } = req.body;
-  const size = selected.length === 0 ? '未選択' : selected.join(', ');
+  const { name, katakana, mail, phone, period, material, postContent, size } =
+    req.body;
 
   const periodList = periodOption.map((option) => option.label);
   const materialList = materialOptions.map((option) => option.label);
@@ -37,12 +28,13 @@ export default async function handler(
     !period ||
     !material ||
     !postContent ||
-    !Array.isArray(selected) ||
+    !Array.isArray(size) ||
     Number.isNaN(periodIndex) ||
     Number.isNaN(materialIndex)
   ) {
     return res.status(400).json({ error: 'リクエストデータが不正です' });
   }
+  const selected = size.length === 0 ? '未選択' : size.join(', ');
 
   const periodItem = periodList[periodIndex];
   const materialItem = materialList[materialIndex];
@@ -57,7 +49,7 @@ export default async function handler(
 <p>フリガナ: ${katakana}</p>
 <p>メール: ${mail}</p>
 <p>電話番号:${phone}</p>
-<p>車のサイズ:${size}</p> 
+<p>車のサイズ:${selected}</p> 
 <p>車の年数: ${periodItem}</p>
 <p>希望液剤: ${materialItem}</p>
 <p>内容: ${postContent}</p>`,

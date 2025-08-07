@@ -1,8 +1,8 @@
-import { InitialInput } from '@/pages/contact/type';
+import { UserInput } from '@/pages/contact/type';
 
 export const loadSessionData = () => {
   try {
-    const input: InitialInput = JSON.parse(
+    const input: UserInput = JSON.parse(
       sessionStorage.getItem('formInput') || '',
     );
     const selected = JSON.parse(sessionStorage.getItem('selected') || '');

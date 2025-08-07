@@ -1,8 +1,9 @@
-export type InitialInput = {
+export type UserInput = {
   name: string;
   katakana: string;
   mail: string;
   phone: string;
+  size: string[];
   period: string;
   material: string;
   postContent: string;
@@ -13,9 +14,10 @@ export const initialInput = {
   katakana: '',
   mail: '',
   phone: '',
+  size: [],
   period: '1',
-  material: '',
+  material: '1',
   postContent: '',
 };
 
-export type ErrorState = Partial<Record<keyof InitialInput, string>>;
+export type ErrorState = Partial<Record<keyof UserInput, string>>;

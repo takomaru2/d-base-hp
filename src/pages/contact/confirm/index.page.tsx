@@ -4,25 +4,21 @@ import {
   materialOptions,
   periodOption,
 } from '@/pages/contact/const/contactOptions';
-import { InitialInput } from '@/pages/contact/type';
+import { UserInput } from '@/pages/contact/type';
 import { loadSessionData } from '@/pages/contact/confirm/logics/loadSession';
 import { ConfirmLayout } from '@/pages/contact/confirm/components/ConfirmLayout';
 
 export default function Confirm() {
-  const [confirmedInput, setConfirmedInput] = useState<
-    InitialInput | undefined
-  >();
-  const [confirmedSelected, setConfirmedSelected] = useState<string[]>();
+  const [userInput, setUserInput] = useState<UserInput | undefined>();
   const [isErrorResult, setIsErrorResult] = useState<boolean>(false);
   const router = useRouter();
 
   useEffect(() => {
-    const { input, selected } = loadSessionData();
-    setConfirmedInput(input);
-    setConfirmedSelected(selected);
+    const { input } = loadSessionData();
+    setUserInput(input);
   }, []);
 
-  if (!confirmedInput || !confirmedSelected)
+  if (!userInput)
     return (
       <p>
         読み込み中です。時間がかかる場合は、リロードするか、入力しなおしてください
@@ -38,10 +34,7 @@ export default function Confirm() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          ...confirmedInput,
-          selected: confirmedSelected,
-        }),
+        body: JSON.stringify(userInput),
       });
 
       const data = await response.json();
@@ -62,35 +55,34 @@ export default function Confirm() {
   };
 
   const confirmFields = [
-    { id: 'name', label: 'お名前', value: confirmedInput.name },
-    { id: 'katakana', label: 'フリガナ', value: confirmedInput.katakana },
-    { id: 'mail', label: 'メールアドレス', value: confirmedInput.mail },
-    { id: 'phone', label: 'ご連絡先', value: confirmedInput.phone },
+    { id: 'name', label: 'お名前', value: userInput.name },
+    { id: 'katakana', label: 'フリガナ', value: userInput.katakana },
+    { id: 'mail', label: 'メールアドレス', value: userInput.mail },
+    { id: 'phone', label: 'ご連絡先', value: userInput.phone },
     {
       id: 'size',
       label: '車種・サイズ',
       value:
-        confirmedSelected.length > 0 ? confirmedSelected.join(', ') : '未選択',
+        userInput['size'].length > 0 ? userInput['size'].join(', ') : '未選択',
     },
     {
       id: 'period',
       label: '車の年数',
       value:
-        periodOption.find((option) => option.value === confirmedInput.period)
+        periodOption.find((option) => option.value === userInput.period)
           ?.label ?? '未選択',
     },
     {
       id: 'material',
       label: '希望の液剤',
       value:
-        materialOptions.find(
-          (option) => option.value === confirmedInput.material,
-        )?.label ?? materialOptions[0].label,
+        materialOptions.find((option) => option.value === userInput.material)
+          ?.label ?? materialOptions[0].label,
     },
     {
       id: 'postContent',
       label: 'お問い合わせ内容',
-      value: confirmedInput.postContent,
+      value: userInput.postContent,
     },
   ];
 

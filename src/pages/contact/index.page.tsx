@@ -1,31 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { useContactHandler } from '@/pages/contact/hooks/useContactHandler';
-import { ErrorState, initialInput, InitialInput } from '@/pages/contact/type';
+import { ErrorState, initialInput, UserInput } from '@/pages/contact/type';
 import { ContactForm } from '@/pages/contact/comonents/ContactForm';
 
 export default function Contact() {
-  const [selectedSize, setSelectedSize] = useState<string[]>([]);
-  const [contactForm, setContactForm] = useState<InitialInput>(initialInput);
+  const [userInput, setUserInput] = useState<UserInput>(initialInput);
   const [errorState, setErrorState] = useState<ErrorState>({});
 
   const { onChange, handleToggle, createOnBlur, onSubmit } = useContactHandler(
-    contactForm,
-    selectedSize,
-    setContactForm,
-    setSelectedSize,
+    userInput,
+    setUserInput,
     setErrorState,
   );
 
   useEffect(() => {
     const sessionInput = sessionStorage.getItem('formInput');
-    const sessionSelected = sessionStorage.getItem('selected');
-
     if (sessionInput) {
-      setContactForm(JSON.parse(sessionInput));
-    }
-
-    if (sessionSelected) {
-      setSelectedSize(JSON.parse(sessionSelected));
+      setUserInput(JSON.parse(sessionInput));
     }
   }, []);
 
@@ -36,8 +27,8 @@ export default function Contact() {
         errorState={errorState}
         onChange={onChange}
         createOnBlur={createOnBlur}
-        contactForm={contactForm}
-        selectedSize={selectedSize}
+        contactForm={userInput}
+        selectedSize={userInput.size}
         handleToggle={handleToggle}
       />
     </>

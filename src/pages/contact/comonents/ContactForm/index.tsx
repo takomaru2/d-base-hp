@@ -12,7 +12,7 @@ import {
 import { RadioGroup } from '@/pages/contact/comonents/RadioGroup';
 import { TextAriaFiled } from '@/pages/contact/comonents/TextAriaFiled';
 import React, { FC, FormEventHandler } from 'react';
-import { ErrorState, InitialInput } from '@/pages/contact/type';
+import { ErrorState, UserInput } from '@/pages/contact/type';
 import styles from './index.module.scss';
 import { ConfirmButton } from '../ConfirmButton';
 import { SelectedGroup } from '@/pages/contact/comonents/SelectedGroup';
@@ -30,8 +30,8 @@ type ContactFormProps = {
   ) => (
     event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => void;
-  contactForm: InitialInput;
-  selectedSize: string[];
+  contactForm: UserInput;
+  selectedSize: UserInput['size'];
   handleToggle: (value: string) => void;
 };
 
