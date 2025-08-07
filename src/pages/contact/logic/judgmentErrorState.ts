@@ -1,35 +1,31 @@
 import { ErrorState, InitialInput } from '@/pages/contact/type';
+import { requiredValid, ValidResult } from '@/pages/contact/logic/validation';
+import { katakanaValid } from '@/pages/contact/logic/katakanaValid';
+import { emailValid } from '@/pages/contact/logic/emailValid';
+import { phoneValid } from '@/pages/contact/logic/phoneValid';
 
-export const judgmentErrorState = (input: InitialInput) => {
+export const judgmentErrorState = (input: InitialInput): ErrorState => {
   const newErrors: ErrorState = {};
 
-  // 必須項目チェック（空文字チェック）
-  for (const [key, value] of Object.entries(input)) {
-    if (!value.trim()) {
-      newErrors[key as keyof InitialInput] = 'これは必須項目でやんすねぇ';
-    }
+  const validators: Partial<
+    Record<keyof InitialInput, (value: string) => ValidResult>
+  > = {
+    name: requiredValid,
+    katakana: katakanaValid,
+    mail: emailValid,
+    phone: phoneValid,
+    postContent: requiredValid,
+  };
 
-    // カタカナだけ特別なチェック（空でなくても）
-    if (key === 'katakana' && value && !/^[ァ-ン　]+$/.test(value)) {
-      newErrors.katakana = 'カタカナのみで入力してください';
-    }
-
-    // メール形式チェック
-    if (
-      key === 'mail' &&
-      value &&
-      !(/^[a-zA-Z0-9@.,]+$/.test(value) && /@/.test(value))
-    ) {
-      newErrors.mail = '英数字のみで入力して必ず@を使ってください';
-    }
-
-    // 電話番号チェック
-    if (key === 'phone' && value) {
-      if (!/^[0-9]+$/.test(value)) {
-        newErrors.phone = '半角数字のみで入力してください';
-      } else if (value.length >= 20) {
-        newErrors.phone =
-          '入力されている数字が多い可能性があります。いや、多いです。';
+  for (const [key, value] of Object.entries(input) as [
+    keyof InitialInput,
+    string,
+  ][]) {
+    const validator = validators[key];
+    if (validator) {
+      const result = validator(value);
+      if (!result.ok) {
+        newErrors[key] = result.message ?? '不明なエラーです';
       }
     }
   }
