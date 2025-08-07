@@ -4,7 +4,7 @@ import { FC, FormEventHandler } from 'react';
 type ConfirmProps = {
   onSubmit: FormEventHandler<HTMLFormElement>;
   labels: Record<string, string>[];
-  backButton: () => Promise<void>;
+  backButton: () => void;
   isErrorResult: boolean;
 };
 

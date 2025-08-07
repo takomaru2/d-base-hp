@@ -50,8 +50,8 @@ export default function Confirm() {
     }
   };
 
-  const handleBackButton = async () => {
-    await router.push('/contact');
+  const handleBackButton = () => {
+    router.back();
   };
 
   const confirmFields = [
