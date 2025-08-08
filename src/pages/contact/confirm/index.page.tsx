@@ -7,6 +7,8 @@ import {
 import { UserInput } from '@/pages/contact/type';
 import { loadSessionData } from '@/pages/contact/confirm/logics/loadSession';
 import { ConfirmLayout } from '@/pages/contact/confirm/components/ConfirmLayout';
+import { CustomFetchType, SendResponse } from '@/types/customFetch';
+import { customFetch } from '@/logics/customFetch';
 
 export default function Confirm() {
   const [userInput, setUserInput] = useState<UserInput | undefined>();
@@ -96,44 +98,3 @@ export default function Confirm() {
     />
   );
 }
-
-type CustomFetchType<T> = {
-  resource: string;
-  method: 'GET' | 'POST' | 'PUT' | 'DELETE';
-  body?: T;
-};
-
-type SendResponse = {
-  message?: string;
-  error?: string;
-};
-
-export const customFetch = async <T = unknown, TData = SendResponse>({
-  resource,
-  method = 'POST',
-  body,
-}: CustomFetchType<T>): Promise<{
-  response: Response;
-  data: TData | undefined;
-}> => {
-  const response = await fetch(resource, {
-    method,
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    ...(body ? { body: JSON.stringify(body) } : {}),
-  });
-
-  let data: TData | undefined = undefined;
-  const contentType = response.headers.get('content-type') ?? '';
-
-  if (contentType.includes('application/json')) {
-    try {
-      data = (await response.json()) as TData;
-    } catch {
-      data = undefined;
-    }
-  }
-
-  return { response, data };
-};
