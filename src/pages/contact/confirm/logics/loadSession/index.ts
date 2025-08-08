@@ -1,15 +1,15 @@
-import { UserInput } from '@/pages/contact/type';
+type LoadSessionProps = {
+  label: string;
+};
 
-export const loadSessionData = () => {
+export const loadSessionData = <T>({ label }: LoadSessionProps) => {
   try {
-    const input: UserInput = JSON.parse(
-      sessionStorage.getItem('formInput') || '',
-    );
-    return { input };
+    const data: T = JSON.parse(sessionStorage.getItem(label) || '');
+    return { data };
   } catch (error) {
     console.error('パースエラー:', error);
     return {
-      input: undefined,
+      data: undefined,
     };
   }
 };

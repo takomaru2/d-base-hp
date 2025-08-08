@@ -16,8 +16,8 @@ export default function Confirm() {
   const router = useRouter();
 
   useEffect(() => {
-    const { input } = loadSessionData();
-    setUserInput(input);
+    const { data } = loadSessionData<UserInput>({ label: 'formInput' });
+    setUserInput(data);
   }, []);
 
   if (!userInput)
