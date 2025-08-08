@@ -27,26 +27,27 @@ export default function Confirm() {
 
   const onSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
+    const options: CustomFetchType<UserInput> = {
+      resource: '/api/send/route',
+      method: 'POST',
+      body: userInput,
+    };
 
-    try {
-      const response = await fetch('/api/send/route', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(userInput),
-      });
+    const { response, data } = await customFetch<UserInput, SendResponse>(
+      options,
+    );
 
-      const data = await response.json();
-      if (response.ok) {
-        await router.push('/contact/thanks');
-      } else {
-        console.error(data.error);
-        setIsErrorResult(true);
-      }
-    } catch (error) {
-      console.error('通信エラー:', error);
+    if (!response.ok) {
+      console.error('HTTP Error', response.status);
       setIsErrorResult(true);
+    } else if (!data) {
+      console.error('No JSON data returned');
+      setIsErrorResult(true);
+    } else if (data.error) {
+      console.error('API Error:', data.error);
+      setIsErrorResult(true);
+    } else {
+      await router.push('/contact/thanks');
     }
   };
 
@@ -95,3 +96,44 @@ export default function Confirm() {
     />
   );
 }
+
+type CustomFetchType<T> = {
+  resource: string;
+  method: 'GET' | 'POST' | 'PUT' | 'DELETE';
+  body?: T;
+};
+
+type SendResponse = {
+  message?: string;
+  error?: string;
+};
+
+export const customFetch = async <T = unknown, TData = SendResponse>({
+  resource,
+  method = 'POST',
+  body,
+}: CustomFetchType<T>): Promise<{
+  response: Response;
+  data: TData | undefined;
+}> => {
+  const response = await fetch(resource, {
+    method,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    ...(body ? { body: JSON.stringify(body) } : {}),
+  });
+
+  let data: TData | undefined = undefined;
+  const contentType = response.headers.get('content-type') ?? '';
+
+  if (contentType.includes('application/json')) {
+    try {
+      data = (await response.json()) as TData;
+    } catch {
+      data = undefined;
+    }
+  }
+
+  return { response, data };
+};
