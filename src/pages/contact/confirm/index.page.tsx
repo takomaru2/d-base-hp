@@ -35,22 +35,21 @@ export default function Confirm() {
       body: userInput,
     };
 
-    const { response, data } = await customFetch<UserInput, SendResponse>(
-      options,
-    );
+    const result = await customFetch<UserInput, SendResponse>(options);
 
-    if (!response.ok) {
-      console.error('HTTP Error', response.status);
+    if (!result.ok) {
+      console.error(result.error, result.response?.status);
       setIsErrorResult(true);
-    } else if (!data) {
-      console.error('No JSON data returned');
-      setIsErrorResult(true);
-    } else if (data.error) {
-      console.error('API Error:', data.error);
-      setIsErrorResult(true);
-    } else {
-      await router.push('/contact/thanks');
+      return;
     }
+
+    if (result.data?.error) {
+      console.error(result.data.error, result.data.message);
+      setIsErrorResult(true);
+      return;
+    }
+
+    await router.push('/contact/thanks');
   };
 
   const handleBackButton = () => {
