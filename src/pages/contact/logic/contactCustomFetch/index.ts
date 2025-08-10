@@ -11,7 +11,6 @@ export const contactCustomFetch = async (
   if (!result.ok) {
     const status = result.response?.status;
     console.error(result.error, result.response?.status);
-    // setIsErrorResult(true);
 
     switch (status) {
       case 400:

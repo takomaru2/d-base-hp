@@ -28,7 +28,6 @@ export default function Confirm() {
       method: 'POST',
       body: userInput,
     };
-
     const ok = await contactCustomFetch(options);
     if (!ok) return;
 
