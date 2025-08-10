@@ -5,14 +5,12 @@ type ConfirmProps = {
   onSubmit: FormEventHandler<HTMLFormElement>;
   labels: Record<string, string>[];
   backButton: () => void;
-  isErrorResult: boolean;
 };
 
 export const ConfirmLayout: FC<ConfirmProps> = ({
   onSubmit,
   labels,
   backButton,
-  isErrorResult,
 }) => {
   return (
     <form className={styles.container} onSubmit={onSubmit}>
@@ -44,11 +42,6 @@ export const ConfirmLayout: FC<ConfirmProps> = ({
           送信する
         </button>
       </div>
-      {isErrorResult && (
-        <p className={styles.errorMessage}>
-          送信中にエラーが発生しました。再度お試しください。
-        </p>
-      )}
     </form>
   );
 };

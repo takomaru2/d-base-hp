@@ -7,12 +7,11 @@ import {
 import { UserInput } from '@/pages/contact/type';
 import { loadSessionData } from '@/pages/contact/confirm/logics/loadSession';
 import { ConfirmLayout } from '@/pages/contact/confirm/components/ConfirmLayout';
-import { CustomFetchType, SendResponse } from '@/types/customFetch';
-import { customFetch } from '@/logics/customFetch';
+import { CustomFetchType } from '@/types/customFetch';
+import { contactCustomFetch } from '@/pages/contact/logic/contactCustomFetch';
 
 export default function Confirm() {
   const [userInput, setUserInput] = useState<UserInput | undefined>();
-  const [isErrorResult, setIsErrorResult] = useState<boolean>(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -35,19 +34,8 @@ export default function Confirm() {
       body: userInput,
     };
 
-    const result = await customFetch<UserInput, SendResponse>(options);
-
-    if (!result.ok) {
-      console.error(result.error, result.response?.status);
-      setIsErrorResult(true);
-      return;
-    }
-
-    if (result.data?.error) {
-      console.error(result.data.error, result.data.message);
-      setIsErrorResult(true);
-      return;
-    }
+    const ok = await contactCustomFetch(options);
+    if (!ok) return;
 
     await router.push('/contact/thanks');
   };
@@ -93,7 +81,6 @@ export default function Confirm() {
       onSubmit={onSubmit}
       labels={confirmFields}
       backButton={handleBackButton}
-      isErrorResult={isErrorResult}
     />
   );
 }
