@@ -3,10 +3,16 @@ import { UserInput } from '@/pages/contact/type';
 import { CustomFetchType, SendResponse } from '@/types/customFetch';
 import toast from 'react-hot-toast';
 
-export const contactCustomFetch = async (
-  options: CustomFetchType<UserInput>,
-): Promise<boolean> => {
-  const result = await customFetch<UserInput, SendResponse>(options);
+const baseOptions: Omit<CustomFetchType<UserInput>, 'body'> = {
+  resource: '/api/send/route',
+  method: 'POST',
+};
+
+export const postContact = async (body: UserInput): Promise<boolean> => {
+  const result = await customFetch<UserInput, SendResponse>({
+    ...baseOptions,
+    body,
+  });
 
   if (!result.ok) {
     const status = result.response?.status;
