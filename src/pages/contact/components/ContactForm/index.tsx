@@ -32,7 +32,6 @@ type ContactFormProps = {
   ) => void;
   contactForm: UserInput;
   selectedSize: UserInput['size'];
-  handleToggle: (value: string) => void;
 };
 
 export const ContactForm: FC<ContactFormProps> = ({
@@ -42,7 +41,6 @@ export const ContactForm: FC<ContactFormProps> = ({
   createOnBlur,
   contactForm,
   selectedSize,
-  handleToggle,
 }) => {
   return (
     <section className={styles.container}>
@@ -85,11 +83,11 @@ export const ContactForm: FC<ContactFormProps> = ({
           value={contactForm.phone}
         />
         <CheckBoxGroup
+          name={'size'}
           selected={selectedSize}
-          onChange={handleToggle}
+          onChange={onChange}
           title={'お客様のお車のサイズを選択してください'}
           options={sizeOptions}
-          value={selectedSize}
         />
         <RadioGroup
           onChange={onChange}

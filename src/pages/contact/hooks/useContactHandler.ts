@@ -3,6 +3,7 @@ import { ValidResult } from '@/pages/contact/logic/validation';
 import { judgmentErrorState } from '@/pages/contact/logic/judgmentErrorState';
 import { useRouter } from 'next/router';
 import { UserInput } from '@/pages/contact/type';
+import { toggleArrayValue } from '@/logics/arrayToggleValue';
 
 export const useContactHandler = (
   userInput: UserInput,
@@ -19,22 +20,18 @@ export const useContactHandler = (
     >,
   ) => {
     const { name, value } = event.target;
-    setContactForm((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-  const handleToggle = (value: string) => {
-    setContactForm((prev) => {
-      const isSelected = prev.size.includes(value);
-      return {
+    if (name === 'size') {
+      setContactForm((prev) => {
+        const prevArray = prev.size;
+        const newArray = toggleArrayValue<string>(prevArray, value);
+        return { ...prev, size: newArray };
+      });
+    } else {
+      setContactForm((prev) => ({
         ...prev,
-        size: isSelected
-          ? prev.size.filter((item) => item !== value)
-          : [...prev.size, value],
-      };
-    });
+        [name]: value,
+      }));
+    }
   };
 
   const createOnBlur =
@@ -70,5 +67,5 @@ export const useContactHandler = (
     await router.push('/contact/confirm');
   };
 
-  return { onChange, handleToggle, createOnBlur, onSubmit };
+  return { onChange, createOnBlur, onSubmit };
 };

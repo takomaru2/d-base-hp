@@ -1,22 +1,22 @@
 import styles from './index.module.scss';
-import { FC } from 'react';
+import { ChangeEvent, FC } from 'react';
 import { Option } from '@/pages/contact/const/contactOptions';
 import { UserInput } from '@/pages/contact/type';
 
-type SelectedFieldProps = {
+type CheckBoxFieldProps = {
+  name: string;
   selected: UserInput['size'];
-  onChange: (size: string) => void;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   title: string;
   options: Option[];
-  value: string[];
 };
 
-export const CheckBoxGroup: FC<SelectedFieldProps> = ({
+export const CheckBoxGroup: FC<CheckBoxFieldProps> = ({
+  name,
   selected,
   onChange,
   title,
   options,
-  value,
 }) => {
   return (
     <div className={styles.container}>
@@ -24,11 +24,12 @@ export const CheckBoxGroup: FC<SelectedFieldProps> = ({
       {options.map((option) => (
         <label className={styles.checkBoxItem} key={option.value}>
           <input
+            name={name}
             type="checkbox"
             checked={selected.includes(option.value)}
-            onChange={() => onChange(option.value)}
+            onChange={onChange}
             className={styles.checkBox}
-            value={value}
+            value={option.value}
           />
           <span className={styles.label}>{option.label}</span>
         </label>

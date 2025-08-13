@@ -7,7 +7,7 @@ export default function Contact() {
   const [userInput, setUserInput] = useState<UserInput>(initialInput);
   const [errorState, setErrorState] = useState<ErrorState>({});
 
-  const { onChange, handleToggle, createOnBlur, onSubmit } = useContactHandler(
+  const { onChange, createOnBlur, onSubmit } = useContactHandler(
     userInput,
     setUserInput,
     setErrorState,
@@ -19,6 +19,7 @@ export default function Contact() {
       setUserInput(JSON.parse(sessionInput));
     }
   }, []);
+  console.log(userInput);
 
   return (
     <>
@@ -29,7 +30,6 @@ export default function Contact() {
         createOnBlur={createOnBlur}
         contactForm={userInput}
         selectedSize={userInput.size}
-        handleToggle={handleToggle}
       />
     </>
   );
