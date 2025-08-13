@@ -1,4 +1,4 @@
-import { TextField } from '@/pages/contact/comonents/TextField';
+import { TextField } from '@/pages/contact/components/TextField';
 import { requiredValid, ValidResult } from '@/pages/contact/logic/validation';
 import { katakanaValid } from '@/pages/contact/logic/katakanaValid';
 import { emailValid } from '@/pages/contact/logic/emailValid';
@@ -9,13 +9,13 @@ import {
   periodOption,
   sizeOptions,
 } from '@/pages/contact/const/contactOptions';
-import { RadioGroup } from '@/pages/contact/comonents/RadioGroup';
-import { TextAriaFiled } from '@/pages/contact/comonents/TextAriaFiled';
+import { RadioGroup } from '@/pages/contact/components/RadioGroup';
+import { TextAriaFiled } from '@/pages/contact/components/TextAriaFiled';
 import React, { FC, FormEventHandler } from 'react';
 import { ErrorState, UserInput } from '@/pages/contact/type';
 import styles from './index.module.scss';
 import { ConfirmButton } from '../ConfirmButton';
-import { SelectedGroup } from '@/pages/contact/comonents/SelectedGroup';
+import { SelectedGroup } from '@/pages/contact/components/SelectedGroup';
 
 type ContactFormProps = {
   onSubmit: FormEventHandler<HTMLFormElement>;

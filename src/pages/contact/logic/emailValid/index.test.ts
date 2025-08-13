@@ -13,7 +13,7 @@ describe('emailValid', () => {
   });
 
   it('@を含まない場合はエラー', () => {
-    expect(emailValid('testexample.com')).toEqual({
+    expect(emailValid('test-example.com')).toEqual({
       ok: false,
       message: '英数字のみで入力して必ず@を使ってください',
     });
