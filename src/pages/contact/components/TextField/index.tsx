@@ -28,7 +28,7 @@ export const TextField: FC<InputFieldProps> = ({
         </label>
         <span className={styles.required}>必須</span>
       </div>
-      {errorState && <p style={{ color: 'red' }}>{errorState}</p>}
+      {errorState && <p className={styles.errorMessage}>{errorState}</p>}
       <input
         type="text"
         name={name}

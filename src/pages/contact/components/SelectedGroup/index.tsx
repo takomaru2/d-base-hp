@@ -18,7 +18,7 @@ export const SelectedGroup: FC<CheckBoxFieldProps> = ({
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h4>{title}</h4>
+        <p className={styles.title}>{title}</p>
         <span className={styles.required}>必須</span>
       </div>
       <select

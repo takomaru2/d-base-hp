@@ -17,7 +17,7 @@ export const RadioGroup: FC<CheckBoxFieldProps> = ({
 }) => {
   return (
     <div className={styles.container}>
-      <h4>{title}</h4>
+      <p className={styles.title}>{title}</p>
       <span className={styles.required}>必須</span>
       {option.map((option) => (
         <label className={styles.checkBoxItem} key={option.value}>

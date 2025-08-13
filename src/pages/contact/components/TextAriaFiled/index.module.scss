@@ -12,6 +12,10 @@
   }
 }
 
+.title {
+  font-weight: bold;
+}
+
 .textArea {
   width: 100%;
   max-width: linear-clamp(200, 500);
@@ -19,4 +23,8 @@
   padding: 10px;
   resize: vertical;
   background-color: $colorWhite;
+}
+
+.errorMessage {
+  color: $answerColor;
 }

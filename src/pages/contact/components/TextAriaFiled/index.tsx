@@ -20,9 +20,9 @@ export const TextAriaFiled: FC<TextAriaFiledProps> = ({
   return (
     <>
       <div className={styles.container}>
-        <h4>{title}</h4>
+        <p className={styles.title}>{title}</p>
         {errorState.postContent && (
-          <p style={{ color: 'red' }}>{errorState.postContent}</p>
+          <p className={styles.errorMessage}>{errorState.postContent}</p>
         )}
         <textarea
           name="postContent"
