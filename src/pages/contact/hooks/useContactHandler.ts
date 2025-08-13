@@ -6,9 +6,7 @@ import { UserInput } from '@/pages/contact/type';
 
 export const useContactHandler = (
   userInput: UserInput,
-  // selectedSize: string[],
   setContactForm: React.Dispatch<React.SetStateAction<UserInput>>,
-  // setSelectedSize: React.Dispatch<React.SetStateAction<string[]>>,
   setErrorState: React.Dispatch<
     React.SetStateAction<Partial<Record<keyof UserInput, string>>>
   >,
@@ -64,13 +62,11 @@ export const useContactHandler = (
 
     const newErrors = judgmentErrorState(userInput);
 
-    // エラーがあるなら送信せず、エラーをセット
     if (Object.keys(newErrors).length > 0) {
       setErrorState(newErrors);
       return;
     }
     sessionStorage.setItem('formInput', JSON.stringify(userInput));
-    // sessionStorage.setItem('selected', JSON.stringify(selectedSize));
     await router.push('/contact/confirm');
   };
 

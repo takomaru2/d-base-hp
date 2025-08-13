@@ -23,7 +23,7 @@ describe('phoneValid', () => {
   });
 
   it('半角数字でも20文字以上はエラー', () => {
-    const longPhone = '01234567890123456789'; // 20桁
+    const longPhone = '01234567890123456789';
     expect(phoneValid(longPhone)).toEqual({
       ok: false,
       message: '入力されている数字が多いです。',
