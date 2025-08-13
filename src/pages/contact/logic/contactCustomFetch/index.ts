@@ -1,17 +1,13 @@
 import { customFetch } from '@/logics/customFetch';
 import { UserInput } from '@/pages/contact/type';
-import { CustomFetchType, SendResponse } from '@/types/customFetch';
+import { SendResponse } from '@/types/customFetch';
 import toast from 'react-hot-toast';
 
-const baseOptions: Omit<CustomFetchType<UserInput>, 'body'> = {
-  resource: '/api/send/route',
-  method: 'POST',
-};
-
-export const postContact = async (body: UserInput): Promise<boolean> => {
+export const postContact = async (userInput: UserInput): Promise<boolean> => {
   const result = await customFetch<UserInput, SendResponse>({
-    ...baseOptions,
-    body,
+    resource: '/api/send/route',
+    method: 'POST',
+    body: userInput,
   });
 
   if (!result.ok) {
@@ -28,7 +24,6 @@ export const postContact = async (body: UserInput): Promise<boolean> => {
         toast.error('リクエストが多すぎます。しばらくしてからお試しください。');
         break;
       }
-
       default: {
         toast.error(
           'サーバーでエラーが発生しました。時間をおいて再度お試しください。',

@@ -6,7 +6,6 @@ import { ConfirmLayout } from '@/pages/contact/confirm/components/ConfirmLayout'
 import { postContact } from '@/pages/contact/logic/contactCustomFetch';
 import { formatConfirmField } from '@/pages/contact/confirm/logics/formatConfirmField';
 import { createLoadingMessage } from '@/pages/contact/confirm/logics/createLoadingMessage';
-import toast from 'react-hot-toast';
 
 export default function Confirm() {
   const [userInput, setUserInput] = useState<UserInput | undefined>();
@@ -26,7 +25,6 @@ export default function Confirm() {
 
     const ok = await postContact(userInput);
     if (!ok) {
-      toast.error('通信に失敗しました。再度お試しください。');
       return;
     }
     await router.push('/contact/thanks');
