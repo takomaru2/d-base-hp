@@ -8,6 +8,7 @@ type TextAriaFiledProps = {
   onBlur: React.FocusEventHandler<HTMLTextAreaElement>;
   value: string;
   title: string;
+  name: string;
 };
 
 export const TextAriaFiled: FC<TextAriaFiledProps> = ({
@@ -16,6 +17,7 @@ export const TextAriaFiled: FC<TextAriaFiledProps> = ({
   onBlur,
   value,
   title,
+  name,
 }) => {
   return (
     <>
@@ -25,7 +27,7 @@ export const TextAriaFiled: FC<TextAriaFiledProps> = ({
           <p className={styles.errorMessage}>{errorState.postContent}</p>
         )}
         <textarea
-          name="postContent"
+          name={name}
           className={styles.textArea}
           onChange={onChange}
           onBlur={onBlur}

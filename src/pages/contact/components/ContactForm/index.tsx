@@ -101,6 +101,7 @@ export const ContactForm: FC<ContactFormProps> = ({
           title={'ご希望の液剤を選択してください'}
           options={materialOptions}
           value={contactForm.material}
+          name={'material'}
         />
         <TextAriaFiled
           onChange={handleChange}
@@ -108,6 +109,7 @@ export const ContactForm: FC<ContactFormProps> = ({
           errorState={errorState}
           value={contactForm.postContent}
           title={'お問い合わせ内容を入力してください'}
+          name={'postContent'}
         />
         <ConfirmButton />
       </form>

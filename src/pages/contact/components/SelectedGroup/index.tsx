@@ -7,6 +7,7 @@ type CheckBoxFieldProps = {
   title: string;
   options: Option[];
   value: string;
+  name: string;
 };
 
 export const SelectedGroup: FC<CheckBoxFieldProps> = ({
@@ -14,6 +15,7 @@ export const SelectedGroup: FC<CheckBoxFieldProps> = ({
   title,
   options,
   value,
+  name,
 }) => {
   return (
     <div className={styles.container}>
@@ -22,7 +24,7 @@ export const SelectedGroup: FC<CheckBoxFieldProps> = ({
         <span className={styles.required}>必須</span>
       </div>
       <select
-        name="material"
+        name={name}
         className={styles.items}
         onChange={onChange}
         value={value}
