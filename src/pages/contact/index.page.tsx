@@ -7,7 +7,7 @@ export default function Contact() {
   const [userInput, setUserInput] = useState<UserInput>(initialInput);
   const [errorState, setErrorState] = useState<ErrorState>({});
 
-  const { onChange, createOnBlur, onSubmit } = useContactHandler(
+  const { handleChange, createOnBlur, handleSubmit } = useContactHandler(
     userInput,
     setUserInput,
     setErrorState,
@@ -24,9 +24,9 @@ export default function Contact() {
   return (
     <>
       <ContactForm
-        onSubmit={onSubmit}
+        handleSubmit={handleSubmit}
         errorState={errorState}
-        onChange={onChange}
+        handleChange={handleChange}
         createOnBlur={createOnBlur}
         contactForm={userInput}
         selectedSize={userInput.size}

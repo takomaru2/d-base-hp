@@ -14,7 +14,7 @@ export const useContactHandler = (
 ) => {
   const router = useRouter();
 
-  const onChange = (
+  const handleChange = (
     event: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
     >,
@@ -54,7 +54,7 @@ export const useContactHandler = (
       });
     };
 
-  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const newErrors = judgmentErrorState(userInput);
@@ -67,5 +67,9 @@ export const useContactHandler = (
     await router.push('/contact/confirm');
   };
 
-  return { onChange, createOnBlur, onSubmit };
+  return {
+    handleChange,
+    createOnBlur,
+    handleSubmit,
+  };
 };

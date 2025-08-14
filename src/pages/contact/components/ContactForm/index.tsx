@@ -18,9 +18,9 @@ import { ConfirmButton } from '../ConfirmButton';
 import { SelectedGroup } from '@/pages/contact/components/SelectedGroup';
 
 type ContactFormProps = {
-  onSubmit: FormEventHandler<HTMLFormElement>;
+  handleSubmit: FormEventHandler<HTMLFormElement>;
   errorState: ErrorState;
-  onChange: (
+  handleChange: (
     event: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
     >,
@@ -35,9 +35,9 @@ type ContactFormProps = {
 };
 
 export const ContactForm: FC<ContactFormProps> = ({
-  onSubmit,
+  handleSubmit,
   errorState,
-  onChange,
+  handleChange,
   createOnBlur,
   contactForm,
   selectedSize,
@@ -45,12 +45,12 @@ export const ContactForm: FC<ContactFormProps> = ({
   return (
     <section className={styles.container}>
       <h2 className={styles.title}>お問い合わせフォーム</h2>
-      <form className={styles.form} onSubmit={onSubmit}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <TextField
           fieldName={'お名前'}
           name={'name'}
           errorState={errorState.name}
-          onChange={onChange}
+          onChange={handleChange}
           onBlur={createOnBlur(requiredValid)}
           placeholder={'山田　太郎'}
           value={contactForm.name}
@@ -59,7 +59,7 @@ export const ContactForm: FC<ContactFormProps> = ({
           fieldName={'カタカナ'}
           name={'katakana'}
           errorState={errorState.katakana}
-          onChange={onChange}
+          onChange={handleChange}
           onBlur={createOnBlur(katakanaValid)}
           placeholder={'ヤマダ　タロウ'}
           value={contactForm.katakana}
@@ -68,7 +68,7 @@ export const ContactForm: FC<ContactFormProps> = ({
           fieldName={'メールアドレス'}
           name={'mail'}
           errorState={errorState.mail}
-          onChange={onChange}
+          onChange={handleChange}
           onBlur={createOnBlur(emailValid)}
           placeholder={'react@example.com'}
           value={contactForm.mail}
@@ -77,7 +77,7 @@ export const ContactForm: FC<ContactFormProps> = ({
           fieldName={'電話番号'}
           name={'phone'}
           errorState={errorState.phone}
-          onChange={onChange}
+          onChange={handleChange}
           onBlur={createOnBlur(phoneValid)}
           placeholder={'08012345678'}
           value={contactForm.phone}
@@ -85,24 +85,24 @@ export const ContactForm: FC<ContactFormProps> = ({
         <CheckBoxGroup
           name={'size'}
           selected={selectedSize}
-          onChange={onChange}
+          onChange={handleChange}
           title={'お客様のお車のサイズを選択してください'}
           options={sizeOptions}
         />
         <RadioGroup
-          onChange={onChange}
+          onChange={handleChange}
           title={'車の経過年数を選択してください'}
           option={periodOption}
           value={contactForm.period}
         />
         <SelectedGroup
-          onChange={onChange}
+          onChange={handleChange}
           title={'ご希望の液剤を選択してください'}
           options={materialOptions}
           value={contactForm.material}
         />
         <TextAriaFiled
-          onChange={onChange}
+          onChange={handleChange}
           onBlur={createOnBlur(requiredValid)}
           errorState={errorState}
           value={contactForm.postContent}
