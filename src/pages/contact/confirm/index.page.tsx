@@ -6,9 +6,12 @@ import { ConfirmLayout } from '@/pages/contact/confirm/components/ConfirmLayout'
 import { postContact } from '../logic/postContact';
 import { formatConfirmField } from '@/pages/contact/confirm/logics/formatConfirmField';
 import { createLoadingMessage } from '@/pages/contact/confirm/logics/createLoadingMessage';
+import { useIsBoolean } from '@/hooks/useBoolean';
 
 export default function Confirm() {
   const [userInput, setUserInput] = useState<UserInput | undefined>();
+  const [isSubmitting, { on: submitting, off: resetSubmitting }] =
+    useIsBoolean();
   const router = useRouter();
 
   useEffect(() => {
@@ -22,9 +25,12 @@ export default function Confirm() {
 
   const onSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
+    if (isSubmitting) return;
+    submitting();
 
     const ok = await postContact(userInput);
     if (!ok) {
+      resetSubmitting();
       return;
     }
     sessionStorage.removeItem('formInput');
@@ -40,6 +46,7 @@ export default function Confirm() {
       onSubmit={onSubmit}
       labels={formatConfirmField(userInput)}
       backButton={handleBackButton}
+      disabled={isSubmitting}
     />
   );
 }
