@@ -19,7 +19,6 @@ export default function Contact() {
       setUserInput(JSON.parse(sessionInput));
     }
   }, []);
-  console.log(userInput);
 
   return (
     <>
