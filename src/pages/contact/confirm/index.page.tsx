@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { UserInput } from '@/pages/contact/type';
 import { loadSessionData } from '@/pages/contact/confirm/logics/loadSession';
 import { ConfirmLayout } from '@/pages/contact/confirm/components/ConfirmLayout';
-import { postContact } from '@/pages/contact/logic/contactCustomFetch';
+import { postContact } from '../logic/postContact';
 import { formatConfirmField } from '@/pages/contact/confirm/logics/formatConfirmField';
 import { createLoadingMessage } from '@/pages/contact/confirm/logics/createLoadingMessage';
 
