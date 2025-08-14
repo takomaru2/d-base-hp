@@ -1,7 +1,7 @@
 import { UserInput } from '@/pages/contact/type';
 import {
   materialOptions,
-  periodOption,
+  periodOptions,
 } from '@/pages/contact/const/contactOptions';
 
 export const formatConfirmField = (userInput: UserInput) => {
@@ -20,7 +20,7 @@ export const formatConfirmField = (userInput: UserInput) => {
       id: 'period',
       label: '車の年数',
       value:
-        periodOption.find((option) => option.value === userInput.period)
+        periodOptions.find((option) => option.value === userInput.period)
           ?.label ?? '未選択',
     },
     {

@@ -6,7 +6,7 @@ import { phoneValid } from '@/pages/contact/logic/phoneValid';
 import { CheckBoxGroup } from '../CheckBoxGroup';
 import {
   materialOptions,
-  periodOption,
+  periodOptions,
   sizeOptions,
 } from '@/pages/contact/const/contactOptions';
 import { RadioGroup } from '@/pages/contact/components/RadioGroup';
@@ -92,7 +92,7 @@ export const ContactForm: FC<ContactFormProps> = ({
         <RadioGroup
           onChange={handleChange}
           title={'車の経過年数を選択してください'}
-          option={periodOption}
+          option={periodOptions}
           value={contactForm.period}
           name={'period'}
         />

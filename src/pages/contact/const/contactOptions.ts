@@ -3,7 +3,7 @@ export type Option = {
   label: string;
 };
 
-export const periodOption: Option[] = [
+export const periodOptions: Option[] = [
   {
     value: '1',
     label: '1年未満',

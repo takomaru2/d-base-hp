@@ -2,7 +2,7 @@ import { Resend } from 'resend';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import {
   materialOptions,
-  periodOption,
+  periodOptions,
 } from '@/pages/contact/const/contactOptions';
 import { sanitizeAndEscape } from '@/pages/contact/logic/sanitizeAndEscape';
 
@@ -19,7 +19,7 @@ export default async function handler(
   const { name, katakana, mail, phone, period, material, postContent, size } =
     req.body;
 
-  const periodList = periodOption.map((option) => option.label);
+  const periodList = periodOptions.map((option) => option.label);
   const materialList = materialOptions.map((option) => option.label);
 
   const periodIndex = Number(period) - 1;
