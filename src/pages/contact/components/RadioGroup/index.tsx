@@ -7,6 +7,7 @@ type CheckBoxFieldProps = {
   title: string;
   option: Option[];
   value: string;
+  name: string;
 };
 
 export const RadioGroup: FC<CheckBoxFieldProps> = ({
@@ -14,6 +15,7 @@ export const RadioGroup: FC<CheckBoxFieldProps> = ({
   title,
   option,
   value,
+  name,
 }) => {
   return (
     <div className={styles.container}>
@@ -22,8 +24,8 @@ export const RadioGroup: FC<CheckBoxFieldProps> = ({
       {option.map((option) => (
         <label className={styles.checkBoxItem} key={option.value}>
           <input
-            type="radio"
-            name="period"
+            type={'radio'}
+            name={name}
             checked={option.value === value}
             value={option.value}
             className={styles.checkBox}

@@ -94,6 +94,7 @@ export const ContactForm: FC<ContactFormProps> = ({
           title={'車の経過年数を選択してください'}
           option={periodOption}
           value={contactForm.period}
+          name={'period'}
         />
         <SelectedGroup
           onChange={handleChange}
