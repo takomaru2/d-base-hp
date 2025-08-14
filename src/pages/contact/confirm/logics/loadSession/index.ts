@@ -1,13 +1,22 @@
+import toast from 'react-hot-toast';
+
 type LoadSessionProps = {
   label: string;
 };
 
-export const loadSessionData = <T>({ label }: LoadSessionProps) => {
+type Result<T> = { data: T } | { data: undefined };
+
+export const loadSessionData = <T>({ label }: LoadSessionProps): Result<T> => {
   try {
-    const data: T = JSON.parse(sessionStorage.getItem(label) || '');
+    const stored = sessionStorage.getItem(label);
+    if (!stored) {
+      toast.error('通信に失敗しました。やり直してください');
+      return { data: undefined };
+    }
+    const data: T = JSON.parse(stored);
     return { data };
-  } catch (error) {
-    console.error('パースエラー:', error);
+  } catch {
+    toast.error('通信に失敗しました。やり直してください');
     return {
       data: undefined,
     };
