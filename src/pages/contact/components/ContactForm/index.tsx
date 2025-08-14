@@ -84,7 +84,7 @@ export const ContactForm: FC<ContactFormProps> = ({
         />
         <CheckBoxGroup
           name={'size'}
-          selected={selectedSize}
+          checked={selectedSize}
           onChange={handleChange}
           title={'お客様のお車のサイズを選択してください'}
           options={sizeOptions}
