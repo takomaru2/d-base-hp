@@ -4,6 +4,7 @@ import {
   materialOptions,
   periodOption,
 } from '@/pages/contact/const/contactOptions';
+import { sanitizeAndEscape } from '@/pages/contact/logic/sanitizeAndEscape';
 
 const resend = new Resend(process.env.RESEND_API_KEY!);
 
@@ -38,10 +39,20 @@ export default async function handler(
   ) {
     return res.status(400).json({ error: 'リクエストデータが不正です' });
   }
-  const selected = size.length === 0 ? '未選択' : size.join(', ');
 
-  const periodItem = periodList[periodIndex];
-  const materialItem = materialList[materialIndex];
+  const safeName = sanitizeAndEscape(name);
+  const safeKatakana = sanitizeAndEscape(katakana);
+  const safeMail = sanitizeAndEscape(mail);
+  const safePhone = sanitizeAndEscape(phone);
+  const safePostContent = sanitizeAndEscape(postContent);
+
+  const safeSelected =
+    size.length === 0
+      ? '未選択'
+      : size.map((v: string) => sanitizeAndEscape(v)).join(', ');
+
+  const safePeriod = sanitizeAndEscape(periodList[periodIndex]);
+  const safeMaterial = sanitizeAndEscape(materialList[materialIndex]);
 
   try {
     const result = await resend.emails.send({
@@ -49,14 +60,14 @@ export default async function handler(
       to: 'gakki.nkk.0331@gmail.com',
       subject: `お問い合わせ`,
       html: `
-<p>お名前: ${name}</p>
-<p>フリガナ: ${katakana}</p>
-<p>メール: ${mail}</p>
-<p>電話番号:${phone}</p>
-<p>車のサイズ:${selected}</p> 
-<p>車の年数: ${periodItem}</p>
-<p>希望液剤: ${materialItem}</p>
-<p>内容: ${postContent}</p>`,
+<p>お名前: ${safeName}</p>
+<p>フリガナ: ${safeKatakana}</p>
+<p>メール: ${safeMail}</p>
+<p>電話番号:${safePhone}</p>
+<p>車のサイズ:${safeSelected}</p> 
+<p>車の年数: ${safePeriod}</p>
+<p>希望液剤: ${safeMaterial}</p>
+<p>内容: ${safePostContent}</p>`,
     });
 
     if (result.error) {
