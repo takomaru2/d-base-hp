@@ -27,6 +27,7 @@ export default function Confirm() {
     if (!ok) {
       return;
     }
+    sessionStorage.removeItem('formInput');
     await router.push('/contact/thanks');
   };
 
