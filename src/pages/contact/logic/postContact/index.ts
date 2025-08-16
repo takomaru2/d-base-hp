@@ -12,7 +12,6 @@ export const postContact = async (userInput: UserInput): Promise<boolean> => {
 
   if (!result.ok) {
     const status = result.response?.status;
-    console.error(result.error, result.response?.status);
 
     switch (status) {
       case 400:
@@ -35,7 +34,6 @@ export const postContact = async (userInput: UserInput): Promise<boolean> => {
   }
 
   if (result.data?.error) {
-    console.error(result.data.error, result.data.message);
     toast.error('入力に問題がありました。時間をおいて再度お試しください');
     return false;
   }
