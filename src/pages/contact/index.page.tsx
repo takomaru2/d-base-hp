@@ -18,15 +18,13 @@ export default function Contact() {
   }, []);
 
   return (
-    <>
-      <ContactForm
-        handleSubmit={handleSubmit}
-        errorState={errorState}
-        handleChange={handleChange}
-        createOnBlur={createOnBlur}
-        contactForm={userInput}
-        selectedSize={userInput.size}
-      />
-    </>
+    <ContactForm
+      handleSubmit={handleSubmit}
+      errorState={errorState}
+      handleChange={handleChange}
+      createOnBlur={createOnBlur}
+      contactForm={userInput}
+      selectedSize={userInput.size}
+    />
   );
 }
