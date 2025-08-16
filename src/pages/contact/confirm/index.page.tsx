@@ -10,8 +10,7 @@ import { useIsBoolean } from '@/hooks/useBoolean';
 
 export default function Confirm() {
   const [userInput, setUserInput] = useState<UserInput | undefined>();
-  const [isSubmitting, { on: submitting, off: resetSubmitting }] =
-    useIsBoolean();
+  const [isSubmitting, setIsSubmitting] = useIsBoolean();
   const router = useRouter();
 
   useEffect(() => {
@@ -26,11 +25,11 @@ export default function Confirm() {
   const onSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
     event.preventDefault();
     if (isSubmitting) return;
-    submitting();
+    setIsSubmitting.on();
 
     const ok = await postContact(userInput);
     if (!ok) {
-      resetSubmitting();
+      setIsSubmitting.off();
       return;
     }
     sessionStorage.removeItem('formInput');
@@ -46,7 +45,7 @@ export default function Confirm() {
       onSubmit={onSubmit}
       labels={formatConfirmField(userInput)}
       backButton={handleBackButton}
-      disabled={isSubmitting}
+      isSubmitting={isSubmitting}
     />
   );
 }

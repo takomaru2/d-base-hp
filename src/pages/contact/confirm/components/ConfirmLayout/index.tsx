@@ -5,14 +5,14 @@ type ConfirmProps = {
   onSubmit: FormEventHandler<HTMLFormElement>;
   labels: Record<string, string>[];
   backButton: () => void;
-  disabled: boolean;
+  isSubmitting: boolean;
 };
 
 export const ConfirmLayout: FC<ConfirmProps> = ({
   onSubmit,
   labels,
   backButton,
-  disabled,
+  isSubmitting,
 }) => {
   return (
     <form className={styles.container} onSubmit={onSubmit}>
@@ -41,11 +41,15 @@ export const ConfirmLayout: FC<ConfirmProps> = ({
           type={'button'}
           onClick={backButton}
           className={styles.button}
-          disabled={disabled}
+          disabled={isSubmitting}
         >
           戻る
         </button>
-        <button type={'submit'} className={styles.button} disabled={disabled}>
+        <button
+          type={'submit'}
+          className={styles.button}
+          disabled={isSubmitting}
+        >
           送信する
         </button>
       </div>
