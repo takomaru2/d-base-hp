@@ -1,75 +1,103 @@
-import React, { FormEvent } from 'react';
+import React, { FormEvent, useCallback, useState } from 'react';
 import { ValidResult } from '@/pages/contact/logic/validation';
 import { judgmentErrorState } from '@/pages/contact/logic/judgmentErrorState';
 import { useRouter } from 'next/router';
-import { UserInput } from '@/pages/contact/type';
+import { ErrorState, initialInput, UserInput } from '@/pages/contact/type';
 import { toggleArrayValue } from '@/logics/arrayToggleValue';
 
-export const useContactHandler = (
-  userInput: UserInput,
-  setContactForm: React.Dispatch<React.SetStateAction<UserInput>>,
-  setErrorState: React.Dispatch<
-    React.SetStateAction<Partial<Record<keyof UserInput, string>>>
-  >,
-) => {
+type Actions = {
+  handleChange: (
+    event:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLTextAreaElement>
+      | React.ChangeEvent<HTMLSelectElement>,
+  ) => void;
+  createOnBlur: (
+    validate: (value: string) => ValidResult,
+  ) => (
+    event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => void;
+  handleSubmit: (e: FormEvent<HTMLFormElement>) => Promise<void>;
+};
+
+type UseContactHandlerReturn = {
+  userInput: UserInput;
+  setUserInput: React.Dispatch<React.SetStateAction<UserInput>>;
+  errorState: ErrorState;
+  action: Actions;
+};
+
+export const useContactHandler = (): UseContactHandlerReturn => {
+  const [userInput, setUserInput] = useState<UserInput>(initialInput);
+  const [errorState, setErrorState] = useState<ErrorState>({});
   const router = useRouter();
 
-  const handleChange = (
-    event: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >,
-  ) => {
-    const { name, value } = event.target;
-    if (name === 'size') {
-      setContactForm((prev) => {
-        const prevArray = prev.size;
-        const newArray = toggleArrayValue<string>(prevArray, value);
-        return { ...prev, size: newArray };
-      });
-    } else {
-      setContactForm((prev) => ({
-        ...prev,
-        [name]: value,
-      }));
-    }
-  };
+  const setField = useCallback((name: keyof UserInput, value: string) => {
+    setUserInput((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  }, []);
 
-  const createOnBlur =
-    (validate: (value: string) => ValidResult) =>
-    (event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      event.preventDefault();
-      const fieldName = event.target.name as keyof UserInput;
-      const value =
-        typeof userInput[fieldName] === 'string' ? userInput[fieldName] : '';
+  const toggleSize = useCallback((value: string) => {
+    setUserInput((prev) => ({
+      ...prev,
+      size: toggleArrayValue<string>(prev.size, value),
+    }));
+  }, []);
 
-      const validateResult = validate(value);
+  const setFieldError = useCallback(
+    (name: keyof UserInput, validResult: ValidResult) => {
       setErrorState((prev) => {
         const newErrorState = { ...prev };
-        if (validateResult.ok) {
-          delete newErrorState[fieldName];
+        if (validResult.ok) {
+          delete newErrorState[name];
         } else {
-          newErrorState[fieldName] = validateResult.message;
+          newErrorState[name] = validResult.message;
         }
         return newErrorState;
       });
-    };
+    },
+    [],
+  );
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const action = {
+    handleChange: (
+      event: React.ChangeEvent<
+        HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+      >,
+    ) => {
+      const { name, value } = event.target;
+      if (name === 'size') {
+        toggleSize(value);
+      } else {
+        setField(name as keyof UserInput, value);
+      }
+    },
+    createOnBlur:
+      (validate: (value: string) => ValidResult) =>
+      (event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        event.preventDefault();
+        const fieldName = event.target.name as keyof UserInput;
+        const value =
+          typeof userInput[fieldName] === 'string' ? userInput[fieldName] : '';
 
-    const newErrors = judgmentErrorState(userInput);
+        const validateResult = validate(value);
+        return setFieldError(fieldName, validateResult);
+      },
+    handleSubmit: async (event: FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
 
-    if (Object.keys(newErrors).length > 0) {
-      setErrorState(newErrors);
-      return;
-    }
-    sessionStorage.setItem('formInput', JSON.stringify(userInput));
-    await router.push('/contact/confirm');
+      const newErrors = judgmentErrorState(userInput);
+
+      if (Object.keys(newErrors).length > 0) {
+        setErrorState(newErrors);
+        return;
+      }
+      sessionStorage.setItem('formInput', JSON.stringify(userInput));
+      await router.push('/contact/confirm');
+    },
   };
 
-  return {
-    handleChange,
-    createOnBlur,
-    handleSubmit,
-  };
+  return { userInput, setUserInput, errorState, action };
 };

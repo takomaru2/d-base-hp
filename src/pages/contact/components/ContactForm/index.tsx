@@ -21,9 +21,10 @@ type ContactFormProps = {
   handleSubmit: FormEventHandler<HTMLFormElement>;
   errorState: ErrorState;
   handleChange: (
-    event: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >,
+    event:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLTextAreaElement>
+      | React.ChangeEvent<HTMLSelectElement>,
   ) => void;
   createOnBlur: (
     validate: (value: string) => ValidResult,

@@ -1,17 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useContactHandler } from '@/pages/contact/hooks/useContactHandler';
-import { ErrorState, initialInput, UserInput } from '@/pages/contact/type';
 import { ContactForm } from '@/pages/contact/components/ContactForm';
 
 export default function Contact() {
-  const [userInput, setUserInput] = useState<UserInput>(initialInput);
-  const [errorState, setErrorState] = useState<ErrorState>({});
-
-  const { handleChange, createOnBlur, handleSubmit } = useContactHandler(
+  const {
     userInput,
     setUserInput,
-    setErrorState,
-  );
+    errorState,
+    action: { handleChange, createOnBlur, handleSubmit },
+  } = useContactHandler();
 
   useEffect(() => {
     const sessionInput = sessionStorage.getItem('formInput');
