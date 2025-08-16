@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useContactHandler } from '@/pages/contact/hooks/useContactHandler';
 import { ContactForm } from '@/pages/contact/components/ContactForm';
+import { loadSessionData } from '@/pages/contact/confirm/logics/loadSession';
+import { UserInput } from '@/pages/contact/type';
 
 export default function Contact() {
   const {
@@ -11,9 +13,9 @@ export default function Contact() {
   } = useContactHandler();
 
   useEffect(() => {
-    const sessionInput = sessionStorage.getItem('formInput');
-    if (sessionInput) {
-      setUserInput(JSON.parse(sessionInput));
+    const result = loadSessionData<UserInput>({ label: 'formInput' });
+    if (result.data !== undefined) {
+      setUserInput(result.data);
     }
   }, []);
 
