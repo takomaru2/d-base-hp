@@ -16,9 +16,10 @@
     "allche": "pnpm run lint:fix && pnpm run lint:css:fix-order && pnpm run format && pnpm run type-check",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "commit": "pnpm lint-staged && git-cz",
+    "spell-check": "cspell \"src/pages/contact/**/*.{js,jsx,ts,tsx}\"",
+    "commit": "pnpm lint-staged && git-cz && pnpm spell-check",
     "test": "jest",
-    "check-all": "pnpm lint && pnpm lint:css && pnpm type-check"
+    "check-all": "pnpm lint && pnpm lint:css && pnpm type-check && pnpm spell-check"
   },
   "dependencies": {
     "@types/html-escape": "^2.0.2",
@@ -50,6 +51,7 @@
     "@types/react-dom": "^18",
     "@types/sanitize-html": "^2.16.0",
     "@typescript-eslint/parser": "^8.13.0",
+    "cspell": "^9.2.0",
     "eslint": "^8.57.1",
     "eslint-config-next": "15.0.2",
     "eslint-config-prettier": "^9.1.0",
