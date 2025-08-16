@@ -2,11 +2,11 @@ import React, { FormEventHandler, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { UserInput } from '@/pages/contact/type';
 import { loadSessionData } from '@/pages/contact/confirm/logics/loadSession';
-import { ConfirmLayout } from '@/pages/contact/confirm/components/ConfirmLayout';
 import { postContact } from '../logic/postContact';
 import { formatConfirmField } from '@/pages/contact/confirm/logics/formatConfirmField';
 import { useIsBoolean } from '@/hooks/useBoolean';
 import { createLoadingMessage } from './components/CreateLoadingMessage';
+import { ConfirmPresentation } from './components/ConfirmPresentation';
 
 export default function Confirm() {
   const [userInput, setUserInput] = useState<UserInput | undefined>();
@@ -41,7 +41,7 @@ export default function Confirm() {
   };
 
   return (
-    <ConfirmLayout
+    <ConfirmPresentation
       onSubmit={onSubmit}
       labels={formatConfirmField(userInput)}
       backButton={handleBackButton}

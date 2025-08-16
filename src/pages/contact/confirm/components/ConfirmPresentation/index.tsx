@@ -8,7 +8,7 @@ type ConfirmProps = {
   isSubmitting: boolean;
 };
 
-export const ConfirmLayout: FC<ConfirmProps> = ({
+export const ConfirmPresentation: FC<ConfirmProps> = ({
   onSubmit,
   labels,
   backButton,
