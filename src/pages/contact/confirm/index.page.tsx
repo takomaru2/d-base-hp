@@ -5,8 +5,8 @@ import { loadSessionData } from '@/pages/contact/confirm/logics/loadSession';
 import { ConfirmLayout } from '@/pages/contact/confirm/components/ConfirmLayout';
 import { postContact } from '../logic/postContact';
 import { formatConfirmField } from '@/pages/contact/confirm/logics/formatConfirmField';
-import { createLoadingMessage } from '@/pages/contact/confirm/logics/createLoadingMessage';
 import { useIsBoolean } from '@/hooks/useBoolean';
+import { createLoadingMessage } from './components/CreateLoadingMessage';
 
 export default function Confirm() {
   const [userInput, setUserInput] = useState<UserInput | undefined>();
