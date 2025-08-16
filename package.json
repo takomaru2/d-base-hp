@@ -17,7 +17,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "spell-check": "cspell \"src/pages/contact/**/*.{js,jsx,ts,tsx}\"",
-    "commit": "pnpm lint-staged && git-cz && pnpm spell-check",
+    "commit": "pnpm spell-check && pnpm lint-staged && git-cz",
     "test": "jest",
     "check-all": "pnpm lint && pnpm lint:css && pnpm type-check && pnpm spell-check"
   },
