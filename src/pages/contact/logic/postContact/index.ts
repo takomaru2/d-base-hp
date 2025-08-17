@@ -2,6 +2,7 @@ import { customFetch } from '@/logics/customFetch';
 import { UserInput } from '@/pages/contact/type';
 import { SendResponse } from '@/types/customFetch';
 import toast from 'react-hot-toast';
+import { TOAST_MESSAGES } from '@/pages/contact/const/message';
 
 export const postContact = async (userInput: UserInput): Promise<boolean> => {
   const result = await customFetch<UserInput, SendResponse>({
@@ -16,17 +17,15 @@ export const postContact = async (userInput: UserInput): Promise<boolean> => {
     switch (status) {
       case 400:
       case 422: {
-        toast.error('通信に失敗しました。もう一度お試しください。');
+        toast.error(TOAST_MESSAGES.NETWORK_ERROR);
         break;
       }
       case 429: {
-        toast.error('リクエストが多すぎます。しばらくしてからお試しください。');
+        toast.error(TOAST_MESSAGES.TOO_MANY_REQUESTS);
         break;
       }
       default: {
-        toast.error(
-          'サーバーでエラーが発生しました。時間をおいて再度お試しください。',
-        );
+        toast.error(TOAST_MESSAGES.SERVER_ERROR);
         break;
       }
     }
@@ -34,7 +33,7 @@ export const postContact = async (userInput: UserInput): Promise<boolean> => {
   }
 
   if (result.data?.error) {
-    toast.error('入力に問題がありました。時間をおいて再度お試しください');
+    toast.error(TOAST_MESSAGES.INPUT_ERROR);
     return false;
   }
   return true;

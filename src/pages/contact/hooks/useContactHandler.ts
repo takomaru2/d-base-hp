@@ -6,6 +6,7 @@ import { ErrorState, initialInput, UserInput } from '@/pages/contact/type';
 import { toggleArrayValue } from '@/logics/arrayToggleValue';
 import { saveSessionData } from '@/pages/contact/confirm/logics/loadSession';
 import toast from 'react-hot-toast';
+import { TOAST_MESSAGES } from '@/pages/contact/const/message';
 
 type Actions = {
   handleChange: (
@@ -98,7 +99,7 @@ export const useContactHandler = (): UseContactHandlerReturn => {
       }
       const saveResult = saveSessionData('formInput', userInput);
       if (!saveResult.ok) {
-        toast.error('通信エラーが出ました。再度やりなおしてください');
+        toast.error(TOAST_MESSAGES.NETWORK_ERROR);
       }
       await router.push('/contact/confirm');
     },

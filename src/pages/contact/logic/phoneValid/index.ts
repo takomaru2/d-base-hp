@@ -1,11 +1,14 @@
 import { ValidResult } from '@/pages/contact/logic/validation';
+import { VALIDATION_MESSAGES } from '@/pages/contact/const/message';
 
 export const phoneValid = (value: string): ValidResult => {
   const isNumber = !/^[0-9]+$/.test(value);
   const isUnderTwenty = value.length >= 20;
-  if (!value.trim()) return { ok: false, message: 'これは必須です' };
-  if (isNumber) return { ok: false, message: '半角数字のみで入力してください' };
+  if (!value.trim())
+    return { ok: false, message: VALIDATION_MESSAGES.REQUIRED };
+  if (isNumber)
+    return { ok: false, message: VALIDATION_MESSAGES.INVALID_PHONE };
   if (isUnderTwenty)
-    return { ok: false, message: '入力されている数字が多いです。' };
+    return { ok: false, message: VALIDATION_MESSAGES.INVALID_CHARACTER };
   return { ok: true };
 };

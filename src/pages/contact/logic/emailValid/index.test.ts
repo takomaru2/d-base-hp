@@ -1,21 +1,22 @@
 import { emailValid } from '@/pages/contact/logic/emailValid/index';
+import { VALIDATION_MESSAGES } from '@/pages/contact/const/message';
 
 describe('emailValid', () => {
   it('空文字やスペースだけの場合はエラー', () => {
     expect(emailValid('')).toEqual({
       ok: false,
-      message: 'これは必須です',
+      message: VALIDATION_MESSAGES.REQUIRED,
     });
     expect(emailValid('   ')).toEqual({
       ok: false,
-      message: 'これは必須です',
+      message: VALIDATION_MESSAGES.REQUIRED,
     });
   });
 
   it('@を含まない場合はエラー', () => {
     expect(emailValid('test-example.com')).toEqual({
       ok: false,
-      message: '英数字のみで入力して必ず@を使ってください',
+      message: VALIDATION_MESSAGES.INVALID_EMAIL,
     });
   });
 
@@ -28,15 +29,15 @@ describe('emailValid', () => {
   it('英数字と@以外の文字が含まれる場合はエラー', () => {
     expect(emailValid('test@exam!ple.com')).toEqual({
       ok: false,
-      message: '英数字のみで入力して必ず@を使ってください',
+      message: VALIDATION_MESSAGES.INVALID_EMAIL,
     });
     expect(emailValid('てすと@メール.com')).toEqual({
       ok: false,
-      message: '英数字のみで入力して必ず@を使ってください',
+      message: VALIDATION_MESSAGES.INVALID_EMAIL,
     });
     expect(emailValid('test@メール.com')).toEqual({
       ok: false,
-      message: '英数字のみで入力して必ず@を使ってください',
+      message: VALIDATION_MESSAGES.INVALID_EMAIL,
     });
   });
 
