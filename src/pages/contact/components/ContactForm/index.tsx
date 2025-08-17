@@ -12,7 +12,7 @@ import {
 import { RadioGroup } from '@/pages/contact/components/RadioGroup';
 import { TextAriaFiled } from '@/pages/contact/components/TextAriaFiled';
 import React, { FC, FormEventHandler } from 'react';
-import { ErrorState, UserInput } from '@/pages/contact/type';
+import { ErrorState, UserInput } from '../../types';
 import styles from './index.module.scss';
 import { ConfirmButton } from '../ConfirmButton';
 import { SelectedGroup } from '@/pages/contact/components/SelectedGroup';

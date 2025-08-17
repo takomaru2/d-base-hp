@@ -9,15 +9,4 @@ export type UserInput = {
   postContent: string;
 };
 
-export const initialInput = {
-  name: '',
-  katakana: '',
-  mail: '',
-  phone: '',
-  size: [],
-  period: '1',
-  material: '1',
-  postContent: '',
-};
-
 export type ErrorState = Partial<Record<keyof UserInput, string>>;

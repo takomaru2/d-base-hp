@@ -35,3 +35,14 @@ export const sizeOptions = [
   { value: 'L', label: 'Lサイズ' },
   { value: 'LL', label: 'LLサイズ' },
 ];
+
+export const initialInput = {
+  name: '',
+  katakana: '',
+  mail: '',
+  phone: '',
+  size: [],
+  period: '1',
+  material: '1',
+  postContent: '',
+};

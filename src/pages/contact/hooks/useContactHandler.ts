@@ -2,11 +2,12 @@ import React, { FormEvent, useCallback, useState } from 'react';
 import { ValidResult } from '@/pages/contact/logic/validation';
 import { judgmentErrorState } from '@/pages/contact/logic/judgmentErrorState';
 import { useRouter } from 'next/router';
-import { ErrorState, initialInput, UserInput } from '@/pages/contact/type';
+import { ErrorState, UserInput } from '../types';
 import { toggleArrayValue } from '@/logics/arrayToggleValue';
 import { saveSessionData } from '@/pages/contact/confirm/logics/loadSession';
 import toast from 'react-hot-toast';
 import { TOAST_MESSAGES } from '@/pages/contact/const/message';
+import { initialInput } from '../const/contactOptions';
 
 type Actions = {
   handleChange: (

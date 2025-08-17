@@ -1,6 +1,6 @@
 import React, { FormEventHandler, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { UserInput } from '@/pages/contact/type';
+import { UserInput } from '../types';
 import {
   loadSessionData,
   removeSessionData,

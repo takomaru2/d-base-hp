@@ -1,4 +1,4 @@
-import { UserInput } from '@/pages/contact/type';
+import { UserInput } from '../../../types';
 import {
   materialOptions,
   periodOptions,

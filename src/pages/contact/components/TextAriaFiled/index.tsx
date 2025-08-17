@@ -1,6 +1,6 @@
 import styles from './index.module.scss';
 import React, { FC } from 'react';
-import { UserInput } from '@/pages/contact/type';
+import { UserInput } from '../../types';
 
 type TextAriaFiledProps = {
   errorState: Partial<Record<keyof UserInput, string>>;

@@ -1,5 +1,5 @@
 import { customFetch } from '@/logics/customFetch';
-import { UserInput } from '@/pages/contact/type';
+import { UserInput } from '../../types';
 import { SendResponse } from '@/types/customFetch';
 import toast from 'react-hot-toast';
 import { TOAST_MESSAGES } from '@/pages/contact/const/message';
