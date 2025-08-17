@@ -1,5 +1,5 @@
 import React, { FormEvent, useCallback, useState } from 'react';
-import { ValidResult } from '@/pages/contact/logic/validation';
+import { validateField, ValidResult } from '@/pages/contact/logic/validation';
 import { validErrorState } from '@/pages/contact/logic/validErrorState';
 import { useRouter } from 'next/router';
 import { ErrorState, UserInput } from '../types';
@@ -17,11 +17,9 @@ type Actions = {
       | React.ChangeEvent<HTMLSelectElement>,
   ) => void;
   createOnBlur: (
-    validate: (value: string) => ValidResult,
-  ) => (
     event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => void;
-  handleSubmit: (e: FormEvent<HTMLFormElement>) => Promise<void>;
+  handleSubmit: (event: FormEvent<HTMLFormElement>) => Promise<void>;
 };
 
 type UseContactHandlerReturn = {
@@ -65,6 +63,11 @@ export const useContactHandler = (): UseContactHandlerReturn => {
     [],
   );
 
+  const runValidation = (name: keyof UserInput) => {
+    const result: ValidResult = validateField(name, userInput[name]);
+    setFieldError(name, result);
+  };
+
   const action = {
     handleChange: (
       event: React.ChangeEvent<
@@ -78,17 +81,12 @@ export const useContactHandler = (): UseContactHandlerReturn => {
         setField(name as keyof UserInput, value);
       }
     },
-    createOnBlur:
-      (validate: (value: string) => ValidResult) =>
-      (event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        event.preventDefault();
-        const fieldName = event.target.name as keyof UserInput;
-        const value =
-          typeof userInput[fieldName] === 'string' ? userInput[fieldName] : '';
-
-        const validateResult = validate(value);
-        return setFieldError(fieldName, validateResult);
-      },
+    createOnBlur: (
+      event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
+    ) => {
+      const fieldName = event.target.name as keyof UserInput;
+      return runValidation(fieldName);
+    },
     handleSubmit: async (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
 
@@ -101,6 +99,7 @@ export const useContactHandler = (): UseContactHandlerReturn => {
       const saveResult = saveSessionData('formInput', userInput);
       if (!saveResult.ok) {
         toast.error(TOAST_MESSAGES.NETWORK_ERROR);
+        return;
       }
       await router.push('/contact/confirm');
     },

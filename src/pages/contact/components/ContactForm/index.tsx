@@ -1,8 +1,4 @@
 import { TextField } from '@/pages/contact/components/TextField';
-import { requiredValid, ValidResult } from '@/pages/contact/logic/validation';
-import { katakanaValid } from '@/pages/contact/logic/katakanaValid';
-import { emailValid } from '@/pages/contact/logic/emailValid';
-import { phoneValid } from '@/pages/contact/logic/phoneValid';
 import { CheckBoxGroup } from '../CheckBoxGroup';
 import {
   materialOptions,
@@ -27,8 +23,6 @@ type ContactFormProps = {
       | React.ChangeEvent<HTMLSelectElement>,
   ) => void;
   createOnBlur: (
-    validate: (value: string) => ValidResult,
-  ) => (
     event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => void;
   contactForm: UserInput;
@@ -52,7 +46,7 @@ export const ContactForm: FC<ContactFormProps> = ({
           name={'name'}
           errorState={errorState.name}
           onChange={handleChange}
-          onBlur={createOnBlur(requiredValid)}
+          onBlur={createOnBlur}
           placeholder={'山田　太郎'}
           value={contactForm.name}
         />
@@ -61,7 +55,7 @@ export const ContactForm: FC<ContactFormProps> = ({
           name={'katakana'}
           errorState={errorState.katakana}
           onChange={handleChange}
-          onBlur={createOnBlur(katakanaValid)}
+          onBlur={createOnBlur}
           placeholder={'ヤマダ　タロウ'}
           value={contactForm.katakana}
         />
@@ -70,7 +64,7 @@ export const ContactForm: FC<ContactFormProps> = ({
           name={'mail'}
           errorState={errorState.mail}
           onChange={handleChange}
-          onBlur={createOnBlur(emailValid)}
+          onBlur={createOnBlur}
           placeholder={'react@example.com'}
           value={contactForm.mail}
         />
@@ -79,7 +73,7 @@ export const ContactForm: FC<ContactFormProps> = ({
           name={'phone'}
           errorState={errorState.phone}
           onChange={handleChange}
-          onBlur={createOnBlur(phoneValid)}
+          onBlur={createOnBlur}
           placeholder={'08012345678'}
           value={contactForm.phone}
         />
@@ -106,7 +100,7 @@ export const ContactForm: FC<ContactFormProps> = ({
         />
         <TextAriaFiled
           onChange={handleChange}
-          onBlur={createOnBlur(requiredValid)}
+          onBlur={createOnBlur}
           errorState={errorState}
           value={contactForm.postContent}
           title={'お問い合わせ内容を入力してください'}
