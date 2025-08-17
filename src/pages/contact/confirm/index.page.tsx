@@ -15,14 +15,7 @@ export default function Confirm() {
   const [isSubmitting, setIsSubmitting] = useIsBoolean();
   const router = useRouter();
 
-  useEffect(() => {
-    const result = loadSessionData<UserInput>('formInput');
-    if (result.ok) {
-      setUserInput(result.data);
-    } else {
-      toast.error(TOAST_MESSAGES.PARSE_ERROR);
-    }
-  }, []);
+  useLoadUserInput(setUserInput);
 
   if (userInput === undefined) {
     return createLoadingMessage();
@@ -57,4 +50,17 @@ export default function Confirm() {
       isSubmitting={isSubmitting}
     />
   );
+}
+
+function useLoadUserInput(
+  setUserInput: React.Dispatch<React.SetStateAction<UserInput | undefined>>,
+) {
+  useEffect(() => {
+    const result = loadSessionData<UserInput>('formInput');
+    if (result.ok) {
+      setUserInput(result.data);
+    } else {
+      toast.error(TOAST_MESSAGES.PARSE_ERROR);
+    }
+  }, []);
 }
