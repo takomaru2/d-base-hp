@@ -2,48 +2,51 @@ import { emailValid } from '@/pages/contact/logic/emailValid/index';
 import { VALIDATION_MESSAGES } from '@/pages/contact/const/message';
 
 describe('emailValid', () => {
-  it('空文字やスペースだけの場合はエラー', () => {
-    expect(emailValid('')).toEqual({
-      ok: false,
-      message: VALIDATION_MESSAGES.REQUIRED,
-    });
-    expect(emailValid('   ')).toEqual({
-      ok: false,
-      message: VALIDATION_MESSAGES.REQUIRED,
-    });
+  it.each([
+    ['', { ok: false, message: VALIDATION_MESSAGES.REQUIRED }],
+    ['   ', { ok: false, message: VALIDATION_MESSAGES.REQUIRED }],
+  ])('空文字やスペース "%s" の場合はエラー', (input, expected) => {
+    expect(emailValid(input)).toEqual(expected);
   });
 
-  it('@を含まない場合はエラー', () => {
-    expect(emailValid('test-example.com')).toEqual({
-      ok: false,
-      message: VALIDATION_MESSAGES.INVALID_EMAIL,
-    });
+  it.each([
+    [
+      'test-example.com',
+      { ok: false, message: VALIDATION_MESSAGES.INVALID_EMAIL },
+    ],
+  ])('@を含まない場合 "%s" はエラー', (input, expected) => {
+    expect(emailValid(input)).toEqual(expected);
   });
 
-  it('@が2つ以上ある場合はOK（仕様上）', () => {
-    expect(emailValid('test@@example.com')).toEqual({
-      ok: true,
-    });
+  it.each([['test@@example.com', { ok: true }]])(
+    '@が2つ以上ある "%s" はOK（仕様上）',
+    (input, expected) => {
+      expect(emailValid(input)).toEqual(expected);
+    },
+  );
+
+  it.each([
+    [
+      'test@exam!ple.com',
+      { ok: false, message: VALIDATION_MESSAGES.INVALID_EMAIL },
+    ],
+    [
+      'てすと@メール.com',
+      { ok: false, message: VALIDATION_MESSAGES.INVALID_EMAIL },
+    ],
+    [
+      'test@メール.com',
+      { ok: false, message: VALIDATION_MESSAGES.INVALID_EMAIL },
+    ],
+  ])('不正な文字を含む "%s" はエラー', (input, expected) => {
+    expect(emailValid(input)).toEqual(expected);
   });
 
-  it('英数字と@以外の文字が含まれる場合はエラー', () => {
-    expect(emailValid('test@exam!ple.com')).toEqual({
-      ok: false,
-      message: VALIDATION_MESSAGES.INVALID_EMAIL,
-    });
-    expect(emailValid('てすと@メール.com')).toEqual({
-      ok: false,
-      message: VALIDATION_MESSAGES.INVALID_EMAIL,
-    });
-    expect(emailValid('test@メール.com')).toEqual({
-      ok: false,
-      message: VALIDATION_MESSAGES.INVALID_EMAIL,
-    });
-  });
-
-  it('正しいメールアドレス形式はOK', () => {
-    expect(emailValid('test@example.com')).toEqual({ ok: true });
-    expect(emailValid('user.name123@abc.co')).toEqual({ ok: true });
-    expect(emailValid('A1.B2@domain.jp')).toEqual({ ok: true });
+  it.each([
+    ['test@example.com', { ok: true }],
+    ['user.name123@abc.co', { ok: true }],
+    ['A1.B2@domain.jp', { ok: true }],
+  ])('正しい形式 "%s" はOK', (input, expected) => {
+    expect(emailValid(input)).toEqual(expected);
   });
 });
