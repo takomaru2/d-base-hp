@@ -16,3 +16,10 @@ export const TOAST_MESSAGES = {
   INPUT_ERROR: '入力に問題がありました。時間をおいて再度お試しください',
   PARSE_ERROR: 'データの解析に失敗しました。再度お試しください',
 } as const;
+
+export const API_MESSAGES = {
+  BAD_REQUEST: 'リクエストデータが不正です',
+  RESEND_ERROR: '送信エラー(Resend)',
+  SEND_SUCCESS: '送信完了',
+  SEND_FAILURE: '送信失敗',
+} as const;

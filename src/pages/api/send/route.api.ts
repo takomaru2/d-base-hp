@@ -5,6 +5,7 @@ import {
   periodOptions,
 } from '@/pages/contact/const/contactOptions';
 import { sanitizeAndEscape } from '@/pages/contact/logic/sanitizeAndEscape';
+import { API_MESSAGES } from '@/pages/contact/const/message';
 
 const resend = new Resend(process.env.RESEND_API_KEY!);
 
@@ -37,7 +38,7 @@ export default async function handler(
     Number.isNaN(periodIndex) ||
     Number.isNaN(materialIndex)
   ) {
-    return res.status(400).json({ error: 'リクエストデータが不正です' });
+    return res.status(400).json({ error: API_MESSAGES.BAD_REQUEST });
   }
 
   const safeName = sanitizeAndEscape(name);
@@ -71,10 +72,10 @@ export default async function handler(
     });
 
     if (result.error) {
-      return res.status(500).json({ message: '送信エラー(Resend)' });
+      return res.status(500).json({ message: API_MESSAGES.RESEND_ERROR });
     }
-    return res.status(200).json({ message: '送信完了' });
+    return res.status(200).json({ message: API_MESSAGES.SEND_SUCCESS });
   } catch {
-    return res.status(500).json({ error: '送信失敗' });
+    return res.status(500).json({ error: API_MESSAGES.SEND_FAILURE });
   }
 }
