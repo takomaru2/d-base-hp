@@ -11,6 +11,7 @@ import { useIsBoolean } from '@/hooks/useBoolean';
 import { createLoadingMessage } from './components/CreateLoadingMessage';
 import { ConfirmPresentation } from './components/ConfirmPresentation';
 import toast from 'react-hot-toast';
+import { TOAST_MESSAGES } from '@/pages/contact/const/message';
 
 export default function Confirm() {
   const [userInput, setUserInput] = useState<UserInput | undefined>();
@@ -18,8 +19,12 @@ export default function Confirm() {
   const router = useRouter();
 
   useEffect(() => {
-    const { data } = loadSessionData<UserInput>({ label: 'formInput' });
-    setUserInput(data);
+    const result = loadSessionData<UserInput>({ label: 'formInput' });
+    if (result.ok) {
+      setUserInput(result.data);
+    } else {
+      toast.error(TOAST_MESSAGES.PARSE_ERROR);
+    }
   }, []);
 
   if (userInput === undefined) {
@@ -38,7 +43,7 @@ export default function Confirm() {
     }
     const removeResult = removeSessionData('formInput');
     if (!removeResult.ok) {
-      toast.error('通信障害が発生しました。再度やり直してください');
+      toast.error(TOAST_MESSAGES.LOAD_ERROR);
     }
     await router.push('/contact/thanks');
   };
