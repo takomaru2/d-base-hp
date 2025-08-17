@@ -12,29 +12,25 @@
 
 .list {
   display: flex;
-  column-gap: linear-clamp(50, 100);
-  justify-content: center;
+  flex-direction: column;
+  gap: linear-clamp(20, 30) linear-clamp(50, 100);
+  width: linear-clamp(360, 600);
+  margin-inline: auto;
   margin-top: linear-clamp(30, 50);
 }
 
-.listKey,
-.listContent {
+.row {
   display: flex;
-  flex-direction: column;
-  row-gap: linear-clamp(20, 30);
+  gap: linear-clamp(20, 30);
 }
 
-.listKey {
-  text-align: right;
-}
-
-.listContent {
-  text-align: left;
-}
-
-.listItem {
-  width: 100%;
+.label {
   max-width: linear-clamp(150, 388);
+}
+
+.label,
+.result {
+  width: 100%;
   font-size: linear-clamp(16, 24);
   line-height: 24px;
 

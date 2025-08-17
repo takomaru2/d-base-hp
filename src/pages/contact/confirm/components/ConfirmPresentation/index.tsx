@@ -1,12 +1,16 @@
 import styles from './index.module.scss';
-import { FC, FormEventHandler } from 'react';
+import { FC, FormEventHandler, MouseEventHandler } from 'react';
+
+type ConfirmRow = { id: string; label: string; value: string };
 
 type ConfirmProps = {
   onSubmit: FormEventHandler<HTMLFormElement>;
-  labels: Record<string, string>[];
+  labels: ConfirmRow[];
   backButton: () => void;
   isSubmitting: boolean;
 };
+
+type UserResultProps = { labels: ConfirmRow[] };
 
 export const ConfirmPresentation: FC<ConfirmProps> = ({
   onSubmit,
@@ -17,42 +21,61 @@ export const ConfirmPresentation: FC<ConfirmProps> = ({
   return (
     <form className={styles.container} onSubmit={onSubmit}>
       <div className={styles.titleWrapper}>
-        <h2 className={styles.title}>以下の内容でよろしいでしょうか？</h2>
-      </div>
-      <div className={styles.list}>
-        <ul className={styles.listKey}>
-          {labels.map(({ id, label }) => (
-            <li key={id} className={styles.listItem}>
-              {label}
-            </li>
-          ))}
-        </ul>
-        <ul className={styles.listContent}>
-          {labels.map(({ id, value }) => (
-            <li key={id} className={styles.listItem}>
-              {value}
-            </li>
-          ))}
-        </ul>
+        <h2>以下の内容でよろしいでしょうか？</h2>
       </div>
 
+      <UserResult labels={labels} />
+
       <div className={styles.buttonWrapper}>
-        <button
+        <FormButton
           type={'button'}
-          onClick={backButton}
-          className={styles.button}
           disabled={isSubmitting}
+          onClick={backButton}
         >
           戻る
-        </button>
-        <button
-          type={'submit'}
-          className={styles.button}
-          disabled={isSubmitting}
-        >
+        </FormButton>
+        <FormButton type={'submit'} disabled={isSubmitting}>
           送信する
-        </button>
+        </FormButton>
       </div>
     </form>
+  );
+};
+
+export const UserResult: FC<UserResultProps> = ({ labels }) => {
+  return (
+    <div className={styles.list}>
+      {labels.map(({ id, label, value }) => (
+        <div key={id} className={styles.row}>
+          <dt className={styles.label}>{label}</dt>
+          <dd className={styles.result}>{value}</dd>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+type FormButtonProps = {
+  children: React.ReactNode;
+  type: 'button' | 'submit';
+  onClick?: MouseEventHandler<HTMLButtonElement>;
+  disabled?: boolean;
+};
+
+export const FormButton: FC<FormButtonProps> = ({
+  type,
+  onClick,
+  disabled,
+  children,
+}) => {
+  return (
+    <button
+      type={type}
+      onClick={onClick}
+      className={styles.button}
+      disabled={disabled}
+    >
+      {children}
+    </button>
   );
 };
