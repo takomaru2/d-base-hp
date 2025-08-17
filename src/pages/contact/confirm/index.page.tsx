@@ -38,7 +38,7 @@ export default function Confirm() {
     await router.push('/contact/thanks');
   };
 
-  const handleBackButton = () => {
+  const handleGoBack = () => {
     router.back();
   };
 
@@ -46,7 +46,7 @@ export default function Confirm() {
     <ConfirmPresentation
       onSubmit={onSubmit}
       labels={formatConfirmField(userInput)}
-      backButton={handleBackButton}
+      backButton={handleGoBack}
       isSubmitting={isSubmitting}
     />
   );
