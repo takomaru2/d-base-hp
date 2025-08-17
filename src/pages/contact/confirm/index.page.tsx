@@ -11,11 +11,9 @@ import { TOAST_MESSAGES } from '@/pages/contact/const/message';
 import { loadSessionData, removeSessionData } from './logics/sessionStorage';
 
 export default function Confirm() {
-  const [userInput, setUserInput] = useState<UserInput | undefined>();
+  const userInput = useLoadUserInput();
   const [isSubmitting, setIsSubmitting] = useIsBoolean();
   const router = useRouter();
-
-  useLoadUserInput(setUserInput);
 
   if (userInput === undefined) {
     return createLoadingMessage();
@@ -52,9 +50,8 @@ export default function Confirm() {
   );
 }
 
-function useLoadUserInput(
-  setUserInput: React.Dispatch<React.SetStateAction<UserInput | undefined>>,
-) {
+function useLoadUserInput() {
+  const [userInput, setUserInput] = useState<UserInput | undefined>();
   useEffect(() => {
     const result = loadSessionData<UserInput>('formInput');
     if (result.ok) {
@@ -63,4 +60,6 @@ function useLoadUserInput(
       toast.error(TOAST_MESSAGES.PARSE_ERROR);
     }
   }, []);
+
+  return userInput;
 }
