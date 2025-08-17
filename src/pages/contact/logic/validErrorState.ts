@@ -4,7 +4,7 @@ import { katakanaValid } from '@/pages/contact/logic/katakanaValid';
 import { emailValid } from '@/pages/contact/logic/emailValid';
 import { phoneValid } from '@/pages/contact/logic/phoneValid';
 
-export const judgmentErrorState = (input: UserInput): ErrorState => {
+export const validErrorState = (input: UserInput): ErrorState => {
   const newErrors: ErrorState = {};
 
   const validators: Partial<
@@ -17,10 +17,9 @@ export const judgmentErrorState = (input: UserInput): ErrorState => {
     postContent: requiredValid,
   };
 
-  for (const [key, value] of Object.entries(input) as [
-    keyof UserInput,
-    string,
-  ][]) {
+  const entries = Object.entries(input) as [keyof UserInput, string][];
+
+  for (const [key, value] of entries) {
     const validator = validators[key];
     if (validator) {
       const result = validator(value);

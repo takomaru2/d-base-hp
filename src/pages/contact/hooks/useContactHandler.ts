@@ -1,6 +1,6 @@
 import React, { FormEvent, useCallback, useState } from 'react';
 import { ValidResult } from '@/pages/contact/logic/validation';
-import { judgmentErrorState } from '@/pages/contact/logic/judgmentErrorState';
+import { validErrorState } from '@/pages/contact/logic/validErrorState';
 import { useRouter } from 'next/router';
 import { ErrorState, UserInput } from '../types';
 import { toggleArrayValue } from '@/logics/arrayToggleValue';
@@ -92,7 +92,7 @@ export const useContactHandler = (): UseContactHandlerReturn => {
     handleSubmit: async (event: FormEvent<HTMLFormElement>) => {
       event.preventDefault();
 
-      const newErrors = judgmentErrorState(userInput);
+      const newErrors = validErrorState(userInput);
 
       if (Object.keys(newErrors).length > 0) {
         setErrorState(newErrors);
