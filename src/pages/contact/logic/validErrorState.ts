@@ -4,18 +4,18 @@ import { katakanaValid } from '@/pages/contact/logic/katakanaValid';
 import { emailValid } from '@/pages/contact/logic/emailValid';
 import { phoneValid } from '@/pages/contact/logic/phoneValid';
 
+const validators: Partial<
+  Record<keyof UserInput, (value: string) => ValidResult>
+> = {
+  name: requiredValid,
+  katakana: katakanaValid,
+  mail: emailValid,
+  phone: phoneValid,
+  postContent: requiredValid,
+};
+
 export const validErrorState = (input: UserInput): ErrorState => {
   const newErrors: ErrorState = {};
-
-  const validators: Partial<
-    Record<keyof UserInput, (value: string) => ValidResult>
-  > = {
-    name: requiredValid,
-    katakana: katakanaValid,
-    mail: emailValid,
-    phone: phoneValid,
-    postContent: requiredValid,
-  };
 
   const entries = Object.entries(input) as [keyof UserInput, string][];
 
