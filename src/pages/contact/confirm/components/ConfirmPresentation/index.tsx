@@ -1,4 +1,4 @@
-import styles from '@/pages/contact/confirm/index.module.scss';
+import styles from './index.module.scss';
 import { FC, FormEventHandler } from 'react';
 
 type ConfirmProps = {
