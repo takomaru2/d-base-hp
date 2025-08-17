@@ -20,20 +20,18 @@ export const TextAriaFiled: FC<TextAriaFiledProps> = ({
   name,
 }) => {
   return (
-    <>
-      <div className={styles.container}>
-        <p className={styles.title}>{title}</p>
-        {errorState.postContent && (
-          <p className={styles.errorMessage}>{errorState.postContent}</p>
-        )}
-        <textarea
-          name={name}
-          className={styles.textArea}
-          onChange={onChange}
-          onBlur={onBlur}
-          value={value}
-        />
-      </div>
-    </>
+    <div className={styles.container}>
+      <p className={styles.title}>{title}</p>
+      {errorState.postContent && (
+        <p className={styles.errorMessage}>{errorState.postContent}</p>
+      )}
+      <textarea
+        name={name}
+        className={styles.textArea}
+        onChange={onChange}
+        onBlur={onBlur}
+        value={value}
+      />
+    </div>
   );
 };

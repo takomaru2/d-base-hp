@@ -44,7 +44,7 @@ export const ConfirmPresentation: FC<ConfirmProps> = ({
 
 export const UserResult: FC<UserResultProps> = ({ labels }) => {
   return (
-    <div className={styles.list}>
+    <div className={styles.userResults}>
       {labels.map(({ id, label, value }) => (
         <div key={id} className={styles.row}>
           <dt className={styles.label}>{label}</dt>
