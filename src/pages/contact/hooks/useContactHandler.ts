@@ -4,10 +4,10 @@ import { validErrorState } from '@/pages/contact/logic/validErrorState';
 import { useRouter } from 'next/router';
 import { ErrorState, UserInput } from '../types';
 import { toggleArrayValue } from '@/logics/arrayToggleValue';
-import { saveSessionData } from '@/pages/contact/confirm/logics/loadSession';
 import toast from 'react-hot-toast';
 import { TOAST_MESSAGES } from '@/pages/contact/const/message';
 import { initialInput } from '../const/contactOptions';
+import { saveSessionData } from '../confirm/logics/sessionStorage';
 
 type Actions = {
   handleChange: (
