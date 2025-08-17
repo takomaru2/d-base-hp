@@ -1,24 +1,51 @@
-import toast from 'react-hot-toast';
-
 type LoadSessionProps = {
   label: string;
 };
 
-type Result<T> = { data: T } | { data: undefined };
+type Result<T> = { ok: true; data?: T } | { ok: false; data?: undefined };
+type OpResult = { ok: true } | { ok: false };
 
 export const loadSessionData = <T>({ label }: LoadSessionProps): Result<T> => {
   try {
     const stored = sessionStorage.getItem(label);
     if (!stored) {
-      toast.error('通信に失敗しました。やり直してください');
-      return { data: undefined };
+      return {
+        ok: false,
+        data: undefined,
+      };
     }
     const data: T = JSON.parse(stored);
-    return { data };
+    return { ok: true, data };
   } catch {
-    toast.error('通信に失敗しました。やり直してください');
     return {
+      ok: false,
       data: undefined,
+    };
+  }
+};
+
+export const saveSessionData = (label: string, value: unknown): OpResult => {
+  try {
+    sessionStorage.setItem(label, JSON.stringify(value));
+    return {
+      ok: true,
+    };
+  } catch {
+    return {
+      ok: false,
+    };
+  }
+};
+
+export const removeSessionData = (label: string): OpResult => {
+  try {
+    sessionStorage.removeItem(label);
+    return {
+      ok: true,
+    };
+  } catch {
+    return {
+      ok: false,
     };
   }
 };

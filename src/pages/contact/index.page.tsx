@@ -14,7 +14,7 @@ export default function Contact() {
 
   useEffect(() => {
     const result = loadSessionData<UserInput>({ label: 'formInput' });
-    if (result.data !== undefined) {
+    if (result.ok && result.data) {
       setUserInput(result.data);
     }
   }, []);

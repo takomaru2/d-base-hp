@@ -4,6 +4,8 @@ import { judgmentErrorState } from '@/pages/contact/logic/judgmentErrorState';
 import { useRouter } from 'next/router';
 import { ErrorState, initialInput, UserInput } from '@/pages/contact/type';
 import { toggleArrayValue } from '@/logics/arrayToggleValue';
+import { saveSessionData } from '@/pages/contact/confirm/logics/loadSession';
+import toast from 'react-hot-toast';
 
 type Actions = {
   handleChange: (
@@ -94,7 +96,10 @@ export const useContactHandler = (): UseContactHandlerReturn => {
         setErrorState(newErrors);
         return;
       }
-      sessionStorage.setItem('formInput', JSON.stringify(userInput));
+      const saveResult = saveSessionData('formInput', userInput);
+      if (!saveResult.ok) {
+        toast.error('通信エラーが出ました。再度やりなおしてください');
+      }
       await router.push('/contact/confirm');
     },
   };
