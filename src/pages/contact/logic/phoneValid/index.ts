@@ -1,5 +1,5 @@
-import { ValidResult } from '@/pages/contact/logic/validation';
 import { VALIDATION_MESSAGES } from '@/pages/contact/const/message';
+import { ValidResult } from '../../types';
 
 export const phoneValid = (value: string): ValidResult => {
   const isNumber = !/^[0-9]+$/.test(value);

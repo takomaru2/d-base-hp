@@ -1,5 +1,4 @@
-import { ErrorState, UserInput } from '../types';
-import { ValidResult } from '@/pages/contact/logic/validation';
+import { ErrorState, UserInput, ValidResult } from '../types';
 import { katakanaValid } from '@/pages/contact/logic/katakanaValid';
 import { emailValid } from '@/pages/contact/logic/emailValid';
 import { phoneValid } from '@/pages/contact/logic/phoneValid';

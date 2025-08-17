@@ -10,3 +10,8 @@ export type UserInput = {
 };
 
 export type ErrorState = Partial<Record<keyof UserInput, string>>;
+
+export type ValidResult = {
+  ok: boolean;
+  message?: string;
+};

@@ -1,8 +1,8 @@
 import React, { FormEvent, useCallback, useState } from 'react';
-import { validateField, ValidResult } from '@/pages/contact/logic/validation';
+import { validateField } from '@/pages/contact/logic/validation';
 import { validErrorState } from '@/pages/contact/logic/validErrorState';
 import { useRouter } from 'next/router';
-import { ErrorState, UserInput } from '../types';
+import { ErrorState, UserInput, ValidResult } from '../types';
 import { toggleArrayValue } from '@/logics/arrayToggleValue';
 import toast from 'react-hot-toast';
 import { TOAST_MESSAGES } from '@/pages/contact/const/message';

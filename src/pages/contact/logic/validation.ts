@@ -1,13 +1,8 @@
 import { emailValid } from './emailValid';
 import { katakanaValid } from './katakanaValid';
 import { phoneValid } from './phoneValid';
-import { UserInput } from '../types';
+import { UserInput, ValidResult } from '../types';
 import { requiredValid } from './requiredValid';
-
-export type ValidResult = {
-  ok: boolean;
-  message?: string;
-};
 
 const validators: Partial<
   Record<keyof UserInput, (value: string) => ValidResult>

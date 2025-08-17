@@ -1,5 +1,5 @@
 import { VALIDATION_MESSAGES } from '@/pages/contact/const/message';
-import { ValidResult } from '@/pages/contact/logic/validation';
+import { ValidResult } from '../../types';
 
 export const requiredValid = (value: string): ValidResult => {
   return value.trim()
