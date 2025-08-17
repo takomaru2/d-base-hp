@@ -20,11 +20,10 @@ export default async function handler(
   const { name, katakana, mail, phone, period, material, postContent, size } =
     req.body;
 
-  const periodList = periodOptions.map((option) => option.label);
-  const materialList = materialOptions.map((option) => option.label);
-
-  const periodIndex = Number(period) - 1;
-  const materialIndex = Number(material) - 1;
+  const periodOption = periodOptions.find((option) => option.value === period);
+  const materialOption = materialOptions.find(
+    (option) => option.value === material,
+  );
 
   if (
     !name ||
@@ -35,8 +34,8 @@ export default async function handler(
     !material ||
     !postContent ||
     !Array.isArray(size) ||
-    Number.isNaN(periodIndex) ||
-    Number.isNaN(materialIndex)
+    !periodOption ||
+    !materialOption
   ) {
     return res.status(400).json({ error: API_MESSAGES.BAD_REQUEST });
   }
@@ -50,10 +49,10 @@ export default async function handler(
   const safeSelected =
     size.length === 0
       ? '未選択'
-      : size.map((v: string) => sanitizeAndEscape(v)).join(', ');
+      : size.map((value: string) => sanitizeAndEscape(value)).join(', ');
 
-  const safePeriod = sanitizeAndEscape(periodList[periodIndex]);
-  const safeMaterial = sanitizeAndEscape(materialList[materialIndex]);
+  const safePeriod = sanitizeAndEscape(periodOption.label);
+  const safeMaterial = sanitizeAndEscape(materialOption.label);
 
   try {
     const result = await resend.emails.send({

@@ -5,27 +5,27 @@ export type Option = {
 
 export const periodOptions: Option[] = [
   {
-    value: '1',
+    value: 'less_than_1_year',
     label: '1年未満',
   },
   {
-    value: '2',
+    value: '1_to_3_years',
     label: '1年から3年',
   },
   {
-    value: '3',
+    value: '3_to_5_years',
     label: '3年から5年',
   },
   {
-    value: '4',
+    value: 'over_5_years',
     label: '5年以上',
   },
 ];
 
 export const materialOptions: Option[] = [
-  { value: '1', label: '液剤１' },
-  { value: '2', label: '液剤２' },
-  { value: '3', label: '液剤３' },
+  { value: 'liquid_1', label: '液剤１' },
+  { value: 'liquid_2', label: '液剤２' },
+  { value: 'liquid_3', label: '液剤３' },
 ];
 
 export const sizeOptions = [
