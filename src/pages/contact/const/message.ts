@@ -1,6 +1,6 @@
 export const VALIDATION_MESSAGES = {
   REQUIRED: 'これは必須です',
-  INVALID_EMAIL: '英数字のみで入力して必ず@を使ってください',
+  INVALID_EMAIL: '有効なメールアドレス形式で入力してください',
   INVALID_PHONE: '半角数字のみで入力してください',
   INVALID_CHARACTER: '入力されている文字数が多いです',
   INVALID_KATAKANA: 'カタカナのみで入力してください',
