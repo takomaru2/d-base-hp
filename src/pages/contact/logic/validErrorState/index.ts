@@ -1,8 +1,8 @@
-import { ErrorState, UserInput, ValidResult } from '../types';
+import { ErrorState, UserInput, ValidResult } from '../../types';
 import { katakanaValid } from '@/pages/contact/logic/katakanaValid';
 import { emailValid } from '@/pages/contact/logic/emailValid';
 import { phoneValid } from '@/pages/contact/logic/phoneValid';
-import { requiredValid } from './requiredValid';
+import { requiredValid } from '../requiredValid';
 
 const validators: Partial<
   Record<keyof UserInput, (value: string) => ValidResult>

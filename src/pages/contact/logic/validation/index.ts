@@ -1,8 +1,8 @@
-import { emailValid } from './emailValid';
-import { katakanaValid } from './katakanaValid';
-import { phoneValid } from './phoneValid';
-import { UserInput, ValidResult } from '../types';
-import { requiredValid } from './requiredValid';
+import { emailValid } from '../emailValid';
+import { katakanaValid } from '../katakanaValid';
+import { phoneValid } from '../phoneValid';
+import { UserInput, ValidResult } from '../../types';
+import { requiredValid } from '../requiredValid';
 
 const validators: Partial<
   Record<keyof UserInput, (value: string) => ValidResult>
