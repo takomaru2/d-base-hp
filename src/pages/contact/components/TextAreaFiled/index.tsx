@@ -11,7 +11,7 @@ type TextAriaFiledProps = {
   name: string;
 };
 
-export const TextAriaFiled: FC<TextAriaFiledProps> = ({
+export const TextAreaFiled: FC<TextAriaFiledProps> = ({
   errorState,
   onChange,
   onBlur,

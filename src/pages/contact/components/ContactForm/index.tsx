@@ -6,7 +6,7 @@ import {
   sizeOptions,
 } from '@/pages/contact/const/contactOptions';
 import { RadioGroup } from '@/pages/contact/components/RadioGroup';
-import { TextAriaFiled } from '@/pages/contact/components/TextAriaFiled';
+import { TextAreaFiled } from '../TextAreaFiled';
 import React, { FC, FormEventHandler } from 'react';
 import { ErrorState, UserInput } from '../../types';
 import styles from './index.module.scss';
@@ -98,7 +98,7 @@ export const ContactForm: FC<ContactFormProps> = ({
           value={contactForm.material}
           name={'material'}
         />
-        <TextAriaFiled
+        <TextAreaFiled
           onChange={handleChange}
           onBlur={createOnBlur}
           errorState={errorState}
