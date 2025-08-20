@@ -26,7 +26,7 @@ type ContactFormProps = {
     event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => void;
   contactForm: UserInput;
-  selectedSize: UserInput['size'];
+  selectedSize: string[];
 };
 
 export const ContactForm: FC<ContactFormProps> = ({
