@@ -12,12 +12,7 @@ export default function Contact() {
     action: { handleChange, createOnBlur, handleSubmit },
   } = useContactHandler();
 
-  useEffect(() => {
-    const result = loadSessionData<UserInput>('formInput');
-    if (result.ok && result.data) {
-      setUserInput(result.data);
-    }
-  }, []);
+  useLoadSessionUserInput(setUserInput);
 
   return (
     <ContactForm
@@ -29,4 +24,15 @@ export default function Contact() {
       selectedSize={userInput.size}
     />
   );
+}
+
+function useLoadSessionUserInput(
+  setUserInput: React.Dispatch<React.SetStateAction<UserInput>>,
+) {
+  useEffect(() => {
+    const result = loadSessionData<UserInput>('formInput');
+    if (result.ok && result.data) {
+      setUserInput(result.data);
+    }
+  }, []);
 }
