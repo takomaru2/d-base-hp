@@ -25,7 +25,7 @@ type ContactFormProps = {
   createOnBlur: (
     event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => void;
-  contactForm: UserInput;
+  userInput: UserInput;
   selectedSize: string[];
 };
 
@@ -34,7 +34,7 @@ export const ContactForm: FC<ContactFormProps> = ({
   errorState,
   handleChange,
   createOnBlur,
-  contactForm,
+  userInput,
   selectedSize,
 }) => {
   return (
@@ -48,7 +48,7 @@ export const ContactForm: FC<ContactFormProps> = ({
           onChange={handleChange}
           onBlur={createOnBlur}
           placeholder={'山田　太郎'}
-          value={contactForm.name}
+          value={userInput.name}
         />
         <TextField
           fieldName={'カタカナ'}
@@ -57,7 +57,7 @@ export const ContactForm: FC<ContactFormProps> = ({
           onChange={handleChange}
           onBlur={createOnBlur}
           placeholder={'ヤマダ　タロウ'}
-          value={contactForm.katakana}
+          value={userInput.katakana}
         />
         <TextField
           fieldName={'メールアドレス'}
@@ -66,7 +66,7 @@ export const ContactForm: FC<ContactFormProps> = ({
           onChange={handleChange}
           onBlur={createOnBlur}
           placeholder={'react@example.com'}
-          value={contactForm.mail}
+          value={userInput.mail}
         />
         <TextField
           fieldName={'電話番号'}
@@ -75,7 +75,7 @@ export const ContactForm: FC<ContactFormProps> = ({
           onChange={handleChange}
           onBlur={createOnBlur}
           placeholder={'08012345678'}
-          value={contactForm.phone}
+          value={userInput.phone}
         />
         <CheckBoxGroup
           name={'size'}
@@ -88,21 +88,21 @@ export const ContactForm: FC<ContactFormProps> = ({
           onChange={handleChange}
           title={'車の経過年数を選択してください'}
           option={periodOptions}
-          value={contactForm.period}
+          value={userInput.period}
           name={'period'}
         />
         <SelectedGroup
           onChange={handleChange}
           title={'ご希望の液剤を選択してください'}
           options={materialOptions}
-          value={contactForm.material}
+          value={userInput.material}
           name={'material'}
         />
         <TextAreaFiled
           onChange={handleChange}
           onBlur={createOnBlur}
           errorState={errorState}
-          value={contactForm.postContent}
+          value={userInput.postContent}
           title={'お問い合わせ内容を入力してください'}
           name={'postContent'}
         />

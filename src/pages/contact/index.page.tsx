@@ -20,7 +20,7 @@ export default function Contact() {
       errorState={errorState}
       handleChange={handleChange}
       createOnBlur={createOnBlur}
-      contactForm={userInput}
+      userInput={userInput}
       selectedSize={userInput.size}
     />
   );
