@@ -42,7 +42,7 @@ export const initialInput = {
   mail: '',
   phone: '',
   size: [],
-  period: "'less_than_1_year'",
+  period: 'less_than_1_year',
   material: 'liquid_1',
   postContent: '',
 };
