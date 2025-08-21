@@ -1,8 +1,8 @@
-type Result<T = void> =
+type SessionResult<T = void> =
   | { ok: true; data?: T }
   | { ok: false; data?: undefined };
 
-export const loadSessionData = <T>(key: string): Result<T> => {
+export const loadSessionData = <T>(key: string): SessionResult<T> => {
   try {
     const stored = sessionStorage.getItem(key);
     if (!stored) {
@@ -15,7 +15,10 @@ export const loadSessionData = <T>(key: string): Result<T> => {
   }
 };
 
-export const saveSessionData = (label: string, value: unknown): Result => {
+export const saveSessionData = (
+  label: string,
+  value: unknown,
+): SessionResult => {
   try {
     sessionStorage.setItem(label, JSON.stringify(value));
     return { ok: true };
@@ -24,7 +27,7 @@ export const saveSessionData = (label: string, value: unknown): Result => {
   }
 };
 
-export const removeSessionData = (label: string): Result => {
+export const removeSessionData = (label: string): SessionResult => {
   try {
     sessionStorage.removeItem(label);
     return { ok: true };
