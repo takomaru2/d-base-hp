@@ -30,7 +30,7 @@ export const TextField: FC<InputFieldProps> = ({
       </div>
       {errorState && <p className={styles.errorMessage}>{errorState}</p>}
       <input
-        type="text"
+        type={'text'}
         name={name}
         className={styles.input}
         placeholder={placeholder}

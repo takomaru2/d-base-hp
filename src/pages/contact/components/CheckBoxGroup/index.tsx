@@ -24,7 +24,7 @@ export const CheckBoxGroup: FC<CheckBoxFieldProps> = ({
         <label className={styles.checkBoxItem} key={value}>
           <input
             name={name}
-            type="checkbox"
+            type={'checkbox'}
             checked={checked.includes(value)}
             onChange={onChange}
             className={styles.checkBox}
