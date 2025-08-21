@@ -4,7 +4,7 @@ import { UserInput } from '../types';
 import { postContact } from '../logic/postContact';
 import { formatConfirmField } from '@/pages/contact/confirm/logics/formatConfirmField';
 import { useIsBoolean } from '@/hooks/useBoolean';
-import { createLoadingMessage } from './components/CreateLoadingMessage';
+import { LoadingMessage } from './components/LoadingMessage';
 import { ConfirmPresentation } from './components/ConfirmPresentation';
 import toast from 'react-hot-toast';
 import { TOAST_MESSAGES } from '@/pages/contact/const/message';
@@ -16,7 +16,7 @@ export default function Confirm() {
   const router = useRouter();
 
   if (userInput === undefined) {
-    return createLoadingMessage();
+    return LoadingMessage();
   }
 
   const onSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
