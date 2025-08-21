@@ -7,7 +7,7 @@ type TextAreaFiledProps = {
   onChange: React.ChangeEventHandler<HTMLTextAreaElement>;
   onBlur: React.FocusEventHandler<HTMLTextAreaElement>;
   value: string;
-  title: string;
+  fieldName: string;
   name: string;
 };
 
@@ -16,12 +16,15 @@ export const TextAreaFiled: FC<TextAreaFiledProps> = ({
   onChange,
   onBlur,
   value,
-  title,
+  fieldName,
   name,
 }) => {
   return (
     <div className={styles.container}>
-      <p className={styles.title}>{title}</p>
+      <div className={styles.fieldHeader}>
+        <p className={styles.fieldName}>{fieldName}</p>
+        <span className={styles.required}>必須</span>
+      </div>
       {errorState.postContent && (
         <p className={styles.errorMessage}>{errorState.postContent}</p>
       )}

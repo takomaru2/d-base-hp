@@ -1,16 +1,16 @@
 import { TextField } from '@/pages/contact/components/TextField';
-import { CheckBoxGroup } from '../CheckBoxGroup';
+import { CheckBoxGroup } from '@/pages/contact/components/CheckBoxGroup';
 import {
   materialOptions,
   periodOptions,
   sizeOptions,
 } from '@/pages/contact/const/contactOptions';
 import { RadioGroup } from '@/pages/contact/components/RadioGroup';
-import { TextAreaFiled } from '../TextAreaFiled';
+import { TextAreaFiled } from '@/pages/contact/components/TextAreaFiled';
 import React, { FC, FormEventHandler } from 'react';
-import { ErrorState, UserInput } from '../../types';
+import { ErrorState, UserInput } from '@/pages/contact/types';
 import styles from './index.module.scss';
-import { ConfirmButton } from '../ConfirmButton';
+import { ConfirmButton } from '@/pages/contact/components/ConfirmButton';
 import { SelectedGroup } from '@/pages/contact/components/SelectedGroup';
 
 type ContactFormProps = {
@@ -103,7 +103,7 @@ export const ContactForm: FC<ContactFormProps> = ({
           onBlur={createOnBlur}
           errorState={errorState}
           value={userInput.postContent}
-          title={'お問い合わせ内容を入力してください'}
+          fieldName={'お問い合わせ内容を入力してください'}
           name={'postContent'}
         />
         <ConfirmButton />

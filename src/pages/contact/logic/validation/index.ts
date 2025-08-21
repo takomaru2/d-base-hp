@@ -11,6 +11,7 @@ const validators: Partial<
   mail: emailValid,
   katakana: katakanaValid,
   phone: phoneValid,
+  postContent: requiredValid,
 };
 
 export function validateField<K extends keyof UserInput>(
