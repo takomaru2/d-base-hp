@@ -2,7 +2,7 @@ import styles from './index.module.scss';
 import React, { FC } from 'react';
 import { UserInput } from '../../types';
 
-type TextAreaFiledProps = {
+type TextAreaFieldProps = {
   errorState: Partial<Record<keyof UserInput, string>>;
   onChange: React.ChangeEventHandler<HTMLTextAreaElement>;
   onBlur: React.FocusEventHandler<HTMLTextAreaElement>;
@@ -11,7 +11,7 @@ type TextAreaFiledProps = {
   name: string;
 };
 
-export const TextAreaFiled: FC<TextAreaFiledProps> = ({
+export const TextAreaField: FC<TextAreaFieldProps> = ({
   errorState,
   onChange,
   onBlur,
