@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react';
-import { useContactHandler } from '@/pages/contact/hooks/useContactHandler';
+import {
+  useContactHandler,
+  UseContactHandlerReturn,
+} from '@/pages/contact/hooks/useContactHandler';
 import { ContactForm } from '@/pages/contact/components/ContactForm';
 import { UserInput } from './types';
 import { loadSessionData } from './confirm/logics/sessionStorage';
@@ -7,12 +10,12 @@ import { loadSessionData } from './confirm/logics/sessionStorage';
 export default function Contact() {
   const {
     userInput,
-    setUserInput,
+    changeUserInput,
     errorState,
     action: { handleChange, createOnBlur, handleSubmit },
   } = useContactHandler();
 
-  useLoadSessionUserInput(setUserInput);
+  useLoadSessionUserInput(changeUserInput);
 
   return (
     <ContactForm
@@ -27,12 +30,12 @@ export default function Contact() {
 }
 
 function useLoadSessionUserInput(
-  setUserInput: React.Dispatch<React.SetStateAction<UserInput>>,
+  changeUserInput: UseContactHandlerReturn['changeUserInput'],
 ) {
   useEffect(() => {
     const result = loadSessionData<UserInput>('formInput');
     if (result.ok && result.data) {
-      setUserInput(result.data);
+      changeUserInput(result.data);
     }
-  }, []);
+  }, [changeUserInput]);
 }

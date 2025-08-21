@@ -1,4 +1,4 @@
-import React, { FormEvent, useCallback, useState } from 'react';
+import React, { FormEvent, useState } from 'react';
 import { validateField } from '@/pages/contact/logic/validation';
 import { validErrorState } from '@/pages/contact/logic/validErrorState';
 import { useRouter } from 'next/router';
@@ -9,59 +9,38 @@ import { TOAST_MESSAGES } from '@/pages/contact/const/message';
 import { initialInput } from '../const/contactOptions';
 import { saveSessionData } from '../confirm/logics/sessionStorage';
 
-type Actions = {
-  handleChange: (
-    event:
-      | React.ChangeEvent<HTMLInputElement>
-      | React.ChangeEvent<HTMLTextAreaElement>
-      | React.ChangeEvent<HTMLSelectElement>,
-  ) => void;
-  createOnBlur: (
-    event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => void;
-  handleSubmit: (event: FormEvent<HTMLFormElement>) => Promise<void>;
-};
-
-type UseContactHandlerReturn = {
-  userInput: UserInput;
-  setUserInput: React.Dispatch<React.SetStateAction<UserInput>>;
-  errorState: ErrorState;
-  action: Actions;
-};
-
-export const useContactHandler = (): UseContactHandlerReturn => {
+export const useContactHandler = () => {
   const [userInput, setUserInput] = useState<UserInput>(initialInput);
   const [errorState, setErrorState] = useState<ErrorState>({});
   const router = useRouter();
 
-  const setField = useCallback((name: keyof UserInput, value: string) => {
+  const changeUserInput = (input: UserInput) => setUserInput(input);
+
+  const setField = (name: keyof UserInput, value: string) => {
     setUserInput((prev) => ({
       ...prev,
       [name]: value,
     }));
-  }, []);
+  };
 
-  const toggleSize = useCallback((value: string) => {
+  const toggleSize = (value: string) => {
     setUserInput((prev) => ({
       ...prev,
       size: toggleArrayValue<string>(prev.size, value),
     }));
-  }, []);
+  };
 
-  const setFieldError = useCallback(
-    (name: keyof UserInput, validResult: ValidResult) => {
-      setErrorState((prev) => {
-        const newErrorState = { ...prev };
-        if (validResult.ok) {
-          delete newErrorState[name];
-        } else {
-          newErrorState[name] = validResult.message;
-        }
-        return newErrorState;
-      });
-    },
-    [],
-  );
+  const setFieldError = (name: keyof UserInput, validResult: ValidResult) => {
+    setErrorState((prev) => {
+      const newErrorState = { ...prev };
+      if (validResult.ok) {
+        delete newErrorState[name];
+      } else {
+        newErrorState[name] = validResult.message;
+      }
+      return newErrorState;
+    });
+  };
 
   const runValidation = (name: keyof UserInput) => {
     const result: ValidResult = validateField(name, userInput[name]);
@@ -105,5 +84,7 @@ export const useContactHandler = (): UseContactHandlerReturn => {
     },
   };
 
-  return { userInput, setUserInput, errorState, action };
+  return { userInput, changeUserInput, errorState, action };
 };
+
+export type UseContactHandlerReturn = ReturnType<typeof useContactHandler>;
