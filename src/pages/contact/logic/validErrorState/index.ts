@@ -17,9 +17,9 @@ const validators: Partial<
 export const validErrorState = (input: UserInput): ErrorState => {
   const newErrors: ErrorState = {};
 
-  const entries = Object.entries(input) as [keyof UserInput, string][];
+  const inputEntries = Object.entries(input) as [keyof UserInput, string][];
 
-  for (const [key, value] of entries) {
+  for (const [key, value] of inputEntries) {
     const validator = validators[key];
     if (validator) {
       const result = validator(value);
