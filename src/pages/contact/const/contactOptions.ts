@@ -1,3 +1,5 @@
+import { UserInput } from '@/pages/contact/types';
+
 export type Option = {
   value: string;
   label: string;
@@ -28,7 +30,7 @@ export const materialOptions: Option[] = [
   { value: 'liquid_3', label: '液剤３' },
 ];
 
-export const sizeOptions = [
+export const sizeOptions: Option[] = [
   { value: 'SS', label: 'SSサイズ' },
   { value: 'S', label: 'Sサイズ' },
   { value: 'M', label: 'Mサイズ' },
@@ -36,7 +38,7 @@ export const sizeOptions = [
   { value: 'LL', label: 'LLサイズ' },
 ];
 
-export const initialInput = {
+export const initialInput: UserInput = {
   name: '',
   katakana: '',
   mail: '',
