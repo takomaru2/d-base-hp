@@ -1,0 +1,51 @@
+@import '@/styles/mixin';
+@import '@/styles/variables';
+
+.title {
+  position: relative;
+  z-index: 2;
+  font-size: linear-clamp(20, 52);
+  text-align: center;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  padding: linear-clamp(60, 150) 0;
+  overflow: hidden;
+  background: url('/assets/form/bg.jpg') no-repeat;
+  background-size: cover;
+
+  &::before {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    content: '';
+    background-color: $colorBlack;
+    opacity: 0.55;
+  }
+
+  @include lg {
+    padding-left: linear-clamp(70, 140);
+  }
+}
+
+.form {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  row-gap: linear-clamp(20, 30);
+  align-items: center;
+  max-width: 500px;
+  padding-block: linear-clamp(30, 50) 64px;
+  font-size: linear-clamp(14, 20);
+  color: $colorWhite;
+
+  @include lg {
+    align-items: start;
+  }
+}

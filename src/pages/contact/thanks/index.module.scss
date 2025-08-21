@@ -1,0 +1,13 @@
+@import '@/styles/mixin';
+@import '@/styles/variables';
+
+.container {
+  margin-block: linear-clamp(120, 250);
+  text-align: center;
+}
+
+.message {
+  font-size: linear-clamp(14, 20);
+
+  @include letterSpacing8(16px);
+}
