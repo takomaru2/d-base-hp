@@ -20,17 +20,17 @@ export const CheckBoxGroup: FC<CheckBoxFieldProps> = ({
   return (
     <div className={styles.container}>
       <p className={styles.title}>{title}</p>
-      {options.map((option) => (
-        <label className={styles.checkBoxItem} key={option.value}>
+      {options.map(({ value, label }) => (
+        <label className={styles.checkBoxItem} key={value}>
           <input
             name={name}
             type="checkbox"
-            checked={checked.includes(option.value)}
+            checked={checked.includes(value)}
             onChange={onChange}
             className={styles.checkBox}
-            value={option.value}
+            value={value}
           />
-          <span className={styles.label}>{option.label}</span>
+          <span className={styles.label}>{label}</span>
         </label>
       ))}
     </div>

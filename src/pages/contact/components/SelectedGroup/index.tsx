@@ -29,9 +29,9 @@ export const SelectedGroup: FC<CheckBoxFieldProps> = ({
         onChange={onChange}
         value={value}
       >
-        {options.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
+        {options.map(({ value, label }) => (
+          <option key={value} value={value}>
+            {label}
           </option>
         ))}
       </select>
