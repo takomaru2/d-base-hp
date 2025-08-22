@@ -24,7 +24,6 @@ export default function Contact() {
       handleChange={handleChange}
       createOnBlur={createOnBlur}
       userInput={userInput}
-      userInputSize={userInput.size}
     />
   );
 }

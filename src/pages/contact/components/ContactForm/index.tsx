@@ -26,7 +26,6 @@ type ContactFormProps = {
     event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => void;
   userInput: UserInput;
-  userInputSize: string[];
 };
 
 export const ContactForm: FC<ContactFormProps> = ({
@@ -35,7 +34,6 @@ export const ContactForm: FC<ContactFormProps> = ({
   handleChange,
   createOnBlur,
   userInput,
-  userInputSize,
 }) => {
   return (
     <section className={styles.container}>
@@ -79,7 +77,7 @@ export const ContactForm: FC<ContactFormProps> = ({
         />
         <CheckBoxGroup
           name={'size'}
-          checked={userInputSize}
+          checked={userInput.size}
           onChange={handleChange}
           title={'お客様のお車のサイズを選択してください'}
           options={sizeOptions}
