@@ -25,7 +25,7 @@ export const SelectedGroup: FC<CheckBoxFieldProps> = ({
       </div>
       <select
         name={name}
-        className={styles.items}
+        className={styles.select}
         onChange={onChange}
         value={value}
       >
