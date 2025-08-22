@@ -5,17 +5,17 @@ import {
 } from '@/pages/contact/hooks/useContactHandler';
 import { ContactForm } from '@/pages/contact/components/ContactForm';
 import { UserInput } from './types';
-import { loadSessionData } from './confirm/logics/sessionStorage';
+import { sessionStorageData } from '@/pages/contact/confirm/logics/sessionStorage';
 
 export default function Contact() {
   const {
     userInput,
-    changeUserInput,
+    setUserInput,
     errorState,
     action: { handleChange, createOnBlur, handleSubmit },
   } = useContactHandler();
 
-  useLoadSessionUserInput(changeUserInput);
+  useLoadSessionUserInput(setUserInput);
 
   return (
     <ContactForm
@@ -29,12 +29,12 @@ export default function Contact() {
 }
 
 function useLoadSessionUserInput(
-  changeUserInput: UseContactHandlerReturn['changeUserInput'],
+  setUserInput: UseContactHandlerReturn['setUserInput'],
 ) {
   useEffect(() => {
-    const result = loadSessionData<UserInput>('formInput');
+    const result = sessionStorageData.load<UserInput>('formInput');
     if (result.ok && result.data) {
-      changeUserInput(result.data);
+      setUserInput(result.data);
     }
-  }, [changeUserInput]);
+  }, [setUserInput]);
 }
