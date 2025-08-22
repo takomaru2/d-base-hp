@@ -19,7 +19,7 @@ export const CheckBoxGroup: FC<CheckBoxFieldProps> = ({
 }) => {
   return (
     <div className={styles.container}>
-      <p className={styles.title}>{title}</p>
+      <label className={styles.title}>{title}</label>
       {options.map(({ value, label }) => (
         <label className={styles.checkBoxItem} key={value}>
           <input

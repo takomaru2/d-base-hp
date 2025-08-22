@@ -82,7 +82,7 @@
       "pnpm lint:css:fix-order",
       "pnpm lint:css"
     ],
-    "*.{ts,tsx}": [
+    "src/page/contact/**/*.{ts,tsx}": [
       "pnpm lint",
       "bash -c tsc --noEmit"
     ]

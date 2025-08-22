@@ -22,7 +22,7 @@ export const TextAreaField: FC<TextAreaFieldProps> = ({
   return (
     <div className={styles.container}>
       <div className={styles.fieldHeader}>
-        <p className={styles.fieldName}>{fieldName}</p>
+        <label className={styles.fieldName}>{fieldName}</label>
         <span className={styles.required}>必須</span>
       </div>
       {errorState.postContent && (
