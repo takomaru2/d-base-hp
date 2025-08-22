@@ -47,6 +47,7 @@ export const ContactForm: FC<ContactFormProps> = ({
           onBlur={createOnBlur}
           placeholder={'山田　太郎'}
           value={userInput.name}
+          required={true}
         />
         <TextField
           fieldName={'カタカナ'}
@@ -56,6 +57,7 @@ export const ContactForm: FC<ContactFormProps> = ({
           onBlur={createOnBlur}
           placeholder={'ヤマダ　タロウ'}
           value={userInput.katakana}
+          required={true}
         />
         <TextField
           fieldName={'メールアドレス'}
@@ -65,6 +67,7 @@ export const ContactForm: FC<ContactFormProps> = ({
           onBlur={createOnBlur}
           placeholder={'react@example.com'}
           value={userInput.mail}
+          required={true}
         />
         <TextField
           fieldName={'電話番号'}
@@ -74,6 +77,7 @@ export const ContactForm: FC<ContactFormProps> = ({
           onBlur={createOnBlur}
           placeholder={'08012345678'}
           value={userInput.phone}
+          required={true}
         />
         <CheckBoxGroup
           name={'size'}

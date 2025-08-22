@@ -9,6 +9,7 @@ type InputFieldProps = {
   onBlur: FocusEventHandler<HTMLInputElement>;
   placeholder: string;
   value: string;
+  required?: boolean;
 };
 
 export const TextField: FC<InputFieldProps> = ({
@@ -19,6 +20,7 @@ export const TextField: FC<InputFieldProps> = ({
   onBlur,
   placeholder,
   value,
+  required = false,
 }) => {
   return (
     <div className={styles.container}>
@@ -26,7 +28,7 @@ export const TextField: FC<InputFieldProps> = ({
         <label htmlFor={name} className={styles.label}>
           {fieldName}
         </label>
-        <span className={styles.required}>必須</span>
+        {required && <span className={styles.required}>必須</span>}
       </div>
       {errorState && <p className={styles.errorMessage}>{errorState}</p>}
       <input
