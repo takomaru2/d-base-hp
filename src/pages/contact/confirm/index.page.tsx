@@ -16,7 +16,7 @@ export default function Confirm() {
   const router = useRouter();
 
   if (userInput === undefined) {
-    return LoadingMessage();
+    return <LoadingMessage />;
   }
 
   const onSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
