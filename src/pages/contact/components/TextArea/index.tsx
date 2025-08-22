@@ -11,7 +11,7 @@ type TextAreaFieldProps = {
   name: string;
 };
 
-export const TextAreaField: FC<TextAreaFieldProps> = ({
+export const TextArea: FC<TextAreaFieldProps> = ({
   errorState,
   onChange,
   onBlur,
