@@ -83,12 +83,11 @@ export default defineConfig([
       ],
       'unicorn/prevent-abbreviations': 'off',
       'no-console': 'error',
-
       'react/jsx-curly-brace-presence': [
         'error',
         { props: 'always', children: 'never', propElementValues: 'always' },
       ],
-
+      "react/jsx-no-useless-fragment": ["error", { allowExpressions: true }],
       'no-unused-expressions': 'off',
       '@typescript-eslint/no-unused-expressions': [
         'error',
