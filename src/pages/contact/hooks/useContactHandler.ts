@@ -14,8 +14,6 @@ export const useContactHandler = () => {
   const [errorState, setErrorState] = useState<ErrorState>({});
   const router = useRouter();
 
-  // const changeUserInput = (input: UserInput) => setUserInput(input);
-
   const setField = (name: keyof UserInput, value: string) => {
     setUserInput((prev) => ({
       ...prev,
