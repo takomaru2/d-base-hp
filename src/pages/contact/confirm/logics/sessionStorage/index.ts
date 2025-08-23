@@ -1,9 +1,12 @@
-type SessionResult<T = void> =
-  | { ok: true; data?: T }
-  | { ok: false; data?: undefined };
+import { Result } from '@/pages/contact/types';
+
+type Success<T> = { data?: T };
+type Failure = { data?: undefined };
+
+type SessionResult<T = void> = Result<Success<T>, Failure>;
 
 export const sessionStorageData = {
-  load: <T>(key: string): SessionResult<T> => {
+  load: <T>(key: 'formInput'): SessionResult<T> => {
     try {
       const stored = sessionStorage.getItem(key);
       if (!stored) {

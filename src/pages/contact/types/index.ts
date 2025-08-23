@@ -11,7 +11,6 @@ export type UserInput = {
 
 export type ErrorState = Partial<Record<keyof UserInput, string>>;
 
-export type ValidResult = {
-  ok: boolean;
-  message?: string;
-};
+export type ValidResult = Result<unknown, { message?: string }>;
+
+export type Result<T, F> = ({ ok: true } & T) | ({ ok: false } & F);
