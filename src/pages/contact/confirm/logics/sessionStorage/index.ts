@@ -5,7 +5,7 @@ type Failure = { data?: undefined };
 
 type SessionResult<T = void> = Result<Success<T>, Failure>;
 
-export const sessionStorageData = {
+export const sessionStorageAction = {
   load: <T>(key: 'formInput'): SessionResult<T> => {
     try {
       const stored = sessionStorage.getItem(key);

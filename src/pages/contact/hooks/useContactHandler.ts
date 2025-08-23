@@ -7,7 +7,7 @@ import { toggleArrayValue } from '@/logics/arrayToggleValue';
 import toast from 'react-hot-toast';
 import { TOAST_MESSAGES } from '@/pages/contact/const/message';
 import { initialInput } from '../const/contactOptions';
-import { sessionStorageData } from '../confirm/logics/sessionStorage';
+import { sessionStorageAction } from '../confirm/logics/sessionStorage';
 
 export const useContactHandler = () => {
   const [userInput, setUserInput] = useState<UserInput>(initialInput);
@@ -69,7 +69,7 @@ export const useContactHandler = () => {
         setErrorState(newErrors);
         return;
       }
-      const saveResult = sessionStorageData.save('formInput', userInput);
+      const saveResult = sessionStorageAction.save('formInput', userInput);
       if (!saveResult.ok) {
         toast.error(TOAST_MESSAGES.NETWORK_ERROR);
         return;

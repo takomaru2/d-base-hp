@@ -8,7 +8,7 @@ import { LoadingMessage } from './components/LoadingMessage';
 import { ConfirmPresentation } from './components/ConfirmPresentation';
 import toast from 'react-hot-toast';
 import { TOAST_MESSAGES } from '@/pages/contact/const/message';
-import { sessionStorageData } from '@/pages/contact/confirm/logics/sessionStorage';
+import { sessionStorageAction } from '@/pages/contact/confirm/logics/sessionStorage';
 
 export default function Confirm() {
   const userInput = useLoadUserInput();
@@ -29,7 +29,7 @@ export default function Confirm() {
       setIsSubmitting.off();
       return;
     }
-    const removeResult = sessionStorageData.remove('formInput');
+    const removeResult = sessionStorageAction.remove('formInput');
     if (!removeResult.ok) {
       toast.error(TOAST_MESSAGES.LOAD_ERROR);
     }
@@ -53,7 +53,7 @@ export default function Confirm() {
 function useLoadUserInput() {
   const [userInput, setUserInput] = useState<UserInput | undefined>();
   useEffect(() => {
-    const result = sessionStorageData.load<UserInput>('formInput');
+    const result = sessionStorageAction.load<UserInput>('formInput');
     if (result.ok) {
       setUserInput(result.data);
     } else {

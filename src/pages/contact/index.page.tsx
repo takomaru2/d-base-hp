@@ -5,7 +5,7 @@ import {
 } from '@/pages/contact/hooks/useContactHandler';
 import { ContactForm } from '@/pages/contact/components/ContactForm';
 import { UserInput } from './types';
-import { sessionStorageData } from '@/pages/contact/confirm/logics/sessionStorage';
+import { sessionStorageAction } from '@/pages/contact/confirm/logics/sessionStorage';
 
 export default function Contact() {
   const {
@@ -32,7 +32,7 @@ function useLoadSessionUserInput(
   setUserInput: UseContactHandlerReturn['setUserInput'],
 ) {
   useEffect(() => {
-    const result = sessionStorageData.load<UserInput>('formInput');
+    const result = sessionStorageAction.load<UserInput>('formInput');
     if (result.ok && result.data) {
       setUserInput(result.data);
     }
