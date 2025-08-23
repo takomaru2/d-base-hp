@@ -28,21 +28,17 @@ export const useContactHandler = () => {
     }));
   };
 
-  const setFieldError = (name: keyof UserInput, validResult: ValidResult) => {
+  const runValidation = (name: keyof UserInput) => {
+    const result: ValidResult = validateField(name, userInput[name]);
     setErrorState((prev) => {
       const newErrorState = { ...prev };
-      if (validResult.ok) {
+      if (result.ok) {
         delete newErrorState[name];
       } else {
-        newErrorState[name] = validResult.message;
+        newErrorState[name] = result.message;
       }
       return newErrorState;
     });
-  };
-
-  const runValidation = (name: keyof UserInput) => {
-    const result: ValidResult = validateField(name, userInput[name]);
-    setFieldError(name, result);
   };
 
   const action = {
