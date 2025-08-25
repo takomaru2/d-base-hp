@@ -48,3 +48,14 @@ export const initialInput: UserInput = {
   material: 'liquid_1',
   postContent: '',
 };
+
+export const inputLabel: Record<keyof UserInput, string> = {
+  name: 'お名前',
+  katakana: 'フリガナ',
+  mail: 'メールアドレス',
+  phone: 'ご連絡先',
+  size: '所有しているお車のサイズ',
+  period: '所有している車の経過年数',
+  material: 'ご希望の液剤',
+  postContent: 'お問い合わせ内容',
+};

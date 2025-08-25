@@ -1,39 +1,47 @@
 import { UserInput } from '../../../types';
 import {
+  initialInput,
+  inputLabel,
   materialOptions,
   periodOptions,
 } from '@/pages/contact/const/contactOptions';
 
-export const formatConfirmField = (userInput: UserInput) => {
-  return [
-    { id: 'name', label: 'お名前', value: userInput.name },
-    { id: 'katakana', label: 'フリガナ', value: userInput.katakana },
-    { id: 'mail', label: 'メールアドレス', value: userInput.mail },
-    { id: 'phone', label: 'ご連絡先', value: userInput.phone },
-    {
-      id: 'size',
-      label: '車種・サイズ',
-      value:
-        userInput['size'].length > 0 ? userInput['size'].join(', ') : '未選択',
-    },
-    {
-      id: 'period',
-      label: '車の年数',
-      value:
-        periodOptions.find((option) => option.value === userInput.period)
-          ?.label ?? '未選択',
-    },
-    {
-      id: 'material',
-      label: '希望の液剤',
-      value:
-        materialOptions.find((option) => option.value === userInput.material)
-          ?.label ?? materialOptions[0].label,
-    },
-    {
-      id: 'postContent',
-      label: 'お問い合わせ内容',
-      value: userInput.postContent,
-    },
-  ];
+type FormatResult = {
+  id: keyof UserInput;
+  label: string;
+  value: string;
+};
+
+type Formatter<K extends keyof UserInput> = (value: UserInput[K]) => string;
+
+const FALLBACK = '未選択';
+const formatStringArray = (array: string[]) =>
+  array.length > 0 ? array.join(', ') : FALLBACK;
+
+const labelOf = (value: string, options: { value: string; label: string }[]) =>
+  options.find((option) => option.value === value)?.label ?? FALLBACK;
+
+const fieldFormatters: Partial<{
+  [K in keyof UserInput]: Formatter<K>;
+}> = {
+  size: (value: UserInput['size']) => formatStringArray(value),
+  period: (value: UserInput['period']) => labelOf(value, periodOptions),
+  material: (value: UserInput['material']) => labelOf(value, materialOptions),
+};
+
+export const formatConfirmField = (userInput: UserInput): FormatResult[] => {
+  const keys = Object.keys(initialInput) as (keyof UserInput)[];
+  return keys.map((key) => {
+    const inputValue = userInput[key];
+    const formatter = fieldFormatters[key] as Formatter<typeof key> | undefined;
+    const outputValue = formatter
+      ? formatter(inputValue)
+      : String(inputValue ?? FALLBACK);
+
+    return {
+      id: key,
+      label: inputLabel[key],
+      value: outputValue,
+    };
+  });
 };

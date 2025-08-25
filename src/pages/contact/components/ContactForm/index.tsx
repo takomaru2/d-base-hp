@@ -1,6 +1,7 @@
 import { TextField } from '@/pages/contact/components/TextField';
 import { CheckBoxGroup } from '@/pages/contact/components/CheckBoxGroup';
 import {
+  inputLabel,
   materialOptions,
   periodOptions,
   sizeOptions,
@@ -40,7 +41,7 @@ export const ContactForm: FC<ContactFormProps> = ({
       <h2 className={styles.title}>お問い合わせフォーム</h2>
       <form className={styles.form} onSubmit={handleSubmit}>
         <TextField
-          fieldName={'お名前'}
+          fieldName={inputLabel.name}
           name={'name'}
           errorState={errorState.name}
           onChange={handleChange}
@@ -50,7 +51,7 @@ export const ContactForm: FC<ContactFormProps> = ({
           required={true}
         />
         <TextField
-          fieldName={'カタカナ'}
+          fieldName={inputLabel.katakana}
           name={'katakana'}
           errorState={errorState.katakana}
           onChange={handleChange}
@@ -60,7 +61,7 @@ export const ContactForm: FC<ContactFormProps> = ({
           required={true}
         />
         <TextField
-          fieldName={'メールアドレス'}
+          fieldName={inputLabel.mail}
           name={'mail'}
           errorState={errorState.mail}
           onChange={handleChange}
@@ -70,7 +71,7 @@ export const ContactForm: FC<ContactFormProps> = ({
           required={true}
         />
         <TextField
-          fieldName={'電話番号'}
+          fieldName={inputLabel.phone}
           name={'phone'}
           errorState={errorState.phone}
           onChange={handleChange}
@@ -83,19 +84,19 @@ export const ContactForm: FC<ContactFormProps> = ({
           name={'size'}
           checked={userInput.size}
           onChange={handleChange}
-          title={'お客様のお車のサイズを選択してください'}
+          title={inputLabel.size}
           options={sizeOptions}
         />
         <RadioGroup
           onChange={handleChange}
-          title={'車の経過年数を選択してください'}
+          title={inputLabel.period}
           option={periodOptions}
           value={userInput.period}
           name={'period'}
         />
         <SelectedGroup
           onChange={handleChange}
-          title={'ご希望の液剤を選択してください'}
+          title={inputLabel.material}
           options={materialOptions}
           value={userInput.material}
           name={'material'}
@@ -105,7 +106,7 @@ export const ContactForm: FC<ContactFormProps> = ({
           onBlur={createOnBlur}
           errorState={errorState}
           value={userInput.postContent}
-          fieldName={'お問い合わせ内容を入力してください'}
+          fieldName={inputLabel.postContent}
           name={'postContent'}
         />
         <ConfirmButton />
