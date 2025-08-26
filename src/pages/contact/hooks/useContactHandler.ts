@@ -54,7 +54,7 @@ export const useContactHandler = () => {
         setField(name as keyof UserInput, value);
       }
     },
-    createOnBlur: (
+    handleBlur: (
       event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
     ) => {
       const fieldName = event.target.name as keyof UserInput;

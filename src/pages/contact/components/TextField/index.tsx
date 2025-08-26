@@ -4,7 +4,7 @@ import { ChangeEvent, FC, FocusEventHandler } from 'react';
 type InputFieldProps = {
   errorState: string | undefined;
   name: string;
-  fieldName: string;
+  label: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
   onBlur: FocusEventHandler<HTMLInputElement>;
   placeholder: string;
@@ -15,7 +15,7 @@ type InputFieldProps = {
 export const TextField: FC<InputFieldProps> = ({
   errorState,
   name,
-  fieldName,
+  label,
   onChange,
   onBlur,
   placeholder,
@@ -26,7 +26,7 @@ export const TextField: FC<InputFieldProps> = ({
     <div className={styles.container}>
       <div className={styles.fieldHeader}>
         <label htmlFor={name} className={styles.label}>
-          {fieldName}
+          {label}
         </label>
         {required && <span className={styles.required}>必須</span>}
       </div>

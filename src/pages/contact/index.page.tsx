@@ -12,7 +12,7 @@ export default function Contact() {
     userInput,
     setUserInput,
     errorState,
-    action: { handleChange, createOnBlur, handleSubmit },
+    action: { handleChange, handleBlur, handleSubmit },
   } = useContactHandler();
 
   useLoadSessionUserInput(setUserInput);
@@ -22,7 +22,7 @@ export default function Contact() {
       handleSubmit={handleSubmit}
       errorState={errorState}
       handleChange={handleChange}
-      createOnBlur={createOnBlur}
+      handleBlur={handleBlur}
       userInput={userInput}
     />
   );

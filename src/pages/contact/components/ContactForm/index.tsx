@@ -23,7 +23,7 @@ type ContactFormProps = {
       | React.ChangeEvent<HTMLTextAreaElement>
       | React.ChangeEvent<HTMLSelectElement>,
   ) => void;
-  createOnBlur: (
+  handleBlur: (
     event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => void;
   userInput: UserInput;
@@ -33,7 +33,7 @@ export const ContactForm: FC<ContactFormProps> = ({
   handleSubmit,
   errorState,
   handleChange,
-  createOnBlur,
+  handleBlur,
   userInput,
 }) => {
   return (
@@ -41,73 +41,73 @@ export const ContactForm: FC<ContactFormProps> = ({
       <h2 className={styles.title}>お問い合わせフォーム</h2>
       <form className={styles.form} onSubmit={handleSubmit}>
         <TextField
-          fieldName={inputLabel.name}
           name={'name'}
-          errorState={errorState.name}
-          onChange={handleChange}
-          onBlur={createOnBlur}
-          placeholder={'山田　太郎'}
           value={userInput.name}
+          label={inputLabel.name}
+          placeholder={'山田　太郎'}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          errorState={errorState.name}
           required={true}
         />
         <TextField
-          fieldName={inputLabel.katakana}
           name={'katakana'}
-          errorState={errorState.katakana}
-          onChange={handleChange}
-          onBlur={createOnBlur}
-          placeholder={'ヤマダ　タロウ'}
           value={userInput.katakana}
+          label={inputLabel.katakana}
+          placeholder={'ヤマダ　タロウ'}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          errorState={errorState.katakana}
           required={true}
         />
         <TextField
-          fieldName={inputLabel.mail}
           name={'mail'}
-          errorState={errorState.mail}
-          onChange={handleChange}
-          onBlur={createOnBlur}
-          placeholder={'react@example.com'}
           value={userInput.mail}
+          label={inputLabel.mail}
+          placeholder={'react@example.com'}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          errorState={errorState.mail}
           required={true}
         />
         <TextField
-          fieldName={inputLabel.phone}
           name={'phone'}
-          errorState={errorState.phone}
-          onChange={handleChange}
-          onBlur={createOnBlur}
-          placeholder={'08012345678'}
           value={userInput.phone}
+          label={inputLabel.phone}
+          placeholder={'08012345678'}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          errorState={errorState.phone}
           required={true}
         />
         <CheckBoxGroup
           name={'size'}
-          checked={userInput.size}
-          onChange={handleChange}
           title={inputLabel.size}
+          checked={userInput.size}
           options={sizeOptions}
+          onChange={handleChange}
         />
         <RadioGroup
-          onChange={handleChange}
+          name={'period'}
+          value={userInput.period}
           title={inputLabel.period}
           option={periodOptions}
-          value={userInput.period}
-          name={'period'}
+          onChange={handleChange}
         />
         <SelectedGroup
-          onChange={handleChange}
+          name={'material'}
+          value={userInput.material}
           title={inputLabel.material}
           options={materialOptions}
-          value={userInput.material}
-          name={'material'}
+          onChange={handleChange}
         />
         <TextArea
-          onChange={handleChange}
-          onBlur={createOnBlur}
-          errorState={errorState}
+          name={'postContent'}
           value={userInput.postContent}
           fieldName={inputLabel.postContent}
-          name={'postContent'}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          errorState={errorState}
         />
         <ConfirmButton />
       </form>
