@@ -1,0 +1,10 @@
+@import '@/styles/mixin';
+@import '@/styles/variables';
+
+.button {
+  width: linear-clamp(200, 500);
+  padding: 5px;
+  color: $colorWhite;
+  background-color: $colorOrange;
+  border-radius: 5px;
+}

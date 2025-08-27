@@ -9,7 +9,7 @@ export const footerNav: FooterNav[] = [
   {
     id: '6',
     name: 'お問い合わせ',
-    href: 'https://form.run/@col-dd--9UTghEpb6KZmBlZ06Weo',
+    href: '/contact',
   },
   { id: '7', name: 'プライバシポリシー', href: '/privacy' },
 ];

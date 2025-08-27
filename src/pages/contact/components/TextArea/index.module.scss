@@ -1,0 +1,43 @@
+@import '@/styles/mixin';
+@import '@/styles/variables';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  width: 200px;
+
+  @include lg {
+    width: 100%;
+  }
+}
+
+.fieldHeader {
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+}
+
+.fieldName {
+  font-weight: bold;
+}
+
+.required {
+  padding: 4px;
+  font-weight: bold;
+  background-color: $answerColor;
+  border-radius: 4px;
+}
+
+.textArea {
+  width: 100%;
+  max-width: linear-clamp(200, 500);
+  min-height: linear-clamp(300, 500);
+  padding: 10px;
+  resize: vertical;
+  background-color: $colorWhite;
+}
+
+.errorMessage {
+  color: $answerColor;
+}

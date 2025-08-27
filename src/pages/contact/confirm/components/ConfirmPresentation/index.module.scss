@@ -1,0 +1,73 @@
+@import '@/styles/mixin';
+@import '@/styles/variables';
+
+.container {
+  margin-top: linear-clamp(67, 90);
+}
+
+.titleWrapper {
+  padding-top: linear-clamp(50, 100);
+  text-align: center;
+}
+
+.userResults {
+  display: flex;
+  flex-direction: column;
+  gap: linear-clamp(20, 30) linear-clamp(50, 100);
+  width: linear-clamp(360, 600);
+  margin-inline: auto;
+  margin-top: linear-clamp(30, 50);
+}
+
+.row {
+  display: flex;
+  gap: linear-clamp(20, 30);
+}
+
+.label {
+  max-width: linear-clamp(150, 388);
+}
+
+.label,
+.result {
+  width: 100%;
+  font-size: linear-clamp(16, 24);
+  line-height: 24px;
+
+  @include letterSpacing5(16px);
+}
+
+.buttonWrapper {
+  display: flex;
+  column-gap: 20px;
+  justify-content: center;
+  margin-top: linear-clamp(40, 80);
+  text-align: center;
+}
+
+.button {
+  display: inline-block;
+  padding: linear-clamp(5, 30) linear-clamp(20, 80);
+  font-size: linear-clamp(14, 28);
+  font-weight: bold;
+  color: $colorWhite;
+  white-space: nowrap;
+  background-color: $buttonColor;
+  border-radius: 2px;
+  transition: all 0.3s ease-in;
+
+  @include letterSpacing8(14px);
+
+  &:hover {
+    color: $buttonColor;
+    background-color: $colorWhite;
+    outline: $buttonColor 1px solid;
+  }
+}
+
+.errorMessage {
+  margin-top: linear-clamp(10, 20);
+  font-weight: bold;
+  color: $answerColor;
+  text-align: center;
+}

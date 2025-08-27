@@ -1,0 +1,41 @@
+@import '@/styles/mixin';
+@import '@/styles/variables';
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: linear-clamp(200, 500);
+  margin-top: 30px;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.checkBoxItem {
+  display: flex;
+  column-gap: 4px;
+  align-items: center;
+  width: 100%;
+  max-width: linear-clamp(95, 240);
+  padding: 4px 20px;
+  color: $colorBlack;
+  background-color: $colorWhite;
+
+  @include lg {
+    padding: 10px 20px;
+  }
+}
+
+.required {
+  padding: 4px;
+  font-weight: bold;
+  background-color: $answerColor;
+  border-radius: 4px;
+}
+
+.checkBox {
+  width: 20px;
+  height: 20px;
+}
