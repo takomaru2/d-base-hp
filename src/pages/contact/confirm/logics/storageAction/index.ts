@@ -9,9 +9,9 @@ export const action = {
   formInput: 'formInput',
 } as const;
 
-type StorageAction = keyof typeof action | (string & {});
+type StorageAction = keyof typeof action;
 
-export const storageAction = {
+export const safeSessionStorage = {
   getItem: <T>(key: StorageAction): SessionResult<T> => {
     try {
       const stored = sessionStorage.getItem(key);

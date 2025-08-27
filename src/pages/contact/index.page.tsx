@@ -1,11 +1,9 @@
 import React from 'react';
-import { useContactHandler } from '@/pages/contact/hooks/useContactHandler';
+import { useContactForm } from '@/pages/contact/hooks/useContactForm';
 import { ContactForm } from '@/pages/contact/components/ContactForm';
 
 export default function Contact() {
-  const { userInput, errorState, action } = useContactHandler();
-
-  action.useLoadStorage();
+  const { userInput, errorState, action } = useContactForm();
 
   return (
     <ContactForm
