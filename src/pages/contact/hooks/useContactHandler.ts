@@ -1,4 +1,4 @@
-import React, { FormEvent, useState } from 'react';
+import React, { FormEvent, useEffect, useState } from 'react';
 import { validateField } from '@/pages/contact/logic/validation';
 import { validErrorState } from '@/pages/contact/logic/validErrorState';
 import { useRouter } from 'next/router';
@@ -76,9 +76,17 @@ export const useContactHandler = () => {
       }
       await router.push('/contact/confirm');
     },
+    useLoadStorage: () => {
+      useEffect(() => {
+        const result = storageAction.getItem<UserInput>('formInput');
+        if (result.ok && result.data) {
+          setUserInput(result.data);
+        }
+      }, []);
+    },
   };
 
-  return { userInput, setUserInput, errorState, action };
+  return { userInput, errorState, action };
 };
 
 export type UseContactHandlerReturn = ReturnType<typeof useContactHandler>;
