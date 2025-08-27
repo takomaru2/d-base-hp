@@ -5,8 +5,14 @@ type Failure = { data?: undefined };
 
 type SessionResult<T = void> = Result<Success<T>, Failure>;
 
-export const sessionStorageAction = {
-  load: <T>(key: 'formInput'): SessionResult<T> => {
+export const action = {
+  formInput: 'formInput',
+} as const;
+
+type StorageAction = keyof typeof action | (string & {});
+
+export const storageAction = {
+  getItem: <T>(key: StorageAction): SessionResult<T> => {
     try {
       const stored = sessionStorage.getItem(key);
       if (!stored) {
@@ -18,7 +24,7 @@ export const sessionStorageAction = {
       return { ok: false };
     }
   },
-  save: (label: string, value: unknown): SessionResult => {
+  setItem: (label: string, value: unknown): SessionResult => {
     try {
       sessionStorage.setItem(label, JSON.stringify(value));
       return { ok: true };
@@ -26,7 +32,7 @@ export const sessionStorageAction = {
       return { ok: false };
     }
   },
-  remove: (label: string): SessionResult => {
+  removeItem: (label: string): SessionResult => {
     try {
       sessionStorage.removeItem(label);
       return { ok: true };
