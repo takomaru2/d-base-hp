@@ -6,6 +6,14 @@ import {
 } from '@/pages/contact/const/contactOptions';
 import { sanitizeAndEscape } from '@/pages/contact/logic/sanitizeAndEscape';
 import { API_MESSAGES } from '@/pages/contact/const/message';
+import {
+  Html,
+  Head,
+  Body,
+  Container,
+  Heading,
+  Text,
+} from '@react-email/components';
 
 const resend = new Resend(process.env.RESEND_API_KEY!);
 
@@ -40,34 +48,26 @@ export default async function handler(
     return res.status(400).json({ error: API_MESSAGES.BAD_REQUEST });
   }
 
-  const safeName = sanitizeAndEscape(name);
-  const safeKatakana = sanitizeAndEscape(katakana);
-  const safeMail = sanitizeAndEscape(mail);
-  const safePhone = sanitizeAndEscape(phone);
-  const safePostContent = sanitizeAndEscape(postContent);
-
-  const safeSelected =
-    size.length === 0
-      ? '未選択'
-      : size.map((value: string) => sanitizeAndEscape(value)).join(', ');
-
-  const safePeriod = sanitizeAndEscape(periodOption.label);
-  const safeMaterial = sanitizeAndEscape(materialOption.label);
+  const emailProps: EmailProps = {
+    safeName: sanitizeAndEscape(name),
+    safeKatakana: sanitizeAndEscape(katakana),
+    safeMail: sanitizeAndEscape(mail),
+    safePhone: sanitizeAndEscape(phone),
+    safeSelected:
+      size.length === 0
+        ? '未選択'
+        : size.map((value: string) => sanitizeAndEscape(value)).join(', '),
+    safePeriod: sanitizeAndEscape(periodOption.label),
+    safeMaterial: sanitizeAndEscape(materialOption.label),
+    safePostContent: sanitizeAndEscape(postContent),
+  };
 
   try {
     const result = await resend.emails.send({
       from: 'onboarding@resend.dev',
       to: 'gakki.nkk.0331@gmail.com',
       subject: `お問い合わせ`,
-      html: `
-<p>お名前: ${safeName}</p>
-<p>フリガナ: ${safeKatakana}</p>
-<p>メール: ${safeMail}</p>
-<p>電話番号:${safePhone}</p>
-<p>車のサイズ:${safeSelected}</p> 
-<p>車の年数: ${safePeriod}</p>
-<p>希望液剤: ${safeMaterial}</p>
-<p>内容: ${safePostContent}</p>`,
+      react: <Email {...emailProps} />,
     });
 
     if (result.error) {
@@ -77,4 +77,34 @@ export default async function handler(
   } catch {
     return res.status(500).json({ error: API_MESSAGES.SEND_FAILURE });
   }
+}
+
+function Email({
+  safeName,
+  safeKatakana,
+  safeMail,
+  safePhone,
+  safeSelected,
+  safePeriod,
+  safeMaterial,
+  safePostContent,
+}: EmailProps) {
+  return (
+    <Html>
+      <Head />
+      <Body style={{ backgroundColor: '#fff' }}>
+        <Container style={{ padding: '24px', fontFamily: 'sans-serif' }}>
+          <Heading>お問い合わせ内容</Heading>
+          <Text>お名前: {safeName}</Text>
+          <Text>フリガナ: {safeKatakana}</Text>
+          <Text>メール: {safeMail}</Text>
+          <Text>電話番号: {safePhone}</Text>
+          <Text>車のサイズ: {safeSelected}</Text>
+          <Text>車の年数: {safePeriod}</Text>
+          <Text>希望液剤: {safeMaterial}</Text>
+          <Text>内容: {safePostContent}</Text>
+        </Container>
+      </Body>
+    </Html>
+  );
 }

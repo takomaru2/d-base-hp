@@ -22,7 +22,9 @@
     "check-all": "pnpm lint && pnpm lint:css && pnpm type-check && pnpm spell-check"
   },
   "dependencies": {
+    "@react-email/components": "^0.5.1",
     "@types/html-escape": "^2.0.2",
+    "add": "^2.0.6",
     "html-escape": "^2.0.0",
     "next": "14.2.17",
     "react": "18.3.1",
